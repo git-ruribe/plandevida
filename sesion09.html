@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definiendo Horizontes 2: Sesión 9 - Modelo de Bienestar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-color: #F0F9FF; /* Light blue background */
+        }
+        .section-title {
+            @apply text-3xl font-bold text-sky-700 mb-6 text-center;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300;
+        }
+        .list-disc li {
+            @apply mb-2;
+        }
+        .primary-button {
+            @apply bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-0.5;
+        }
+        .secondary-button {
+            @apply bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out;
+        }
+        .highlight {
+            @apply text-sky-600 font-semibold;
+        }
+        /* Estilos para el acordeón */
+        .accordion-item {
+            @apply border border-slate-300 rounded-lg mb-3 overflow-hidden;
+        }
+        .accordion-header {
+            @apply bg-slate-100 p-4 cursor-pointer flex justify-between items-center font-semibold text-slate-700 hover:bg-slate-200 transition-colors;
+        }
+        .accordion-content {
+            @apply p-4 bg-white text-slate-600;
+        }
+        .accordion-icon {
+            @apply transition-transform duration-300;
+        }
+        .accordion-item.active .accordion-icon {
+            @apply rotate-180;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 leading-relaxed">
+
+    <header class="hero-bg py-12 sm:py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl sm:text-5xl font-bold text-sky-800 mb-4">Definiendo Horizontes 2</h1>
+            <p class="text-2xl sm:text-3xl text-sky-600">Sesión 9: El Modelo de Bienestar</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduccion" class="mb-16">
+            <div class="card">
+                <h2 class="section-title">Bienvenida y Equilibrio Vital</h2>
+                <p class="mb-4 text-lg">El ponente da la bienvenida y recapitula la sesión anterior sobre la "Rueda de la Vida". Se enfatiza la importancia de encontrar un <span class="highlight">equilibrio</span> en todas las facetas de nuestra vida (personal, familiar, profesional, espiritual, social, etc.) para alcanzar una vida más plena y realizar nuestro propósito.</p>
+            </div>
+        </section>
+
+        <section id="carta-pastoral" class="mb-16">
+            <div class="card">
+                <h2 class="section-title">Descubrimiento Inspirador: X Carta Pastoral "Y acampó entre nosotros"</h2>
+                <p class="mb-6 text-lg">Antes de abordar el tema principal, se comparte un descubrimiento personal: la <span class="highlight">X Carta Pastoral del Arzobispo Rogelio Cabrera</span>, titulada "Y acampó entre nosotros" (Juan 1, 14). Esta carta ofrece profundas reflexiones y esperanza.</p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="border border-sky-200 p-6 rounded-lg bg-sky-50">
+                        <h3 class="text-xl font-semibold text-sky-700 mb-3">Punto 13: Peregrinos de Esperanza</h3>
+                        <p class="text-slate-700">El Arzobispo pide a sacerdotes y fieles laicos <span class="highlight">"salir a las calles como 'peregrinos de la esperanza'"</span> para que, mediante el "ABC de la pastoral" (un saludo, una sonrisa y una bendición), hagan presente a Dios en la comunidad.</p>
+                    </div>
+                    <div class="border border-sky-200 p-6 rounded-lg bg-sky-50">
+                        <h3 class="text-xl font-semibold text-sky-700 mb-3">Punto 39: Tienda de Campamento</h3>
+                        <p class="text-slate-700">Se anima a hacer de la arquidiócesis una <span class="highlight">"tienda de campamento"</span> donde Jesús pueda residir, extendiendo esta tienda para acoger a quien lo necesite.</p>
+                    </div>
+                </div>
+                <p class="mb-4 text-lg">El ponente expresa cómo esta carta cambió su perspectiva sobre la vida y el ministerio, alineándose con los conceptos de bienestar y propósito. Se anima a los espectadores a leerla.</p>
+                </div>
+        </section>
+
+        <section id="perma" class="mb-16">
+            <div class="card">
+                <h2 class="section-title">El Modelo de Bienestar PERMA</h2>
+                <p class="text-center text-lg mb-8">El tema central de la sesión es el modelo PERMA, un acrónimo que representa cinco elementos cruciales para el florecimiento humano:</p>
+                
+                <div id="perma-accordion" class="space-y-3 mb-8">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>P - Positive Emotions (Emociones Positivas)</span>
+                            <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="accordion-content hidden">
+                            <p>Cuando logramos cambiar nuestra percepción del mundo, pasando de estados negativos a positivos, nuestro estado de ánimo cambia. Se trata de cultivar la alegría, la gratitud, la esperanza, etc.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>E - Engagement (Compromiso)</span>
+                            <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="accordion-content hidden">
+                            <p>Cuando nos comprometemos conscientemente con un propósito, nuestra energía interior aumenta. Es una decisión consciente, a diferencia de un enamoramiento pasajero. Implica estar absorto en actividades que nos desafían y nos hacen crecer.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>R - Relationships (Relaciones Positivas)</span>
+                            <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="accordion-content hidden">
+                            <p>La forma en que nos relacionamos con los demás afecta directamente todas las demás áreas de nuestra vida. Las relaciones maduras y positivas conducen a una mejor comunidad. Los seres humanos somos seres sociales y necesitamos conexiones auténticas.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>M - Meaning (Significado)</span>
+                            <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="accordion-content hidden">
+                            <p>Cuando lo que hacemos nos lleva a buscar un objetivo o propósito superior en la vida, nos inspira a esforzarnos más. Se trata de pertenecer y servir a algo más grande que uno mismo.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>A - Accomplishment (Logro)</span>
+                            <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="accordion-content hidden">
+                            <p>Cada nuevo objetivo alcanzado, por pequeño que sea, nos da ánimo para perseguir el siguiente. Se relaciona con la autoeficacia y la sensación de competencia, celebrando las victorias.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-sky-700 mb-4 text-center">"Construyendo el Futuro": El Propósito de PERMA</h3>
+                <p class="mb-4 text-lg">El modelo PERMA tiene como objetivo ayudarnos a <span class="highlight">dar sentido a nuestras vidas</span> y trabajar hacia objetivos que contribuyan a sentirnos realizados. Sus elementos están interconectados y contribuyen colectivamente a un mejor estado de bienestar.</p>
+                <p class="mb-4 text-lg">No se trata de una felicidad artificial o superficial, sino de <span class="highlight">analizar y cambiar cómo percibimos la realidad</span> y elegir una actitud más positiva. PERMA representa "el firme" sobre el cual se construirá el resto de la "casa" de nuestra vida, cuyas "bases" (propósito de vida, fortalezas de carácter, misión) se sentaron en sesiones anteriores.</p>
+            </div>
+        </section>
+
+        <section id="emociones" class="mb-16">
+            <div class="card">
+                <h2 class="section-title">Profundizando: ¿Qué son las Emociones?</h2>
+                <p class="mb-4 text-lg">Las emociones son <span class="highlight">respuestas o reacciones fisiológicas</span> de nuestro cuerpo a cambios o estímulos en nuestro entorno y dentro de nosotros mismos. Involucran tres componentes clave:</p>
+                <ul class="list-disc pl-6 mb-6 space-y-3 text-slate-700">
+                    <li><span class="font-semibold text-sky-600">Cambios Fisiológicos Internos:</span> Cómo reacciona nuestro cuerpo internamente (ej. mariposas en el estómago, aumento del ritmo cardíaco).</li>
+                    <li><span class="font-semibold text-sky-600">Estados Cognitivos Subjetivos (Ideas/Pensamientos):</span> La interpretación mental o pensamiento que tenemos sobre un estímulo.</li>
+                    <li><span class="font-semibold text-sky-600">Comportamientos Expresivos:</span> Cómo mostramos externamente nuestras emociones (expresiones faciales, tono de voz, acciones).</li>
+                </ul>
+
+                <h3 class="text-xl font-semibold text-sky-700 mb-3">El Proceso de la Emoción:</h3>
+                <p class="text-center bg-sky-100 p-4 rounded-lg text-lg shadow">
+                    <span class="font-bold">Estímulo</span> → <span class="font-bold">Pensamiento</span> → <span class="font-bold">Emoción</span> → <span class="font-bold">Acción</span> → <span class="font-bold">Consecuencia</span>
+                </p>
+                <p class="mt-4 text-lg">Este proceso es a menudo tan rápido que no nos damos cuenta conscientemente de que nuestros pensamientos están impulsando nuestras emociones y acciones.</p>
+            </div>
+        </section>
+
+        <section id="actitudes" class="mb-16">
+            <div class="card">
+                <h2 class="section-title">Actitudes: Negativas vs. Positivas</h2>
+                <div class="grid md:grid-cols-2 gap-8 mb-6">
+                    <div class="border border-red-200 p-6 rounded-lg bg-red-50">
+                        <h3 class="text-xl font-semibold text-red-700 mb-3">Actitudes Negativas</h3>
+                        <ul class="list-disc pl-5 text-red-600 space-y-1">
+                            <li>Constantemente molesto o enojado.</li>
+                            <li>Se queja de todo y de todos.</li>
+                            <li>Siente que otros quieren hacerle daño.</li>
+                            <li>Anhela constantemente vacaciones o situaciones mejores que nunca llegan.</li>
+                            <li>Siempre se enfoca en el lado negativo.</li>
+                        </ul>
+                    </div>
+                    <div class="border border-green-200 p-6 rounded-lg bg-green-50">
+                        <h3 class="text-xl font-semibold text-green-700 mb-3">Actitudes Positivas</h3>
+                        <ul class="list-disc pl-5 text-green-600 space-y-1">
+                            <li>Generalmente alegre, eleva a los demás.</li>
+                            <li>Responde a la negatividad con una sonrisa.</li>
+                            <li>Busca activamente lo bueno en las situaciones.</li>
+                            <li>Naturalmente hace sentir mejor a los demás.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-semibold text-sky-700 mb-3">¿Qué Marca la Diferencia?</h3>
+                <p class="mb-3 text-lg">Nuestras emociones provienen de nuestras <span class="highlight">ideas (cogniciones)</span>.</p>
+                <ul class="list-disc pl-6 space-y-2 text-slate-700 text-lg">
+                    <li>Una <span class="font-semibold">idea</span> se origina de nuestras percepciones y cómo interpretamos la realidad, influenciada por nuestra historia personal. Es como una cámara: cómo la enfocas (tu idea) determina lo que ves (tu realidad).</li>
+                    <li>Esta <span class="font-semibold">idea</span> luego genera un <span class="font-semibold">sentimiento</span> (emoción), que puede ser positivo o negativo.</li>
+                    <li>Finalmente, el <span class="font-semibold">sentimiento</span> se manifiesta como un <span class="font-semibold">comportamiento</span> o expresión externa.</li>
+                </ul>
+                <p class="mt-4 text-lg">El ponente destaca la influencia perjudicial de las redes sociales y la desinformación, que pueden implantar ideas negativas y distorsionar percepciones, llevando a estados emocionales negativos.</p>
+            </div>
+        </section>
+
+        <section id="aplicacion-practica" class="mb-16">
+            <div class="card">
+                <h2 class="section-title">Aplicación Práctica: Cambiando Emociones Negativas</h2>
+                <p class="mb-4 text-lg">Dado que no siempre podemos controlar los eventos externos, el poder reside en <span class="highlight">controlar nuestra percepción e interpretación</span> de ellos.</p>
+                <ul class="list-disc pl-6 mb-4 space-y-2 text-slate-700 text-lg">
+                    <li>Los <span class="font-semibold">sentimientos</span> son naturales, pero su naturaleza depende de nuestra interpretación del mundo.</li>
+                    <li>Cuando nos volvemos reactivos a las circunstancias, nuestras emociones se vuelven destructivas y perdemos el control de nosotros mismos.</li>
+                    <li>Tenemos la <span class="highlight">elección</span> de identificar las situaciones como negativas o positivas. Nuestro estado de ánimo es el resultado de las <span class="highlight">decisiones</span> que tomamos en cada momento.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="ejercicio-reflexion" class="mb-16">
+            <div class="card bg-sky-50 border border-sky-200">
+                <h2 class="section-title">Pequeño Ejercicio de Reflexión</h2>
+                <p class="mb-6 text-lg text-center">Tómate un momento para reflexionar sobre estas preguntas. El objetivo es tomar conciencia de la cadena inconsciente pensamiento-emoción-acción:</p>
+                <ol class="list-decimal pl-6 space-y-3 text-slate-700 text-lg">
+                    <li>Reflexiona sobre tu día de hoy: ¿Qué hiciste desde la mañana?</li>
+                    <li>¿Qué frases te dijiste a ti mismo/a durante la mañana al realizar tus actividades típicas?</li>
+                    <li>¿Qué pensaste o te dijiste a ti mismo/a cuando miraste el reloj y te diste cuenta de que era hora de esta sesión?</li>
+                    <li>¿Qué emoción surgió en ti cuando se explicó la tarea?</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="tarea-actitud" class="mb-16">
+            <div class="card">
+                <h2 class="section-title">Tarea Práctica: Cambio de Actitud</h2>
+                <p class="mb-6 text-lg">A continuación, se presentan ejemplos de frases negativas comunes. Escríbelas y luego <span class="highlight">reformula cada una de manera positiva</span>, usando tus propias palabras:</p>
+                <div class="space-y-6">
+                    <div>
+                        <p class="font-semibold text-red-600 mb-1">Frase Negativa 1:</p>
+                        <p class="italic text-slate-600 mb-2">"Hay muchos temas que son muy complejos, seguro que no voy a entender nada."</p>
+                        <textarea rows="2" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all" placeholder="Escribe aquí tu reformulación positiva..."></textarea>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-red-600 mb-1">Frase Negativa 2:</p>
+                        <p class="italic text-slate-600 mb-2">"La tarea me quita mucho tiempo, tengo que leer temas que nunca leo y luego escribirlos."</p>
+                        <textarea rows="2" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all" placeholder="Escribe aquí tu reformulación positiva..."></textarea>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-red-600 mb-1">Frase Negativa 3:</p>
+                        <p class="italic text-slate-600 mb-2">"Me da vergüenza saludar cuando llego al Centro... Siento que todavía no son mis amigos."</p>
+                        <textarea rows="2" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all" placeholder="Escribe aquí tu reformulación positiva..."></textarea>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-red-600 mb-1">Frase Negativa 4:</p>
+                        <p class="italic text-slate-600 mb-2">"A veces no entiendo un tema, pero es mejor no preguntar, quizás soy el único que no entiende."</p>
+                        <textarea rows="2" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all" placeholder="Escribe aquí tu reformulación positiva..."></textarea>
+                    </div>
+                </div>
+                 <div class="text-center mt-8">
+                    <button id="showAnswersButton" class="secondary-button">Ver Ejemplos de Reformulación</button>
+                </div>
+                <div id="answersContainer" class="hidden mt-6 space-y-4 bg-green-50 p-4 rounded-lg border border-green-200">
+                    <h4 class="text-lg font-semibold text-green-700">Ejemplos de Reformulaciones Positivas:</h4>
+                    <div>
+                        <p class="font-semibold text-green-600 mb-1">Reformulación 1:</p>
+                        <p class="italic text-slate-700">"Aunque algunos temas parezcan complejos, me esforzaré por comprenderlos y sé que puedo aprender algo valioso de cada uno."</p>
+                    </div>
+                     <div>
+                        <p class="font-semibold text-green-600 mb-1">Reformulación 2:</p>
+                        <p class="italic text-slate-700">"La tarea es una oportunidad para invertir tiempo en mi crecimiento, explorar nuevos temas y desarrollar mis habilidades de escritura."</p>
+                    </div>
+                     <div>
+                        <p class="font-semibold text-green-600 mb-1">Reformulación 3:</p>
+                        <p class="italic text-slate-700">"Saludar al llegar al Centro es una forma de ser amable y abierto/a. Cada interacción es una oportunidad para construir nuevas amistades."</p>
+                    </div>
+                     <div>
+                        <p class="font-semibold text-green-600 mb-1">Reformulación 4:</p>
+                        <p class="italic text-slate-700">"Si no entiendo un tema, preguntar es una señal de valentía y deseo de aprender. Es probable que otros también tengan dudas y mi pregunta pueda ayudarles."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion-tarea" class="mb-16">
+            <div class="card">
+                <h2 class="section-title">Conclusión y Tarea para la Semana</h2>
+                <p class="mb-4 text-lg">Las emociones positivas provienen de <span class="highlight">cómo elegimos identificar las situaciones</span>. Tenemos el poder de elegir entre interpretaciones negativas y positivas. Nuestro estado de ánimo es un resultado directo de las decisiones que tomamos en cada momento.</p>
+                
+                <h3 class="text-xl font-semibold text-sky-700 mb-3">Tarea para la Semana:</h3>
+                <ul class="list-disc pl-6 mb-6 space-y-2 text-slate-700 text-lg">
+                    <li>Analiza las frases que te dices a ti mismo/a diariamente:
+                        <ul class="list-circle pl-6 mt-1 space-y-1">
+                            <li>Al comenzar el día.</li>
+                            <li>Al interactuar con otros.</li>
+                            <li>Al realizar tareas ministeriales.</li>
+                            <li>Al ir a la Parroquia.</li>
+                        </ul>
+                    </li>
+                    <li>Si notas que tienes pensamientos negativos, <span class="highlight">cámbialos a positivos</span>.</li>
+                </ul>
+                <p class="text-lg">Se anima a todos a leer la X Carta Pastoral, ya que ofrece una hermosa perspectiva sobre la esperanza y el propósito en nuestro camino de fe, reforzando los conceptos discutidos sobre el bienestar.</p>
+                <p class="text-lg mt-4">El ponente concluye deseando a todos lo mejor hasta la próxima sesión, donde se cubrirán <span class="highlight">"Compromiso"</span> y <span class="highlight">"Relaciones Positivas"</span>.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-sky-800 text-sky-100 py-8 text-center">
+        <p>&copy; <span id="year"></span> Programa Definiendo Horizontes. Todos los derechos reservados.</p>
+        <p class="text-sm">Este sitio es un resumen y adaptación de la Sesión 9.</p>
+    </footer>
+
+    <script>
+        // Script para el año actual en el footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Script para el acordeón
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
+            const icon = item.querySelector('.accordion-icon');
+
+            header.addEventListener('click', () => {
+                // Cierra otros items abiertos si quieres un comportamiento de acordeón exclusivo
+                // accordionItems.forEach(otherItem => {
+                //     if (otherItem !== item) {
+                //         otherItem.querySelector('.accordion-content').classList.add('hidden');
+                //         otherItem.classList.remove('active');
+                //         otherItem.querySelector('.accordion-icon').classList.remove('rotate-180');
+                //     }
+                // });
+
+                content.classList.toggle('hidden');
+                item.classList.toggle('active');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Script para mostrar/ocultar respuestas de reformulación
+        const showAnswersButton = document.getElementById('showAnswersButton');
+        const answersContainer = document.getElementById('answersContainer');
+
+        showAnswersButton.addEventListener('click', () => {
+            answersContainer.classList.toggle('hidden');
+            if (!answersContainer.classList.contains('hidden')) {
+                showAnswersButton.textContent = 'Ocultar Ejemplos';
+            } else {
+                showAnswersButton.textContent = 'Ver Ejemplos de Reformulación';
+            }
+        });
+    </script>
+
+</body>
+</html>
