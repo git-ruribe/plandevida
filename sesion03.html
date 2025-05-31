@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propósito de Vida: Una Visión que Me Inspira - Dr. José Luis Montes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            /* Fondo degradado sutil para el cuerpo */
+            @apply bg-gradient-to-br from-sky-50 via-indigo-50 to-purple-50;
+        }
+        .hero-gradient {
+            /* Degradado más vibrante para la sección hero */
+            background-image: linear-gradient(to right, #0EA5E9, #4F46E5); /* sky-500 to indigo-600 */
+        }
+        .section-title {
+            /* Título de sección más prominente */
+            @apply text-3xl font-bold text-center mb-10 text-indigo-700;
+        }
+        .subsection-title {
+            /* Título de subsección claro */
+            @apply text-2xl font-semibold mb-4 text-sky-700;
+        }
+        .card {
+            /* Tarjetas con más profundidad y borde superior de color */
+            @apply bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-sky-500;
+        }
+        .list-disc {
+            @apply list-disc list-inside space-y-2 text-slate-700;
+        }
+        .highlight {
+            /* Resaltado con un color índigo más intenso */
+            @apply text-indigo-600 font-semibold;
+        }
+        .insight {
+            /* Bloques de insight con nueva paleta */
+            @apply p-4 bg-indigo-50 border-l-4 border-indigo-500 text-indigo-800 rounded-md my-4 italic;
+        }
+        nav {
+            /* Navegación con fondo translúcido y blur */
+            @apply bg-white/80 backdrop-blur-md shadow-lg sticky top-0 z-50;
+        }
+        nav a {
+            /* Enlaces de navegación con mejor feedback */
+            @apply px-4 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-sky-100 hover:text-sky-700 transition-colors duration-200;
+        }
+        .nav-brand {
+             @apply text-xl font-bold text-indigo-600;
+        }
+        .footer-bg {
+            @apply bg-slate-900 text-slate-300;
+        }
+
+        /* Estilo específico para la tarjeta de Llamada a la Acción */
+        .action-card {
+            @apply border-t-4 border-amber-500 bg-amber-50;
+        }
+        .action-card .subsection-title {
+            @apply text-amber-700;
+        }
+        .action-card .insight {
+             @apply !border-amber-600 !bg-amber-100 !text-amber-800 font-medium;
+        }
+
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <nav>
+        <div class="container mx-auto px-6 py-3 flex flex-wrap justify-between items-center">
+            <a href="#" class="nav-brand">Propósito de Vida</a>
+            <button class="text-slate-700 inline-flex p-3 hover:bg-sky-100 rounded lg:hidden ml-auto" id="nav-toggle" aria-label="Abrir menú">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+            <div class="hidden w-full lg:inline-flex lg:flex-grow lg:w-auto" id="nav-content">
+                <div class="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto">
+                    <a href="#sesion-previa">Sesión Previa</a>
+                    <a href="#concepto-proposito">Concepto</a>
+                    <a href="#descubrir-llamado">Descubrir</a>
+                    <a href="#que-es-proposito">Definición</a>
+                    <a href="#accion">Llamada a la Acción</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-gradient py-20 md:py-28 text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 shadow-sm">Propósito de Vida: Una Visión que Me Inspira</h1>
+            <p class="text-xl text-indigo-100">Basado en la sesión del Dr. José Luis Montes</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-16">
+
+        <section class="mb-16 text-center">
+            <p class="text-lg text-slate-700 leading-relaxed max-w-3xl mx-auto">
+                Esta página resume la tercera sesión del Dr. José Luis Montes, enfocada en el discernimiento y desarrollo personal. El Dr. Montes nos guía a través de temas personales y generales relacionados con el propósito de la vida, buscando inspirar una visión transformadora.
+            </p>
+        </section>
+
+        <section id="sesion-previa" class="mb-16 scroll-mt-24">
+            <h2 class="section-title">1. Repaso Sesión Previa: Decisiones e Influencia</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="card">
+                    <h3 class="subsection-title">Decisiones y Guía Divina</h3>
+                    <p class="text-slate-700 mb-4">En la sesión anterior, se exploraron las decisiones personales y externas que han influido en nuestras vidas. Puntos clave:</p>
+                    <ul class="list-disc">
+                        <li><span class="highlight">Guía de Dios:</span> Reconocer que Dios nos guía en nuestro camino.</li>
+                        <li><span class="highlight">Responsabilidad Personal:</span> Tenemos la conciencia y libertad para tomar nuestras propias decisiones (libre albedrío vs. predestinación).</li>
+                        <li><span class="highlight">Áreas de Control:</span> No todo está bajo nuestro control, pero poseemos una significativa "área de influencia".</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="subsection-title">Círculo de Influencia de Stephen Covey</h3>
+                    <p class="text-slate-700 mb-4">Para ilustrar el control, se presentó el modelo de Stephen Covey:</p>
+                    <ul class="list-disc">
+                        <li><span class="font-semibold text-sky-700">Círculo de Influencia (Control Directo):</span> Lo que podemos controlar directamente (acciones, actitudes, decisiones).</li>
+                        <li><span class="font-semibold text-amber-600">Círculo de Preocupación (Control Indirecto):</span> Lo que no controlamos directamente pero podemos influenciar (salud, relaciones, trabajo).</li>
+                        <li><span class="font-semibold text-red-600">Control Inexistente:</span> Fuera de los círculos, lo que no podemos controlar ni influenciar (eventos globales, disposiciones ajenas).</li>
+                    </ul>
+                    <p class="mt-4 text-slate-700">Analogía de la salud: Controlamos dieta y ejercicio (influencia), podemos influir en resultados si hay historial familiar (preocupación), no controlamos la muerte o polución (inexistente).</p>
+                </div>
+            </div>
+            <div class="insight mt-8">
+                <p><span class="font-bold">Perspectiva Clave:</span> Cuando nos enfocamos en lo que <span class="highlight">sí</span> podemos controlar (nuestro círculo de influencia), ese círculo se expande, llevando a mayor agencia y resultados positivos.</p>
+            </div>
+        </section>
+
+        <section id="concepto-proposito" class="mb-16 scroll-mt-24">
+            <h2 class="section-title">2. El Concepto de Propósito de Vida</h2>
+            <p class="text-center text-lg text-slate-700 mb-10 max-w-3xl mx-auto">Las personas con un propósito de vida claro son distintas a quienes no lo tienen. El Dr. Montes usa varios ejemplos:</p>
+
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="subsection-title">Parábola de los Canteros</h3>
+                    <ul class="space-y-3 text-slate-700">
+                        <li><strong>Primer Cantero:</strong> Malhumorado, frustrado. "Estoy picando piedra." (Perspectiva negativa, sin propósito claro).</li>
+                        <li><strong>Segundo Cantero:</strong> Resignado. "Estoy ayudando a construir un muro." (Aceptación resignada, propósito limitado).</li>
+                        <li><strong>Tercer Cantero:</strong> Enfocado, inspirado, orgulloso. "Estoy construyendo una catedral." (Propósito claro, inspirador, superior).</li>
+                    </ul>
+                    <div class="insight mt-4">
+                        <p><span class="font-bold">Perspectiva Clave:</span> Los tres hacían la misma tarea, pero su <span class="highlight">percepción</span> y <span class="highlight">propósito</span> marcaron la diferencia en su actitud y el significado de su trabajo.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="subsection-title">Reconociendo Nuestras "Etiquetas"</h3>
+                    <p class="text-slate-700 mb-3">Nuestras percepciones están moldeadas por "etiquetas" o "esquemas/estereotipos" aprendidos:</p>
+                    <ul class="list-disc">
+                        <li><strong>Puente Colgante:</strong> Algunos imaginan una estructura bella y firme; otros, una precaria y peligrosa.</li>
+                        <li><strong>Comer Cabrito:</strong> Algunos piensan en un manjar; otros, en una cabeza de cabra asada.</li>
+                        <li><strong>Capitán de Barco Transatlántico:</strong> La mayoría imagina un hombre blanco, mayor, serio y experimentado.</li>
+                    </ul>
+                    <div class="insight mt-4">
+                        <p><span class="font-bold">Perspectiva Clave:</span> Estas "etiquetas" se aprenden del entorno (familia, medios) y pueden convertirse en creencias profundas que afectan actitudes y comportamientos.</p>
+                    </div>
+                </div>
+
+                <div class="card border-t-red-500"> <h3 class="subsection-title text-red-700">El Peligro de las Etiquetas Negativas</h3>
+                    <p class="text-slate-700 mb-3">Quejarse (del clima, tráfico, dinero, gente) no ofrece beneficios, solo nos hace sentir peor.</p>
+                    <ul class="list-disc">
+                        <li>Conecta con una "pérdida de energía" que debilita.</li>
+                        <li>Nos hace vulnerables a enfermedades, conflictos y escasez.</li>
+                        <li>Estas etiquetas negativas pueden volverse "anclas" que impiden el cambio y crecimiento personal.</li>
+                    </ul>
+                </div>
+
+                <div class="card border-t-purple-500"> <h3 class="subsection-title text-purple-700">"Mi Salto Cuántico": Un Propósito Superior</h3>
+                    <p class="text-slate-700 mb-3">Un propósito de vida es una frase que:</p>
+                    <ul class="list-disc">
+                        <li>Nos <span class="text-purple-600 font-semibold">inspira</span>.</li>
+                        <li>Nos <span class="text-purple-600 font-semibold">impulsa</span>.</li>
+                        <li><span class="text-purple-600 font-semibold">Gobierna nuestras decisiones</span>.</li>
+                        <li><span class="text-purple-600 font-semibold">Motiva nuestras acciones</span>.</li>
+                    </ul>
+                    <p class="text-slate-700 mt-3">Es una meta clara, aunque a veces etérea. Ejemplo: los apóstoles y misioneros, a pesar de la adversidad, avanzaban con "gran alegría" para difundir el Evangelio, impulsados por un "Propósito Superior".</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="descubrir-llamado" class="mb-16 scroll-mt-24">
+            <h2 class="section-title">3. Descubriendo Nuestro Llamado y Propósito</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="subsection-title">Llamado Divino</h3>
+                    <p class="text-slate-700">El llamado de Dios es evidente en el Antiguo Testamento (Jeremías) y Nuevo Testamento (Jesús llamando a discípulos). Hoy, se trata de <span class="highlight">descubrir</span> nuestro llamado.</p>
+                </div>
+                <div class="card">
+                    <h3 class="subsection-title">Descubrimiento Cotidiano</h3>
+                    <p class="text-slate-700">Dios nos habla a través de nuestras familias, rutinas diarias, amigos y comunidades parroquiales. Debemos aprender a reconocer estas "señales" que revelan lo que Dios espera de nosotros.</p>
+                </div>
+            </div>
+            <div class="card mt-8 max-w-2xl mx-auto border-t-teal-500"> <h3 class="subsection-title text-center text-teal-700">Libertad para Elegir</h3>
+                <p class="text-slate-700 text-center">Dios nos da la libertad de decidir qué caminos nos conducen a Él. No hay "un solo camino".</p>
+            </div>
+        </section>
+
+        <section id="que-es-proposito" class="mb-16 scroll-mt-24">
+            <h2 class="section-title">4. ¿Qué es un Propósito y Por Qué es Importante?</h2>
+            <div class="card mb-8">
+                <h3 class="subsection-title">Definición de Propósito de Vida</h3>
+                <p class="text-slate-700 mb-4">Es una visión amplia para tu vida basada en lo que es más significativo para ti. Un objetivo central o conjunto de objetivos que:</p>
+                <ul class="list-disc columns-1 md:columns-2 gap-x-8">
+                    <li>Orienta la toma de decisiones.</li>
+                    <li>Proporciona dirección.</li>
+                    <li>Crea un sentido de significado.</li>
+                    <li>Influye en el comportamiento.</li>
+                    <li>Determina cómo priorizas tu tiempo.</li>
+                </ul>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card">
+                    <h3 class="subsection-title text-sky-700">Más Allá del Reconocimiento</h3>
+                    <p class="text-slate-700">Se trata de lo que <span class="highlight">amas</span> y en lo que eres <span class="highlight">bueno</span> para crear una diferencia positiva.</p>
+                </div>
+                <div class="card">
+                    <h3 class="subsection-title text-sky-700">Inspiración Dual</h3>
+                    <p class="text-slate-700">Es algo que te <span class="highlight">inspira a ti</span> y luego <span class="highlight">inspira a otros</span>.</p>
+                </div>
+                <div class="card">
+                    <h3 class="subsection-title text-sky-700">Donde "Fluyes"</h3>
+                    <p class="text-slate-700">Cuando estás comprometido con tu propósito, el tiempo parece desaparecer y sientes una profunda satisfacción.</p>
+                </div>
+            </div>
+
+            <div class="card mt-10 bg-indigo-100 border-t-indigo-500">
+                <h3 class="subsection-title text-indigo-700">Importancia (Respaldada por Investigación)</h3>
+                <p class="text-slate-800 mb-4">Estudios recientes muestran que un fuerte sentido de propósito conduce a:</p>
+                <ul class="list-disc text-slate-800">
+                    <li>Bienestar social positivo.</li>
+                    <li>Menores niveles de soledad.</li>
+                    <li>Reducción de comportamientos impulsivos.</li>
+                    <li>Una vida más larga.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="accion" class="mb-16 scroll-mt-24">
+            <h2 class="section-title">5. Llamada a la Acción: Tu Tarea</h2>
+            <div class="card max-w-3xl mx-auto action-card"> <h3 class="subsection-title">Desafío Personal del Dr. Montes:</h3>
+                <ul class="list-disc text-slate-700">
+                    <li><span class="font-semibold text-amber-800">Escribe Tu Propósito:</span> En un cuaderno, intenta escribir tu propósito de vida por primera vez.</li>
+                    <li><span class="font-semibold text-amber-800">Itera:</span> Si no te gusta tu primer intento, inténtalo de nuevo. No hay límite para refinarlo.</li>
+                    <li><span class="font-semibold text-amber-800">Reflexiona:</span> Deja "reposar" lo que has escrito durante una semana y luego reléelo.</li>
+                    <li><span class="font-semibold text-amber-800">No Compares:</span> El propósito de cada persona es único y válido; no hay necesidad de compararlo.</li>
+                </ul>
+                <div class="insight mt-6">
+                    <p><span class="font-bold">Guía Espiritual:</span> Permite que el Espíritu Santo te hable suavemente, y entonces comprenderás lo que Dios quiere de ti y cómo puedes contribuir al camino de salvación de la Iglesia.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-bg py-12 text-center">
+        <div class="container mx-auto px-6">
+            <p>&copy; <span id="currentYear"></span> Resumen del Taller de Propósito de Vida. Inspirado en las enseñanzas del Dr. José Luis Montes.</p>
+            <p class="mt-2 text-sm opacity-80">Este sitio es una interpretación y resumen con fines educativos.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navContent = document.getElementById('nav-content');
+        if (navToggle && navContent) {
+            navToggle.addEventListener('click', function() {
+                navContent.classList.toggle('hidden');
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                // Solo cierra el menú móvil si está visible (es decir, en pantallas pequeñas)
+                if (window.getComputedStyle(navToggle).display !== 'none') {
+                    navContent.classList.add('hidden');
+                }
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Ajuste para el scroll-mt (scroll-margin-top)
+                    const offset = parseFloat(getComputedStyle(targetElement).scrollMarginTop) || 0;
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = targetElement.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Set current year in footer
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+    </script>
+
+</body>
+</html>
