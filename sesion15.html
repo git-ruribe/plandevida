@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Vida y Carrera: Modelo GROW</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background-color: #4A90E2; /* Un azul inspirador */
+        }
+        .section-title {
+            @apply text-3xl font-bold text-gray-800 mb-6 text-center;
+        }
+        .subsection-title {
+            @apply text-2xl font-semibold text-gray-700 mb-4 mt-6;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+        }
+        .list-disc-custom li {
+            @apply mb-2;
+        }
+        .list-decimal-custom li {
+            @apply mb-2;
+        }
+        .highlight {
+            @apply text-blue-600 font-semibold;
+        }
+        .task-card {
+            @apply bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md shadow;
+        }
+        /* Estilos para la barra de navegación fija */
+        #navbar {
+            @apply fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-md transition-all duration-300;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700">
+
+    <nav id="navbar" class="py-3">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold text-blue-600">Plan de Vida GROW</div>
+                <div class="space-x-4">
+                    <a href="#introduccion" class="text-gray-600 hover:text-blue-500 transition-colors">Introducción</a>
+                    <a href="#proceso" class="text-gray-600 hover:text-blue-500 transition-colors">Proceso</a>
+                    <a href="#grow" class="text-gray-600 hover:text-blue-500 transition-colors">Modelo GROW</a>
+                    <a href="#dimensiones" class="text-gray-600 hover:text-blue-500 transition-colors">Dimensiones</a>
+                    <a href="#ejemplos" class="text-gray-600 hover:text-blue-500 transition-colors">Ejemplos</a>
+                    <a href="#tarea" class="text-gray-600 hover:text-blue-500 transition-colors">Tarea</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-20"> <section id="introduccion" class="py-12 md:py-16">
+            <div class="hero-bg text-white p-8 md:p-12 rounded-xl shadow-2xl mb-12 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Construye tu Futuro: Plan de Vida y Carrera</h1>
+                <p class="text-lg md:text-xl mb-6">Descubre la importancia de tener un plan de vida para mejorar la toma de decisiones, guiar tu camino y potenciar tu aprendizaje y relaciones.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="card">
+                    <h2 class="subsection-title">La Fuerza de la Humildad y el Servicio</h2>
+                    <p class="mb-4">Una anécdota inspiradora es la de San Juan María Vianney, el Santo Cura de Ars. Considerado "burro" por sus profesores debido a su falta de conocimientos teológicos, demostró que la humildad, el servicio, la perseverancia y el aprovechamiento de las propias fortalezas pueden llevar a la grandeza.</p>
+                    <p class="italic">Cuando su superior le confrontó, respondió: "Monseñor, Sansón mató a cien filisteos con la quijada de un burro. ¿Qué cree usted que Dios podría hacer con un burro entero?"</p>
+                    <p class="mt-4">Esta historia subraya cómo, incluso con aparentes limitaciones, una firme dedicación y el uso de los talentos individuales pueden generar un impacto extraordinario.</p>
+                </div>
+                <img src="https://placehold.co/600x400/A6B4C4/FFFFFF?text=Inspiraci%C3%B3n+y+Planificaci%C3%B3n" alt="Imagen inspiradora sobre planificación" class="rounded-xl shadow-lg w-full h-auto object-cover">
+            </div>
+        </section>
+
+        <section id="proceso" class="py-12 md:py-16 bg-gray-100 rounded-xl shadow-inner">
+            <h2 class="section-title">Flujo del Proceso de Planificación</h2>
+            <p class="text-center mb-8 max-w-2xl mx-auto">El camino hacia un plan de vida sólido sigue una secuencia lógica, construyendo cada paso sobre el anterior:</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card"><strong>1. Historia de Vida:</strong> Comprender de dónde vienes.</div>
+                <div class="card"><strong>2. Propósito:</strong> Definir tu razón fundamental de ser.</div>
+                <div class="card"><strong>3. Virtudes y Fortalezas del Carácter:</strong> Identificar tus fortalezas innatas (vinculadas al modelo PERMA).</div>
+                <div class="card"><strong>4. Misión:</strong> Tu acción específica basada en tu propósito y fortalezas.</div>
+                <div class="card"><strong>5. Modelo PERMA:</strong> (Emociones Positivas, Engagement, Relaciones, Significado/Propósito, Logro) – un marco para el bienestar que influye en tu misión.</div>
+                <div class="card"><strong>6. Objetivos:</strong> Metas concretas derivadas de tu misión, guiadas por el modelo PERMA y tus fortalezas.</div>
+                <div class="card"><strong>7. Decisiones:</strong> Los objetivos conducen a decisiones.</div>
+                <div class="card"><strong>8. Plan de Acción:</strong> Los pasos a seguir para alcanzar esos objetivos.</div>
+            </div>
+        </section>
+
+        <section id="filtros" class="py-12 md:py-16">
+            <h2 class="section-title">Los 7 Filtros para Objetivos Efectivos</h2>
+            <p class="text-center mb-8 max-w-2xl mx-auto">Para asegurar que los objetivos sean bien definidos y accionables, deben pasar por estos siete filtros:</p>
+            <ol class="list-decimal list-inside space-y-4 max-w-xl mx-auto list-decimal-custom pl-6">
+                <li class="card"><strong>Principio 1:</strong> Di lo que quieres, no lo que quieres evitar.</li>
+                <li class="card"><strong>Principio 2:</strong> Establece objetivos que sean desafiantes y realistas.</li>
+                <li class="card"><strong>Principio 3:</strong> Ten influencia directa sobre el resultado.</li>
+                <li class="card"><strong>Principio 4:</strong> Mide tu progreso.</li>
+                <li class="card"><strong>Principio 5:</strong> Revisa tus recursos.</li>
+                <li class="card"><strong>Principio 6:</strong> Considera el precio (costo/esfuerzo).</li>
+                <li class="card"><strong>Principio 7:</strong> Diseña un plan de acción.</li>
+            </ol>
+        </section>
+
+        <section id="grow" class="py-12 md:py-16 bg-blue-50 rounded-xl shadow-inner">
+            <h2 class="section-title">La Estrategia GROW para Alcanzar tus Metas</h2>
+            <p class="text-center mb-10 max-w-2xl mx-auto">El modelo GROW es una herramienta poderosa para estructurar la consecución de objetivos. Significa:</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card border-t-4 border-blue-500">
+                    <h3 class="text-2xl font-bold text-blue-700 mb-3">G - Goal (Meta)</h3>
+                    <p class="mb-2"><strong>¿Qué quieres lograr? ¿Cuál es tu objetivo final?</strong></p>
+                    <p class="text-sm mb-3">Establécelo de manera específica, medible y en un período de tiempo o con fecha de término.</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 list-disc-custom pl-4">
+                        <li>¿Qué quieres alcanzar?</li>
+                        <li>¿Qué acción o logro te haría mejor persona?</li>
+                        <li>¿Qué te gustaría mejorar en tu vida que te dé plenitud?</li>
+                    </ul>
+                    <p class="text-sm mt-3 italic">Este es el punto de toma de decisiones, reflexionando sobre tu servicio y crecimiento personal en todas las áreas.</p>
+                </div>
+                <div class="card border-t-4 border-green-500">
+                    <h3 class="text-2xl font-bold text-green-700 mb-3">R - Reality (Realidad)</h3>
+                    <p class="mb-2"><strong>¿Dónde estás ahora? ¿Cuál es tu contexto actual?</strong></p>
+                    <ul class="list-disc list-inside text-sm space-y-1 list-disc-custom pl-4">
+                        <li>¿Dónde te encuentras actualmente?</li>
+                        <li>¿Qué barreras podrían impedirte alcanzar tu meta?</li>
+                        <li>¿Qué elementos podrían favorecerla?</li>
+                    </ul>
+                    <p class="text-sm mt-3 italic">Comprender tu realidad actual y basar las acciones en tus fortalezas marca una diferencia significativa.</p>
+                </div>
+                <div class="card border-t-4 border-yellow-500">
+                    <h3 class="text-2xl font-bold text-yellow-700 mb-3">O - Options (Opciones)</h3>
+                    <p class="mb-2"><strong>¿Qué podrías hacer? ¿Qué recursos están disponibles?</strong></p>
+                    <ul class="list-disc list-inside text-sm space-y-1 list-disc-custom pl-4">
+                        <li>¿Qué podrías hacer para alcanzar la meta?</li>
+                        <li>¿Qué recursos tienes a tu disposición?</li>
+                        <li>¿Qué cambios necesitarías hacer en tu comportamiento, ideas o hábitos para lograrlo?</li>
+                    </ul>
+                    <p class="text-sm mt-3 italic">Siempre hay elecciones y apoyo de diversas fuentes.</p>
+                </div>
+                <div class="card border-t-4 border-red-500">
+                    <h3 class="text-2xl font-bold text-red-700 mb-3">W - Will (Voluntad y Compromiso)</h3>
+                    <p class="mb-2"><strong>¿Qué harás para iniciar la acción?</strong> Esta es la parte más difícil, donde las metas se convierten en realidad.</p>
+                    <ul class="list-disc list-inside text-sm space-y-1 list-disc-custom pl-4">
+                        <li>¿Qué harás para empezar?</li>
+                        <li>¿Elegiste tus metas/objetivos basándote en tus valores?</li>
+                        <li>¿Eres consciente de lo que implica cada meta?</li>
+                    </ul>
+                    <p class="text-sm mt-3 italic">Requiere establecer una declaración que refleje tu determinación y compromiso, potencialmente un mantra personal.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="dimensiones" class="py-12 md:py-16">
+            <h2 class="section-title">Dimensiones de la Vida para tus Objetivos</h2>
+            <p class="text-center mb-8 max-w-2xl mx-auto">Al establecer objetivos, considera estas diferentes dimensiones o áreas de la vida:</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div class="card">
+                    <h3 class="subsection-title text-lg">🧘 Espiritual</h3>
+                    <p class="text-sm">Conexión con algo más grande, búsqueda de propósito y significado.</p>
+                </div>
+                <div class="card">
+                    <h3 class="subsection-title text-lg">😊 Emocional</h3>
+                    <p class="text-sm">Capacidad de experimentar, entender y regular emociones.</p>
+                </div>
+                <div class="card">
+                    <h3 class="subsection-title text-lg">👨‍👩‍👧‍👦 Familiar</h3>
+                    <p class="text-sm">Importancia e impacto de la familia en la vida personal y social.</p>
+                </div>
+                <div class="card">
+                    <h3 class="subsection-title text-lg">🤝 Social</h3>
+                    <p class="text-sm">Interacciones y relaciones en comunidad (vecindario, trabajo).</p>
+                </div>
+                <div class="card">
+                    <h3 class="subsection-title text-lg">⛪ Parroquial</h3>
+                    <p class="text-sm">La parroquia como comunidad de fe, encuentro con Dios y servicio.</p>
+                </div>
+                <div class="card">
+                    <h3 class="subsection-title text-lg">🧠 Intelectual</h3>
+                    <p class="text-sm">Capacidad de aprendizaje, curiosidad, comprensión y creatividad.</p>
+                </div>
+                <div class="card">
+                    <h3 class="subsection-title text-lg">💪 Física</h3>
+                    <p class="text-sm">Cuidado del cuerpo, salud física y mental.</p>
+                </div>
+                <div class="card">
+                    <h3 class="subsection-title text-lg">💰 Material</h3>
+                    <p class="text-sm">Consideración de aspectos económicos en todas las dimensiones (costo en tiempo, esfuerzo, dinero).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ejemplos" class="py-12 md:py-16 bg-gray-100 rounded-xl shadow-inner">
+            <h2 class="section-title">Aplicando el Modelo GROW: Ejemplos Prácticos</h2>
+            <p class="text-center mb-8 max-w-2xl mx-auto">Veamos cómo aplicar el modelo GROW a la <span class="highlight">Dimensión Intelectual</span> para diferentes roles ministeriales:</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="subsection-title">Ejemplo 1: Acólito</h3>
+                    <p class="mb-1"><strong class="text-gray-700">Fortaleza a usar:</strong> Amor por el aprendizaje O Vitalidad y entusiasmo O Persistencia/Perseverancia.</p>
+                    <p class="mb-3"><strong class="text-blue-600">Meta (G):</strong> Aprender a usar y preparar sin error el Misal Romano para las misas (votivas, feriales, solemnes, etc.).</p>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-3">
+                        <p class="font-semibold text-green-700">Realidad (R):</p>
+                        <p class="text-sm">Ocasionalmente, dudo en qué página debo colocar los listones. (Se comparte anécdota de un sacerdote misionero de Etiopía con esta dificultad).</p>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg mb-3">
+                        <p class="font-semibold text-yellow-700">Opciones (O):</p>
+                        <ul class="list-disc list-inside text-sm space-y-1 list-disc-custom pl-4">
+                            <li>Preguntar al Diácono Permanente o al Párroco qué videos o libros pueden recomendar.</li>
+                            <li>Leer el libro "Ordenación general del Misal romano" de José Aldazábal, para aprender mejor su uso.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <p class="font-semibold text-red-700">Voluntad y Compromiso (W):</p>
+                        <p class="text-sm">Pedir orientación al Párroco o al Diácono Permanente para aprender a preparar el Misal para las misas.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="subsection-title">Ejemplo 2: Catequista</h3>
+                    <p class="mb-1"><strong class="text-gray-700">Fortaleza a usar:</strong> Creatividad O Inteligencia Social O Persistencia/Perseverancia.</p>
+                    <p class="mb-3"><strong class="text-blue-600">Meta (G):</strong> Diseñar nuevas formas pedagógicas para enseñar el concepto de la Trinidad.</p>
+                     <div class="bg-blue-50 p-4 rounded-lg mb-3">
+                        <p class="font-semibold text-green-700">Realidad (R):</p>
+                        <p class="text-sm">A veces los niños no comprenden el concepto y me cuesta compartir nuevos ejemplos e ideas.</p>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg mb-3">
+                        <p class="font-semibold text-yellow-700">Opciones (O):</p>
+                        <ul class="list-disc list-inside text-sm space-y-1 list-disc-custom pl-4">
+                            <li>Acudir al Secretariado de Pastoral Catequética para explorar apoyo bibliográfico para la enseñanza del Catecismo.</li>
+                            <li>Preguntar entre los feligreses de la Parroquia quién es Educador o Maestro para pedir su consejo.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <p class="font-semibold text-red-700">Voluntad y Compromiso (W):</p>
+                        <ul class="list-disc list-inside text-sm space-y-1 list-disc-custom pl-4">
+                           <li>Buscar en librerías católicas libros sobre catequesis.</li>
+                           <li>Crear un grupo de formación para catequistas en mi Parroquia.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tarea" class="py-12 md:py-16">
+            <h2 class="section-title">✍️ Tarea de la Semana</h2>
+            <div class="task-card max-w-2xl mx-auto">
+                <p class="font-semibold mb-3 text-lg">¡Es tu turno de practicar!</p>
+                <ol class="list-decimal list-inside space-y-2 list-decimal-custom pl-4">
+                    <li>Elabora un objetivo para <strong class="highlight">3 dimensiones</strong> de tu elección (puedes escoger cualquiera de las ocho discutidas).</li>
+                    <li>Escríbelos en el formato proporcionado para practicar (se muestra plantilla en blanco como referencia).</li>
+                    <li>Es importante imaginar qué te gustaría hacer y lograr en los <strong class="highlight">próximos 5 años</strong> dentro de esas dimensiones elegidas.</li>
+                    <li>Comparte tu trabajo con un compañero o coordinador para recibir retroalimentación.</li>
+                </ol>
+            </div>
+            <div class="mt-8 text-center">
+                 <img src="https://placehold.co/600x300/E0E7FF/4338CA?text=Formato+de+Tarea+GROW" alt="Plantilla de tarea GROW" class="rounded-xl shadow-lg w-full max-w-xl mx-auto h-auto object-cover">
+                 <p class="text-sm mt-2 text-gray-500">Referencia visual de la plantilla para la tarea.</p>
+            </div>
+        </section>
+
+        <footer class="text-center py-8 mt-12 border-t border-gray-200">
+            <p class="text-gray-600">&copy; <span id="currentYear"></span> Programa Desarrollo y Discernimiento. Todos los derechos reservados.</p>
+            <p class="text-sm text-gray-500 mt-1">Inspirado en la Sesión 15: Plan de Vida y Carrera.</p>
+        </footer>
+
+    </div> <script>
+        // Script para el año actual en el footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Script para ocultar/mostrar navbar al hacer scroll (opcional, mejora estética)
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > navbar.offsetHeight) {
+                // Scroll hacia abajo
+                navbar.style.top = '-80px'; // Oculta la navbar (ajusta según altura de tu navbar)
+            } else {
+                // Scroll hacia arriba
+                navbar.style.top = '0';
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Para manejo en iOS
+        });
+    </script>
+
+</body>
+</html>
