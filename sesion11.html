@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo Relaciones Positivas: Clave para tu Proyecto de Vida</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to right bottom, rgba(128, 90, 213, 0.8), rgba(167, 139, 250, 0.8)), url('https://placehold.co/1200x800/667eea/ffffff?text=Conexiones+Humanas');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-purple-700 mb-6 text-center;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+        }
+        .list-item::before {
+            content: "✓";
+            color: #8B5CF6; /* purple-500 */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .nav-link {
+            @apply px-3 py-2 rounded-md text-sm font-medium text-purple-100 hover:bg-purple-700 hover:text-white transition-colors;
+        }
+        /* Estilo para la ilustración del video */
+        .video-illustration-bg {
+            background-color: #f3e8ff; /* purple-100 */
+        }
+        .egg-analogy-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .egg-diagram {
+            @apply p-4 border-2 rounded-lg text-center;
+            min-width: 200px;
+        }
+        .egg-yolk { @apply bg-yellow-400 text-yellow-800 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2 font-semibold; }
+        .egg-white-risk { @apply bg-orange-200 text-orange-700 p-3 rounded-lg mb-2; }
+        .egg-white-outer { @apply bg-gray-100 text-gray-700 p-3 rounded-lg; }
+
+        .agreement-egg-diagram {
+            @apply p-6 border-2 rounded-lg text-center shadow-md;
+            width: 100%;
+            max-width: 400px; /* Ajustar según sea necesario */
+            margin: 1rem auto;
+        }
+        .agreement-zone {
+            @apply p-3 my-2 rounded-md font-medium text-white;
+        }
+        .agreement-green { @apply bg-green-500; } /* Acuerdos sólidos */
+        .agreement-yellow { @apply bg-yellow-500; } /* Acuerdos con matices */
+        .agreement-orange { @apply bg-orange-500; } /* Desacuerdos */
+        .agreement-red { @apply bg-red-500; } /* Desacuerdos profundos */
+
+    </style>
+</head>
+<body class="bg-purple-50 text-gray-800">
+
+    <nav class="bg-purple-600 p-4 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-white text-xl font-bold">Relaciones Positivas</div>
+            <div>
+                <a href="#proyecto-vida" class="nav-link">Proyecto de Vida</a>
+                <a href="#desafios" class="nav-link">Desafíos</a>
+                <a href="#construccion" class="nav-link">Construcción</a>
+                <a href="#tarea" class="nav-link">Tarea</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-bg text-white py-20 md:py-32">
+        <div class="container mx-auto text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Construyendo Relaciones Positivas</h1>
+            <p class="text-xl md:text-2xl mb-8">La "R" del Bienestar en tu Proyecto de Vida (Modelo PERMA)</p>
+            <a href="#proyecto-vida" class="bg-white text-purple-700 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-purple-100 transition-colors text-lg">Descubre Más</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        <section id="proyecto-vida" class="my-12 md:my-16">
+            <h2 class="section-title">1. ¿Dónde Estamos en Nuestro Proyecto de Vida?</h2>
+            <div class="card">
+                <p class="text-lg leading-relaxed">
+                    Hemos establecido nuestro propósito, identificado nuestras fortalezas y virtudes, y definido nuestra misión. Ahora nos encontramos en la etapa fundamental de construir nuestro proyecto de vida, simbolizado como los "cimientos" de una casa. Estos cimientos se basan en el modelo PERMA de bienestar, donde la "R" representa las Relaciones Positivas.
+                </p>
+            </div>
+        </section>
+
+        <section class="my-12 md:my-16">
+            <h2 class="section-title">2. ¿Por Qué Son Difíciles las Relaciones Interpersonales?</h2>
+            <div class="card">
+                <p class="text-lg leading-relaxed mb-4">
+                    Aunque históricamente la distancia dificultaba las relaciones, la tecnología moderna, como los smartphones, a menudo crea más barreras.
+                </p>
+                <div class="video-illustration-bg p-6 rounded-lg shadow-inner">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-3">Ilustración: El Poder de Compartir</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">
+                        Un video del gobierno canadiense muestra a personas absortas en sus teléfonos en espacios públicos. Una mujer, al ver un apartamento vacío, decide poner una mesa para cenar en el pasillo del edificio. Al principio, los vecinos pasan de largo, inmersos en sus dispositivos. Sin embargo, uno por uno, notan la mesa, se unen, traen comida y finalmente entablan conversaciones animadas, risas y comparten momentos.
+                    </p>
+                    <p class="text-purple-600 font-semibold text-center text-lg p-3 bg-purple-200 rounded-md">
+                        "Nada nos une tanto como comer juntos."
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mt-3">
+                        Esto enfatiza el poder de las experiencias compartidas y la conexión humana sobre el aislamiento tecnológico.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-12 md:my-16">
+            <h2 class="section-title">3. Somos Gregarios por Naturaleza</h2>
+            <div class="card">
+                <p class="text-lg leading-relaxed">
+                    Los humanos somos seres inherentemente sociales. Desde el nacimiento, buscamos la compañía de otros. Nos agrupamos naturalmente para la defensa, el apoyo, el aprendizaje y el crecimiento. A pesar de este impulso innato, la vida moderna, a menudo influenciada por las redes sociales y los dispositivos individuales, puede llevar a una sensación de aislamiento y desconexión dentro de nuestras propias comunidades, incluso entre vecinos o familiares.
+                </p>
+            </div>
+        </section>
+
+        <section id="desafios" class="my-12 md:my-16">
+            <h2 class="section-title">4. Los Desafíos de las Relaciones</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-3">Dificultad Inherente</h3>
+                    <p class="leading-relaxed">
+                        Las relaciones suelen ser difíciles porque las personas tienen diferentes puntos de vista, creencias y costumbres. Sorprendentemente, a veces puede ser más complicado relacionarse con familiares cercanos debido a "historias previas" compartidas (experiencias pasadas y cargas emocionales).
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-3">Redes Sociales</h3>
+                    <p class="leading-relaxed">
+                        Las redes sociales se identifican como un obstáculo, llevando a menudo a interacciones superficiales donde los individuos expresan cosas que no sienten realmente (por ejemplo, usando emojis que no coinciden con sus emociones reales).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-12 md:my-16">
+            <h2 class="section-title">5. ¿Qué Son las Relaciones Interpersonales?</h2>
+            <div class="card">
+                <p class="text-lg leading-relaxed">
+                    Una relación interpersonal es un encuentro entre dos o más personas. Durante este encuentro, los individuos comunican conscientemente sus emociones, intereses y dudas. El objetivo es mantener esta conexión a lo largo del tiempo, el espacio y a través de diversas formas de interacción.
+                </p>
+            </div>
+        </section>
+
+        <section class="my-12 md:my-16">
+            <h2 class="section-title">6. Dos Niveles de Relaciones</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-3">Relaciones Primarias</h3>
+                    <p class="leading-relaxed">
+                        Se caracterizan por un afecto e interés profundos y duraderos. Suelen basarse en el amor, un fuerte afecto o necesidades previas. La unidad familiar es el ejemplo clásico, donde los lazos pueden permanecer fuertes incluso a través de distancias o períodos de contacto infrecuente.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-3">Relaciones Secundarias</h3>
+                    <p class="leading-relaxed">
+                        Implican una convivencia frecuente pero con menos lazos profundos. Estas relaciones se basan a menudo más en el afecto que en el amor profundo. Ejemplos incluyen colegas, compañeros de clase o conocidos. Ambos tipos de relaciones son valiosos y necesarios.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-12 md:my-16">
+            <h2 class="section-title">7. Identificando una Relación Positiva</h2>
+            <div class="card">
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed pl-5">
+                    <li class="list-item">Nos ayuda a sentirnos seguros y cuidados.</li>
+                    <li class="list-item">Sentimos la necesidad de cuidar a la otra persona.</li>
+                    <li class="list-item">Es recíproca: nos enorgullecemos de los logros del otro y ellos de los nuestros. El apoyo fluye en ambas direcciones.</li>
+                    <li class="list-item">Diferentes puntos de vista, en lugar de causar conflicto, pueden ayudarnos a cambiar nuestra perspectiva, ser mejores y más flexibles.</li>
+                    <li class="list-item">Nos permite apreciar diferentes enfoques de la vida.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="my-12 md:my-16">
+            <h2 class="section-title">8. Factores que Fomentan las Relaciones</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-2">Proximidad</h3>
+                    <p>Estar físicamente cerca facilita iniciar contacto e interacción.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-2">Semejanza</h3>
+                    <p>Descubrir afinidades en pensamientos, creencias o intereses ayuda a construir conexiones.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-2">Complementariedad</h3>
+                    <p>Reconocer que otros tienen habilidades que complementan las nuestras fortalece los lazos.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-2">Recompensa</h3>
+                    <p>Sentirse reforzado positivamente por la relación (aprecio genuino, apoyo).</p>
+                </div>
+                <div class="card col-span-1 md:col-span-2 lg:col-span-1">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-2">Reciprocidad (¡Crítico!)</h3>
+                    <p>Un dar y recibir equilibrado, donde ambas partes contribuyen y se apoyan mutuamente.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="construccion" class="my-12 md:my-16">
+            <h2 class="section-title">9. ¿Cómo se Construyen las Relaciones Positivas?</h2>
+            <div class="card">
+                <h3 class="text-xl font-semibold text-purple-700 mb-4">Elementos Necesarios:</h3>
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed pl-5">
+                    <li class="list-item">Confianza en uno mismo: Cree en tu propio valor.</li>
+                    <li class="list-item">Iniciar un diálogo: Sé proactivo en iniciar conversaciones.</li>
+                    <li class="list-item">Buscar puntos en común: Enfócate en intereses compartidos y aspectos positivos.</li>
+                    <li class="list-item">Aclarar mis etiquetas y prejuicios: Cuestiona tus propias ideas preconcebidas.</li>
+                    <li class="list-item">Escuchar atentamente, sin anticipar una respuesta: Practica la escucha activa.</li>
+                    <li class="list-item">Tener un gran sentido de comunidad: Reconoce que eres parte de un grupo más grande.</li>
+                    <li class="list-item">Saber hasta dónde puedes dar apoyo: Entiende tus límites y ofrece apoyo con alegría genuina.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="my-12 md:my-16">
+            <h2 class="section-title">10. Habilidades de Comunicación: El Proceso</h2>
+            <div class="card">
+                <p class="text-lg leading-relaxed mb-4">La comunicación es un proceso complejo que involucra:</p>
+                <ul class="space-y-3 text-lg">
+                    <li><strong class="text-purple-600">Emisor:</strong> Tiene una intención (acción o resultado deseado).</li>
+                    <li><strong class="text-purple-600">Codificación:</strong> Traduce la intención en un símbolo, imagen o acción.</li>
+                    <li><strong class="text-purple-600">Mensaje:</strong> La información codificada (elementos, estructura, tratamiento).</li>
+                    <li><strong class="text-purple-600">Medio:</strong> El canal por el que viaja el mensaje (verbal, escrito, electrónico).</li>
+                    <li><strong class="text-purple-600">Receptor:</strong> Decodifica el símbolo, imagen o acción.</li>
+                    <li><strong class="text-purple-600">Percibe:</strong> Interpreta la acción o el resultado deseado.</li>
+                    <li><strong class="text-purple-600">Retroalimentación:</strong> La respuesta del receptor, que vuelve al emisor.</li>
+                </ul>
+                <p class="text-lg leading-relaxed mt-4">Este proceso puede ser influenciado por muchos factores.</p>
+            </div>
+        </section>
+
+        <section class="my-12 md:my-16">
+            <h2 class="section-title">11. Emoción y Cognición: ¿Por Qué se Agravan los Conflictos?</h2>
+            <div class="card">
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed pl-5 mb-4">
+                    <li class="list-item"><strong class="text-purple-600">Estado Emocional:</strong> Nuestro humor influye en cómo percibimos estímulos ambiguos. Si estamos enojados, es más probable que interpretemos acciones neutrales negativamente.</li>
+                    <li class="list-item"><strong class="text-purple-600">Interferencia de la Memoria:</strong> Los sentimientos positivos o negativos pueden interferir con la memoria, haciendo que recordemos solo experiencias buenas o malas.</li>
+                    <li class="list-item"><strong class="text-purple-600">Toma de Decisiones:</strong> Nuestro estado afectivo influye directamente en nuestras decisiones. Enojados, las decisiones tienden a ser defensivas o agresivas, dañando las relaciones.</li>
+                </ul>
+                <p class="text-center font-semibold text-xl p-4 bg-red-100 text-red-700 rounded-lg">
+                    Regla de Oro: No hables ni tomes decisiones cuando estés enojado.
+                </p>
+            </div>
+        </section>
+
+        <section class="my-12 md:my-16">
+            <h2 class="section-title">12. Acuerdos: Lo Ideal vs. La Realidad Emocional</h2>
+            <div class="card">
+                 <p class="text-lg leading-relaxed mb-4">Visualiza los acuerdos en una relación como un "huevo" con diferentes zonas:</p>
+                <div class="egg-analogy-container">
+                    <div class="agreement-egg-diagram">
+                        <h3 class="text-xl font-semibold text-purple-700 mb-3">Idealmente (Lo que debería ser):</h3>
+                        <div class="agreement-zone agreement-green">Gran área de "acuerdos sólidos"</div>
+                        <div class="agreement-zone agreement-yellow">Área menor de "acuerdos con matices"</div>
+                        <div class="agreement-zone agreement-orange">Pequeña área de "desacuerdos"</div>
+                        <div class="agreement-zone agreement-red">Mínima área de "desacuerdos profundos"</div>
+                        <p class="mt-3 text-gray-600">Implica un equilibrio saludable donde se prioriza la comprensión y el compromiso.</p>
+                    </div>
+                    <div class="agreement-egg-diagram">
+                        <h3 class="text-xl font-semibold text-purple-700 mb-3">Realidad (Cuando la emoción domina):</h3>
+                         <div class="agreement-zone agreement-red" style="height: 60%;">Casi todo parece "rojo": desacuerdos profundos, ira, amenazas percibidas.</div>
+                         <div class="agreement-zone agreement-orange" style="height: 20%;">Algo de "naranja"</div>
+                         <div class="agreement-zone agreement-yellow" style="height: 10%;">Poco "amarillo"</div>
+                         <div class="agreement-zone agreement-green" style="height: 10%;">Casi nada "verde"</div>
+                        <p class="mt-3 text-gray-600">Esta percepción distorsionada imposibilita una interacción saludable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-12 md:my-16">
+            <h2 class="section-title">13. Límites Personales: La Analogía del Huevo Frito</h2>
+            <div class="card">
+                <p class="text-lg leading-relaxed mb-6">Imagina tus límites personales como un huevo frito:</p>
+                <div class="egg-analogy-container">
+                    <div class="egg-diagram border-red-400">
+                        <div class="egg-yolk">Yema</div>
+                        <h4 class="font-semibold text-red-600 mt-2">Intocable</h4>
+                        <p class="text-sm text-gray-600">Áreas extremadamente sensibles. Si alguien las "toca", provocará enojo y problemas inmediatamente. La "yema" de cada persona es diferente.</p>
+                    </div>
+                    <div class="egg-diagram border-orange-400">
+                         <div class="egg-white-risk">Clara (cercana a la yema)</div>
+                        <h4 class="font-semibold text-orange-600 mt-2">Zona de Riesgo</h4>
+                        <p class="text-sm text-gray-600">Dependiendo de nuestro estado de ánimo (cansancio, estrés), tocar estas áreas podría o no generar enojo.</p>
+                    </div>
+                    <div class="egg-diagram border-gray-300">
+                        <div class="egg-white-outer">Clara Exterior</div>
+                        <h4 class="font-semibold text-gray-700 mt-2">"No Cae / Resbala"</h4>
+                        <p class="text-sm text-gray-600">Áreas donde la mayoría de las cosas "resbalan" sin causar problemas. Aquí ocurren la mayoría de las interacciones saludables.</p>
+                    </div>
+                </div>
+                <p class="text-lg leading-relaxed mt-6">
+                    La clave es entender tu propio "huevo" (tus áreas sensibles) y respetar los "huevos" de los demás. No toques las áreas "intocables" de otra persona.
+                </p>
+            </div>
+        </section>
+
+        <section id="tarea" class="my-12 md:my-16 bg-purple-100 p-8 rounded-xl shadow-xl">
+            <h2 class="section-title !text-purple-800">14. Tarea para la Semana: ¡A la Acción!</h2>
+            <div class="text-center">
+                <p class="text-lg text-purple-700 leading-relaxed mb-6">Es momento de aplicar estos principios:</p>
+                <ol class="list-decimal list-inside space-y-4 text-left inline-block text-lg text-purple-700">
+                    <li class="list-item"><strong>Trabaja en tus relaciones positivas:</strong> Participa activamente en fomentar buenas conexiones.</li>
+                    <li class="list-item"><strong>Identifica UNA relación interpersonal que puedas mejorar:</strong> Elige una relación específica.</li>
+                    <li class="list-item"><strong>Cambia la etiqueta que tienes para esa relación por una nueva y positiva:</strong> Reformula tu percepción de la persona y la dinámica.</li>
+                    <li class="list-item"><strong>Haz el esfuerzo de ser una mejor persona en esa relación:</strong> Enfócate en tus propias acciones y contribuciones, en lugar de esperar a que la otra persona cambie.</li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-purple-800 text-purple-100 text-center p-8">
+        <p>&copy; 2024 Construyendo Bienestar. Inspirado en las enseñanzas sobre Relaciones Positivas.</p>
+        <p class="text-sm mt-2">Recuerda: las conexiones auténticas enriquecen tu proyecto de vida.</p>
+    </footer>
+
+</body>
+</html>
