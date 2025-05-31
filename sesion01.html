@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Discernimiento para Ministerios Laicos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1200x600/6366F1/FFFFFF?text=Iglesia+Acogedora');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-center mb-8 text-indigo-700;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300;
+        }
+        .list-disc li {
+            @apply mb-2;
+        }
+        .badge {
+            @apply px-3 py-1 rounded-full text-sm font-semibold mr-2 mb-2;
+        }
+        .btn {
+            @apply px-6 py-3 rounded-lg font-semibold text-white shadow-md transition-transform transform hover:scale-105;
+        }
+        .btn-primary {
+            @apply bg-indigo-600 hover:bg-indigo-700;
+        }
+        .btn-secondary {
+            @apply bg-pink-500 hover:bg-pink-600;
+        }
+        /* Animación suave para la aparición de secciones */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-700">Discernimiento Laical</a>
+            <div class="space-x-4">
+                <a href="#taller" class="text-gray-600 hover:text-indigo-600">El Taller</a>
+                <a href="#ponente" class="text-gray-600 hover:text-indigo-600">Ponente</a>
+                <a href="#etapas" class="text-gray-600 hover:text-indigo-600">Etapas</a>
+                <a href="#reflexion" class="text-gray-600 hover:text-indigo-600">Reflexión</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-bg text-white py-20 md:py-32 fade-in-section">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Discerniendo mi llamado al servicio:</h1>
+            <h2 class="text-3xl md:text-5xl font-semibold mb-8">Una Opción de Vida</h2>
+            <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto">Un taller para profundizar en tu vocación como ministro laico en la Iglesia Católica, guiado por José Luis Montes Martínez.</p>
+            <a href="#taller" class="btn btn-primary text-lg">Conoce Más</a>
+        </div>
+    </header>
+
+    <section id="ponente" class="py-16 bg-indigo-50 fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Conoce a Nuestro Guía</h2>
+            <div class="card max-w-3xl mx-auto text-center">
+                <img src="https://placehold.co/150x150/E0E7FF/4F46E5?text=JLMM" alt="José Luis Montes Martínez" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200">
+                <h3 class="text-2xl font-semibold text-indigo-700 mb-2">José Luis Montes Martínez</h3>
+                <p class="text-gray-600 mb-4">Ministro Instituido (acólito) de la primera generación de ministerios laicales.</p>
+                <p class="text-gray-700 leading-relaxed">
+                    Con una trayectoria de 40 años como profesor en el Tec de Monterrey y 25 años dirigiendo la carrera de Psicología Organizacional, José Luis combina una profunda perspectiva espiritual con una sólida base académica. Compartirá sus experiencias y conocimientos para ayudarte en tu camino de discernimiento.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="taller" class="py-16 fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Bienvenido al Taller de Discernimiento</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="card">
+                    <h3 class="text-2xl font-semibold text-indigo-600 mb-4">¿Por qué Discernir?</h3>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Aunque ya hayas sido invitado a esta "segunda generación de Ministerios Laicales", este taller te ayudará a tener un "mapa de ruta" claro. Conocer los desafíos y tener un propósito definido facilita superar los obstáculos, convirtiéndolos en retos manejables en lugar de barreras insuperables.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Durante tu formación, profundizarás en cada servicio que, como laicos comprometidos, podemos ofrecer a nuestra Iglesia.
+                    </p>
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-xl">
+                    <img src="https://placehold.co/600x400/A5B4FC/3730A3?text=Comunidad+en+Oración" alt="Comunidad en oración" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                 <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+                    Se reconoce la diversidad de experiencias en el trabajo parroquial (catequistas, ministros extraordinarios, lectores), pero todos compartimos la disposición de servir.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50 fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Planificando Tu Viaje Espiritual</h2>
+            <div class="card max-w-3xl mx-auto">
+                <h3 class="text-2xl font-semibold text-indigo-600 mb-4 text-center">Un Punto de Inicio y Fin Claros</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Tener un "punto de inicio y fin" claro para tu servicio ayuda a planificar y navegar tu camino. Las personas con propósitos u objetivos claramente definidos encuentran más fácil alcanzarlos, incluso frente a obstáculos. Estos no desaparecen, pero se convierten en desafíos conocidos que se pueden enfrentar positivamente.
+                </p>
+                <p class="text-gray-700 leading-relaxed">
+                    Todos los miembros de la primera generación también pasaron por procesos similares, destacando el valor de este enfoque estructurado para la formación.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Nuestro Comienzo, Nuestro Laicado</h2>
+            <div class="card">
+                <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Definición de Laico</h3>
+                <blockquote class="border-l-4 border-indigo-500 pl-4 italic text-gray-700 mb-6">
+                    "Un fiel cristiano que ha <em class="font-semibold text-indigo-700">elegido</em> seguir a Cristo desde las condiciones y compromisos ordinarios de la vida familiar, profesional y social, ejerciendo su apostolado en medio del mundo como levadura en la masa."
+                </blockquote>
+                <ul class="list-disc pl-5 text-gray-700 space-y-3">
+                    <li><strong class="text-indigo-600">Énfasis en la Elección:</strong> A diferencia de los sacramentos recibidos en la infancia, ser un ministro laico es una decisión activa.</li>
+                    <li><strong class="text-indigo-600">Integración:</strong> Los laicos no están separados del mundo, sino integrados en su vida diaria (familia, trabajo, círculos sociales, parroquia).</li>
+                    <li><strong class="text-indigo-600">Crecimiento en la Fe:</strong> El objetivo es una "formación más sólida" dentro de la Iglesia, pasando de un servicio espontáneo a un compromiso más estructurado e informado.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-indigo-50 fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Un Camino Permanente de Discernimiento</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-3">El Discernimiento como Proceso Continuo</h3>
+                    <p class="text-gray-700 mb-4">El servicio como laico es un proceso continuo que implica:</p>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                        <li><strong>Reflexión profunda</strong> sobre las propias necesidades.</li>
+                        <li><strong>Valoración</strong> de las propias fortalezas.</li>
+                        <li><strong>Meditación</strong> sobre las motivaciones de vida e intenciones para el desarrollo futuro.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-3">Enfoque en las Fortalezas</h3>
+                    <p class="text-gray-700 mb-4">Como psicólogo, José Luis enfatiza basar el servicio en las fortalezas individuales en lugar de las debilidades. Dios utiliza las fortalezas de las personas (como los Apóstoles), no sus limitaciones.</p>
+                    <p class="text-gray-700">Cada persona tiene un "carisma" o "matiz" único en su servicio, y el taller tiene como objetivo identificarlo y cultivarlo.</p>
+                </div>
+            </div>
+            <div class="mt-10 card">
+                 <h3 class="text-xl font-semibold text-indigo-600 mb-3 text-center">"El Cómo" del Servicio</h3>
+                 <p class="text-gray-700 mb-4 text-center">
+                    El taller ayudará a definir <em class="font-semibold">cómo</em> servirás dentro de la Iglesia, ya sea como acólito, catequista, en la caridad o como lector. Se trata de encontrar tu contribución específica dentro de estos roles.
+                </p>
+                <blockquote class="border-l-4 border-pink-500 pl-4 italic text-gray-700 my-6 text-center max-w-2xl mx-auto">
+                    "La vocación de cada uno se funde, hasta cierto punto, con su propio ser: se puede decir que vocación y persona se convierten en una misma cosa."
+                    <cite class="block mt-2 text-sm not-italic text-gray-500">– San Juan Pablo II (Brasil, años 80)</cite>
+                </blockquote>
+                 <p class="text-gray-700 text-center font-semibold">
+                    Objetivo del taller: Iniciar el proceso de formación para ministerios laicos y proporcionar herramientas de discernimiento para definir "el <em class="font-semibold">cómo</em>" de su servicio.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Objetivo General del Taller</h2>
+            <div class="card max-w-3xl mx-auto bg-indigo-600 text-white">
+                <p class="text-xl leading-relaxed text-center">
+                    "Proporcionarles herramientas de reflexión y discernimiento sobre su vocación como Ministro Instituido, mediante la aplicación de técnicas de análisis de trayectorias personales de vida."
+                </p>
+                <p class="mt-6 text-center text-indigo-100">
+                    Este proceso es un "acompañamiento", no una "tarea difícil". Se trata de fortalecer tu decisión y propósito. Al finalizar, tendrás claridad y certeza sobre tu vocación.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="etapas" class="py-16 bg-gray-50 fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Etapas del Viaje de Aprendizaje</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card border-t-4 border-orange-500">
+                    <span class="badge bg-orange-500 text-white">Naranja</span>
+                    <h3 class="text-xl font-semibold text-orange-600 mt-2 mb-3">Exploración</h3>
+                    <p class="text-gray-700">Conocer tu propia motivación para servir al pueblo de Dios.</p>
+                </div>
+                <div class="card border-t-4 border-yellow-700">
+                     <span class="badge bg-yellow-700 text-white">Marrón</span>
+                    <h3 class="text-xl font-semibold text-yellow-800 mt-2 mb-3">Propósito de Vida</h3>
+                    <p class="text-gray-700">Crear tu propio propósito de vida laical, relacionándolo con tu experiencia como miembro de los Ministerios Laicales.</p>
+                </div>
+                <div class="card border-t-4 border-purple-500">
+                    <span class="badge bg-purple-500 text-white">Morado</span>
+                    <h3 class="text-xl font-semibold text-purple-600 mt-2 mb-3">Virtudes y Fortalezas del Carácter</h3>
+                    <p class="text-gray-700">Conocer tus fortalezas y virtudes. Estas son la base de tu misión personal.</p>
+                </div>
+                <div class="card border-t-4 border-amber-600">
+                     <span class="badge bg-amber-600 text-white">Naranja Oscuro</span>
+                    <h3 class="text-xl font-semibold text-amber-700 mt-2 mb-3">Misión Personal y Comunitaria</h3>
+                    <p class="text-gray-700">Definir tu misión personal y tu misión en tu comunidad parroquial.</p>
+                </div>
+                <div class="card border-t-4 border-red-500">
+                    <span class="badge bg-red-500 text-white">Rojo</span>
+                    <h3 class="text-xl font-semibold text-red-600 mt-2 mb-3">Definiendo Horizontes</h3>
+                    <p class="text-gray-700">Definirás lo que lograrás como ministro instituido (utilizando el modelo "PERMA": Emoción Positiva, Compromiso, Relaciones, Significado, Logro).</p>
+                </div>
+                <div class="card border-t-4 border-red-700">
+                    <span class="badge bg-red-700 text-white">Rojo Intenso</span>
+                    <h3 class="text-xl font-semibold text-red-800 mt-2 mb-3">Discernimiento Vocacional</h3>
+                    <p class="text-gray-700">La etapa final. Un espacio para discernir cómo, desde tu ministerio, puedes apoyar mejor a nuestra Iglesia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reflexion" class="py-16 fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Primer Ejercicio y Reflexión Semanal</h2>
+            <div class="grid md:grid-cols-2 gap-10 items-start">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-4">Ejercicio Inicial: Compartiendo Experiencias</h3>
+                    <p class="text-gray-700 mb-3">En el taller, se pedirá responder brevemente a tres preguntas para reflexionar sobre la invitación recibida:</p>
+                    <ol class="list-decimal pl-5 text-gray-700 space-y-2 mb-4">
+                        <li>¿Por qué <em class="font-semibold">consideras</em> que fuiste invitado a participar?</li>
+                        <li>¿Qué <em class="font-semibold">sentiste</em> cuando fuiste invitado?</li>
+                        <li>¿Cómo te <em class="font-semibold">sientes ahora</em> con esta responsabilidad?</li>
+                    </ol>
+                    <p class="text-gray-700">Se validan las diversas emociones (alegría, incertidumbre, agobio) y se reconoce que alguien vio atributos, acciones o actitudes positivas en ti.</p>
+                    <p class="mt-4 text-sm text-gray-600">Durante el taller, habrá un espacio para compartir estas reflexiones en grupos pequeños (máximo 3 minutos por persona), leyendo lo escrito para mantenerse enfocado.</p>
+                </div>
+                 <div class="card bg-pink-500 text-white">
+                    <h3 class="text-xl font-semibold mb-4">Reflexión para la Semana</h3>
+                     <img src="https://placehold.co/500x300/FBCFE8/9D174D?text=Reflexión+Personal" alt="Reflexión personal" class="w-full h-auto object-cover rounded-lg mb-6 shadow-md">
+                    <p class="text-lg leading-relaxed mb-2">Como preparación y continuación del discernimiento, te invitamos a reflexionar sobre la siguiente pregunta:</p>
+                    <blockquote class="text-2xl font-semibold italic my-6 p-4 bg-pink-600 rounded-lg text-center">
+                        "¿Qué es lo mejor de mí que puedo aportar a mi Comunidad?"
+                    </blockquote>
+                    <p class="text-pink-100">Esta reflexión te ayudará a conectar tus dones con las necesidades de tu entorno eclesial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-indigo-700 text-white fade-in-section">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-6">El Viaje Comienza Ahora</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+                Este taller es el inicio de un profundo viaje de discernimiento y formación. Esperamos que las herramientas y reflexiones compartidas te fortalezcan en tu vocación de servicio.
+            </p>
+            <p class="text-indigo-200">¡Te deseamos una semana llena de reflexión y bendiciones!</p>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-300 py-10 text-center fade-in-section">
+        <div class="container mx-auto px-6">
+            <p>&copy; <span id="currentYear"></span> Taller de Discernimiento para Ministerios Laicos. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2">Inspirado en las enseñanzas de José Luis Montes Martínez.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para el año actual en el footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Script para animación de aparición de secciones al hacer scroll
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null, // relative to document viewport
+            rootMargin: '0px', // margin around root
+            threshold: 0.1 // 10% of item is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // No es necesario observar más una vez que es visible
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
