@@ -3,60 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propósito de Vida: Una Visión que Me Inspira - Dr. José Luis Montes</title>
+    <title>Sesión 3: Propósito de Vida - Una Visión que Me Inspira - Plan de Vida</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-            /* Fondo degradado sutil para el cuerpo */
-            @apply bg-gradient-to-br from-sky-50 via-indigo-50 to-purple-50;
+            @apply bg-sky-50 text-slate-800; /* Fondo base Sky Blue claro */
         }
-        .hero-gradient {
-            /* Degradado más vibrante para la sección hero */
-            background-image: linear-gradient(to right, #0EA5E9, #4F46E5); /* sky-500 to indigo-600 */
+        .hero-bg-sesion03 {
+            background-image: linear-gradient(to right, rgba(14, 165, 233, 0.8), rgba(56, 189, 248, 0.7)), url('https://placehold.co/1200x600/0EA5E9/FFFFFF?text=Visión+Inspiradora'); /* Sky Blue theme */
+            background-size: cover;
+            background-position: center;
         }
-        .section-title {
-            /* Título de sección más prominente */
-            @apply text-3xl font-bold text-center mb-10 text-indigo-700;
+        .page-section-title {
+            @apply text-3xl font-bold text-center mb-10 text-sky-700; /* Sky Blue theme */
         }
         .subsection-title {
-            /* Título de subsección claro */
-            @apply text-2xl font-semibold mb-4 text-sky-700;
+            @apply text-2xl font-semibold mb-4 text-sky-600; /* Sky Blue theme */
         }
         .card {
-            /* Tarjetas con más profundidad y borde superior de color */
-            @apply bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-sky-500;
+            @apply bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-sky-500; /* Sky Blue theme */
         }
         .list-disc {
             @apply list-disc list-inside space-y-2 text-slate-700;
         }
         .highlight {
-            /* Resaltado con un color índigo más intenso */
-            @apply text-indigo-600 font-semibold;
+            @apply text-sky-600 font-semibold; /* Sky Blue theme */
         }
         .insight {
-            /* Bloques de insight con nueva paleta */
-            @apply p-4 bg-indigo-50 border-l-4 border-indigo-500 text-indigo-800 rounded-md my-4 italic;
+            @apply p-4 bg-sky-100 border-l-4 border-sky-500 text-sky-800 rounded-md my-4 italic; /* Sky Blue theme */
         }
-        nav {
-            /* Navegación con fondo translúcido y blur */
-            @apply bg-white/80 backdrop-blur-md shadow-lg sticky top-0 z-50;
+        .nav-link-desktop, .nav-link-mobile {
+             @apply px-3 py-2 rounded-md text-sm font-medium transition-colors;
         }
-        nav a {
-            /* Enlaces de navegación con mejor feedback */
-            @apply px-4 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-sky-100 hover:text-sky-700 transition-colors duration-200;
+        .nav-link-desktop { /* Sky Blue theme */
+            @apply text-sky-100 hover:bg-sky-700 hover:text-white;
         }
-        .nav-brand {
-             @apply text-xl font-bold text-indigo-600;
+        .nav-link-mobile { /* Sky Blue theme */
+            @apply block text-sky-100 hover:bg-sky-700 hover:text-white text-base;
         }
         .footer-bg {
             @apply bg-slate-900 text-slate-300;
         }
-
-        /* Estilo específico para la tarjeta de Llamada a la Acción */
-        .action-card {
+        .action-card { /* Heredado y adaptado de la sesión 3 original */
             @apply border-t-4 border-amber-500 bg-amber-50;
         }
         .action-card .subsection-title {
@@ -65,46 +56,68 @@
         .action-card .insight {
              @apply !border-amber-600 !bg-amber-100 !text-amber-800 font-medium;
         }
-
+        /* Animación suave para la aparición de secciones */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body class="text-slate-800">
+<body>
 
-    <nav>
-        <div class="container mx-auto px-6 py-3 flex flex-wrap justify-between items-center">
-            <a href="#" class="nav-brand">Propósito de Vida</a>
-            <button class="text-slate-700 inline-flex p-3 hover:bg-sky-100 rounded lg:hidden ml-auto" id="nav-toggle" aria-label="Abrir menú">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-            <div class="hidden w-full lg:inline-flex lg:flex-grow lg:w-auto" id="nav-content">
-                <div class="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto">
-                    <a href="#sesion-previa">Sesión Previa</a>
-                    <a href="#concepto-proposito">Concepto</a>
-                    <a href="#descubrir-llamado">Descubrir</a>
-                    <a href="#que-es-proposito">Definición</a>
-                    <a href="#accion">Llamada a la Acción</a>
+    <nav class="bg-sky-600 shadow-md fixed w-full z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 text-white font-bold text-xl hover:opacity-80 transition-opacity">
+                        Plan de Vida
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div id="desktop-menu-links" class="ml-10 flex items-baseline space-x-4">
+                        </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-sky-600 inline-flex items-center justify-center p-2 rounded-md text-sky-200 hover:text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div id="mobile-menu-links" class="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                </div>
+        </div>
     </nav>
 
-    <header class="hero-gradient py-20 md:py-28 text-center">
-        <div class="container mx-auto px-6">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 shadow-sm">Propósito de Vida: Una Visión que Me Inspira</h1>
-            <p class="text-xl text-indigo-100">Basado en la sesión del Dr. José Luis Montes</p>
+    <header id="inicio" class="hero-bg-sesion03 text-white pt-32 pb-20 md:pt-40 md:pb-28 fade-in-section">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 shadow-sm">Sesión 3: Propósito de Vida</h1>
+            <p class="text-2xl md:text-3xl text-sky-100 mb-6">Una Visión que Me Inspira</p>
+            <p class="text-xl text-sky-200">Basado en la sesión del Dr. José Luis Montes</p>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12 md:py-16">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 
-        <section class="mb-16 text-center">
+        <section class="mb-16 text-center fade-in-section">
             <p class="text-lg text-slate-700 leading-relaxed max-w-3xl mx-auto">
                 Esta página resume la tercera sesión del Dr. José Luis Montes, enfocada en el discernimiento y desarrollo personal. El Dr. Montes nos guía a través de temas personales y generales relacionados con el propósito de la vida, buscando inspirar una visión transformadora.
             </p>
         </section>
 
-        <section id="sesion-previa" class="mb-16 scroll-mt-24">
-            <h2 class="section-title">1. Repaso Sesión Previa: Decisiones e Influencia</h2>
+        <section id="sesion-previa" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">1. Repaso Sesión Previa: Decisiones e Influencia</h2>
             <div class="grid md:grid-cols-2 gap-8 items-start">
                 <div class="card">
                     <h3 class="subsection-title">Decisiones y Guía Divina</h3>
@@ -131,8 +144,8 @@
             </div>
         </section>
 
-        <section id="concepto-proposito" class="mb-16 scroll-mt-24">
-            <h2 class="section-title">2. El Concepto de Propósito de Vida</h2>
+        <section id="concepto-proposito" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">2. El Concepto de Propósito de Vida</h2>
             <p class="text-center text-lg text-slate-700 mb-10 max-w-3xl mx-auto">Las personas con un propósito de vida claro son distintas a quienes no lo tienen. El Dr. Montes usa varios ejemplos:</p>
 
             <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
@@ -161,7 +174,8 @@
                     </div>
                 </div>
 
-                <div class="card border-t-red-500"> <h3 class="subsection-title text-red-700">El Peligro de las Etiquetas Negativas</h3>
+                <div class="card border-t-red-500 md:col-span-1 lg:col-span-2">
+                    <h3 class="subsection-title text-red-700">El Peligro de las Etiquetas Negativas</h3>
                     <p class="text-slate-700 mb-3">Quejarse (del clima, tráfico, dinero, gente) no ofrece beneficios, solo nos hace sentir peor.</p>
                     <ul class="list-disc">
                         <li>Conecta con una "pérdida de energía" que debilita.</li>
@@ -170,7 +184,8 @@
                     </ul>
                 </div>
 
-                <div class="card border-t-purple-500"> <h3 class="subsection-title text-purple-700">"Mi Salto Cuántico": Un Propósito Superior</h3>
+                <div class="card border-t-purple-500 md:col-span-1 lg:col-span-2">
+                    <h3 class="subsection-title text-purple-700">"Mi Salto Cuántico": Un Propósito Superior</h3>
                     <p class="text-slate-700 mb-3">Un propósito de vida es una frase que:</p>
                     <ul class="list-disc">
                         <li>Nos <span class="text-purple-600 font-semibold">inspira</span>.</li>
@@ -183,8 +198,8 @@
             </div>
         </section>
 
-        <section id="descubrir-llamado" class="mb-16 scroll-mt-24">
-            <h2 class="section-title">3. Descubriendo Nuestro Llamado y Propósito</h2>
+        <section id="descubrir-llamado" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">3. Descubriendo Nuestro Llamado y Propósito</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="card">
                     <h3 class="subsection-title">Llamado Divino</h3>
@@ -195,13 +210,14 @@
                     <p class="text-slate-700">Dios nos habla a través de nuestras familias, rutinas diarias, amigos y comunidades parroquiales. Debemos aprender a reconocer estas "señales" que revelan lo que Dios espera de nosotros.</p>
                 </div>
             </div>
-            <div class="card mt-8 max-w-2xl mx-auto border-t-teal-500"> <h3 class="subsection-title text-center text-teal-700">Libertad para Elegir</h3>
+            <div class="card mt-8 max-w-2xl mx-auto border-t-teal-500">
+                <h3 class="subsection-title text-center text-teal-700">Libertad para Elegir</h3>
                 <p class="text-slate-700 text-center">Dios nos da la libertad de decidir qué caminos nos conducen a Él. No hay "un solo camino".</p>
             </div>
         </section>
 
-        <section id="que-es-proposito" class="mb-16 scroll-mt-24">
-            <h2 class="section-title">4. ¿Qué es un Propósito y Por Qué es Importante?</h2>
+        <section id="que-es-proposito" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">4. ¿Qué es un Propósito y Por Qué es Importante?</h2>
             <div class="card mb-8">
                 <h3 class="subsection-title">Definición de Propósito de Vida</h3>
                 <p class="text-slate-700 mb-4">Es una visión amplia para tu vida basada en lo que es más significativo para ti. Un objetivo central o conjunto de objetivos que:</p>
@@ -216,21 +232,21 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card">
-                    <h3 class="subsection-title text-sky-700">Más Allá del Reconocimiento</h3>
+                    <h3 class="subsection-title">Más Allá del Reconocimiento</h3>
                     <p class="text-slate-700">Se trata de lo que <span class="highlight">amas</span> y en lo que eres <span class="highlight">bueno</span> para crear una diferencia positiva.</p>
                 </div>
                 <div class="card">
-                    <h3 class="subsection-title text-sky-700">Inspiración Dual</h3>
+                    <h3 class="subsection-title">Inspiración Dual</h3>
                     <p class="text-slate-700">Es algo que te <span class="highlight">inspira a ti</span> y luego <span class="highlight">inspira a otros</span>.</p>
                 </div>
                 <div class="card">
-                    <h3 class="subsection-title text-sky-700">Donde "Fluyes"</h3>
+                    <h3 class="subsection-title">Donde "Fluyes"</h3>
                     <p class="text-slate-700">Cuando estás comprometido con tu propósito, el tiempo parece desaparecer y sientes una profunda satisfacción.</p>
                 </div>
             </div>
 
-            <div class="card mt-10 bg-indigo-100 border-t-indigo-500">
-                <h3 class="subsection-title text-indigo-700">Importancia (Respaldada por Investigación)</h3>
+            <div class="card mt-10 bg-sky-100 border-t-sky-500">
+                <h3 class="subsection-title">Importancia (Respaldada por Investigación)</h3>
                 <p class="text-slate-800 mb-4">Estudios recientes muestran que un fuerte sentido de propósito conduce a:</p>
                 <ul class="list-disc text-slate-800">
                     <li>Bienestar social positivo.</li>
@@ -241,9 +257,10 @@
             </div>
         </section>
 
-        <section id="accion" class="mb-16 scroll-mt-24">
-            <h2 class="section-title">5. Llamada a la Acción: Tu Tarea</h2>
-            <div class="card max-w-3xl mx-auto action-card"> <h3 class="subsection-title">Desafío Personal del Dr. Montes:</h3>
+        <section id="accion" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">5. Llamada a la Acción: Tu Tarea</h2>
+            <div class="card max-w-3xl mx-auto action-card">
+                <h3 class="subsection-title">Desafío Personal del Dr. Montes:</h3>
                 <ul class="list-disc text-slate-700">
                     <li><span class="font-semibold text-amber-800">Escribe Tu Propósito:</span> En un cuaderno, intenta escribir tu propósito de vida por primera vez.</li>
                     <li><span class="font-semibold text-amber-800">Itera:</span> Si no te gusta tu primer intento, inténtalo de nuevo. No hay límite para refinarlo.</li>
@@ -257,54 +274,223 @@
         </section>
     </main>
 
-    <footer class="footer-bg py-12 text-center">
+    <footer class="footer-bg py-12 text-center fade-in-section">
         <div class="container mx-auto px-6">
-            <p>&copy; <span id="currentYear"></span> Resumen del Taller de Propósito de Vida. Inspirado en las enseñanzas del Dr. José Luis Montes.</p>
+            <p class="text-lg mb-2">Plan de Vida: Un Viaje de Transformación</p>
+            <p>&copy; <span id="currentYear"></span> Plan de Vida. Todos los derechos reservados.</p>
             <p class="mt-2 text-sm opacity-80">Este sitio es una interpretación y resumen con fines educativos.</p>
         </div>
     </footer>
 
     <script>
-        // Mobile navigation toggle
-        const navToggle = document.getElementById('nav-toggle');
-        const navContent = document.getElementById('nav-content');
-        if (navToggle && navContent) {
-            navToggle.addEventListener('click', function() {
-                navContent.classList.toggle('hidden');
+        // --- Navbar Script ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const desktopMenuLinksContainer = document.getElementById('desktop-menu-links');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
+
+        const pageLinksConfig = {
+            'index.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#proposito', text: 'Propósito' },
+                { href: '#herramientas', text: 'Herramientas' },
+                { href: '#objetivos', text: 'Objetivos' },
+                { href: '#declaracion', text: 'Declaración' },
+                { href: '#sesiones', text: 'Sesiones'},
+                { href: '#nosotros', text: 'Nosotros' }
+            ],
+            'sesion01.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#ponente', text: 'Ponente' },
+                { href: '#taller', text: 'El Taller' },
+                { href: '#etapas', text: 'Etapas' },
+                { href: '#reflexion', text: 'Reflexión' }
+            ],
+            'sesion02.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#temas', text: 'Temas Centrales' },
+                { href: '#ejercicio', text: 'Ventana de la Vida' },
+                { href: '#conclusion', text: 'Conclusión' }
+            ],
+            'sesion03.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#sesion-previa', text: 'Sesión Previa' },
+                { href: '#concepto-proposito', text: 'Concepto' },
+                { href: '#descubrir-llamado', text: 'Descubrir' },
+                { href: '#que-es-proposito', text: 'Definición' },
+                { href: '#accion', text: 'Llamada a la Acción'}
+            ],
+            'sesion04.html': [
+                { href: '#introduccion', text: 'Introducción'},
+                { href: '#entendiendo-proposito', text: 'Entendiendo Propósito'},
+                { href: '#modelo-proposito', text: 'Modelo'},
+                { href: '#construyendo-proposito', text: 'Construcción'},
+                { href: '#tarea-final', text: 'Tarea'}
+            ],
+            'sesion05.html': [
+                { href: '#contexto-complejo', text: 'Contexto'},
+                { href: '#discernimiento', text: 'Discernimiento'},
+                { href: '#proxima-sesion', text: 'Próxima Sesión'}
+            ],
+            'sesion06.html': [
+                { href: '#introduccion', text: 'Introducción' },
+                { href: '#claves', text: 'Claves' },
+                { href: '#virtudes', text: 'Virtudes' },
+                { href: '#fortalezas', text: 'Fortalezas' }
+            ],
+            'sesion07.html': [
+                { href: '#donde-estamos', text: 'Avance'},
+                { href: '#proposito-vida', text: 'Propósito'},
+                { href: '#entendiendo-mision', text: 'Misión'},
+                { href: '#ejercicio-practico', text: 'Ejercicio'},
+                { href: '#pensamientos-finales', text: 'Final'}
+            ],
+            'sesion08.html': [
+                { href: '#definiendo-horizontes', text: 'Horizontes'},
+                { href: '#cimientos', text: 'Cimientos'},
+                { href: '#disenar-objetivos', text: 'Diseño'},
+                { href: '#rueda-vida', text: 'Rueda de Vida'},
+                { href: '#tarea', text: 'Tarea'}
+            ],
+            'sesion09.html': [
+                { href: '#introduccion', text: 'Introducción'},
+                { href: '#carta-pastoral', text: 'Carta Pastoral'},
+                { href: '#perma', text: 'PERMA'},
+                { href: '#emociones', text: 'Emociones'},
+                { href: '#conclusion-tarea', text: 'Tarea'}
+            ],
+            'sesion10.html': [
+                { href: '#reflexion', text: 'Reflexión' },
+                { href: '#que-es', text: '¿Qué es?' },
+                { href: '#elementos', text: 'Elementos' },
+                { href: '#caracteristicas', text: 'Características' },
+                { href: '#tarea', text: 'Tarea' }
+            ],
+            'sesion11.html': [
+                { href: '#proyecto-vida', text: 'Proyecto de Vida' },
+                { href: '#desafios', text: 'Desafíos' },
+                { href: '#construccion', text: 'Construcción' },
+                { href: '#tarea', text: 'Tarea' }
+            ],
+            'sesion12.html': [
+                { href: '#introduccion', text: 'Inicio' },
+                { href: '#perma', text: 'PERMA' },
+                { href: '#proposito', text: 'Propósito' },
+                { href: '#logro', text: 'Logro' },
+                { href: '#motivacion', text: 'Motivación' },
+                { href: '#metas', text: 'Metas' },
+                { href: '#reflexion', text: 'Reflexión' }
+            ],
+            'sesion14.html': [
+                { href: '#donde-estamos', text: 'Avance'},
+                { href: '#importancia-objetivos', text: 'Importancia'},
+                { href: '#filtros-objetivos', text: 'Filtros'},
+                { href: '#proximo-material', text: 'Próximo'},
+                { href: '#tarea-semana', text: 'Tarea'}
+            ],
+            'sesion15.html': [
+                { href: '#introduccion', text: 'Introducción' },
+                { href: '#proceso', text: 'Proceso' },
+                { href: '#grow', text: 'Modelo GROW' },
+                { href: '#dimensiones', text: 'Dimensiones' },
+                { href: '#ejemplos', text: 'Ejemplos' },
+                { href: '#tarea', text: 'Tarea' }
+            ],
+            'sesion16.html': [
+                { href: '#introduccion', text: 'Introducción' },
+                { href: '#dimensiones', text: 'Dimensiones' },
+                { href: '#conclusion', text: 'Conclusión' }
+            ]
+        };
+
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            return path.split("/").pop();
+        }
+
+        function populateNavLinks() {
+            const currentPage = getCurrentPageName();
+            const links = pageLinksConfig[currentPage] || [];
+
+            if (desktopMenuLinksContainer) desktopMenuLinksContainer.innerHTML = '';
+            if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                if (desktopMenuLinksContainer) {
+                    const aDesktop = document.createElement('a');
+                    aDesktop.href = link.href;
+                    aDesktop.textContent = link.text;
+                    aDesktop.className = 'nav-link-desktop text-sky-100 hover:bg-sky-700 hover:text-white'; // Sky Blue theme
+                    desktopMenuLinksContainer.appendChild(aDesktop);
+                }
+                if (mobileMenuLinksContainer) {
+                    const aMobile = document.createElement('a');
+                    aMobile.href = link.href;
+                    aMobile.textContent = link.text;
+                    aMobile.className = 'nav-link-mobile text-sky-100 hover:bg-sky-700 hover:text-white'; // Sky Blue theme
+                    mobileMenuLinksContainer.appendChild(aMobile);
+                }
+            });
+
+            const allNavLinks = document.querySelectorAll('.nav-link-desktop, .nav-link-mobile');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('nav').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                    if (mobileMenu && link.classList.contains('nav-link-mobile') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if(mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        if(mobileMenuButton) mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                    }
+                });
             });
         }
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                // Solo cierra el menú móvil si está visible (es decir, en pantallas pequeñas)
-                if (window.getComputedStyle(navToggle).display !== 'none') {
-                    navContent.classList.add('hidden');
-                }
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Ajuste para el scroll-mt (scroll-margin-top)
-                    const offset = parseFloat(getComputedStyle(targetElement).scrollMarginTop) || 0;
-                    const bodyRect = document.body.getBoundingClientRect().top;
-                    const elementRect = targetElement.getBoundingClientRect().top;
-                    const elementPosition = elementRect - bodyRect;
-                    const offsetPosition = elementPosition - offset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu) {
+                    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
                 }
             });
-        });
+        }
 
-        // Set current year in footer
+        document.addEventListener('DOMContentLoaded', populateNavLinks);
+
+        // --- Script para el año actual en el footer ---
         const currentYearElement = document.getElementById('currentYear');
         if (currentYearElement) {
             currentYearElement.textContent = new Date().getFullYear();
         }
+        
+        // --- Script para animación de aparición de secciones al hacer scroll ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
     </script>
 
 </body>
