@@ -3,40 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entendiendo el Discernimiento Cristiano</title>
+    <title>Sesión 6: Entendiendo el Discernimiento Cristiano - Plan de Vida</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            @apply bg-purple-50 text-gray-800; /* Fondo base Púrpura claro */
         }
-        .hero-bg {
-            background-image: linear-gradient(to right, rgba(128, 90, 213, 0.8), rgba(162, 105, 213, 0.8)), url('https://placehold.co/1200x600/e2e8f0/667eea?text=Fondo+Abstracto+Inspirador');
+        .hero-bg-sesion06 {
+            background-image: linear-gradient(to right, rgba(128, 90, 213, 0.8), rgba(162, 105, 213, 0.7)), url('https://placehold.co/1200x600/A78BFA/FFFFFF?text=Discernimiento+y+Fe'); /* Púrpura theme */
             background-size: cover;
             background-position: center;
         }
+        .page-section-title {
+            @apply text-3xl font-bold text-center mb-10 text-purple-700; /* Púrpura theme */
+        }
+        .subsection-title {
+            @apply text-2xl font-semibold mb-4 text-purple-600; /* Púrpura theme */
+        }
         .card {
-            background-color: white;
-            border-radius: 0.75rem; /* 12px */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease-in-out;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .section-title {
-            font-size: 2.25rem; /* 36px */
-            font-weight: 700;
-            color: #4A5568; /* gray-700 */
-            margin-bottom: 1.5rem; /* 24px */
-            text-align: center;
+            @apply bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border-t-4 border-purple-500; /* Púrpura theme */
         }
         .highlight {
-            color: #6B46C1; /* purple-600 */
-            font-weight: 600;
+            @apply text-purple-600 font-semibold; /* Púrpura theme */
         }
-        /* Estilos para el botón de "Volver Arriba" */
-        #scrollTopBtn {
+        .nav-link-desktop, .nav-link-mobile {
+             @apply px-3 py-2 rounded-md text-sm font-medium transition-colors;
+        }
+        .nav-link-desktop { /* Púrpura theme */
+            @apply text-purple-100 hover:bg-purple-700 hover:text-white;
+        }
+        .nav-link-mobile { /* Púrpura theme */
+            @apply block text-purple-100 hover:bg-purple-700 hover:text-white text-base;
+        }
+        .footer-bg {
+            @apply bg-slate-900 text-slate-300;
+        }
+        #scrollTopBtn { /* Estilo del botón scroll-to-top que ya tenías */
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -56,55 +61,82 @@
         #scrollTopBtn:hover {
             background-color: #553C9A; /* purple-700 */
         }
+        /* Animación suave para la aparición de secciones */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-xl font-semibold text-purple-600">Discernimiento Cristiano</a>
-            <div>
-                <a href="#introduccion" class="text-gray-600 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium">Introducción</a>
-                <a href="#claves" class="text-gray-600 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium">Claves</a>
-                <a href="#virtudes" class="text-gray-600 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium">Virtudes</a>
-                <a href="#fortalezas" class="text-gray-600 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium">Fortalezas</a>
+    <nav class="bg-purple-600 shadow-md fixed w-full z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 text-white font-bold text-xl hover:opacity-80 transition-opacity">
+                        Plan de Vida
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div id="desktop-menu-links" class="ml-10 flex items-baseline space-x-4">
+                        </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-purple-600 inline-flex items-center justify-center p-2 rounded-md text-purple-200 hover:text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div id="mobile-menu-links" class="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                </div>
         </div>
     </nav>
 
-    <header class="hero-bg text-white py-20 md:py-32">
+    <header id="inicio" class="hero-bg-sesion06 text-white pt-32 pb-20 md:pt-40 md:pb-28 fade-in-section">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Descubriendo el Camino del Discernimiento</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Sesión 6: Descubriendo el Camino del Discernimiento</h1>
             <p class="text-lg md:text-2xl mb-8">Un viaje personal para convertir convicciones internas en decisiones conscientes.</p>
             <a href="#introduccion" class="bg-white text-purple-600 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-100 transition duration-300">Comenzar Exploración</a>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 
-        <section id="introduccion" class="py-12">
-            <h2 class="section-title">¿Qué es el Discernimiento?</h2>
+        <section id="introduccion" class="py-12 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">¿Qué es el Discernimiento?</h2>
             <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div class="card p-6 md:p-8">
-                    <h3 class="text-2xl font-semibold text-purple-600 mb-4">Discernimiento en un Mundo Complejo</h3>
-                    <p class="mb-4">Vivimos en tiempos donde buscar a Dios y tomar decisiones significativas se da en un <span class="highlight">contexto complejo y desafiante</span>. Esto, aunque no es nuevo, influye en cómo las diferentes generaciones abordan el proceso de discernimiento.</p>
-                    <p>El <span class="highlight">discernimiento cristiano</span> va más allá de una simple toma de decisiones. Es un proceso profundamente personal mediante el cual una persona alinea sus <span class="highlight">convicciones internas</span> con sus <span class="highlight">acciones y decisiones</span>.</p>
+                <div class="card">
+                    <h3 class="subsection-title">Discernimiento en un Mundo Complejo</h3>
+                    <p class="mb-4 text-slate-700">Vivimos en tiempos donde buscar a Dios y tomar decisiones significativas se da en un <span class="highlight">contexto complejo y desafiante</span>. Esto, aunque no es nuevo, influye en cómo las diferentes generaciones abordan el proceso de discernimiento.</p>
+                    <p class="text-slate-700">El <span class="highlight">discernimiento cristiano</span> va más allá de una simple toma de decisiones. Es un proceso profundamente personal mediante el cual una persona alinea sus <span class="highlight">convicciones internas</span> con sus <span class="highlight">acciones y decisiones</span>.</p>
                 </div>
-                <div class="card p-6 md:p-8">
-                    <h3 class="text-2xl font-semibold text-purple-600 mb-4">El Proceso Interno</h3>
-                    <p class="mb-4">El discernimiento auténtico requiere un <span class="highlight">pensamiento crítico</span> nutrido por la <span class="highlight">introspección</span>. Es fundamental analizar las historias que nos contamos a nosotros mismos y las motivaciones que nos impulsan.</p>
-                    <p>Al observar estos factores internos, podemos elegir conscientemente cómo actuar, transformando la reflexión en acción deliberada.</p>
+                <div class="card">
+                    <h3 class="subsection-title">El Proceso Interno</h3>
+                    <p class="mb-4 text-slate-700">El discernimiento auténtico requiere un <span class="highlight">pensamiento crítico</span> nutrido por la <span class="highlight">introspección</span>. Es fundamental analizar las historias que nos contamos a nosotros mismos y las motivaciones que nos impulsan.</p>
+                    <p class="text-slate-700">Al observar estos factores internos, podemos elegir conscientemente cómo actuar, transformando la reflexión en acción deliberada.</p>
                      <img src="https://placehold.co/600x400/A78BFA/FFFFFF?text=Introspección+y+Decisión" alt="Imagen de una persona reflexionando" class="mt-4 rounded-lg shadow-md" onerror="this.src='https://placehold.co/600x400/e0e0e0/333333?text=Error+al+cargar+imagen';">
                 </div>
             </div>
         </section>
 
-        <section id="claves" class="py-12 bg-gray-50 rounded-lg">
-            <h2 class="section-title">Las Tres Claves del Discernimiento</h2>
+        <section id="claves" class="py-12 bg-purple-100 rounded-xl shadow-inner fade-in-section scroll-mt-24">
+            <h2 class="page-section-title">Las Tres Claves del Discernimiento</h2>
             <p class="text-center text-lg text-gray-700 mb-10 max-w-3xl mx-auto">Para cultivar un discernimiento efectivo, la presentadora destaca tres elementos fundamentales que interactúan y se fortalecen mutuamente.</p>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="card p-6 text-center">
-                    <div class="bg-purple-100 text-purple-600 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                <div class="card text-center"> <div class="bg-purple-200 text-purple-600 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L1.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.25 12L17 14.188l-1.25-2.188a2.25 2.25 0 00-1.7-1.7L12 9.25l2.188-1.25a2.25 2.25 0 001.7-1.7L17 4.25l1.25 2.188a2.25 2.25 0 001.7 1.7L22.75 9.25l-2.188 1.25a2.25 2.25 0 00-1.7 1.7z" />
                         </svg>
@@ -112,8 +144,8 @@
                     <h3 class="text-xl font-semibold text-purple-600 mb-2">1. Contexto Complejo</h3>
                     <p class="text-gray-600">Reconocer y navegar la complejidad del mundo actual al tomar decisiones espirituales y personales.</p>
                 </div>
-                <div class="card p-6 text-center">
-                    <div class="bg-purple-100 text-purple-600 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                <div class="card text-center">
+                    <div class="bg-purple-200 text-purple-600 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6-2.292m0-14.25v14.25" />
                         </svg>
@@ -121,8 +153,8 @@
                     <h3 class="text-xl font-semibold text-purple-600 mb-2">2. Virtudes</h3>
                     <p class="text-gray-600">Cultivar cualidades internas que nos mueven a buscar y actuar por el bien.</p>
                 </div>
-                <div class="card p-6 text-center">
-                     <div class="bg-purple-100 text-purple-600 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                <div class="card text-center">
+                     <div class="bg-purple-200 text-purple-600 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z" />
@@ -134,18 +166,18 @@
             </div>
         </section>
 
-        <section id="virtudes" class="py-12">
-            <h2 class="section-title">El Camino de la Virtud</h2>
+        <section id="virtudes" class="py-12 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">El Camino de la Virtud</h2>
             <div class="grid md:grid-cols-2 gap-8 items-start">
-                <div class="card p-6 md:p-8">
-                    <h3 class="text-2xl font-semibold text-purple-600 mb-4">Virtudes vs. Normas</h3>
-                    <p class="mb-4">Es crucial distinguir entre virtudes y normas. Una <span class="highlight">virtud</span> es una cualidad interna que nos impulsa a buscar activamente lo bueno, a anhelarlo y a actuar en consecuencia.</p>
-                    <p>Por otro lado, una <span class="highlight">norma</span> es una regla externa, un código o reglamento que debemos seguir. Mientras las normas dictan conformidad, las virtudes inspiran una búsqueda activa del bien.</p>
+                <div class="card">
+                    <h3 class="subsection-title">Virtudes vs. Normas</h3>
+                    <p class="mb-4 text-slate-700">Es crucial distinguir entre virtudes y normas. Una <span class="highlight">virtud</span> es una cualidad interna que nos impulsa a buscar activamente lo bueno, a anhelarlo y a actuar en consecuencia.</p>
+                    <p class="text-slate-700">Por otro lado, una <span class="highlight">norma</span> es una regla externa, un código o reglamento que debemos seguir. Mientras las normas dictan conformidad, las virtudes inspiran una búsqueda activa del bien.</p>
                      <img src="https://placehold.co/600x400/C4B5FD/FFFFFF?text=Virtud+Interior" alt="Imagen simbolizando la virtud" class="mt-4 rounded-lg shadow-md" onerror="this.src='https://placehold.co/600x400/e0e0e0/333333?text=Error+al+cargar+imagen';">
                 </div>
-                <div class="card p-6 md:p-8">
-                    <h3 class="text-2xl font-semibold text-purple-600 mb-4">Desarrollando la Virtud</h3>
-                    <p class="mb-3">El camino de la virtud se puede cultivar a través de tres acciones clave:</p>
+                <div class="card">
+                    <h3 class="subsection-title">Desarrollando la Virtud</h3>
+                    <p class="mb-3 text-slate-700">El camino de la virtud se puede cultivar a través de tres acciones clave:</p>
                     <ul class="list-disc list-inside space-y-2 text-gray-700">
                         <li><span class="highlight">Identificar los propios deseos:</span> Comprender qué anhelamos realmente.</li>
                         <li><span class="highlight">Utilizar la propia razón y voluntad:</span> Aplicar el pensamiento y la determinación para perseguir lo bueno.</li>
@@ -155,11 +187,10 @@
             </div>
         </section>
 
-        <section id="fortalezas" class="py-12 bg-gray-50 rounded-lg">
-            <h2 class="section-title">Fortalezas del Carácter: La Base Moral</h2>
+        <section id="fortalezas" class="py-12 bg-purple-100 rounded-xl shadow-inner fade-in-section scroll-mt-24">
+            <h2 class="page-section-title">Fortalezas del Carácter: La Base Moral</h2>
             <div class="grid md:grid-cols-3 gap-8 mb-10">
-                <div class="card p-6">
-                    <h4 class="text-lg font-semibold text-purple-600 mb-2">Talentos</h4>
+                <div class="card p-6"> <h4 class="text-lg font-semibold text-purple-600 mb-2">Talentos</h4>
                     <p class="text-sm text-gray-600">Capacidad innata o aprendida para comprender algo o actuar con éxito en una actividad específica.</p>
                 </div>
                 <div class="card p-6">
@@ -244,12 +275,14 @@
                 </div>
             </div>
         </section>
-
     </main>
 
-    <footer class="bg-gray-800 text-white py-10 text-center">
-        <p>&copy; <span id="currentYear"></span> Sitio sobre Discernimiento Cristiano. Inspirado en la enseñanza sobre el tema.</p>
-        <p class="text-sm text-gray-400 mt-2">Diseñado para la reflexión y el crecimiento personal.</p>
+    <footer class="footer-bg py-12 text-center fade-in-section">
+        <div class="container mx-auto px-6">
+            <p class="text-lg mb-2">Plan de Vida: Un Viaje de Transformación</p>
+            <p>&copy; <span id="currentYear"></span> Plan de Vida. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2 opacity-70">Inspirado en las sesiones de desarrollo y discernimiento.</p>
+        </div>
     </footer>
 
     <button id="scrollTopBtn" title="Volver arriba">
@@ -259,45 +292,144 @@
     </button>
 
     <script>
-        // Script para el año actual en el footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // --- Navbar Script ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const desktopMenuLinksContainer = document.getElementById('desktop-menu-links');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
 
-        // Script para el botón de "Volver Arriba"
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
-
-        window.onscroll = function() {
-            // Mostrar el botón cuando el usuario baja 200px desde la parte superior
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                scrollTopBtn.style.display = "block";
-                setTimeout(() => scrollTopBtn.style.opacity = "1", 10); // Pequeña demora para transición
-            } else {
-                scrollTopBtn.style.opacity = "0";
-                setTimeout(() => scrollTopBtn.style.display = "none", 300); // Esperar que termine la transición
-            }
+        const pageLinksConfig = {
+            'index.html': [ /* ... */ ],
+            'sesion01.html': [ /* ... */ ],
+            'sesion02.html': [ /* ... */ ],
+            'sesion03.html': [ /* ... */ ],
+            'sesion04.html': [ /* ... */ ],
+            'sesion05.html': [ /* ... */ ],
+            'sesion06.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#introduccion', text: 'Introducción' },
+                { href: '#claves', text: 'Claves' },
+                { href: '#virtudes', text: 'Virtudes' },
+                { href: '#fortalezas', text: 'Fortalezas' }
+            ],
+            'sesion07.html': [ /* ... */ ],
+            'sesion08.html': [ /* ... */ ],
+            'sesion09.html': [ /* ... */ ],
+            'sesion10.html': [ /* ... */ ],
+            'sesion11.html': [ /* ... */ ],
+            'sesion12.html': [ /* ... */ ],
+            'sesion14.html': [ /* ... */ ],
+            'sesion15.html': [ /* ... */ ],
+            'sesion16.html': [ /* ... */ ]
         };
 
-        scrollTopBtn.onclick = function() {
-            // Scroll suave hacia arriba
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        };
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            return path.split("/").pop();
+        }
 
-        // Smooth scroll para los enlaces del navbar
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Considerar la altura del navbar fijo
-                    const navbarHeight = document.querySelector('nav').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+        function populateNavLinks() {
+            const currentPage = getCurrentPageName();
+            const links = pageLinksConfig[currentPage] || [];
+
+            if (desktopMenuLinksContainer) desktopMenuLinksContainer.innerHTML = '';
+            if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                if (desktopMenuLinksContainer) {
+                    const aDesktop = document.createElement('a');
+                    aDesktop.href = link.href;
+                    aDesktop.textContent = link.text;
+                    aDesktop.className = 'nav-link-desktop text-purple-100 hover:bg-purple-700 hover:text-white'; // Púrpura theme
+                    desktopMenuLinksContainer.appendChild(aDesktop);
+                }
+                if (mobileMenuLinksContainer) {
+                    const aMobile = document.createElement('a');
+                    aMobile.href = link.href;
+                    aMobile.textContent = link.text;
+                    aMobile.className = 'nav-link-mobile text-purple-100 hover:bg-purple-700 hover:text-white'; // Púrpura theme
+                    mobileMenuLinksContainer.appendChild(aMobile);
                 }
             });
+
+            const allNavLinks = document.querySelectorAll('.nav-link-desktop, .nav-link-mobile');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('nav').offsetHeight;
+                        // El scroll-mt-24 (96px) se suma a la altura de la navbar para el offset
+                        const scrollMarginTop = parseFloat(getComputedStyle(targetElement).scrollMarginTop) || 0; 
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - scrollMarginTop;
+                        
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                    if (mobileMenu && link.classList.contains('nav-link-mobile') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if(mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        if(mobileMenuButton) mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                    }
+                });
+            });
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu) {
+                    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', populateNavLinks);
+
+        // --- Script para el año actual en el footer ---
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+        
+        // --- Script para el botón de "Volver Arriba" ---
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        if (scrollTopBtn) { // Comprobar si el botón existe
+            window.onscroll = function() {
+                if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                    scrollTopBtn.style.display = "block";
+                    setTimeout(() => scrollTopBtn.style.opacity = "1", 10);
+                } else {
+                    scrollTopBtn.style.opacity = "0";
+                    setTimeout(() => scrollTopBtn.style.display = "none", 300);
+                }
+            };
+            scrollTopBtn.onclick = function() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            };
+        }
+        
+        // --- Script para animación de aparición de secciones al hacer scroll ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
         });
     </script>
 
