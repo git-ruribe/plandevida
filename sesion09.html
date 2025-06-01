@@ -3,93 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Definiendo Horizontes 2: Sesión 9 - Modelo de Bienestar</title>
+    <title>Sesión 9: Definiendo Horizontes 2 - El Modelo de Bienestar - Plan de Vida</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            @apply bg-sky-50 text-slate-800; /* Fondo base Azul Cielo claro */
         }
-        .hero-bg {
-            background-color: #F0F9FF; /* Light blue background */
+        .hero-bg-sesion09 {
+            background-image: linear-gradient(to right, rgba(56, 189, 248, 0.8), rgba(14, 165, 233, 0.7)), url('https://placehold.co/1200x600/38BDF8/FFFFFF?text=Modelo+de+Bienestar'); /* Azul Cielo theme */
+            background-size: cover;
+            background-position: center;
         }
-        .section-title {
-            @apply text-3xl font-bold text-sky-700 mb-6 text-center;
+        .page-section-title {
+            @apply text-3xl font-bold text-center mb-10 text-sky-700; /* Azul Cielo theme */
+        }
+        .subsection-title {
+            @apply text-2xl font-semibold mb-4 text-sky-600; /* Azul Cielo theme */
         }
         .card {
-            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300;
+            @apply bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-sky-500; /* Azul Cielo theme */
         }
         .list-disc li {
-            @apply mb-2;
-        }
-        .primary-button {
-            @apply bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-0.5;
-        }
-        .secondary-button {
-            @apply bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out;
+            @apply mb-2 text-slate-700;
         }
         .highlight {
-            @apply text-sky-600 font-semibold;
+            @apply text-sky-600 font-semibold; /* Azul Cielo theme */
         }
-        /* Estilos para el acordeón */
+        .nav-link-desktop, .nav-link-mobile {
+             @apply px-3 py-2 rounded-md text-sm font-medium transition-colors;
+        }
+        .nav-link-desktop { /* Azul Cielo theme */
+            @apply text-sky-100 hover:bg-sky-700 hover:text-white;
+        }
+        .nav-link-mobile { /* Azul Cielo theme */
+            @apply block text-sky-100 hover:bg-sky-700 hover:text-white text-base;
+        }
+        .footer-bg {
+            @apply bg-slate-900 text-slate-300;
+        }
+        /* Estilos para el acordeón (adaptados del original) */
         .accordion-item {
-            @apply border border-slate-300 rounded-lg mb-3 overflow-hidden;
+            @apply border border-sky-300 rounded-lg mb-3 overflow-hidden bg-white; /* Tematizado con Sky Blue */
         }
         .accordion-header {
-            @apply bg-slate-100 p-4 cursor-pointer flex justify-between items-center font-semibold text-slate-700 hover:bg-slate-200 transition-colors;
+            @apply bg-sky-100 p-4 cursor-pointer flex justify-between items-center font-semibold text-sky-700 hover:bg-sky-200 transition-colors; /* Tematizado */
         }
         .accordion-content {
             @apply p-4 bg-white text-slate-600;
         }
         .accordion-icon {
-            @apply transition-transform duration-300;
+            @apply transition-transform duration-300 text-sky-600; /* Tematizado */
         }
         .accordion-item.active .accordion-icon {
             @apply rotate-180;
         }
+        /* Animación suave para la aparición de secciones */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .task-button { /* Estilo para el botón de "Ver Ejemplos" */
+            @apply bg-sky-200 hover:bg-sky-300 text-sky-700 font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 leading-relaxed">
+<body class="leading-relaxed">
 
-    <header class="hero-bg py-12 sm:py-16">
+    <nav class="bg-sky-600 shadow-md fixed w-full z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 text-white font-bold text-xl hover:opacity-80 transition-opacity">
+                        Plan de Vida
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div id="desktop-menu-links" class="ml-10 flex items-baseline space-x-4">
+                        </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-sky-600 inline-flex items-center justify-center p-2 rounded-md text-sky-200 hover:text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div id="mobile-menu-links" class="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                </div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero-bg-sesion09 text-white pt-32 pb-20 md:pt-40 md:pb-28 fade-in-section">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl sm:text-5xl font-bold text-sky-800 mb-4">Definiendo Horizontes 2</h1>
-            <p class="text-2xl sm:text-3xl text-sky-600">Sesión 9: El Modelo de Bienestar</p>
+            <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Sesión 9: Definiendo Horizontes 2</h1>
+            <p class="text-2xl sm:text-3xl text-sky-100">El Modelo de Bienestar</p>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 
-        <section id="introduccion" class="mb-16">
+        <section id="introduccion" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">Bienvenida y Equilibrio Vital</h2>
             <div class="card">
-                <h2 class="section-title">Bienvenida y Equilibrio Vital</h2>
-                <p class="mb-4 text-lg">El ponente da la bienvenida y recapitula la sesión anterior sobre la "Rueda de la Vida". Se enfatiza la importancia de encontrar un <span class="highlight">equilibrio</span> en todas las facetas de nuestra vida (personal, familiar, profesional, espiritual, social, etc.) para alcanzar una vida más plena y realizar nuestro propósito.</p>
+                <p class="mb-4 text-lg text-slate-700">El ponente da la bienvenida y recapitula la sesión anterior sobre la "Rueda de la Vida". Se enfatiza la importancia de encontrar un <span class="highlight">equilibrio</span> en todas las facetas de nuestra vida (personal, familiar, profesional, espiritual, social, etc.) para alcanzar una vida más plena y realizar nuestro propósito.</p>
             </div>
         </section>
 
-        <section id="carta-pastoral" class="mb-16">
+        <section id="carta-pastoral" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">Descubrimiento Inspirador: X Carta Pastoral</h2>
             <div class="card">
-                <h2 class="section-title">Descubrimiento Inspirador: X Carta Pastoral "Y acampó entre nosotros"</h2>
-                <p class="mb-6 text-lg">Antes de abordar el tema principal, se comparte un descubrimiento personal: la <span class="highlight">X Carta Pastoral del Arzobispo Rogelio Cabrera</span>, titulada "Y acampó entre nosotros" (Juan 1, 14). Esta carta ofrece profundas reflexiones y esperanza.</p>
+                <h3 class="subsection-title">"Y acampó entre nosotros"</h3>
+                <p class="mb-6 text-lg text-slate-700">Antes de abordar el tema principal, se comparte un descubrimiento personal: la <span class="highlight">X Carta Pastoral del Arzobispo Rogelio Cabrera</span>, titulada "Y acampó entre nosotros" (Juan 1, 14). Esta carta ofrece profundas reflexiones y esperanza.</p>
                 
                 <div class="grid md:grid-cols-2 gap-6 mb-6">
                     <div class="border border-sky-200 p-6 rounded-lg bg-sky-50">
-                        <h3 class="text-xl font-semibold text-sky-700 mb-3">Punto 13: Peregrinos de Esperanza</h3>
+                        <h4 class="text-xl font-semibold text-sky-700 mb-3">Punto 13: Peregrinos de Esperanza</h4>
                         <p class="text-slate-700">El Arzobispo pide a sacerdotes y fieles laicos <span class="highlight">"salir a las calles como 'peregrinos de la esperanza'"</span> para que, mediante el "ABC de la pastoral" (un saludo, una sonrisa y una bendición), hagan presente a Dios en la comunidad.</p>
                     </div>
                     <div class="border border-sky-200 p-6 rounded-lg bg-sky-50">
-                        <h3 class="text-xl font-semibold text-sky-700 mb-3">Punto 39: Tienda de Campamento</h3>
+                        <h4 class="text-xl font-semibold text-sky-700 mb-3">Punto 39: Tienda de Campamento</h4>
                         <p class="text-slate-700">Se anima a hacer de la arquidiócesis una <span class="highlight">"tienda de campamento"</span> donde Jesús pueda residir, extendiendo esta tienda para acoger a quien lo necesite.</p>
                     </div>
                 </div>
-                <p class="mb-4 text-lg">El ponente expresa cómo esta carta cambió su perspectiva sobre la vida y el ministerio, alineándose con los conceptos de bienestar y propósito. Se anima a los espectadores a leerla.</p>
-                </div>
+                <p class="mb-4 text-lg text-slate-700">El ponente expresa cómo esta carta cambió su perspectiva sobre la vida y el ministerio, alineándose con los conceptos de bienestar y propósito. Se anima a los espectadores a leerla.</p>
+            </div>
         </section>
 
-        <section id="perma" class="mb-16">
+        <section id="perma" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">El Modelo de Bienestar PERMA</h2>
             <div class="card">
-                <h2 class="section-title">El Modelo de Bienestar PERMA</h2>
-                <p class="text-center text-lg mb-8">El tema central de la sesión es el modelo PERMA, un acrónimo que representa cinco elementos cruciales para el florecimiento humano:</p>
+                <p class="text-center text-lg mb-8 text-slate-700">El tema central de la sesión es el modelo PERMA, un acrónimo que representa cinco elementos cruciales para el florecimiento humano:</p>
                 
                 <div id="perma-accordion" class="space-y-3 mb-8">
                     <div class="accordion-item">
@@ -139,33 +196,33 @@
                     </div>
                 </div>
 
-                <h3 class="text-2xl font-semibold text-sky-700 mb-4 text-center">"Construyendo el Futuro": El Propósito de PERMA</h3>
-                <p class="mb-4 text-lg">El modelo PERMA tiene como objetivo ayudarnos a <span class="highlight">dar sentido a nuestras vidas</span> y trabajar hacia objetivos que contribuyan a sentirnos realizados. Sus elementos están interconectados y contribuyen colectivamente a un mejor estado de bienestar.</p>
-                <p class="mb-4 text-lg">No se trata de una felicidad artificial o superficial, sino de <span class="highlight">analizar y cambiar cómo percibimos la realidad</span> y elegir una actitud más positiva. PERMA representa "el firme" sobre el cual se construirá el resto de la "casa" de nuestra vida, cuyas "bases" (propósito de vida, fortalezas de carácter, misión) se sentaron en sesiones anteriores.</p>
+                <h3 class="subsection-title text-center">"Construyendo el Futuro": El Propósito de PERMA</h3>
+                <p class="mb-4 text-lg text-slate-700">El modelo PERMA tiene como objetivo ayudarnos a <span class="highlight">dar sentido a nuestras vidas</span> y trabajar hacia objetivos que contribuyan a sentirnos realizados. Sus elementos están interconectados y contribuyen colectivamente a un mejor estado de bienestar.</p>
+                <p class="mb-4 text-lg text-slate-700">No se trata de una felicidad artificial o superficial, sino de <span class="highlight">analizar y cambiar cómo percibimos la realidad</span> y elegir una actitud más positiva. PERMA representa "el firme" sobre el cual se construirá el resto de la "casa" de nuestra vida, cuyas "bases" (propósito de vida, fortalezas de carácter, misión) se sentaron en sesiones anteriores.</p>
             </div>
         </section>
 
-        <section id="emociones" class="mb-16">
+        <section id="emociones" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">Profundizando: ¿Qué son las Emociones?</h2>
             <div class="card">
-                <h2 class="section-title">Profundizando: ¿Qué son las Emociones?</h2>
-                <p class="mb-4 text-lg">Las emociones son <span class="highlight">respuestas o reacciones fisiológicas</span> de nuestro cuerpo a cambios o estímulos en nuestro entorno y dentro de nosotros mismos. Involucran tres componentes clave:</p>
+                <p class="mb-4 text-lg text-slate-700">Las emociones son <span class="highlight">respuestas o reacciones fisiológicas</span> de nuestro cuerpo a cambios o estímulos en nuestro entorno y dentro de nosotros mismos. Involucran tres componentes clave:</p>
                 <ul class="list-disc pl-6 mb-6 space-y-3 text-slate-700">
                     <li><span class="font-semibold text-sky-600">Cambios Fisiológicos Internos:</span> Cómo reacciona nuestro cuerpo internamente (ej. mariposas en el estómago, aumento del ritmo cardíaco).</li>
                     <li><span class="font-semibold text-sky-600">Estados Cognitivos Subjetivos (Ideas/Pensamientos):</span> La interpretación mental o pensamiento que tenemos sobre un estímulo.</li>
                     <li><span class="font-semibold text-sky-600">Comportamientos Expresivos:</span> Cómo mostramos externamente nuestras emociones (expresiones faciales, tono de voz, acciones).</li>
                 </ul>
 
-                <h3 class="text-xl font-semibold text-sky-700 mb-3">El Proceso de la Emoción:</h3>
-                <p class="text-center bg-sky-100 p-4 rounded-lg text-lg shadow">
+                <h3 class="subsection-title">El Proceso de la Emoción:</h3>
+                <p class="text-center bg-sky-100 p-4 rounded-lg text-lg shadow text-slate-700">
                     <span class="font-bold">Estímulo</span> → <span class="font-bold">Pensamiento</span> → <span class="font-bold">Emoción</span> → <span class="font-bold">Acción</span> → <span class="font-bold">Consecuencia</span>
                 </p>
-                <p class="mt-4 text-lg">Este proceso es a menudo tan rápido que no nos damos cuenta conscientemente de que nuestros pensamientos están impulsando nuestras emociones y acciones.</p>
+                <p class="mt-4 text-lg text-slate-700">Este proceso es a menudo tan rápido que no nos damos cuenta conscientemente de que nuestros pensamientos están impulsando nuestras emociones y acciones.</p>
             </div>
         </section>
 
-        <section id="actitudes" class="mb-16">
+        <section id="actitudes" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">Actitudes: Negativas vs. Positivas</h2>
             <div class="card">
-                <h2 class="section-title">Actitudes: Negativas vs. Positivas</h2>
                 <div class="grid md:grid-cols-2 gap-8 mb-6">
                     <div class="border border-red-200 p-6 rounded-lg bg-red-50">
                         <h3 class="text-xl font-semibold text-red-700 mb-3">Actitudes Negativas</h3>
@@ -188,21 +245,21 @@
                     </div>
                 </div>
                 
-                <h3 class="text-xl font-semibold text-sky-700 mb-3">¿Qué Marca la Diferencia?</h3>
-                <p class="mb-3 text-lg">Nuestras emociones provienen de nuestras <span class="highlight">ideas (cogniciones)</span>.</p>
+                <h3 class="subsection-title">¿Qué Marca la Diferencia?</h3>
+                <p class="mb-3 text-lg text-slate-700">Nuestras emociones provienen de nuestras <span class="highlight">ideas (cogniciones)</span>.</p>
                 <ul class="list-disc pl-6 space-y-2 text-slate-700 text-lg">
                     <li>Una <span class="font-semibold">idea</span> se origina de nuestras percepciones y cómo interpretamos la realidad, influenciada por nuestra historia personal. Es como una cámara: cómo la enfocas (tu idea) determina lo que ves (tu realidad).</li>
                     <li>Esta <span class="font-semibold">idea</span> luego genera un <span class="font-semibold">sentimiento</span> (emoción), que puede ser positivo o negativo.</li>
                     <li>Finalmente, el <span class="font-semibold">sentimiento</span> se manifiesta como un <span class="font-semibold">comportamiento</span> o expresión externa.</li>
                 </ul>
-                <p class="mt-4 text-lg">El ponente destaca la influencia perjudicial de las redes sociales y la desinformación, que pueden implantar ideas negativas y distorsionar percepciones, llevando a estados emocionales negativos.</p>
+                <p class="mt-4 text-lg text-slate-700">El ponente destaca la influencia perjudicial de las redes sociales y la desinformación, que pueden implantar ideas negativas y distorsionar percepciones, llevando a estados emocionales negativos.</p>
             </div>
         </section>
 
-        <section id="aplicacion-practica" class="mb-16">
+        <section id="aplicacion-practica" class="mb-16 scroll-mt-24 fade-in-section">
+             <h2 class="page-section-title">Aplicación Práctica: Cambiando Emociones Negativas</h2>
             <div class="card">
-                <h2 class="section-title">Aplicación Práctica: Cambiando Emociones Negativas</h2>
-                <p class="mb-4 text-lg">Dado que no siempre podemos controlar los eventos externos, el poder reside en <span class="highlight">controlar nuestra percepción e interpretación</span> de ellos.</p>
+                <p class="mb-4 text-lg text-slate-700">Dado que no siempre podemos controlar los eventos externos, el poder reside en <span class="highlight">controlar nuestra percepción e interpretación</span> de ellos.</p>
                 <ul class="list-disc pl-6 mb-4 space-y-2 text-slate-700 text-lg">
                     <li>Los <span class="font-semibold">sentimientos</span> son naturales, pero su naturaleza depende de nuestra interpretación del mundo.</li>
                     <li>Cuando nos volvemos reactivos a las circunstancias, nuestras emociones se vuelven destructivas y perdemos el control de nosotros mismos.</li>
@@ -211,11 +268,11 @@
             </div>
         </section>
 
-        <section id="ejercicio-reflexion" class="mb-16">
-            <div class="card bg-sky-50 border border-sky-200">
-                <h2 class="section-title">Pequeño Ejercicio de Reflexión</h2>
-                <p class="mb-6 text-lg text-center">Tómate un momento para reflexionar sobre estas preguntas. El objetivo es tomar conciencia de la cadena inconsciente pensamiento-emoción-acción:</p>
-                <ol class="list-decimal pl-6 space-y-3 text-slate-700 text-lg">
+        <section id="ejercicio-reflexion" class="mb-16 scroll-mt-24 fade-in-section">
+            <div class="card bg-sky-100 border-t-4 border-sky-400">
+                <h2 class="page-section-title">Pequeño Ejercicio de Reflexión</h2>
+                <p class="mb-6 text-lg text-center text-slate-700">Tómate un momento para reflexionar sobre estas preguntas. El objetivo es tomar conciencia de la cadena inconsciente pensamiento-emoción-acción:</p>
+                <ol class="list-decimal list-inside pl-6 space-y-3 text-slate-700 text-lg">
                     <li>Reflexiona sobre tu día de hoy: ¿Qué hiciste desde la mañana?</li>
                     <li>¿Qué frases te dijiste a ti mismo/a durante la mañana al realizar tus actividades típicas?</li>
                     <li>¿Qué pensaste o te dijiste a ti mismo/a cuando miraste el reloj y te diste cuenta de que era hora de esta sesión?</li>
@@ -224,10 +281,10 @@
             </div>
         </section>
 
-        <section id="tarea-actitud" class="mb-16">
+        <section id="tarea-actitud" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">Tarea Práctica: Cambio de Actitud</h2>
             <div class="card">
-                <h2 class="section-title">Tarea Práctica: Cambio de Actitud</h2>
-                <p class="mb-6 text-lg">A continuación, se presentan ejemplos de frases negativas comunes. Escríbelas y luego <span class="highlight">reformula cada una de manera positiva</span>, usando tus propias palabras:</p>
+                <p class="mb-6 text-lg text-slate-700">A continuación, se presentan ejemplos de frases negativas comunes. Escríbelas y luego <span class="highlight">reformula cada una de manera positiva</span>, usando tus propias palabras:</p>
                 <div class="space-y-6">
                     <div>
                         <p class="font-semibold text-red-600 mb-1">Frase Negativa 1:</p>
@@ -251,7 +308,7 @@
                     </div>
                 </div>
                  <div class="text-center mt-8">
-                    <button id="showAnswersButton" class="secondary-button">Ver Ejemplos de Reformulación</button>
+                    <button id="showAnswersButton" class="task-button">Ver Ejemplos de Reformulación</button>
                 </div>
                 <div id="answersContainer" class="hidden mt-6 space-y-4 bg-green-50 p-4 rounded-lg border border-green-200">
                     <h4 class="text-lg font-semibold text-green-700">Ejemplos de Reformulaciones Positivas:</h4>
@@ -275,15 +332,15 @@
             </div>
         </section>
 
-        <section id="conclusion-tarea" class="mb-16">
+        <section id="conclusion-tarea" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">Conclusión y Tarea para la Semana</h2>
             <div class="card">
-                <h2 class="section-title">Conclusión y Tarea para la Semana</h2>
-                <p class="mb-4 text-lg">Las emociones positivas provienen de <span class="highlight">cómo elegimos identificar las situaciones</span>. Tenemos el poder de elegir entre interpretaciones negativas y positivas. Nuestro estado de ánimo es un resultado directo de las decisiones que tomamos en cada momento.</p>
+                <p class="mb-4 text-lg text-slate-700">Las emociones positivas provienen de <span class="highlight">cómo elegimos identificar las situaciones</span>. Tenemos el poder de elegir entre interpretaciones negativas y positivas. Nuestro estado de ánimo es un resultado directo de las decisiones que tomamos en cada momento.</p>
                 
-                <h3 class="text-xl font-semibold text-sky-700 mb-3">Tarea para la Semana:</h3>
+                <h3 class="subsection-title">Tarea para la Semana:</h3>
                 <ul class="list-disc pl-6 mb-6 space-y-2 text-slate-700 text-lg">
                     <li>Analiza las frases que te dices a ti mismo/a diariamente:
-                        <ul class="list-circle pl-6 mt-1 space-y-1">
+                        <ul class="list-circle list-inside pl-6 mt-1 space-y-1">
                             <li>Al comenzar el día.</li>
                             <li>Al interactuar con otros.</li>
                             <li>Al realizar tareas ministeriales.</li>
@@ -292,56 +349,186 @@
                     </li>
                     <li>Si notas que tienes pensamientos negativos, <span class="highlight">cámbialos a positivos</span>.</li>
                 </ul>
-                <p class="text-lg">Se anima a todos a leer la X Carta Pastoral, ya que ofrece una hermosa perspectiva sobre la esperanza y el propósito en nuestro camino de fe, reforzando los conceptos discutidos sobre el bienestar.</p>
-                <p class="text-lg mt-4">El ponente concluye deseando a todos lo mejor hasta la próxima sesión, donde se cubrirán <span class="highlight">"Compromiso"</span> y <span class="highlight">"Relaciones Positivas"</span>.</p>
+                <p class="text-lg text-slate-700">Se anima a todos a leer la X Carta Pastoral, ya que ofrece una hermosa perspectiva sobre la esperanza y el propósito en nuestro camino de fe, reforzando los conceptos discutidos sobre el bienestar.</p>
+                <p class="text-lg mt-4 text-slate-700">El ponente concluye deseando a todos lo mejor hasta la próxima sesión, donde se cubrirán <span class="highlight">"Compromiso"</span> y <span class="highlight">"Relaciones Positivas"</span>.</p>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-sky-800 text-sky-100 py-8 text-center">
-        <p>&copy; <span id="year"></span> Programa Definiendo Horizontes. Todos los derechos reservados.</p>
-        <p class="text-sm">Este sitio es un resumen y adaptación de la Sesión 9.</p>
+    <footer class="footer-bg py-12 text-center fade-in-section">
+        <div class="container mx-auto px-6">
+            <p class="text-lg mb-2">Plan de Vida: Un Viaje de Transformación</p>
+            <p>&copy; <span id="currentYear"></span> Plan de Vida. Todos los derechos reservados.</p>
+            <p class="mt-2 text-sm opacity-70">Este sitio es una interpretación y resumen con fines educativos.</p>
+        </div>
     </footer>
 
     <script>
-        // Script para el año actual en el footer
-        document.getElementById('year').textContent = new Date().getFullYear();
+        // --- Navbar Script ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const desktopMenuLinksContainer = document.getElementById('desktop-menu-links');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
 
-        // Script para el acordeón
+        const pageLinksConfig = {
+            'index.html': [ /* ... */ ],
+            'sesion01.html': [ /* ... */ ],
+            'sesion02.html': [ /* ... */ ],
+            'sesion03.html': [ /* ... */ ],
+            'sesion04.html': [ /* ... */ ],
+            'sesion05.html': [ /* ... */ ],
+            'sesion06.html': [ /* ... */ ],
+            'sesion07.html': [ /* ... */ ],
+            'sesion08.html': [ /* ... */ ],
+            'sesion09.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#introduccion', text: 'Introducción'},
+                { href: '#carta-pastoral', text: 'Carta Pastoral'},
+                { href: '#perma', text: 'PERMA'},
+                { href: '#emociones', text: 'Emociones'},
+                { href: '#conclusion-tarea', text: 'Tarea'}
+            ],
+            'sesion10.html': [ /* ... */ ],
+            'sesion11.html': [ /* ... */ ],
+            'sesion12.html': [ /* ... */ ],
+            'sesion14.html': [ /* ... */ ],
+            'sesion15.html': [ /* ... */ ],
+            'sesion16.html': [ /* ... */ ]
+        };
+
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            return path.split("/").pop();
+        }
+
+        function populateNavLinks() {
+            const currentPage = getCurrentPageName();
+            const links = pageLinksConfig[currentPage] || [];
+
+            if (desktopMenuLinksContainer) desktopMenuLinksContainer.innerHTML = '';
+            if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                if (desktopMenuLinksContainer) {
+                    const aDesktop = document.createElement('a');
+                    aDesktop.href = link.href;
+                    aDesktop.textContent = link.text;
+                    aDesktop.className = 'nav-link-desktop text-sky-100 hover:bg-sky-700 hover:text-white'; // Azul Cielo theme
+                    desktopMenuLinksContainer.appendChild(aDesktop);
+                }
+                if (mobileMenuLinksContainer) {
+                    const aMobile = document.createElement('a');
+                    aMobile.href = link.href;
+                    aMobile.textContent = link.text;
+                    aMobile.className = 'nav-link-mobile text-sky-100 hover:bg-sky-700 hover:text-white'; // Azul Cielo theme
+                    mobileMenuLinksContainer.appendChild(aMobile);
+                }
+            });
+
+            const allNavLinks = document.querySelectorAll('.nav-link-desktop, .nav-link-mobile');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('nav').offsetHeight;
+                        const scrollMarginTop = parseFloat(getComputedStyle(targetElement).scrollMarginTop) || 0; 
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - scrollMarginTop;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                    if (mobileMenu && link.classList.contains('nav-link-mobile') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if(mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        if(mobileMenuButton) mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                    }
+                });
+            });
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu) {
+                    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', populateNavLinks);
+
+        // --- Script para el año actual en el footer ---
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+        
+        // --- Script para el acordeón PERMA ---
         const accordionItems = document.querySelectorAll('.accordion-item');
         accordionItems.forEach(item => {
             const header = item.querySelector('.accordion-header');
             const content = item.querySelector('.accordion-content');
-            const icon = item.querySelector('.accordion-icon');
+            // const icon = item.querySelector('.accordion-icon'); // El icono ya está en el header
 
-            header.addEventListener('click', () => {
-                // Cierra otros items abiertos si quieres un comportamiento de acordeón exclusivo
-                // accordionItems.forEach(otherItem => {
-                //     if (otherItem !== item) {
-                //         otherItem.querySelector('.accordion-content').classList.add('hidden');
-                //         otherItem.classList.remove('active');
-                //         otherItem.querySelector('.accordion-icon').classList.remove('rotate-180');
-                //     }
-                // });
+            if (header && content) { // Asegurarse de que ambos elementos existan
+                header.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Opcional: Cerrar todos los demás acordeones
+                    // accordionItems.forEach(otherItem => {
+                    //     if (otherItem !== item) {
+                    //         otherItem.classList.remove('active');
+                    //         otherItem.querySelector('.accordion-content').classList.add('hidden');
+                    //         // Si tienes un icono separado y quieres rotarlo:
+                    //         // otherItem.querySelector('.accordion-icon').classList.remove('rotate-180');
+                    //     }
+                    // });
 
-                content.classList.toggle('hidden');
-                item.classList.toggle('active');
-                icon.classList.toggle('rotate-180');
-            });
+                    item.classList.toggle('active', !isActive);
+                    content.classList.toggle('hidden', isActive);
+                    // Si tienes un icono separado y quieres rotarlo:
+                    // if (icon) icon.classList.toggle('rotate-180', !isActive);
+                });
+            }
         });
 
-        // Script para mostrar/ocultar respuestas de reformulación
+        // --- Script para mostrar/ocultar respuestas de reformulación de la tarea ---
         const showAnswersButton = document.getElementById('showAnswersButton');
         const answersContainer = document.getElementById('answersContainer');
 
-        showAnswersButton.addEventListener('click', () => {
-            answersContainer.classList.toggle('hidden');
-            if (!answersContainer.classList.contains('hidden')) {
-                showAnswersButton.textContent = 'Ocultar Ejemplos';
-            } else {
-                showAnswersButton.textContent = 'Ver Ejemplos de Reformulación';
-            }
+        if (showAnswersButton && answersContainer) {
+            showAnswersButton.addEventListener('click', () => {
+                answersContainer.classList.toggle('hidden');
+                if (!answersContainer.classList.contains('hidden')) {
+                    showAnswersButton.textContent = 'Ocultar Ejemplos';
+                } else {
+                    showAnswersButton.textContent = 'Ver Ejemplos de Reformulación';
+                }
+            });
+        }
+        
+        // --- Script para animación de aparición de secciones al hacer scroll ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
         });
     </script>
 
