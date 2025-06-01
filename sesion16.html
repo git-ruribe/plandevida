@@ -3,67 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan de Vida: Últimos Detalles</title>
+    <title>Sesión 16: Plan de Vida - Últimos Detalles y Discernimiento - Plan de Vida</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            @apply bg-blue-50 text-gray-800; /* Fondo base Azul Eléctrico claro */
         }
+        .hero-bg-sesion16 {
+            background-image: linear-gradient(to right, rgba(30, 64, 175, 0.8), rgba(29, 78, 216, 0.7)), url('https://placehold.co/1200x600/1E40AF/FFFFFF?text=Culminación+y+Futuro'); /* Azul Eléctrico theme */
+            background-size: cover;
+            background-position: center;
+        }
+        .page-section-title {
+            @apply text-3xl font-bold text-center mb-10 text-blue-700; /* Azul Eléctrico theme */
+        }
+        .subsection-title { /* Títulos dentro de las cards y secciones */
+            @apply text-2xl font-semibold text-blue-600 mb-4 mt-6; /* Azul Eléctrico theme */
+        }
+        /* Card base para secciones de introducción y conclusión */
+        .content-card {
+            @apply bg-white p-8 rounded-xl shadow-xl mb-12 border-t-4 border-blue-500; /* Azul Eléctrico theme */
+        }
+        .content-card .section-title-style { /* Para los H2 dentro de estas cards */
+             @apply text-3xl font-bold text-blue-600 mb-6 pb-2 border-b-2 border-blue-400;
+        }
+
+        /* Estilo para las tarjetas de dimensión (adaptado del original) */
         .dimension-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            @apply bg-white p-6 rounded-lg shadow-lg transition-transform duration-300 ease-in-out border-t-4; /* Borde superior general */
         }
         .dimension-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        .section-title {
-            border-bottom: 2px solid #60A5FA; /* Tailwind blue-400 */
-            padding-bottom: 0.5rem;
-        }
-        .question-list li {
+        /* Colores específicos para los títulos H3 de las dimension-card y sus bordes superiores */
+        .dimension-card.espiritual { @apply border-t-blue-500; }
+        .dimension-card.espiritual h3 { @apply text-blue-500; }
+        .dimension-card.emocional { @apply border-t-green-500; }
+        .dimension-card.emocional h3 { @apply text-green-500; }
+        .dimension-card.familiar { @apply border-t-yellow-500; }
+        .dimension-card.familiar h3 { @apply text-yellow-500; }
+        .dimension-card.social { @apply border-t-purple-500; }
+        .dimension-card.social h3 { @apply text-purple-500; }
+        .dimension-card.parroquial { @apply border-t-red-500; }
+        .dimension-card.parroquial h3 { @apply text-red-500; }
+        .dimension-card.intelectual { @apply border-t-indigo-500; }
+        .dimension-card.intelectual h3 { @apply text-indigo-500; }
+        .dimension-card.fisica { @apply border-t-teal-500; }
+        .dimension-card.fisica h3 { @apply text-teal-500; }
+        .dimension-card.material { @apply border-t-orange-500; }
+        .dimension-card.material h3 { @apply text-orange-500; }
+
+        .question-list li { /* Adaptado del original */
             position: relative;
-            padding-left: 1.75rem; /* Espacio para el icono */
+            padding-left: 1.75rem; 
             margin-bottom: 0.5rem;
+            @apply text-gray-700;
         }
         .question-list li::before {
-            content: '❓'; /* Icono de pregunta */
+            content: '❓'; 
             position: absolute;
             left: 0;
-            top: 0.125rem; /* Ajuste vertical del icono */
+            top: 0.125rem; 
             font-size: 1rem;
+        }
+        .nav-link-desktop, .nav-link-mobile {
+             @apply px-3 py-2 rounded-md text-sm font-medium transition-colors;
+        }
+        .nav-link-desktop { /* Azul Eléctrico theme */
+            @apply text-blue-100 hover:bg-blue-700 hover:text-white;
+        }
+        .nav-link-mobile { /* Azul Eléctrico theme */
+            @apply block text-blue-100 hover:bg-blue-700 hover:text-white text-base;
+        }
+        .footer-bg {
+            @apply bg-slate-900 text-slate-300;
+        }
+        /* Animación suave para la aparición de secciones */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body>
 
-    <nav class="bg-blue-600 text-white p-4 sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Plan de Vida: Discernimiento</h1>
-            <div class="hidden md:block">
-                <a href="#introduccion" class="px-3 py-2 rounded hover:bg-blue-700">Introducción</a>
-                <a href="#dimensiones" class="px-3 py-2 rounded hover:bg-blue-700">Dimensiones</a>
-                <a href="#conclusion" class="px-3 py-2 rounded hover:bg-blue-700">Conclusión</a>
+    <nav class="bg-blue-600 shadow-md fixed w-full z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 text-white font-bold text-xl hover:opacity-80 transition-opacity">
+                        Plan de Vida
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div id="desktop-menu-links" class="ml-10 flex items-baseline space-x-4">
+                        </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-blue-600 inline-flex items-center justify-center p-2 rounded-md text-blue-200 hover:text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-blue-600">
-            <a href="#introduccion" class="block px-4 py-2 text-sm hover:bg-blue-700">Introducción</a>
-            <a href="#dimensiones" class="block px-4 py-2 text-sm hover:bg-blue-700">Dimensiones</a>
-            <a href="#conclusion" class="block px-4 py-2 text-sm hover:bg-blue-700">Conclusión</a>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div id="mobile-menu-links" class="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                </div>
         </div>
     </nav>
 
-    <div class="container mx-auto p-6">
+    <header id="inicio" class="hero-bg-sesion16 text-white pt-32 pb-20 md:pt-40 md:pb-28 fade-in-section">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Sesión 16: Plan de Vida - Discernimiento</h1>
+            <p class="text-2xl md:text-3xl text-blue-100 mb-6">Últimos Detalles para un Servicio Pleno</p>
+             <a href="#introduccion" class="bg-white text-blue-700 font-bold py-3 px-6 rounded-lg text-lg transition duration-300 hover:bg-blue-100">Comenzar Revisión</a>
+        </div>
+    </header>
 
-        <section id="introduccion" class="mb-12 scroll-mt-20">
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-                <h2 class="text-3xl font-bold text-blue-600 mb-6 section-title">Discernimiento: Últimos Detalles (Sesión 16)</h2>
-                <p class="text-lg mb-4">Bienvenidos a esta penúltima sesión del proyecto de plan de vida. Nos encontramos en la etapa de "últimos detalles", un momento crucial comparable a los toques finales en la construcción de una casa, como asegurarse de que las ventanas y puertas cierren bien. Esta sesión se centrará en la revisión de objetivos y metas.</p>
-                <p class="text-lg mb-4">Se invita a cada participante a reflexionar profundamente sobre lo que desea lograr en cada dimensión de su vida. Es fundamental dejar de lado las preocupaciones y dedicarse plenamente a este tiempo de introspección. Este tipo de trabajo personal puede generar ansiedad o nerviosismo, pero es esencial para el crecimiento.</p>
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+
+        <section id="introduccion" class="mb-12 scroll-mt-24 fade-in-section">
+            <div class="content-card">
+                <h2 class="section-title-style">Discernimiento: Últimos Detalles (Sesión 16)</h2>
+                <p class="text-lg mb-4 text-gray-700">Bienvenidos a esta penúltima sesión del proyecto de plan de vida. Nos encontramos en la etapa de "últimos detalles", un momento crucial comparable a los toques finales en la construcción de una casa, como asegurarse de que las ventanas y puertas cierren bien. Esta sesión se centrará en la revisión de objetivos y metas.</p>
+                <p class="text-lg mb-4 text-gray-700">Se invita a cada participante a reflexionar profundamente sobre lo que desea lograr en cada dimensión de su vida. Es fundamental dejar de lado las preocupaciones y dedicarse plenamente a este tiempo de introspección. Este tipo de trabajo personal puede generar ansiedad o nerviosismo, pero es esencial para el crecimiento.</p>
                 <div class="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 text-blue-700 rounded-md">
                     <p class="font-semibold">Reflexión Clave:</p>
                     <p>Este es un momento para la introspección profunda. ¿Qué deseas lograr en cada área de tu vida?</p>
@@ -71,15 +148,15 @@
             </div>
         </section>
 
-        <section id="dimensiones" class="mb-12 scroll-mt-20">
-            <h2 class="text-3xl font-bold text-center text-blue-600 mb-10 section-title">Dimensiones de la Vida para la Reflexión</h2>
+        <section id="dimensiones" class="mb-12 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">Dimensiones de la Vida para la Reflexión</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <div class="dimension-card bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-blue-500 mb-3">1. Dimensión Espiritual</h3>
+                <div class="dimension-card espiritual">
+                    <h3 class="text-2xl font-semibold mb-3">1. Dimensión Espiritual</h3>
                     <p class="text-sm text-gray-600 mb-4 italic">"Se refiere a más allá de lo material y lo visible. Es la conexión con algo más grande que nosotros mismos, la búsqueda de un propósito y significado en la vida."</p>
                     <h4 class="font-semibold mb-2 text-gray-700">Preguntas para la reflexión:</h4>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1 question-list">
+                    <ul class="list-disc list-inside space-y-1 question-list">
                         <li>¿Te relacionas confiadamente con Dios?</li>
                         <li>¿Es suficiente tu oración personal?</li>
                         <li>¿Qué lugar le das a la Palabra de Dios en tu vida?</li>
@@ -88,11 +165,11 @@
                     </ul>
                 </div>
 
-                <div class="dimension-card bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-green-500 mb-3">2. Dimensión Emocional</h3>
+                <div class="dimension-card emocional">
+                    <h3 class="text-2xl font-semibold mb-3">2. Dimensión Emocional</h3>
                     <p class="text-sm text-gray-600 mb-4 italic">"Capacidad de experimentar, comprender, regular y expresar las emociones, así como su impacto en la vida cotidiana y en las relaciones interpersonales."</p>
                     <h4 class="font-semibold mb-2 text-gray-700">Preguntas para la reflexión:</h4>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1 question-list">
+                    <ul class="list-disc list-inside space-y-1 question-list">
                         <li>¿Expreso mis sentimientos adecuadamente?</li>
                         <li>¿Tengo control de mis emociones o ellas me dominan?</li>
                         <li>¿En qué tengo que enfocarme para mejorar mis emociones con mi familia, mi comunidad, mis amigos?</li>
@@ -100,11 +177,11 @@
                     </ul>
                 </div>
 
-                <div class="dimension-card bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-yellow-500 mb-3">3. Dimensión Familiar</h3>
+                <div class="dimension-card familiar">
+                    <h3 class="text-2xl font-semibold mb-3">3. Dimensión Familiar</h3>
                     <p class="text-sm text-gray-600 mb-4 italic">"Se refiere a la importancia y el impacto que la familia tiene en la vida de una persona y en la sociedad en general."</p>
                     <h4 class="font-semibold mb-2 text-gray-700">Preguntas para la reflexión:</h4>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1 question-list">
+                    <ul class="list-disc list-inside space-y-1 question-list">
                         <li>¿Le dedico el tiempo necesario a mi familia?</li>
                         <li>¿Los escucho, comprendo y atiendo?</li>
                         <li>¿Busco mejorar siempre la comunicación con mi familia o prefiero evitarla?</li>
@@ -113,11 +190,11 @@
                     </ul>
                 </div>
 
-                <div class="dimension-card bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-purple-500 mb-3">4. Dimensión Social</h3>
+                <div class="dimension-card social">
+                    <h3 class="text-2xl font-semibold mb-3">4. Dimensión Social</h3>
                     <p class="text-sm text-gray-600 mb-4 italic">"Se refiere a las interacciones y relaciones entre individuos dentro de una sociedad, comunidad o grupo."</p>
                     <h4 class="font-semibold mb-2 text-gray-700">Preguntas para la reflexión:</h4>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1 question-list">
+                    <ul class="list-disc list-inside space-y-1 question-list">
                         <li>¿Me siento parte de mi comunidad más cercana?</li>
                         <li>¿Propicio relaciones de ayuda entre mis vecinos?</li>
                         <li>¿Soy agente de esperanza en mi comunidad?</li>
@@ -125,11 +202,11 @@
                     </ul>
                 </div>
 
-                <div class="dimension-card bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-red-500 mb-3">5. Dimensión Parroquial</h3>
+                <div class="dimension-card parroquial">
+                    <h3 class="text-2xl font-semibold mb-3">5. Dimensión Parroquial</h3>
                     <p class="text-sm text-gray-600 mb-4 italic">"La comprensión de la parroquia como una comunidad de fe, un espacio de encuentro con Dios, y una comunidad que se involucra en la vida y el servicio a los demás."</p>
                     <h4 class="font-semibold mb-2 text-gray-700">Preguntas para la reflexión:</h4>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1 question-list">
+                    <ul class="list-disc list-inside space-y-1 question-list">
                         <li>Mi colaboración en la Parroquia ¿Es un ejemplo fraterno de convivencia?</li>
                         <li>¿Soy un agente de la Esperanza y la hermandad?</li>
                         <li>¿Colaboro para que sea una Iglesia de "puertas abiertas", como nos pidió el Papa Francisco?</li>
@@ -137,11 +214,11 @@
                     </ul>
                 </div>
 
-                <div class="dimension-card bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-indigo-500 mb-3">6. Dimensión Intelectual</h3>
+                <div class="dimension-card intelectual">
+                    <h3 class="text-2xl font-semibold mb-3">6. Dimensión Intelectual</h3>
                     <p class="text-sm text-gray-600 mb-4 italic">"La capacidad de aprendizaje, la curiosidad, la comprensión y la creatividad."</p>
                     <h4 class="font-semibold mb-2 text-gray-700">Preguntas para la reflexión:</h4>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1 question-list">
+                    <ul class="list-disc list-inside space-y-1 question-list">
                         <li>¿Qué debo aprender para ser un mejor servidor?</li>
                         <li>¿Qué temas, conceptos o procedimientos debo conocer y aprender para apoyar mejor a mi ministerio?</li>
                         <li>¿Cómo podría educar mejor a quienes me han sido confiados?</li>
@@ -149,20 +226,20 @@
                     </ul>
                 </div>
 
-                <div class="dimension-card bg-white p-6 rounded-lg shadow-lg md:col-span-1 lg:col-span-1"> <h3 class="text-2xl font-semibold text-teal-500 mb-3">7. Dimensión Física</h3>
+                <div class="dimension-card fisica md:col-span-1 lg:col-span-1"> <h3 class="text-2xl font-semibold mb-3">7. Dimensión Física</h3>
                     <p class="text-sm text-gray-600 mb-4 italic">"El cuidado del cuerpo humano, su salud física y mental."</p>
                     <h4 class="font-semibold mb-2 text-gray-700">Preguntas para la reflexión:</h4>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1 question-list">
+                    <ul class="list-disc list-inside space-y-1 question-list">
                         <li>¿Reconozco a mi cuerpo como un templo del Espíritu Santo?</li>
                         <li>¿Cuido mi cuerpo para que mi energía y disposición para servir a mi familia y a mi comunidad sea siempre óptima?</li>
                         <li>¿Decido siempre la mejor opción?</li>
                     </ul>
                 </div>
 
-                <div class="dimension-card bg-white p-6 rounded-lg shadow-lg md:col-span-2 lg:col-span-2"> <h3 class="text-2xl font-semibold text-orange-500 mb-3">8. Dimensión Material</h3>
+                <div class="dimension-card material md:col-span-2 lg:col-span-2"> <h3 class="text-2xl font-semibold mb-3">8. Dimensión Material</h3>
                     <p class="text-sm text-gray-600 mb-4 italic">"Consideración de aspectos económicos en todas las demás dimensiones."</p>
                     <h4 class="font-semibold mb-2 text-gray-700">Preguntas para la reflexión:</h4>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1 question-list">
+                    <ul class="list-disc list-inside space-y-1 question-list">
                         <li>¿Llevo algún tipo de control de mis gastos e ingresos?</li>
                         <li>¿Considero los "costos indirectos" de las actividades que realizo?</li>
                         <li>¿Tengo alguna meta de ahorro para los próximos años?</li>
@@ -171,40 +248,137 @@
             </div>
         </section>
 
-        <section id="conclusion" class="mb-12 scroll-mt-20">
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-                <h2 class="text-3xl font-bold text-blue-600 mb-6 section-title">Conclusión y Próximos Pasos</h2>
-                <p class="text-lg mb-4">La planificación en la vida es de suma importancia, aunque no todas las culturas estén acostumbradas a un control estricto. Tener un plan de vida con metas concretas y una idea clara de cómo lograrlas aumenta la energía personal y reduce el gasto en otras cosas.</p>
+        <section id="conclusion" class="mb-12 scroll-mt-24 fade-in-section">
+            <div class="content-card">
+                <h2 class="section-title-style">Conclusión y Próximos Pasos</h2>
+                <p class="text-lg mb-4 text-gray-700">La planificación en la vida es de suma importancia, aunque no todas las culturas estén acostumbradas a un control estricto. Tener un plan de vida con metas concretas y una idea clara de cómo lograrlas aumenta la energía personal y reduce el gasto en otras cosas.</p>
                 <p class="text-lg font-semibold mb-4 text-gray-700">Tarea para la semana:</p>
-                <p class="text-lg mb-4">Revisar los objetivos y todo lo trabajado hasta ahora en la hoja proporcionada. Esto nos preparará para la próxima y última sesión del proyecto de vida, que culminará la formación como ministros instituidos para un servicio más eficiente y pleno a sus comunidades.</p>
+                <p class="text-lg mb-4 text-gray-700">Revisar los objetivos y todo lo trabajado hasta ahora en la hoja proporcionada. Esto nos preparará para la próxima y última sesión del proyecto de vida, que culminará la formación como ministros instituidos para un servicio más eficiente y pleno a sus comunidades.</p>
                  <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 text-green-700 rounded-md">
                     <p class="font-semibold">¡Prepárate para la sesión final!</p>
                     <p>Tu compromiso con este proceso es clave para un servicio fructífero.</p>
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
-    <footer class="bg-gray-800 text-white text-center p-6">
-        <p>&copy; 2024 Proyecto Plan de Vida. Todos los derechos reservados.</p>
-        <p class="text-sm text-gray-400 mt-1">Un recurso para el desarrollo y discernimiento personal.</p>
+    <footer class="footer-bg py-12 text-center fade-in-section"> <div class="container mx-auto px-6">
+            <p class="text-lg mb-2">Plan de Vida: Un Viaje de Transformación</p>
+            <p>&copy; <span id="currentYear"></span> Plan de Vida. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2 opacity-70">Inspirado en las sesiones de desarrollo y discernimiento.</p>
+        </div>
     </footer>
 
     <script>
-        // Script para el menú móvil
-        const menuButton = document.getElementById('mobile-menu-button');
+        // --- Navbar Script ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const desktopMenuLinksContainer = document.getElementById('desktop-menu-links');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
 
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        const pageLinksConfig = {
+            'index.html': [ /* ... */ ],
+            // ... (todas las sesiones anteriores)
+            'sesion16.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#introduccion', text: 'Introducción' },
+                { href: '#dimensiones', text: 'Dimensiones' },
+                { href: '#conclusion', text: 'Conclusión' }
+            ]
+        };
 
-        // Cerrar menú móvil al hacer clic en un enlace
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            return path.split("/").pop();
+        }
+
+        function populateNavLinks() {
+            const currentPage = getCurrentPageName();
+            const links = pageLinksConfig[currentPage] || [];
+
+            if (desktopMenuLinksContainer) desktopMenuLinksContainer.innerHTML = '';
+            if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                if (desktopMenuLinksContainer) {
+                    const aDesktop = document.createElement('a');
+                    aDesktop.href = link.href;
+                    aDesktop.textContent = link.text;
+                    aDesktop.className = 'nav-link-desktop text-blue-100 hover:bg-blue-700 hover:text-white'; // Azul Eléctrico theme
+                    desktopMenuLinksContainer.appendChild(aDesktop);
+                }
+                if (mobileMenuLinksContainer) {
+                    const aMobile = document.createElement('a');
+                    aMobile.href = link.href;
+                    aMobile.textContent = link.text;
+                    aMobile.className = 'nav-link-mobile text-blue-100 hover:bg-blue-700 hover:text-white'; // Azul Eléctrico theme
+                    mobileMenuLinksContainer.appendChild(aMobile);
+                }
             });
+
+            const allNavLinks = document.querySelectorAll('.nav-link-desktop, .nav-link-mobile');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('nav').offsetHeight;
+                        const scrollMarginTop = parseFloat(getComputedStyle(targetElement).scrollMarginTop) || 0; 
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - scrollMarginTop;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                    if (mobileMenu && link.classList.contains('nav-link-mobile') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if(mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        if(mobileMenuButton) mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                    }
+                });
+            });
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu) {
+                    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                }
+            });
+        }
+        
+        // El script original para el menú móvil de esta página se ha integrado arriba.
+        // Si tienes un script de "Cerrar menú móvil al hacer clic en un enlace" separado,
+        // ya está cubierto por el `populateNavLinks`.
+
+        document.addEventListener('DOMContentLoaded', populateNavLinks);
+
+        // --- Script para el año actual en el footer ---
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+        
+        // --- Script para animación de aparición de secciones al hacer scroll ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.05 
+        };
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    obs.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
         });
     </script>
 
