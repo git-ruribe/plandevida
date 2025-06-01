@@ -3,120 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taller: Construyendo el Propósito de Vida - Dr. José Luis Montes</title>
+    <title>Sesión 4: Taller Construyendo el Propósito de Vida - Plan de Vida</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            @apply bg-sky-50 text-slate-800; /* Fondo base Azul Medio claro */
         }
-        .hero-bg {
-            background-color: #F0F9FF; /* Light blue background */
+        .hero-bg-sesion04 {
+            background-image: linear-gradient(to right, rgba(14, 165, 233, 0.8), rgba(2, 132, 199, 0.7)), url('https://placehold.co/1200x600/0EA5E9/FFFFFF?text=Construyendo+Propósito'); /* Azul Medio theme */
+            background-size: cover;
+            background-position: center;
         }
-        .section-title {
-            font-size: 1.875rem; /* 30px */
-            font-weight: 700;
-            color: #1E3A8A; /* Dark Blue */
-            margin-bottom: 1.5rem; /* 24px */
+        .page-section-title {
+            @apply text-3xl font-bold text-center mb-10 text-sky-700; /* Azul Medio theme */
+        }
+        .subsection-title {
+            @apply text-2xl font-semibold mb-4 text-sky-600; /* Azul Medio theme */
         }
         .card {
-            background-color: white;
-            border-radius: 0.75rem; /* 12px */
-            padding: 1.5rem; /* 24px */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            margin-bottom: 1.5rem; /* 24px */
+            @apply bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-sky-500; /* Azul Medio theme */
         }
-        .list-disc li {
-            margin-bottom: 0.5rem; /* 8px */
+        .list-disc {
+            @apply list-disc list-inside space-y-2 text-slate-700;
         }
         .highlight {
-            color: #1D4ED8; /* Medium Blue */
-            font-weight: 600;
+            @apply text-sky-600 font-semibold; /* Azul Medio theme */
         }
-        .quote {
-            border-left: 4px solid #1D4ED8; /* Medium Blue */
-            padding-left: 1rem; /* 16px */
-            font-style: italic;
-            color: #4B5563; /* Gray-700 */
-            margin-top: 1rem;
-            margin-bottom: 1rem;
+        .quote { /* Estilo de cita, como en sesión 04 original */
+            @apply border-l-4 border-sky-500 p-4 italic text-slate-700 my-4 bg-sky-100 rounded-md shadow-sm;
+        }
+        .nav-link-desktop, .nav-link-mobile {
+             @apply px-3 py-2 rounded-md text-sm font-medium transition-colors;
+        }
+        .nav-link-desktop { /* Azul Medio theme */
+            @apply text-sky-100 hover:bg-sky-700 hover:text-white;
+        }
+        .nav-link-mobile { /* Azul Medio theme */
+            @apply block text-sky-100 hover:bg-sky-700 hover:text-white text-base;
+        }
+        .footer-bg {
+            @apply bg-slate-900 text-slate-300;
+        }
+         /* Animación suave para la aparición de secciones */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-    <header class="hero-bg py-12 sm:py-16">
+    <nav class="bg-sky-600 shadow-md fixed w-full z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 text-white font-bold text-xl hover:opacity-80 transition-opacity">
+                        Plan de Vida
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div id="desktop-menu-links" class="ml-10 flex items-baseline space-x-4">
+                        </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-sky-600 inline-flex items-center justify-center p-2 rounded-md text-sky-200 hover:text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div id="mobile-menu-links" class="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                </div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero-bg-sesion04 text-white pt-32 pb-20 md:pt-40 md:pb-28 fade-in-section">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl sm:text-5xl font-bold text-blue-700 mb-4">Taller: Construyendo el Propósito de Vida</h1>
-            <p class="text-xl text-blue-600">Segunda Sesión con el Dr. José Luis Montes</p>
+            <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Sesión 4: Taller Construyendo el Propósito de Vida</h1>
+            <p class="text-xl text-sky-100">Segunda Sesión con el Dr. José Luis Montes</p>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-8">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 
-        <section id="introduccion" class="mb-12">
-            <h2 class="section-title">I. Introducción e Importancia de la Tarea</h2>
+        <section id="introduccion" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">I. Introducción e Importancia de la Tarea</h2>
             <div class="card">
                 <p class="mb-4">El Dr. Montes da una cálida bienvenida, esperando que los participantes hayan tenido una semana productiva y un gran día.</p>
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">Enfoque de la Sesión:</h3>
-                <p class="mb-4">Esta es la segunda sesión sobre el propósito, enfatizando que los participantes ya deberían haber comenzado a trabajar en su declaración de propósito desde la semana anterior.</p>
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">Énfasis en la Tarea:</h3>
-                <p class="mb-4">El Dr. Montes subraya la <span class="highlight">importancia crítica</span> de completar las tareas asignadas. Reconoce que algunos podrían encontrarlo difícil o tener problemas con la gestión del tiempo, pero asegura que es normal y que el esfuerzo de <span class="highlight">"hacer el intento"</span> es lo que realmente importa.</p>
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">Propósito de la Tarea:</h3>
-                <p>La tarea está diseñada para fortalecer el aprendizaje y profundizar la comprensión. Advierte que descuidarla llevará a quedarse atrás y perderse los pasos fundamentales para las sesiones posteriores, que se construirán sobre el trabajo completado. Las tareas deben ser una experiencia de aprendizaje <span class="highlight">positiva y propositiva</span>, no una carga.</p>
+                <h3 class="subsection-title">Enfoque de la Sesión:</h3>
+                <p class="mb-4 text-slate-700">Esta es la segunda sesión sobre el propósito, enfatizando que los participantes ya deberían haber comenzado a trabajar en su declaración de propósito desde la semana anterior.</p>
+                <h3 class="subsection-title">Énfasis en la Tarea:</h3>
+                <p class="mb-4 text-slate-700">El Dr. Montes subraya la <span class="highlight">importancia crítica</span> de completar las tareas asignadas. Reconoce que algunos podrían encontrarlo difícil o tener problemas con la gestión del tiempo, pero asegura que es normal y que el esfuerzo de <span class="highlight">"hacer el intento"</span> es lo que realmente importa.</p>
+                <h3 class="subsection-title">Propósito de la Tarea:</h3>
+                <p class="text-slate-700">La tarea está diseñada para fortalecer el aprendizaje y profundizar la comprensión. Advierte que descuidarla llevará a quedarse atrás y perderse los pasos fundamentales para las sesiones posteriores, que se construirán sobre el trabajo completado. Las tareas deben ser una experiencia de aprendizaje <span class="highlight">positiva y propositiva</span>, no una carga.</p>
             </div>
         </section>
 
-        <section id="entendiendo-proposito" class="mb-12">
-            <h2 class="section-title">II. Entendiendo el Propósito</h2>
+        <section id="entendiendo-proposito" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">II. Entendiendo el Propósito</h2>
             <div class="card">
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">Definición:</h3>
-                <p class="mb-4">Un propósito de vida se define como <span class="highlight">"una visión general de tu vida basada en las cosas que son más significativas para ti."</span> Sirve como un objetivo central o un conjunto de objetivos que influyen en varios aspectos de la vida:</p>
-                <ul class="list-disc pl-6 mb-4 text-gray-700">
+                <h3 class="subsection-title">Definición:</h3>
+                <p class="mb-4 text-slate-700">Un propósito de vida se define como <span class="highlight">"una visión general de tu vida basada en las cosas que son más significativas para ti."</span> Sirve como un objetivo central o un conjunto de objetivos que influyen en varios aspectos de la vida:</p>
+                <ul class="list-disc pl-6 mb-4 text-slate-700">
                     <li>Orienta la toma de decisiones: Ayuda a guiar las elecciones hacia lo que realmente importa.</li>
                     <li>Proporciona dirección: Da un camino claro y evita la deriva sin rumbo (ilustrado con la analogía de la hoja de Forrest Gump).</li>
                     <li>Crea un sentido de significado: Proporciona una significación más profunda a las acciones y a la vida misma.</li>
                     <li>Influye en la conducta: Moldea el comportamiento en alineación con las creencias y metas fundamentales.</li>
                     <li>Determina cómo priorizas tu tiempo: Ayuda a asignar tiempo a actividades que apoyan tu propósito último.</li>
                 </ul>
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">Significado:</h3>
-                <p>El Dr. Montes destaca que investigaciones recientes demuestran los beneficios tangibles de tener un fuerte sentido de propósito:</p>
-                <ul class="list-disc pl-6 text-gray-700">
+                <h3 class="subsection-title">Significado:</h3>
+                <p class="text-slate-700">El Dr. Montes destaca que investigaciones recientes demuestran los beneficios tangibles de tener un fuerte sentido de propósito:</p>
+                <ul class="list-disc pl-6 text-slate-700">
                     <li>Conduce a un bienestar social positivo.</li>
                     <li>Resulta en niveles más bajos de soledad.</li>
                     <li>Puede reducir comportamientos impulsivos.</li>
                     <li>Potencialmente contribuye a una vida más larga.</li>
                 </ul>
-                <p class="mt-4">Enfatiza que esto no es solo teoría, sino que está respaldado por evidencia, y tener un propósito claro transforma la perspectiva sobre las tareas y los desafíos.</p>
+                <p class="mt-4 text-slate-700">Enfatiza que esto no es solo teoría, sino que está respaldado por evidencia, y tener un propósito claro transforma la perspectiva sobre las tareas y los desafíos.</p>
             </div>
         </section>
 
-        <section id="modelo-proposito" class="mb-12">
-            <h2 class="section-title">III. El "Modelo: Propósito de Vida" (Diagrama de Venn)</h2>
+        <section id="modelo-proposito" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">III. El "Modelo: Propósito de Vida" (Diagrama de Venn)</h2>
             <div class="card">
-                <p class="mb-4">El Dr. Montes introduce un modelo representado por un diagrama de Venn con tres círculos superpuestos, cuya intersección revela el propósito de uno. Explica cada componente:</p>
+                <p class="mb-4 text-slate-700">El Dr. Montes introduce un modelo representado por un diagrama de Venn con tres círculos superpuestos, cuya intersección revela el propósito de uno. Explica cada componente:</p>
+                <div class="text-center my-6">
+                     <img src="https://placehold.co/500x350/E0F2FE/075985?text=Diagrama+Venn+Propósito" alt="Diagrama de Venn del Propósito de Vida" class="mx-auto rounded-lg shadow-md" onerror="this.src='https://placehold.co/500x350/cccccc/333333?text=Error+al+cargar+imagen'">
+                </div>
                 <div class="grid md:grid-cols-3 gap-6">
-                    <div class="p-4 border border-blue-200 rounded-lg bg-blue-50">
-                        <h4 class="text-lg font-semibold text-blue-700 mb-2">1. "Me gusta hacer"</h4>
-                        <p class="text-sm text-gray-700">Actividades que disfrutas hacer, incluso si no posees talento natural o no eres particularmente hábil en ellas. El disfrute proviene del acto mismo, y estás motivado a mejorar porque te gusta hacerlo. (Ejemplos: cantar, bailar, hablar en público, leer temas particulares).</p>
+                    <div class="p-4 border border-sky-200 rounded-lg bg-sky-100">
+                        <h4 class="text-lg font-semibold text-sky-700 mb-2">1. "Me gusta hacer"</h4>
+                        <p class="text-sm text-slate-700">Actividades que disfrutas hacer, incluso si no posees talento natural o no eres particularmente hábil en ellas. El disfrute proviene del acto mismo, y estás motivado a mejorar porque te gusta hacerlo. (Ejemplos: cantar, bailar, hablar en público, leer temas particulares).</p>
                     </div>
                     <div class="p-4 border border-green-200 rounded-lg bg-green-50">
                         <h4 class="text-lg font-semibold text-green-700 mb-2">2. "Lo hago bien (Talentos)"</h4>
-                        <p class="text-sm text-gray-700">Actividades en las que sobresales naturalmente debido a habilidades inherentes. Puede que no siempre te parezcan apasionantes o profundamente agradables, pero tienes facilidad para ellas. (Ejemplos: dirigir un grupo, cocinar con buen sazón, organizar, comunicar eficazmente, investigar, planificar, ser creativo, manejar el color en el diseño).</p>
+                        <p class="text-sm text-slate-700">Actividades en las que sobresales naturalmente debido a habilidades inherentes. Puede que no siempre te parezcan apasionantes o profundamente agradables, pero tienes facilidad para ellas. (Ejemplos: dirigir un grupo, cocinar con buen sazón, organizar, comunicar eficazmente, investigar, planificar, ser creativo, manejar el color en el diseño).</p>
                     </div>
                     <div class="p-4 border border-purple-200 rounded-lg bg-purple-50">
                         <h4 class="text-lg font-semibold text-purple-700 mb-2">3. "Me apasiona y da alegría"</h4>
-                        <p class="text-sm text-gray-700">Acciones que te hacen sentir verdaderamente realizado, te dan gran felicidad y podrías hacerlas durante períodos prolongados sin sentirte cansado. A menudo se sienten naturales y conducen a un estado de "flujo". (Ejemplos: aprender de un texto, crear un nuevo diseño, escuchar a otros, cocinar, orar, coleccionar cosas).</p>
+                        <p class="text-sm text-slate-700">Acciones que te hacen sentir verdaderamente realizado, te dan gran felicidad y podrías hacerlas durante períodos prolongados sin sentirte cansado. A menudo se sienten naturales y conducen a un estado de "flujo". (Ejemplos: aprender de un texto, crear un nuevo diseño, escuchar a otros, cocinar, orar, coleccionar cosas).</p>
                     </div>
                 </div>
-                <p class="mt-6 text-center text-gray-700 font-semibold">La intersección de estos tres círculos es donde se encuentra tu propósito de vida.</p>
+                <p class="mt-6 text-center text-slate-700 font-semibold">La intersección de estos tres círculos es donde se encuentra tu propósito de vida.</p>
             </div>
         </section>
 
-        <section id="ejemplos-proposito" class="mb-12">
-            <h2 class="section-title">IV. Ejemplos de Declaraciones de Propósito (Inspirados en la Vida Real)</h2>
+        <section id="ejemplos-proposito" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">IV. Ejemplos de Declaraciones de Propósito</h2>
             <div class="card">
-                <p class="mb-4">El Dr. Montes proporciona ejemplos de declaraciones de propósito, enfatizando que no son solo teóricas sino inspiradas en personas reales y sus experiencias:</p>
+                <p class="mb-4 text-slate-700">El Dr. Montes proporciona ejemplos de declaraciones de propósito, enfatizando que no son solo teóricas sino inspiradas en personas reales y sus experiencias:</p>
                 <ul class="space-y-3">
                     <li><p class="quote">"Ser una persona positiva para el cambio."</p></li>
                     <li><p class="quote">"Mejorar la alimentación y salud mundial" – <span class="text-sm text-gray-600">basado en una persona que fundó una empresa relacionada con la fruta.</span></p></li>
@@ -128,17 +177,17 @@
             </div>
         </section>
 
-        <section id="construyendo-proposito" class="mb-12">
-            <h2 class="section-title">V. Construyendo Tu Propósito (Pasos y Recordatorio)</h2>
+        <section id="construyendo-proposito" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">V. Construyendo Tu Propósito (Pasos y Recordatorio)</h2>
             <div class="card">
-                <ul class="list-disc pl-6 mb-6 text-gray-700">
+                <ul class="list-disc pl-6 mb-6 text-slate-700">
                     <li><span class="highlight">Descubrimiento, No Creación:</span> Todos ya tienen un propósito; la tarea es descubrirlo y articularlo.</li>
                     <li><span class="highlight">Unicidad:</span> Los propósitos son tan diversos como las personas. Aunque puedan compartir similitudes, <span class="highlight">"el tuyo es... tuyo,"</span> enfatizando la autenticidad y evitando la comparación.</li>
                     <li><span class="highlight">Fundamento Central:</span> El propósito se construye desde el corazón, moldeado por valores personales, experiencias e intereses genuinos.</li>
                 </ul>
 
-                <h3 class="text-xl font-semibold text-gray-700 mb-3">Los Pasos (Revisados con Detalle):</h3>
-                <ol class="list-decimal pl-6 space-y-3 text-gray-700">
+                <h3 class="subsection-title">Los Pasos (Revisados con Detalle):</h3>
+                <ol class="list-decimal list-inside pl-6 space-y-3 text-slate-700">
                     <li><span class="font-semibold">Reflexiona sobre la realización:</span> Piensa en lo que verdaderamente te hace sentir pleno y feliz.</li>
                     <li><span class="font-semibold">Deja ir los "debería":</span> Tu propósito es para ti, no dictado por expectativas externas.</li>
                     <li><span class="font-semibold">Valores:</span> Escribe tus 3 valores más importantes en la vida (ej., honestidad, oración, familia, aprendizaje, colaboración).</li>
@@ -148,8 +197,8 @@
                     <li><span class="font-semibold">Redacta tu declaración de propósito:</span> Observa los hilos comunes y las conexiones dentro de tus respuestas a los pasos anteriores. Intenta formular una oración concisa que encapsule tu propósito único.</li>
                 </ol>
 
-                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-3">Consejo Importante:</h3>
-                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                <h3 class="subsection-title mt-6">Consejo Importante:</h3>
+                <ul class="list-disc pl-6 space-y-2 text-slate-700">
                     <li>No lo pienses demasiado; solo deja que las respuestas fluyan.</li>
                     <li>No te preocupes si es difícil o si no puedes pensar en nada inmediatamente; es una experiencia común.</li>
                     <li>La sensación de incomodidad o ansiedad durante este proceso es natural mientras te sumerges en una autorreflexión más profunda.</li>
@@ -158,30 +207,154 @@
             </div>
         </section>
 
-        <section id="tarea-final" class="mb-12">
-            <h2 class="section-title">VI. Tarea Final y Ánimo</h2>
-            <div class="card">
-                <h3 class="text-xl font-semibold text-gray-700 mb-3">Tarea Final:</h3>
-                <ol class="list-decimal pl-6 space-y-2 mb-4 text-gray-700">
+        <section id="tarea-final" class="mb-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">VI. Tarea Final y Ánimo</h2>
+            <div class="card border-t-4 border-amber-500 bg-amber-50">
+                <h3 class="subsection-title text-amber-700">Tarea Final:</h3>
+                <ol class="list-decimal list-inside pl-6 space-y-2 mb-4 text-slate-700">
                     <li>Revisa tus intentos iniciales de declaración de propósito de la semana anterior.</li>
                     <li>Usando las ideas obtenidas de todos los ejercicios (valores, acciones agradables, talentos, pasiones), ajusta y refina tu declaración de propósito.</li>
                     <li>Escribe tu declaración de propósito final y ajustada en tu cuaderno.</li>
                     <li>Subráyala y luego reescríbela claramente en una hoja de papel nueva y en blanco.</li>
                 </ol>
-                <p class="mb-4 font-semibold text-blue-700">El Dr. Montes reitera: "No te compares con nadie; cada uno tiene su propio estilo."</p>
+                <p class="mb-4 font-semibold text-sky-700">El Dr. Montes reitera: "No te compares con nadie; cada uno tiene su propio estilo."</p>
                 
-                <h3 class="text-xl font-semibold text-gray-700 mb-3">Mensaje Final:</h3>
-                <p class="text-gray-700">Tu propósito es un viaje personal, algo que tu corazón anhela para caminar hacia Dios. Ningún propósito es demasiado pequeño o insignificante si se reflexiona genuinamente. Al permitir que el Espíritu Santo te guíe suavemente, puedes descubrir la voluntad de Dios para tu vida y cómo puedes contribuir al camino de salvación de la Iglesia.</p>
+                <h3 class="subsection-title text-amber-700 mt-6">Mensaje Final:</h3>
+                <p class="text-slate-700">Tu propósito es un viaje personal, algo que tu corazón anhela para caminar hacia Dios. Ningún propósito es demasiado pequeño o insignificante si se reflexiona genuinamente. Al permitir que el Espíritu Santo te guíe suavemente, puedes descubrir la voluntad de Dios para tu vida y cómo puedes contribuir al camino de salvación de la Iglesia.</p>
             </div>
         </section>
     </main>
 
-    <footer class="bg-blue-700 text-white py-8 text-center">
+    <footer class="footer-bg py-12 text-center fade-in-section">
         <div class="container mx-auto px-6">
-            <p>&copy; 2024 Taller: Construyendo el Propósito de Vida. Inspirado en las enseñanzas del Dr. José Luis Montes.</p>
-            <p class="mt-2 text-sm">Gracias por participar. ¡Que tengas una excelente semana!</p>
+            <p class="text-lg mb-2">Plan de Vida: Un Viaje de Transformación</p>
+            <p>&copy; <span id="currentYear"></span> Plan de Vida. Todos los derechos reservados.</p>
+            <p class="mt-2 text-sm opacity-70">Este sitio es una interpretación y resumen con fines educativos.</p>
         </div>
     </footer>
+
+    <script>
+        // --- Navbar Script ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const desktopMenuLinksContainer = document.getElementById('desktop-menu-links');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
+
+        const pageLinksConfig = {
+            'index.html': [ /* ... */ ],
+            'sesion01.html': [ /* ... */ ],
+            'sesion02.html': [ /* ... */ ],
+            'sesion03.html': [ /* ... */ ],
+            'sesion04.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#introduccion', text: 'Introducción'},
+                { href: '#entendiendo-proposito', text: 'Entendiendo Propósito'},
+                { href: '#modelo-proposito', text: 'Modelo'},
+                { href: '#construyendo-proposito', text: 'Construcción'},
+                { href: '#tarea-final', text: 'Tarea'}
+            ],
+            'sesion05.html': [ /* ... */ ],
+            'sesion06.html': [ /* ... */ ],
+            'sesion07.html': [ /* ... */ ],
+            'sesion08.html': [ /* ... */ ],
+            'sesion09.html': [ /* ... */ ],
+            'sesion10.html': [ /* ... */ ],
+            'sesion11.html': [ /* ... */ ],
+            'sesion12.html': [ /* ... */ ],
+            'sesion14.html': [ /* ... */ ],
+            'sesion15.html': [ /* ... */ ],
+            'sesion16.html': [ /* ... */ ]
+        };
+
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            return path.split("/").pop();
+        }
+
+        function populateNavLinks() {
+            const currentPage = getCurrentPageName();
+            const links = pageLinksConfig[currentPage] || [];
+
+            if (desktopMenuLinksContainer) desktopMenuLinksContainer.innerHTML = '';
+            if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                if (desktopMenuLinksContainer) {
+                    const aDesktop = document.createElement('a');
+                    aDesktop.href = link.href;
+                    aDesktop.textContent = link.text;
+                    aDesktop.className = 'nav-link-desktop text-sky-100 hover:bg-sky-700 hover:text-white'; // Azul Medio theme
+                    desktopMenuLinksContainer.appendChild(aDesktop);
+                }
+                if (mobileMenuLinksContainer) {
+                    const aMobile = document.createElement('a');
+                    aMobile.href = link.href;
+                    aMobile.textContent = link.text;
+                    aMobile.className = 'nav-link-mobile text-sky-100 hover:bg-sky-700 hover:text-white'; // Azul Medio theme
+                    mobileMenuLinksContainer.appendChild(aMobile);
+                }
+            });
+
+            const allNavLinks = document.querySelectorAll('.nav-link-desktop, .nav-link-mobile');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('nav').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                    if (mobileMenu && link.classList.contains('nav-link-mobile') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if(mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        if(mobileMenuButton) mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                    }
+                });
+            });
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu) {
+                    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', populateNavLinks);
+
+        // --- Script para el año actual en el footer ---
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+        
+        // --- Script para animación de aparición de secciones al hacer scroll ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 
 </body>
 </html>
