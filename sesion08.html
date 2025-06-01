@@ -3,31 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desarrollo y Discernimiento: Definiendo Horizontes 1</title>
+    <title>Sesión 8: Definiendo Horizontes 1 - Plan de Vida</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth; /* For smooth scrolling if we add a nav */
+            scroll-behavior: smooth;
+            @apply bg-cyan-50 text-slate-800; /* Fondo base Cian claro */
         }
-        .hero-gradient {
-            background: linear-gradient(135deg, #0ea5e9, #0284c7, #4f46e5); /* sky-500, sky-600, indigo-600 */
+        .hero-bg-sesion08 {
+            background-image: linear-gradient(to right, rgba(22, 163, 74, 0.7), rgba(6, 182, 212, 0.7)), url('https://placehold.co/1200x600/06B6D4/FFFFFF?text=Nuevos+Horizontes'); /* Cian theme */
+            background-size: cover;
+            background-position: center;
         }
-        .section-title { /* Not used directly, but good to have for future */
-            @apply text-3xl md:text-4xl font-bold text-center mb-10 md:mb-12 text-slate-800;
+        .page-section-title {
+            @apply text-3xl font-bold text-center mb-10 text-cyan-700; /* Cian theme */
         }
-        .subsection-title {
-            @apply text-2xl md:text-3xl font-bold text-sky-700 mb-6;
+        .subsection-title { /* Títulos dentro de las tarjetas */
+            @apply text-2xl font-bold text-cyan-600 mb-6; /* Cian theme */
         }
         .card {
-            @apply bg-white p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out border-t-4 border-sky-500;
+            @apply bg-white p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out border-t-4 border-cyan-500; /* Cian theme */
         }
         .list-disc li {
             @apply mb-3 text-slate-700;
         }
         .highlight {
-            @apply text-indigo-600 font-semibold;
+            @apply text-cyan-600 font-semibold; /* Cian theme */
         }
         .quote {
             @apply bg-amber-50 border-l-4 border-amber-400 p-4 rounded-md text-amber-800 italic my-6 shadow-sm text-sm md:text-base;
@@ -41,42 +44,94 @@
         .table-cell {
             @apply p-3 border-b border-slate-300 text-sm md:text-base text-slate-700;
         }
-        tbody tr:nth-child(odd) {
+        body tbody tr:nth-child(odd) { /* Asegurar que el selector del body no interfiera */
             background-color: #f8fafc; /* Tailwind slate-50 */
         }
-        .timestamp {
+        .timestamp { /* Mantenemos el estilo de timestamp del original */
             @apply text-xs text-slate-400 font-normal ml-2;
+        }
+        .nav-link-desktop, .nav-link-mobile {
+             @apply px-3 py-2 rounded-md text-sm font-medium transition-colors;
+        }
+        .nav-link-desktop { /* Cian theme */
+            @apply text-cyan-100 hover:bg-cyan-700 hover:text-white;
+        }
+        .nav-link-mobile { /* Cian theme */
+            @apply block text-cyan-100 hover:bg-cyan-700 hover:text-white text-base;
+        }
+        .footer-bg {
+            @apply bg-slate-900 text-slate-300;
+        }
+        /* Animación suave para la aparición de secciones */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 antialiased">
+<body class="antialiased">
 
-    <header class="hero-gradient py-16 md:py-20 px-4 text-white shadow-lg">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Desarrollo y Discernimiento: Definiendo Horizontes 1</h1>
-            <p class="text-xl md:text-2xl opacity-90 mb-2">Sesión 8: Inicia la construcción</p>
-            <p class="text-lg md:text-xl opacity-80">Por José Luis Montes</p>
-            <p class="mt-6 max-w-2xl mx-auto text-base md:text-lg opacity-90">
+    <nav class="bg-cyan-600 shadow-md fixed w-full z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 text-white font-bold text-xl hover:opacity-80 transition-opacity">
+                        Plan de Vida
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div id="desktop-menu-links" class="ml-10 flex items-baseline space-x-4">
+                        </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-cyan-600 inline-flex items-center justify-center p-2 rounded-md text-cyan-200 hover:text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div id="mobile-menu-links" class="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                </div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero-bg-sesion08 text-white pt-32 pb-20 md:pt-40 md:pb-28 fade-in-section">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Sesión 8: Definiendo Horizontes 1</h1>
+            <p class="text-xl md:text-2xl opacity-90 mb-2">Inicia la construcción de tu plan</p>
+            <p class="text-lg md:text-xl opacity-80 mb-6">Por José Luis Montes</p>
+            <p class="max-w-2xl mx-auto text-base md:text-lg opacity-90">
                 Esta sesión marca una nueva fase en el desarrollo personal, pasando de los conceptos fundamentales a la construcción de planes de vida tangibles.
             </p>
         </div>
     </header>
 
-    <main class="container mx-auto">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 
-        <section id="definiendo-horizontes" class="py-10 md:py-16 px-4 bg-white">
-            <div class="max-w-4xl mx-auto">
-                <div class="card">
-                    <h2 class="subsection-title">1. Definiendo Horizontes: La Analogía de la Construcción<span class="timestamp">(0:17)</span></h2>
-                    <p class="text-slate-700 leading-relaxed">José Luis Montes introduce "Definiendo Horizontes 1" como la parte central del programa. Utiliza la <span class="highlight">analogía de construir una estructura sobre planos arquitectónicos</span> para explicar que esta es la etapa donde "comienza la construcción" de nuestro proyecto de vida.</p>
-                </div>
+        <section id="definiendo-horizontes" class="py-10 md:py-12 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">1. Definiendo Horizontes: La Analogía de la Construcción</h2>
+            <div class="card max-w-4xl mx-auto">
+                 <h3 class="subsection-title">Comenzando la Obra<span class="timestamp">(0:17)</span></h3>
+                <p class="text-slate-700 leading-relaxed">José Luis Montes introduce "Definiendo Horizontes 1" como la parte central del programa. Utiliza la <span class="highlight">analogía de construir una estructura sobre planos arquitectónicos</span> para explicar que esta es la etapa donde "comienza la construcción" de nuestro proyecto de vida.</p>
             </div>
         </section>
 
-        <section id="cimientos" class="py-10 md:py-16 px-4 bg-sky-50">
-            <div class="max-w-4xl mx-auto">
-                <div class="card">
-                    <h2 class="subsection-title">2. Los Cimientos de Nuestro Proyecto<span class="timestamp">(1:10)</span></h2>
+        <section id="cimientos" class="py-10 md:py-12 bg-cyan-100 rounded-xl shadow-inner scroll-mt-24 fade-in-section">
+             <div class="container mx-auto px-6">
+                <h2 class="page-section-title">2. Los Cimientos de Nuestro Proyecto</h2>
+                <div class="card max-w-4xl mx-auto">
+                    <h3 class="subsection-title">Elementos Críticos<span class="timestamp">(1:10)</span></h3>
                     <p class="text-slate-700 leading-relaxed">Montes destaca tres elementos críticos que sirven como los "cimientos" para nuestro proyecto de vida:</p>
                     <ul class="list-disc pl-5 mt-4 mb-4 space-y-2">
                         <li><span class="highlight">Propósito de vida:</span> Un propósito claramente definido.</li>
@@ -88,34 +143,34 @@
             </div>
         </section>
 
-        <section id="disenar-objetivos" class="py-10 md:py-16 px-4 bg-white">
-            <div class="max-w-4xl mx-auto">
-                <div class="card">
-                    <h2 class="subsection-title">3. ¿Para Qué Tenemos que Diseñar Objetivos?<span class="timestamp">(2:18)</span></h2>
-                    <p class="text-slate-700 leading-relaxed">El ponente plantea una pregunta clave y la ilustra con dos poderosas analogías y un principio práctico:</p>
-                    <div class="mt-6 space-y-6">
-                        <div>
-                            <h3 class="text-xl font-semibold text-slate-700 mb-2">Cita de Pascal<span class="timestamp">(2:42)</span></h3>
-                            <p class="quote">"Cuando no se tiene un puerto a donde llegar, cualquier viento es favorable."</p>
-                            <p class="text-slate-700 leading-relaxed">Esto enfatiza que sin un destino claro, la vida puede volverse sin rumbo, incluso si surgen oportunidades.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-slate-700 mb-2">Alicia en el País de las Maravillas<span class="timestamp">(3:24)</span></h3>
-                            <p class="text-slate-700 leading-relaxed">Se relata el diálogo entre Alicia y el Gato de Cheshire. Alicia, perdida en una encrucijada, le dice al gato que no le importa mucho a dónde va. El gato responde: <span class="highlight">"Entonces no importa qué camino tomes."</span> Montes vincula esto con las personas que van a la deriva por la vida sin objetivos específicos, lo que puede llevar al estrés y a la pérdida de oportunidades.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-slate-700 mb-2">Principio del Ingeniero<span class="timestamp">(5:15)</span></h3>
-                            <p class="text-slate-700 leading-relaxed">Comparte una anécdota personal sobre un jefe ingeniero que siempre preguntaba si una acción propuesta se alineaba con el objetivo. Si los acercaba, lo hacían (marca de verificación); si los alejaba, lo rechazaban (X roja). Este simple principio, aunque aparentemente obvio, es poderoso para mantener el enfoque. Da el ejemplo de una dieta: si tu objetivo está verdaderamente internalizado, elegirás fácilmente alimentos saludables; si no, harás excepciones.</p>
-                        </div>
+        <section id="disenar-objetivos" class="py-10 md:py-12 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">3. ¿Para Qué Tenemos que Diseñar Objetivos?</h2>
+            <div class="card max-w-4xl mx-auto">
+                <h3 class="subsection-title">La Pregunta Clave<span class="timestamp">(2:18)</span></h3>
+                <p class="text-slate-700 leading-relaxed">El ponente plantea una pregunta clave y la ilustra con dos poderosas analogías y un principio práctico:</p>
+                <div class="mt-6 space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold text-slate-700 mb-2">Cita de Pascal<span class="timestamp">(2:42)</span></h4>
+                        <p class="quote">"Cuando no se tiene un puerto a donde llegar, cualquier viento es favorable."</p>
+                        <p class="text-slate-700 leading-relaxed">Esto enfatiza que sin un destino claro, la vida puede volverse sin rumbo, incluso si surgen oportunidades.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-slate-700 mb-2">Alicia en el País de las Maravillas<span class="timestamp">(3:24)</span></h4>
+                        <p class="text-slate-700 leading-relaxed">Se relata el diálogo entre Alicia y el Gato de Cheshire. Alicia, perdida en una encrucijada, le dice al gato que no le importa mucho a dónde va. El gato responde: <span class="highlight">"Entonces no importa qué camino tomes."</span> Montes vincula esto con las personas que van a la deriva por la vida sin objetivos específicos, lo que puede llevar al estrés y a la pérdida de oportunidades.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-slate-700 mb-2">Principio del Ingeniero<span class="timestamp">(5:15)</span></h4>
+                        <p class="text-slate-700 leading-relaxed">Comparte una anécdota personal sobre un jefe ingeniero que siempre preguntaba si una acción propuesta se alineaba con el objetivo. Si los acercaba, lo hacían (marca de verificación); si los alejaba, lo rechazaban (X roja). Este simple principio, aunque aparentemente obvio, es poderoso para mantener el enfoque. Da el ejemplo de una dieta: si tu objetivo está verdaderamente internalizado, elegirás fácilmente alimentos saludables; si no, harás excepciones.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="construccion-objetivos" class="py-10 md:py-16 px-4 bg-sky-50">
-            <div class="max-w-4xl mx-auto">
-                <div class="card">
-                    <h2 class="subsection-title">4. Construcción de Nuestros Objetivos<span class="timestamp">(7:38)</span></h2>
+        <section id="construccion-objetivos" class="py-10 md:py-12 bg-cyan-100 rounded-xl shadow-inner scroll-mt-24 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="page-section-title">4. Construcción de Nuestros Objetivos</h2>
+                <div class="card max-w-4xl mx-auto">
+                    <h3 class="subsection-title">Eficacia en la Construcción<span class="timestamp">(7:38)</span></h3>
                     <p class="text-slate-700 leading-relaxed">Para construir nuestros objetivos eficazmente, Montes enfatiza que:</p>
                     <ul class="list-disc pl-5 mt-4 space-y-2">
                         <li>Los objetivos nos ayudan a <span class="highlight">clarificar lo que queremos lograr.</span></li>
@@ -126,43 +181,43 @@
             </div>
         </section>
 
-        <section id="rueda-vida" class="py-10 md:py-16 px-4 bg-white">
-            <div class="max-w-4xl mx-auto">
-                <div class="card">
-                    <h2 class="subsection-title">5. La Rueda de la Vida<span class="timestamp">(9:35)</span></h2>
-                    <p class="text-slate-700 leading-relaxed">Montes introduce "La Rueda de la Vida", una herramienta común de coaching, como un marco para comprender las dimensiones de la vida:</p>
-                    <div class="grid md:grid-cols-2 gap-x-8 gap-y-6 mt-6">
-                        <div>
-                            <h3 class="text-xl font-semibold text-slate-700 mb-2">Dimensiones</h3>
-                            <p class="text-slate-700 leading-relaxed">Familia, Amigos, Espiritual, Sociedad, Economía, Salud, Pareja, Intelectual, Profesional, Servicio, etc.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-slate-700 mb-2">Equilibrio</h3>
-                            <p class="text-slate-700 leading-relaxed">El concepto central es que cada dimensión debe estar equilibrada para que la "rueda gire" suavemente, llevando a una vida <span class="highlight">"plena y fructífera"</span>.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-slate-700 mb-2">Equilibrio Dinámico<span class="timestamp">(11:50)</span></h3>
-                            <p class="text-slate-700 leading-relaxed">Reconoce que la vida no es estática. Es común que ciertas dimensiones demanden más tiempo en diferentes etapas. La clave es que estos cambios sean <span class="highlight">momentáneos y parte de un equilibrio mayor</span>, no un desequilibrio permanente.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-slate-700 mb-2">El "Tope"<span class="timestamp">(14:11)</span></h3>
-                            <p class="text-slate-700 leading-relaxed">Si un área crece excesivamente de manera constante mientras otras se descuidan, la <span class="highlight">"rueda deja de girar"</span>, creando un "tope". Esto lleva a más preocupaciones y a una pérdida de dirección, afectando el bienestar general.</p>
-                        </div>
+        <section id="rueda-vida" class="py-10 md:py-12 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">5. La Rueda de la Vida</h2>
+            <div class="card max-w-4xl mx-auto">
+                 <h3 class="subsection-title">Un Marco para el Equilibrio<span class="timestamp">(9:35)</span></h3>
+                <p class="text-slate-700 leading-relaxed">Montes introduce "La Rueda de la Vida", una herramienta común de coaching, como un marco para comprender las dimensiones de la vida:</p>
+                <div class="grid md:grid-cols-2 gap-x-8 gap-y-6 mt-6">
+                    <div>
+                        <h4 class="text-xl font-semibold text-slate-700 mb-2">Dimensiones</h4>
+                        <p class="text-slate-700 leading-relaxed">Familia, Amigos, Espiritual, Sociedad, Economía, Salud, Pareja, Intelectual, Profesional, Servicio, etc.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-slate-700 mb-2">Equilibrio</h4>
+                        <p class="text-slate-700 leading-relaxed">El concepto central es que cada dimensión debe estar equilibrada para que la "rueda gire" suavemente, llevando a una vida <span class="highlight">"plena y fructífera"</span>.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-slate-700 mb-2">Equilibrio Dinámico<span class="timestamp">(11:50)</span></h4>
+                        <p class="text-slate-700 leading-relaxed">Reconoce que la vida no es estática. Es común que ciertas dimensiones demanden más tiempo en diferentes etapas. La clave es que estos cambios sean <span class="highlight">momentáneos y parte de un equilibrio mayor</span>, no un desequilibrio permanente.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-slate-700 mb-2">El "Tope"<span class="timestamp">(14:11)</span></h4>
+                        <p class="text-slate-700 leading-relaxed">Si un área crece excesivamente de manera constante mientras otras se descuidan, la <span class="highlight">"rueda deja de girar"</span>, creando un "tope". Esto lleva a más preocupaciones y a una pérdida de dirección, afectando el bienestar general.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="ejercicio-reflexion" class="py-10 md:py-16 px-4 bg-sky-50">
-            <div class="max-w-4xl mx-auto">
-                <div class="card">
-                    <h2 class="subsection-title">6. Ejercicio de Reflexión Personal<span class="timestamp">(15:18)</span></h2>
+        <section id="ejercicio-reflexion" class="py-10 md:py-12 bg-cyan-100 rounded-xl shadow-inner scroll-mt-24 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="page-section-title">6. Ejercicio de Reflexión Personal</h2>
+                <div class="card max-w-4xl mx-auto">
+                    <h3 class="subsection-title">Analizando tu Dedicación<span class="timestamp">(15:18)</span></h3>
                     <p class="text-slate-700 leading-relaxed">Para ayudar a los participantes a analizar sus propias vidas, Montes plantea una serie de preguntas:</p>
                     <p class="mt-4 mb-4 text-slate-700 leading-relaxed"><span class="highlight">Pregunta 1:</span> "¿Puedes determinar cuántas horas le dedicas a cada una de las dimensiones en una semana promedio?"</p>
                     <p class="text-slate-700 leading-relaxed">Proporciona una tabla con las dimensiones y una columna para "Horas por semana". Clarifica lo que cada dimensión implica.</p>
                     
                     <div class="table-container">
-                        <h3 class="text-xl font-semibold text-slate-700 mb-4 text-center">Tabla de Dedicación Semanal (Ejemplo)</h3>
+                        <h4 class="text-xl font-semibold text-slate-700 mb-4 text-center">Tabla de Dedicación Semanal (Ejemplo)</h4>
                         <div class="overflow-x-auto rounded-lg shadow-md">
                             <table class="min-w-full bg-white">
                                 <thead>
@@ -188,25 +243,25 @@
             </div>
         </section>
 
-        <section id="analisis-futuro" class="py-10 md:py-16 px-4 bg-white">
-            <div class="max-w-4xl mx-auto">
-                <div class="card">
-                    <h2 class="subsection-title">7. Análisis y Pasos Futuros<span class="timestamp">(24:55)</span></h2>
-                    <p class="text-slate-700 leading-relaxed">Después del ejercicio, Montes anima a los participantes a analizar sus respuestas con tres preguntas clave:</p>
-                    <ul class="list-disc pl-5 mt-4 space-y-2">
-                        <li>"¿A cuál actividad le dedicas <span class="highlight">más tiempo</span>?"</li>
-                        <li>"¿Hay alguna actividad a la que deberías dedicarle <span class="highlight">más tiempo</span> y que ahora no lo haces?"</li>
-                        <li>"¿Hay alguna actividad que debería tener <span class="highlight">menos tiempo</span> de atención?"</li>
-                    </ul>
-                    <p class="mt-4 text-slate-700 leading-relaxed">Explica que este análisis es un <span class="highlight">"mini-diagnóstico"</span> para entender su equilibrio actual.</p>
-                </div>
+        <section id="analisis-futuro" class="py-10 md:py-12 scroll-mt-24 fade-in-section">
+             <h2 class="page-section-title">7. Análisis y Pasos Futuros</h2>
+            <div class="card max-w-4xl mx-auto">
+                <h3 class="subsection-title">Mini-Diagnóstico<span class="timestamp">(24:55)</span></h3>
+                <p class="text-slate-700 leading-relaxed">Después del ejercicio, Montes anima a los participantes a analizar sus respuestas con tres preguntas clave:</p>
+                <ul class="list-disc pl-5 mt-4 space-y-2">
+                    <li>"¿A cuál actividad le dedicas <span class="highlight">más tiempo</span>?"</li>
+                    <li>"¿Hay alguna actividad a la que deberías dedicarle <span class="highlight">más tiempo</span> y que ahora no lo haces?"</li>
+                    <li>"¿Hay alguna actividad que debería tener <span class="highlight">menos tiempo</span> de atención?"</li>
+                </ul>
+                <p class="mt-4 text-slate-700 leading-relaxed">Explica que este análisis es un <span class="highlight">"mini-diagnóstico"</span> para entender su equilibrio actual.</p>
             </div>
         </section>
 
-        <section id="psicologia-jubileo" class="py-10 md:py-16 px-4 bg-sky-50">
-            <div class="max-w-4xl mx-auto">
-                <div class="card">
-                    <h2 class="subsection-title">8. Psicología y el Jubileo<span class="timestamp">(27:09)</span></h2>
+        <section id="psicologia-jubileo" class="py-10 md:py-12 bg-cyan-100 rounded-xl shadow-inner scroll-mt-24 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="page-section-title">8. Psicología y el Jubileo</h2>
+                <div class="card max-w-4xl mx-auto">
+                     <h3 class="subsection-title">Conexiones Profundas<span class="timestamp">(27:09)</span></h3>
                     <p class="text-slate-700 leading-relaxed">Montes conecta estas ideas con la "Psicología Positiva", desarrollada por Martin Seligman:</p>
                     <ul class="list-disc pl-5 mt-4 mb-6 space-y-2">
                         <li><span class="highlight">Equilibrio y Plenitud:</span> Una vida equilibrada lleva a una mayor plenitud y fructificación.</li>
@@ -215,11 +270,11 @@
                     </ul>
                     <div class="space-y-6">
                         <div>
-                            <h3 class="text-xl font-semibold text-slate-700 mb-2">Modelo PERMA<span class="timestamp">(27:52)</span></h3>
+                            <h4 class="text-xl font-semibold text-slate-700 mb-2">Modelo PERMA<span class="timestamp">(27:52)</span></h4>
                             <p class="text-slate-700 leading-relaxed">Este modelo de bienestar (<span class="font-medium">P</span>ositive Emotions, <span class="font-medium">E</span>ngagement, <span class="font-medium">R</span>elationships, <span class="font-medium">M</span>eaning, <span class="font-medium">A</span>ccomplishment - Emociones Positivas, Compromiso, Relaciones, Significado, Logro) será explorado más a fondo.</p>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold text-slate-700 mb-2">Jubileo 2025 - Peregrinos de Esperanza<span class="timestamp">(29:09)</span></h3>
+                            <h4 class="text-xl font-semibold text-slate-700 mb-2">Jubileo 2025 - Peregrinos de Esperanza<span class="timestamp">(29:09)</span></h4>
                             <p class="text-slate-700 leading-relaxed">Vincula este viaje de autodescubrimiento con el tema del Jubileo de la Iglesia. Cita la Bula Papal, enfatizando que <span class="highlight">"mirar al futuro con esperanza"</span> lleva a una vida llena de entusiasmo y de compartir. La esperanza, junto con la fe y la caridad, forma el "tríptico de virtudes teologales" que expresa la esencia de la vida cristiana.</p>
                         </div>
                     </div>
@@ -227,31 +282,152 @@
             </div>
         </section>
 
-        <section id="tarea" class="py-10 md:py-16 px-4 bg-white">
-            <div class="max-w-4xl mx-auto">
-                <div class="card">
-                    <h2 class="subsection-title">9. Pequeña Tarea<span class="timestamp">(31:22)</span></h2>
-                    <p class="text-slate-700 leading-relaxed">Como tarea final para la semana, Montes pide a los participantes:</p>
-                    <ul class="list-disc pl-5 mt-4 space-y-2">
-                        <li>Reflexionar sobre su nivel de <span class="highlight">optimismo y esperanza</span> en sus acciones diarias.</li>
-                        <li>Analizar si su comportamiento, lenguaje e ideas reflejan <span class="highlight">esperanza y alegría</span>.</li>
-                        <li>Intentar leer la <span class="highlight">Bula Papal del Jubileo</span> e identificar signos que puedan incluirse en su plan de vida.</li>
-                    </ul>
-                    <p class="mt-6 text-slate-700 leading-relaxed">La sesión concluye con una despedida, prometiendo profundizar en la elaboración de objetivos la próxima semana.</p>
-                </div>
+        <section id="tarea" class="py-10 md:py-12 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">9. Pequeña Tarea</h2>
+            <div class="card max-w-4xl mx-auto border-t-4 border-amber-500 bg-amber-50">
+                <h3 class="subsection-title text-amber-700">Reflexión Semanal<span class="timestamp">(31:22)</span></h3>
+                <p class="text-slate-700 leading-relaxed">Como tarea final para la semana, Montes pide a los participantes:</p>
+                <ul class="list-disc pl-5 mt-4 space-y-2 text-slate-700">
+                    <li>Reflexionar sobre su nivel de <span class="highlight">optimismo y esperanza</span> en sus acciones diarias.</li>
+                    <li>Analizar si su comportamiento, lenguaje e ideas reflejan <span class="highlight">esperanza y alegría</span>.</li>
+                    <li>Intentar leer la <span class="highlight">Bula Papal del Jubileo</span> e identificar signos que puedan incluirse en su plan de vida.</li>
+                </ul>
+                <p class="mt-6 text-slate-700 leading-relaxed">La sesión concluye con una despedida, prometiendo profundizar en la elaboración de objetivos la próxima semana.</p>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-slate-800 text-slate-300 py-10 px-4 text-center">
-        <p class="text-sm">&copy; <span id="currentYear"></span> Resumen de "Desarrollo y Discernimiento". Contenido adaptado de la sesión de José Luis Montes.</p>
-        <p class="text-xs mt-2 opacity-70">Este es un sitio web de ejemplo creado con fines ilustrativos.</p>
+    <footer class="footer-bg py-12 text-center fade-in-section">
+        <div class="container mx-auto px-6">
+            <p class="text-lg mb-2">Plan de Vida: Un Viaje de Transformación</p>
+            <p>&copy; <span id="currentYear"></span> Plan de Vida. Todos los derechos reservados.</p>
+            <p class="mt-2 text-sm opacity-70">Este sitio es una interpretación y resumen con fines educativos.</p>
+        </div>
     </footer>
 
     <script>
-        // Script para el año actual en el footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // --- Navbar Script ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const desktopMenuLinksContainer = document.getElementById('desktop-menu-links');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
+
+        const pageLinksConfig = {
+            'index.html': [ /* ... */ ],
+            'sesion01.html': [ /* ... */ ],
+            'sesion02.html': [ /* ... */ ],
+            'sesion03.html': [ /* ... */ ],
+            'sesion04.html': [ /* ... */ ],
+            'sesion05.html': [ /* ... */ ],
+            'sesion06.html': [ /* ... */ ],
+            'sesion07.html': [ /* ... */ ],
+            'sesion08.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#definiendo-horizontes', text: 'Horizontes'},
+                { href: '#cimientos', text: 'Cimientos'},
+                { href: '#disenar-objetivos', text: 'Diseño'},
+                { href: '#rueda-vida', text: 'Rueda de Vida'},
+                { href: '#tarea', text: 'Tarea'}
+            ],
+            'sesion09.html': [ /* ... */ ],
+            'sesion10.html': [ /* ... */ ],
+            'sesion11.html': [ /* ... */ ],
+            'sesion12.html': [ /* ... */ ],
+            'sesion14.html': [ /* ... */ ],
+            'sesion15.html': [ /* ... */ ],
+            'sesion16.html': [ /* ... */ ]
+        };
+
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            return path.split("/").pop();
+        }
+
+        function populateNavLinks() {
+            const currentPage = getCurrentPageName();
+            const links = pageLinksConfig[currentPage] || [];
+
+            if (desktopMenuLinksContainer) desktopMenuLinksContainer.innerHTML = '';
+            if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                if (desktopMenuLinksContainer) {
+                    const aDesktop = document.createElement('a');
+                    aDesktop.href = link.href;
+                    aDesktop.textContent = link.text;
+                    aDesktop.className = 'nav-link-desktop text-cyan-100 hover:bg-cyan-700 hover:text-white'; // Cian theme
+                    desktopMenuLinksContainer.appendChild(aDesktop);
+                }
+                if (mobileMenuLinksContainer) {
+                    const aMobile = document.createElement('a');
+                    aMobile.href = link.href;
+                    aMobile.textContent = link.text;
+                    aMobile.className = 'nav-link-mobile text-cyan-100 hover:bg-cyan-700 hover:text-white'; // Cian theme
+                    mobileMenuLinksContainer.appendChild(aMobile);
+                }
+            });
+
+            const allNavLinks = document.querySelectorAll('.nav-link-desktop, .nav-link-mobile');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('nav').offsetHeight;
+                        const scrollMarginTop = parseFloat(getComputedStyle(targetElement).scrollMarginTop) || 0; 
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - scrollMarginTop;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                    if (mobileMenu && link.classList.contains('nav-link-mobile') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if(mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        if(mobileMenuButton) mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                    }
+                });
+            });
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu) {
+                    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', populateNavLinks);
+
+        // --- Script para el año actual en el footer ---
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+        
+        // --- Script para animación de aparición de secciones al hacer scroll ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.05 // Un umbral más bajo para que se active antes en secciones largas
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
     </script>
 
 </body>
