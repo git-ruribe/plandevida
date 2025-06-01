@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Camino Hasta Ahora - Dr. José Luis Montes</title>
+    <title>Sesión 2: Mi Camino Hasta Ahora - Plan de Vida</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -11,45 +11,38 @@
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
-        .hero-bg {
-            background-image: linear-gradient(to bottom right, rgba(107, 114, 128, 0.8), rgba(75, 85, 99, 0.8)), url('https://placehold.co/1200x800/667eea/764ba2?text=Viaje+de+Vida');
+        .hero-bg-sesion02 { /* Azul Primario tema */
+            background-image: linear-gradient(to bottom right, rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.8)), url('https://placehold.co/1200x800/3B82F6/FFFFFF?text=Viaje+de+Vida');
             background-size: cover;
             background-position: center;
         }
+        .page-section-title {
+            @apply text-3xl font-bold text-center mb-10 text-blue-700; /* Azul Primario tema */
+        }
         .card {
-            background-color: white;
-            border-radius: 0.75rem; /* 12px */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease-in-out;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .section-title {
-            font-size: 2.25rem; /* 36px */
-            font-weight: 700;
-            margin-bottom: 1.5rem; /* 24px */
-            text-align: center;
-            color: #1f2937; /* gray-800 */
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300;
         }
         .quadrant-title {
             font-size: 1.5rem; /* 24px */
             font-weight: 600;
-            color: #3b82f6; /* blue-500 */
+            color: #2563EB; /* Azul Primario theme (blue-600) */
             margin-bottom: 0.5rem; /* 8px */
         }
-        .nav-link {
-            transition: color 0.3s ease;
+        .nav-link-desktop, .nav-link-mobile { /* Estilos base para enlaces de nav */
+             @apply px-3 py-2 rounded-md text-sm font-medium transition-colors;
         }
-        .nav-link:hover {
-            color: #3b82f6; /* blue-500 */
+        .nav-link-desktop { /* Azul Primario tema */
+            @apply text-blue-100 hover:bg-blue-700 hover:text-white;
+        }
+        .nav-link-mobile { /* Azul Primario tema */
+            @apply block text-blue-100 hover:bg-blue-700 hover:text-white text-base;
         }
         /* Estilo para el botón de "Volver Arriba" */
         #scrollTopBtn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #3b82f6; /* blue-500 */
+            background-color: #3B82F6; /* Azul Primario theme (blue-500) */
             color: white;
             border: none;
             border-radius: 50%;
@@ -60,64 +53,81 @@
             display: none; /* Oculto por defecto */
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             transition: background-color 0.3s, opacity 0.3s;
+            z-index: 1000;
         }
         #scrollTopBtn:hover {
-            background-color: #2563eb; /* blue-600 */
+            background-color: #2563EB; /* Azul Primario theme (blue-600) */
+        }
+         /* Animación suave para la aparición de secciones */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-gray-800">Reflexión de Vida</a>
-            <div class="hidden md:flex space-x-4">
-                <a href="#inicio" class="nav-link text-gray-600">Inicio</a>
-                <a href="#temas" class="nav-link text-gray-600">Temas Centrales</a>
-                <a href="#ejercicio" class="nav-link text-gray-600">Ventana de la Vida</a>
-                <a href="#conclusion" class="nav-link text-gray-600">Conclusión</a>
-            </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
+    <nav class="bg-blue-600 shadow-md fixed w-full z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 text-white font-bold text-xl hover:opacity-80 transition-opacity">
+                        Plan de Vida
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div id="desktop-menu-links" class="ml-10 flex items-baseline space-x-4">
+                        </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-blue-600 inline-flex items-center justify-center p-2 rounded-md text-blue-200 hover:text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
-        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
-            <a href="#inicio" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Inicio</a>
-            <a href="#temas" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Temas Centrales</a>
-            <a href="#ejercicio" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Ventana de la Vida</a>
-            <a href="#conclusion" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Conclusión</a>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div id="mobile-menu-links" class="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3"> </div>
         </div>
     </nav>
 
-    <header id="inicio" class="hero-bg text-white py-20 md:py-32">
+    <header id="inicio" class="hero-bg-sesion02 text-white pt-32 pb-20 md:pt-40 md:pb-28 fade-in-section">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Mi Camino Hasta Ahora</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Sesión 2: Mi Camino Hasta Ahora</h1>
             <p class="text-xl md:text-2xl mb-8 drop-shadow-md">Una reflexión sobre nuestro viaje personal, basada en la Sesión 2 del Dr. José Luis Montes.</p>
-            <a href="#temas" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300">Comenzar Reflexión</a>
+            <a href="#temas" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300">Comenzar Reflexión</a>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        <section class="mb-16 text-center">
+        <section class="mb-16 text-center fade-in-section">
             <p class="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
                 Esta sesión nos invita a reflexionar sobre nuestro pasado y cómo nos ha moldeado. El objetivo es completar las actividades durante la sesión misma, sin llevar tareas a casa, permitiendo una introspección profunda sobre el camino que hemos recorrido.
             </p>
         </section>
 
-        <section id="temas" class="mb-16">
-            <h2 class="section-title">Temas Centrales de la Reflexión</h2>
+        <section id="temas" class="mb-16 fade-in-section">
+            <h2 class="page-section-title">Temas Centrales de la Reflexión</h2>
             <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="card p-6">
+                <div class="card border-t-4 border-blue-500">
                     <h3 class="text-2xl font-semibold mb-3 text-blue-600">1. El Viaje de la Vida</h3>
                     <p class="text-gray-700 leading-relaxed">
                         El Dr. Montes compara la vida con un camino único para cada persona, tejido por diversas experiencias. Como un escultor talla una piedra, nuestras vidas son "esculpidas" por vivencias buenas y malas, lecciones aprendidas e interacciones. Todo esto nos define hoy.
                     </p>
                 </div>
 
-                <div class="card p-6">
+                <div class="card border-t-4 border-blue-500">
                     <h3 class="text-2xl font-semibold mb-3 text-blue-600">2. La Naturaleza de las Decisiones</h3>
                     <p class="text-gray-700 leading-relaxed">
                         La pregunta central es: "¿Cómo es que llegué aquí?". Nuestra posición actual es resultado de múltiples experiencias y decisiones pasadas:
@@ -129,7 +139,7 @@
                     </ul>
                 </div>
 
-                <div class="card p-6">
+                <div class="card border-t-4 border-blue-500">
                     <h3 class="text-2xl font-semibold mb-3 text-blue-600">3. Predestinación vs. Libre Albedrío</h3>
                     <p class="text-gray-700 leading-relaxed">
                         El Dr. Montes aborda este debate teológico y filosófico:
@@ -142,33 +152,33 @@
             </div>
         </section>
 
-        <section id="ejercicio" class="mb-16 bg-gray-50 p-8 rounded-lg shadow-lg">
-            <h2 class="section-title">Ejercicio Práctico: "Ventana de la Vida"</h2>
+        <section id="ejercicio" class="mb-16 bg-blue-50 p-8 rounded-xl shadow-inner fade-in-section">
+            <h2 class="page-section-title">Ejercicio Práctico: "Ventana de la Vida"</h2>
             <p class="text-lg text-gray-700 mb-6 leading-relaxed text-center max-w-3xl mx-auto">
                 El Dr. Montes propone un ejercicio de autorreflexión. Divide una hoja (o varias) en cuatro cuadrantes, representando diferentes etapas de la vida.
             </p>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="card p-6">
+                <div class="card">
                     <h3 class="quadrant-title">Cuadrante 1: Infancia</h3>
                     <p class="text-gray-700 mb-2"><strong>Enfoque:</strong> Decisiones tomadas principalmente *por* nosotros (padres, maestros, familia). Eventos y circunstancias fuera de nuestro control.</p>
                     <p class="text-gray-700"><strong>Tarea:</strong> Anota 2-3 situaciones o eventos significativos con consecuencias relevantes en tu vida durante la infancia (ej. cambio de ciudad, escuela, espiritualidad familiar, barrio, una fiesta). Suelen ser fáciles de recordar.</p>
                     <p class="text-sm text-gray-600 mt-2"><em>Ejemplo del Dr. Montes: Estudiar en una pequeña escuela de misioneras Josefinas, crecer con devoción a San José y aprender a hablar en público.</em></p>
                 </div>
 
-                <div class="card p-6">
+                <div class="card">
                     <h3 class="quadrant-title">Cuadrante 2: Adolescencia</h3>
                     <p class="text-gray-700 mb-2"><strong>Enfoque:</strong> Etapa donde empezamos a tomar más decisiones, aunque muchas no sean plenamente conscientes. Cambios hormonales y nuevos descubrimientos influyen.</p>
                     <p class="text-gray-700"><strong>Tarea:</strong> Anota 2-3 situaciones o eventos significativos de tu adolescencia con consecuencias relevantes (ej. primer trabajo, viaje con amigos, fiesta de XV años, cambios de escuela). Generalmente fáciles de recordar.</p>
                 </div>
 
-                <div class="card p-6">
+                <div class="card">
                     <h3 class="quadrant-title">Cuadrante 3: Juventud</h3>
                     <p class="text-gray-700 mb-2"><strong>Enfoque:</strong> Etapa altamente productiva donde se toman decisiones conscientes significativas que moldean el futuro.</p>
                     <p class="text-gray-700"><strong>Tarea:</strong> Anota 2-3 situaciones o eventos significativos de tu juventud con consecuencias relevantes (ej. matrimonio, hijos, viajes personales, primer trabajo profesional, estudios superiores).</p>
                 </div>
 
-                <div class="card p-6">
+                <div class="card">
                     <h3 class="quadrant-title">Cuadrante 4: Adultez</h3>
                     <p class="text-gray-700 mb-2"><strong>Enfoque:</strong> Etapa actual de la vida, donde las decisiones suelen tener un amplio impacto personal, familiar, laboral y comunitario.</p>
                     <p class="text-gray-700"><strong>Tarea:</strong> Anota 2-3 situaciones o eventos significativos de tu adultez con consecuencias relevantes (ej. cambio de ciudad, cambios laborales, estado civil, logros importantes).</p>
@@ -176,7 +186,7 @@
             </div>
         </section>
 
-        <section class="mb-16 text-center">
+        <section class="mb-16 text-center fade-in-section">
              <div class="max-w-3xl mx-auto bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-6 rounded-md shadow-md" role="alert">
                 <h3 class="text-2xl font-semibold mb-3 text-yellow-800">¡Pero Cuidado! Una Advertencia Crucial</h3>
                 <p class="leading-relaxed">
@@ -188,8 +198,8 @@
             </div>
         </section>
 
-        <section id="conclusion" class="mb-16 bg-blue-50 p-8 rounded-lg shadow-lg">
-            <h2 class="section-title">Reencuadre y Conclusión Final</h2>
+        <section id="conclusion" class="mb-16 bg-blue-100 p-8 rounded-xl shadow-lg fade-in-section">
+            <h2 class="page-section-title">Reencuadre y Conclusión Final</h2>
             <p class="text-lg text-gray-700 mb-6 leading-relaxed text-center max-w-3xl mx-auto">
                 El siguiente paso crucial del ejercicio es <strong>revisitar cada cuadrante</strong>. Si algún evento o situación listada se percibe como negativa, se anima al participante a <strong>transformarla en algo positivo</strong>, reflexionando sobre cómo, incluso en ese momento difícil, pudo haber experimentado crecimiento, aprendido una lección o presenciado el amor y la presencia de Dios.
             </p>
@@ -207,10 +217,11 @@
         </section>
     </main>
 
-    <footer class="bg-gray-800 text-white py-8 text-center">
+    <footer class="bg-gray-800 text-gray-300 py-10 text-center">
         <div class="container mx-auto px-6">
-            <p>&copy; 2024 Reflexiones de Vida. Inspirado en las enseñanzas del Dr. José Luis Montes.</p>
-            <p class="text-sm mt-2">Este es un material de apoyo y reflexión personal.</p>
+            <p class="text-lg mb-2">Plan de Vida: Un Viaje de Transformación</p>
+            <p>&copy; <span id="currentYear"></span> Plan de Vida. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2 opacity-70">Inspirado en las sesiones de desarrollo y discernimiento.</p>
         </div>
     </footer>
 
@@ -219,53 +230,228 @@
     </button>
 
     <script>
-        // Script para el menú móvil
+        // --- Navbar Script ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = mobileMenu.querySelectorAll('a');
+        const desktopMenuLinksContainer = document.getElementById('desktop-menu-links');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Cerrar menú móvil al hacer clic en un enlace
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-        // Script para el botón de "Volver Arriba"
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
-
-        // Mostrar/ocultar el botón basado en el scroll
-        window.onscroll = function() {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                scrollTopBtn.style.display = "block";
-                setTimeout(() => scrollTopBtn.style.opacity = "1", 10); // Pequeño delay para la transición
-            } else {
-                scrollTopBtn.style.opacity = "0";
-                setTimeout(() => scrollTopBtn.style.display = "none", 300); // Esperar a que termine la transición
-            }
+        const pageLinksConfig = {
+             'index.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#proposito', text: 'Propósito' },
+                { href: '#herramientas', text: 'Herramientas' },
+                { href: '#objetivos', text: 'Objetivos' },
+                { href: '#declaracion', text: 'Declaración' },
+                { href: '#sesiones', text: 'Sesiones'},
+                { href: '#nosotros', text: 'Nosotros' }
+            ],
+            'sesion01.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#ponente', text: 'Ponente' },
+                { href: '#taller', text: 'El Taller' },
+                { href: '#etapas', text: 'Etapas' },
+                { href: '#reflexion', text: 'Reflexión' }
+            ],
+            'sesion02.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#temas', text: 'Temas Centrales' },
+                { href: '#ejercicio', text: 'Ventana de la Vida' },
+                { href: '#conclusion', text: 'Conclusión' }
+            ],
+            'sesion03.html': [
+                { href: '#sesion-previa', text: 'Sesión Previa' },
+                { href: '#concepto-proposito', text: 'Concepto' },
+                { href: '#descubrir-llamado', text: 'Descubrir' },
+                { href: '#que-es-proposito', text: 'Definición' },
+                { href: '#accion', text: 'Llamada a la Acción'}
+            ],
+            'sesion04.html': [
+                { href: '#introduccion', text: 'Introducción'},
+                { href: '#entendiendo-proposito', text: 'Entendiendo Propósito'},
+                { href: '#modelo-proposito', text: 'Modelo'},
+                { href: '#construyendo-proposito', text: 'Construcción'},
+                { href: '#tarea-final', text: 'Tarea'}
+            ],
+            'sesion05.html': [
+                { href: '#contexto-complejo', text: 'Contexto'},
+                { href: '#discernimiento', text: 'Discernimiento'},
+                { href: '#proxima-sesion', text: 'Próxima Sesión'}
+            ],
+            'sesion06.html': [
+                { href: '#introduccion', text: 'Introducción' },
+                { href: '#claves', text: 'Claves' },
+                { href: '#virtudes', text: 'Virtudes' },
+                { href: '#fortalezas', text: 'Fortalezas' }
+            ],
+            'sesion07.html': [
+                { href: '#donde-estamos', text: 'Avance'},
+                { href: '#proposito-vida', text: 'Propósito'},
+                { href: '#entendiendo-mision', text: 'Misión'},
+                { href: '#ejercicio-practico', text: 'Ejercicio'},
+                { href: '#pensamientos-finales', text: 'Final'}
+            ],
+            'sesion08.html': [
+                { href: '#definiendo-horizontes', text: 'Horizontes'},
+                { href: '#cimientos', text: 'Cimientos'},
+                { href: '#disenar-objetivos', text: 'Diseño'},
+                { href: '#rueda-vida', text: 'Rueda de Vida'},
+                { href: '#tarea', text: 'Tarea'}
+            ],
+            'sesion09.html': [
+                { href: '#introduccion', text: 'Introducción'},
+                { href: '#carta-pastoral', text: 'Carta Pastoral'},
+                { href: '#perma', text: 'PERMA'},
+                { href: '#emociones', text: 'Emociones'},
+                { href: '#conclusion-tarea', text: 'Tarea'}
+            ],
+            'sesion10.html': [
+                { href: '#reflexion', text: 'Reflexión' },
+                { href: '#que-es', text: '¿Qué es?' },
+                { href: '#elementos', text: 'Elementos' },
+                { href: '#caracteristicas', text: 'Características' },
+                { href: '#tarea', text: 'Tarea' }
+            ],
+            'sesion11.html': [
+                { href: '#proyecto-vida', text: 'Proyecto de Vida' },
+                { href: '#desafios', text: 'Desafíos' },
+                { href: '#construccion', text: 'Construcción' },
+                { href: '#tarea', text: 'Tarea' }
+            ],
+            'sesion12.html': [
+                { href: '#introduccion', text: 'Inicio' },
+                { href: '#perma', text: 'PERMA' },
+                { href: '#proposito', text: 'Propósito' },
+                { href: '#logro', text: 'Logro' },
+                { href: '#motivacion', text: 'Motivación' },
+                { href: '#metas', text: 'Metas' },
+                { href: '#reflexion', text: 'Reflexión' }
+            ],
+            'sesion14.html': [
+                { href: '#donde-estamos', text: 'Avance'},
+                { href: '#importancia-objetivos', text: 'Importancia'},
+                { href: '#filtros-objetivos', text: 'Filtros'},
+                { href: '#proximo-material', text: 'Próximo'},
+                { href: '#tarea-semana', text: 'Tarea'}
+            ],
+            'sesion15.html': [
+                { href: '#introduccion', text: 'Introducción' },
+                { href: '#proceso', text: 'Proceso' },
+                { href: '#grow', text: 'Modelo GROW' },
+                { href: '#dimensiones', text: 'Dimensiones' },
+                { href: '#ejemplos', text: 'Ejemplos' },
+                { href: '#tarea', text: 'Tarea' }
+            ],
+            'sesion16.html': [
+                { href: '#introduccion', text: 'Introducción' },
+                { href: '#dimensiones', text: 'Dimensiones' },
+                { href: '#conclusion', text: 'Conclusión' }
+            ]
         };
 
-        // Scroll suave al inicio al hacer clic
-        scrollTopBtn.addEventListener('click', function() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        });
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            return path.split("/").pop();
+        }
 
-        // Scroll suave para enlaces de navegación
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+        function populateNavLinks() {
+            const currentPage = getCurrentPageName();
+            const links = pageLinksConfig[currentPage] || [];
+
+            if (desktopMenuLinksContainer) desktopMenuLinksContainer.innerHTML = '';
+            if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                if (desktopMenuLinksContainer) {
+                    const aDesktop = document.createElement('a');
+                    aDesktop.href = link.href;
+                    aDesktop.textContent = link.text;
+                    aDesktop.className = 'nav-link-desktop text-blue-100 hover:bg-blue-700 hover:text-white'; // Azul Primario tema
+                    desktopMenuLinksContainer.appendChild(aDesktop);
+                }
+                if (mobileMenuLinksContainer) {
+                    const aMobile = document.createElement('a');
+                    aMobile.href = link.href;
+                    aMobile.textContent = link.text;
+                    aMobile.className = 'nav-link-mobile text-blue-100 hover:bg-blue-700 hover:text-white'; // Azul Primario tema
+                    mobileMenuLinksContainer.appendChild(aMobile);
                 }
             });
+
+            const allNavLinks = document.querySelectorAll('.nav-link-desktop, .nav-link-mobile');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('nav').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                    if (mobileMenu && link.classList.contains('nav-link-mobile') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if(mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        if(mobileMenuButton) mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                    }
+                });
+            });
+        }
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu) {
+                    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', populateNavLinks);
+
+        // --- Script para el año actual en el footer ---
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+
+        // --- Script para el botón de "Volver Arriba" ---
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        if (scrollTopBtn) {
+            window.onscroll = function() {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollTopBtn.style.display = "block";
+                    setTimeout(() => scrollTopBtn.style.opacity = "1", 10);
+                } else {
+                    scrollTopBtn.style.opacity = "0";
+                    setTimeout(() => scrollTopBtn.style.display = "none", 300);
+                }
+            };
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+        }
+
+        // --- Script para animación de aparición de secciones al hacer scroll ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
         });
     </script>
 
