@@ -3,21 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discernimiento: La Fuerza de una Vida en Constante Transformación</title>
+    <title>Sesión 5: Discernimiento - La Fuerza de una Vida en Constante Transformación - Plan de Vida</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            @apply bg-indigo-50 text-slate-800; /* Fondo base Púrpura/Índigo claro */
+        }
+        .hero-bg-sesion05 {
+            background-image: linear-gradient(to right, rgba(79, 70, 229, 0.8), rgba(109, 40, 217, 0.7)), url('https://placehold.co/1200x600/6D28D9/FFFFFF?text=Discernimiento+Profundo'); /* Púrpura/Índigo theme */
+            background-size: cover;
+            background-position: center;
+        }
+        .page-section-title {
+            @apply text-3xl font-bold text-center mb-10 text-purple-700; /* Púrpura/Índigo theme */
+        }
+        .subsection-title {
+            @apply text-2xl font-semibold mb-4 text-purple-600; /* Púrpura/Índigo theme */
         }
         .card {
-            background-color: white;
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-            padding: 1.5rem; /* p-6 */
-            margin-bottom: 1.5rem; /* mb-6 */
+            @apply bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-purple-500; /* Púrpura/Índigo theme */
         }
-        .tag {
+        .list-disc {
+            @apply list-disc list-inside space-y-2 text-slate-700;
+        }
+        .highlight { /* Usaremos un tono de Púrpura/Índigo más vibrante para los highlights */
+            @apply text-purple-600 font-semibold;
+        }
+        .nav-link-desktop, .nav-link-mobile {
+             @apply px-3 py-2 rounded-md text-sm font-medium transition-colors;
+        }
+        .nav-link-desktop { /* Púrpura/Índigo theme */
+            @apply text-purple-100 hover:bg-purple-700 hover:text-white;
+        }
+        .nav-link-mobile { /* Púrpura/Índigo theme */
+            @apply block text-purple-100 hover:bg-purple-700 hover:text-white text-base;
+        }
+        .footer-bg {
+            @apply bg-slate-900 text-slate-300;
+        }
+        .tag { /* Estilos de tags como en el original */
             display: inline-block;
             padding: 0.25rem 0.75rem;
             border-radius: 9999px; /* rounded-full */
@@ -26,60 +53,104 @@
             letter-spacing: 0.05em; /* tracking-wider */
             font-size: 0.75rem; /* text-xs */
         }
-        .vuca-tag { background-color: #E0F2FE; color: #0EA5E9; } /* sky-100, sky-600 */
-        .bani-tag { background-color: #FEE2E2; color: #EF4444; } /* red-100, red-600 */
-        .highlight { color: #4F46E5; } /* indigo-600 */
+        .vuca-tag { background-color: #E0F2FE; color: #0EA5E9; } /* sky-100, sky-600 - Mantenemos estos colores para distinción visual */
+        .bani-tag { background-color: #FEE2E2; color: #EF4444; } /* red-100, red-600 - Mantenemos estos colores */
+
+        /* Animación suave para la aparición de secciones */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 leading-relaxed">
+<body class="leading-relaxed">
 
-    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-12 shadow-md">
+    <nav class="bg-purple-600 shadow-md fixed w-full z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 text-white font-bold text-xl hover:opacity-80 transition-opacity">
+                        Plan de Vida
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div id="desktop-menu-links" class="ml-10 flex items-baseline space-x-4">
+                        </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-purple-600 inline-flex items-center justify-center p-2 rounded-md text-purple-200 hover:text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div id="mobile-menu-links" class="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                </div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero-bg-sesion05 text-white pt-32 pb-20 md:pt-40 md:pb-28 fade-in-section">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Discernimiento: La Fuerza de una Vida en Constante Transformación</h1>
-            <p class="text-lg md:text-xl">Presentado por María Auxiliadora Herrera</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Sesión 5: Discernimiento</h1>
+            <p class="text-2xl md:text-3xl text-purple-100 mb-6">La Fuerza de una Vida en Constante Transformación</p>
+            <p class="text-lg md:text-xl text-purple-200">Presentado por María Auxiliadora Herrera</p>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 
-        <section class="mb-12 text-center">
-            <p class="text-lg text-slate-700">
-                Esta presentación se centra en el tema del "Discernimiento: la fuerza de una vida en constante transformación".
-                La estructura se basa en tres claves de aproximación: <strong class="highlight">Contexto Complejo</strong>,
-                <strong class="highlight">Virtudes y Fortalezas de Carácter</strong>. Esta sesión se dedica principalmente a la primera clave.
-            </p>
+        <section class="mb-12 text-center fade-in-section">
+            <div class="card max-w-3xl mx-auto">
+                <p class="text-lg text-slate-700">
+                    Esta presentación se centra en el tema del "Discernimiento: la fuerza de una vida en constante transformación".
+                    La estructura se basa en tres claves de aproximación: <strong class="highlight">Contexto Complejo</strong>,
+                    <strong class="highlight">Virtudes y Fortalezas de Carácter</strong>. Esta sesión se dedica principalmente a la primera clave.
+                </p>
+            </div>
         </section>
 
-        <section id="contexto-complejo" class="mb-12">
-            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center border-b-2 border-indigo-500 pb-2">1. Contexto Complejo</h2>
-            <p class="mb-6 text-lg text-center text-slate-600">La ponente invita a reflexionar sobre qué significa un "Contexto Complejo". Para ello, introduce dos conceptos clave:</p>
+        <section id="contexto-complejo" class="mb-12 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">1. Contexto Complejo</h2>
+            <div class="card mb-10">
+                <p class="mb-6 text-lg text-center text-slate-600">La ponente invita a reflexionar sobre qué significa un "Contexto Complejo". Para ello, introduce dos conceptos clave:</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="border border-sky-300 p-6 rounded-lg bg-sky-50">
+                        <h3 class="text-2xl font-semibold text-sky-700 mb-4">Entorno VUCA</h3>
+                        <p class="mb-3 text-slate-600">Acrónimo surgido a finales de los 80 y principios de los 90, describe un mundo:</p>
+                        <ul class="space-y-2">
+                            <li><span class="tag vuca-tag">V</span> <strong class="text-sky-700">Volátil (Volatile):</strong> El entorno cambia velozmente.</li>
+                            <li><span class="tag vuca-tag">U</span> <strong class="text-sky-700">Incierto (Uncertain):</strong> Dificultad para saber qué sigue.</li>
+                            <li><span class="tag vuca-tag">C</span> <strong class="text-sky-700">Complejo (Complex):</strong> Confusión por multitud de variables.</li>
+                            <li><span class="tag vuca-tag">A</span> <strong class="text-sky-700">Ambiguo (Ambiguous):</strong> Falta de claridad en la dirección futura.</li>
+                        </ul>
+                    </div>
 
-            <div class="grid md:grid-cols-2 gap-8 mb-10">
-                <div class="card">
-                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Entorno VUCA</h3>
-                    <p class="mb-3 text-slate-600">Acrónimo surgido a finales de los 80 y principios de los 90, describe un mundo:</p>
-                    <ul class="space-y-2">
-                        <li><span class="tag vuca-tag">V</span> <strong class="text-sky-700">Volátil (Volatile):</strong> El entorno cambia velozmente.</li>
-                        <li><span class="tag vuca-tag">U</span> <strong class="text-sky-700">Incierto (Uncertain):</strong> Dificultad para saber qué sigue.</li>
-                        <li><span class="tag vuca-tag">C</span> <strong class="text-sky-700">Complejo (Complex):</strong> Confusión por multitud de variables.</li>
-                        <li><span class="tag vuca-tag">A</span> <strong class="text-sky-700">Ambiguo (Ambiguous):</strong> Falta de claridad en la dirección futura.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3 class="text-2xl font-semibold text-red-700 mb-4">Entorno BANI</h3>
-                    <p class="mb-3 text-slate-600">Concepto post-pandemia, describe un entorno aún más desafiante:</p>
-                    <ul class="space-y-2">
-                        <li><span class="tag bani-tag">B</span> <strong class="text-red-700">Frágil (Brittle):</strong> El sistema y la vida humana son quebradizos.</li>
-                        <li><span class="tag bani-tag">A</span> <strong class="text-red-700">Ansiedad (Anxious):</strong> Aumento de la ansiedad por la incertidumbre.</li>
-                        <li><span class="tag bani-tag">N</span> <strong class="text-red-700">No Lineal (Non Linear):</strong> Cambios impredecibles y sin secuencia lógica.</li>
-                        <li><span class="tag bani-tag">I</span> <strong class="text-red-700">Incomprensible (Incomprehensible):</strong> Dificultad para entender causas y efectos.</li>
-                    </ul>
+                    <div class="border border-red-300 p-6 rounded-lg bg-red-50">
+                        <h3 class="text-2xl font-semibold text-red-700 mb-4">Entorno BANI</h3>
+                        <p class="mb-3 text-slate-600">Concepto post-pandemia, describe un entorno aún más desafiante:</p>
+                        <ul class="space-y-2">
+                            <li><span class="tag bani-tag">B</span> <strong class="text-red-700">Frágil (Brittle):</strong> El sistema y la vida humana son quebradizos.</li>
+                            <li><span class="tag bani-tag">A</span> <strong class="text-red-700">Ansiedad (Anxious):</strong> Aumento de la ansiedad por la incertidumbre.</li>
+                            <li><span class="tag bani-tag">N</span> <strong class="text-red-700">No Lineal (Non Linear):</strong> Cambios impredecibles y sin secuencia lógica.</li>
+                            <li><span class="tag bani-tag">I</span> <strong class="text-red-700">Incomprensible (Incomprehensible):</strong> Dificultad para entender causas y efectos.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <div class="card">
-                <h3 class="text-2xl font-semibold text-slate-900 mb-4">Contexto del Siglo XXI</h3>
+                <h3 class="subsection-title">Contexto del Siglo XXI</h3>
                 <p class="mb-3 text-slate-600">El siglo XXI se caracteriza por una multiplicidad de desafíos interconectados:</p>
                 <ul class="list-disc list-inside space-y-2 text-slate-700 columns-1 md:columns-2">
                     <li>Crisis económicas y políticas más complejas.</li>
@@ -97,8 +168,8 @@
             </div>
         </section>
 
-        <section id="discernimiento" class="mb-12">
-            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center border-b-2 border-purple-500 pb-2">2. Discernimiento ante el Contexto Complejo</h2>
+        <section id="discernimiento" class="mb-12 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">2. Discernimiento ante el Contexto Complejo</h2>
             <div class="card">
                 <p class="mb-4 text-lg text-slate-700">Ante este panorama, surge la pregunta: <strong class="highlight">"¿Cómo encontrar a Dios?"</strong> y, en el contexto intergeneracional, "¿Debemos buscar enfrentamiento entre generaciones?" La respuesta es no. Es crucial entender los valores de cada generación, pasando del "yo a tu edad" al <strong class="highlight">"¡ok, explícame y te escucho!"</strong></p>
 
@@ -107,12 +178,12 @@
 
                 <div class="space-y-6">
                     <div>
-                        <h4 class="text-xl font-semibold text-indigo-700 mb-2">Discernimiento Cristiano</h4>
+                        <h4 class="subsection-title">Discernimiento Cristiano</h4>
                         <p class="text-slate-700">"Proceso personal por el cual puedo convertir mis convicciones interiores en decisiones de vida. Es encontrar coherencia, continuidad... entre mis decisiones y mis conviciones."</p>
                     </div>
 
                     <div>
-                        <h4 class="text-xl font-semibold text-indigo-700 mb-2">Desde el Evangelio: Dos llamadas esenciales</h4>
+                        <h4 class="subsection-title">Desde el Evangelio: Dos llamadas esenciales</h4>
                         <ul class="list-disc list-inside space-y-1 text-slate-700">
                             <li><strong>La llamada al amor como dinámica de fondo:</strong> ¿Cómo amar efectivamente, aquí y ahora?</li>
                             <li><strong>La llamada a la "vigilancia":</strong> Estar atentos a factores externos e internos que pueden "pervertir" nuestros discernimientos.</li>
@@ -120,7 +191,7 @@
                     </div>
 
                     <div>
-                        <h4 class="text-xl font-semibold text-indigo-700 mb-2">Discernimiento Ignaciano: Tres puntos clave</h4>
+                        <h4 class="subsection-title">Discernimiento Ignaciano: Tres puntos clave</h4>
                         <ul class="list-disc list-inside space-y-1 text-slate-700">
                             <li>Atender al itinerario entre convicciones y decisiones.</li>
                             <li>La pretensión de ir al máximo, buscar el <strong class="highlight">más</strong> ("solamente deseando y eligiendo lo que más me conduce para el fin que he sido criado@").</li>
@@ -131,15 +202,15 @@
             </div>
 
             <div class="card mt-8">
-                <h3 class="text-2xl font-semibold text-slate-900 mb-4">¿Qué es el Discernimiento?</h3>
+                <h3 class="subsection-title">¿Qué es el Discernimiento?</h3>
                 <div class="flex flex-col md:flex-row items-center gap-6">
-                    <img src="https://placehold.co/300x200/A7F3D0/166534?text=Cribar+Grano" alt="Imagen de cribar grano" class="rounded-lg shadow-md w-full md:w-1/3">
+                    <img src="https://placehold.co/300x200/C4B5FD/4338CA?text=Cribar+Grano" alt="Imagen de cribar grano" class="rounded-lg shadow-md w-full md:w-1/3">
                     <p class="text-lg text-slate-700 md:w-2/3">La ponente lo simplifica con una imagen de cribar grano, definiéndolo como <strong class="text-emerald-600 text-xl">"Cribar"</strong>: pasar por la malla para separar lo bueno de lo malo, pero con la <strong class="highlight">malla del amor</strong>.</p>
                 </div>
             </div>
 
             <div class="card mt-8">
-                <h3 class="text-2xl font-semibold text-slate-900 mb-4">¿Qué es el Discernimiento Moral? (Introspección)</h3>
+                <h3 class="subsection-title">¿Qué es el Discernimiento Moral? (Introspección)</h3>
                 <p class="mb-3 text-slate-700">Implica preguntarse:</p>
                 <ol class="list-decimal list-inside space-y-2 text-lg text-slate-700 mb-6">
                     <li>¿Qué me mueve?</li>
@@ -160,7 +231,7 @@
             </div>
 
             <div class="card mt-8">
-                <h3 class="text-2xl font-semibold text-slate-900 mb-4">¿Qué hace falta en la toma de decisiones para ser feliz?</h3>
+                <h3 class="subsection-title">¿Qué hace falta en la toma de decisiones para ser feliz?</h3>
                 <ul class="list-disc list-inside space-y-2 text-lg text-slate-700">
                     <li>Integrar todas las dimensiones de nuestra vida, pasadas y presentes.</li>
                     <li>Aprender a discernir mirando las virtudes de frente:
@@ -174,19 +245,19 @@
                 <p class="mt-4 text-slate-700">Para llegar al fin último (la vocación), debemos atender a las decisiones concretas de cada día. El discernimiento moral nos da la libertad de guiarnos por las virtudes.</p>
             </div>
 
-            <div class="card mt-8 bg-indigo-50 p-8 rounded-lg">
-                <h3 class="text-2xl font-semibold text-indigo-800 mb-4 text-center">Discernir: Continuo proceso de convertirse en persona.</h3>
-                <blockquote class="text-center text-indigo-700 italic text-lg">
+            <div class="card mt-8 bg-purple-100 p-8 rounded-lg">
+                <h3 class="subsection-title text-purple-800 text-center">Discernir: Continuo proceso de convertirse en persona.</h3>
+                <blockquote class="text-center text-purple-700 italic text-lg">
                     "Lo que has heredado de tus padres, vuelve a conquistarlo para poseerlo." - <span class="font-semibold">Johann Wolfgang von Goethe</span>
                 </blockquote>
-                <p class="mt-4 text-center text-indigo-600">Esto aplica a la religión: ¿bautizamos por tradición o por una convicción espiritual profunda?</p>
+                <p class="mt-4 text-center text-purple-600">Esto aplica a la religión: ¿bautizamos por tradición o por una convicción espiritual profunda?</p>
             </div>
         </section>
 
-        <section id="proxima-sesion" class="mb-12">
-            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center border-b-2 border-teal-500 pb-2">3. Próxima Sesión y Tarea</h2>
-            <div class="card bg-teal-50 text-teal-800">
-                <p class="text-lg mb-3">La próxima sesión profundizará en las <strong class="highlight">"Virtudes y Fortalezas de Carácter"</strong>.</p>
+        <section id="proxima-sesion" class="mb-12 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">3. Próxima Sesión y Tarea</h2>
+            <div class="card bg-teal-50 text-teal-800 border-t-4 border-teal-500">
+                <p class="text-lg mb-3">La próxima sesión profundizará en las <strong class="text-teal-600 font-semibold">"Virtudes y Fortalezas de Carácter"</strong>.</p>
                 <p class="text-lg mb-4">Como tarea, se pide a los participantes realizar la "Encuesta de Fortalezas de Carácter" de VIA (Values in Action). Esta encuesta, aunque larga, es sencilla y arrojará un diagnóstico de sus 24 fortalezas de carácter, destacando las 5 principales. Este resultado será la base para la discusión en la siguiente sesión.</p>
                 <div class="text-center">
                     <a href="https://www.viacharacter.org/" target="_blank" rel="noopener noreferrer"
@@ -198,21 +269,141 @@
             </div>
         </section>
 
-        <section class="text-center text-slate-600">
-            <p class="text-lg">El video concluye con un mensaje de despedida y el deseo de un excelente día.</p>
+        <section class="text-center text-slate-600 fade-in-section">
+             <div class="card">
+                <p class="text-lg">El video concluye con un mensaje de despedida y el deseo de un excelente día.</p>
+            </div>
         </section>
 
     </main>
 
-    <footer class="bg-slate-800 text-slate-300 py-8 mt-12">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; <span id="currentYear"></span> Resumen del Video sobre Discernimiento. Inspirado en la presentación de María Auxiliadora Herrera.</p>
+    <footer class="footer-bg py-12 text-center fade-in-section">
+        <div class="container mx-auto px-6">
+            <p class="text-lg mb-2">Plan de Vida: Un Viaje de Transformación</p>
+            <p>&copy; <span id="currentYear"></span> Plan de Vida. Todos los derechos reservados.</p>
+            <p class="mt-2 text-sm opacity-70">Este sitio es una interpretación y resumen con fines educativos.</p>
         </div>
     </footer>
 
     <script>
-        // Script para el año actual en el footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // --- Navbar Script ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const desktopMenuLinksContainer = document.getElementById('desktop-menu-links');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
+
+        const pageLinksConfig = {
+            'index.html': [ /* ... */ ],
+            'sesion01.html': [ /* ... */ ],
+            'sesion02.html': [ /* ... */ ],
+            'sesion03.html': [ /* ... */ ],
+            'sesion04.html': [ /* ... */ ],
+            'sesion05.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#contexto-complejo', text: 'Contexto'},
+                { href: '#discernimiento', text: 'Discernimiento'},
+                { href: '#proxima-sesion', text: 'Próxima Sesión'}
+            ],
+            'sesion06.html': [ /* ... */ ],
+            'sesion07.html': [ /* ... */ ],
+            'sesion08.html': [ /* ... */ ],
+            'sesion09.html': [ /* ... */ ],
+            'sesion10.html': [ /* ... */ ],
+            'sesion11.html': [ /* ... */ ],
+            'sesion12.html': [ /* ... */ ],
+            'sesion14.html': [ /* ... */ ],
+            'sesion15.html': [ /* ... */ ],
+            'sesion16.html': [ /* ... */ ]
+        };
+
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            return path.split("/").pop();
+        }
+
+        function populateNavLinks() {
+            const currentPage = getCurrentPageName();
+            const links = pageLinksConfig[currentPage] || [];
+
+            if (desktopMenuLinksContainer) desktopMenuLinksContainer.innerHTML = '';
+            if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                if (desktopMenuLinksContainer) {
+                    const aDesktop = document.createElement('a');
+                    aDesktop.href = link.href;
+                    aDesktop.textContent = link.text;
+                    aDesktop.className = 'nav-link-desktop text-purple-100 hover:bg-purple-700 hover:text-white'; // Púrpura/Índigo theme
+                    desktopMenuLinksContainer.appendChild(aDesktop);
+                }
+                if (mobileMenuLinksContainer) {
+                    const aMobile = document.createElement('a');
+                    aMobile.href = link.href;
+                    aMobile.textContent = link.text;
+                    aMobile.className = 'nav-link-mobile text-purple-100 hover:bg-purple-700 hover:text-white'; // Púrpura/Índigo theme
+                    mobileMenuLinksContainer.appendChild(aMobile);
+                }
+            });
+
+            const allNavLinks = document.querySelectorAll('.nav-link-desktop, .nav-link-mobile');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('nav').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                    if (mobileMenu && link.classList.contains('nav-link-mobile') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if(mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        if(mobileMenuButton) mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                    }
+                });
+            });
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu) {
+                    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', populateNavLinks);
+
+        // --- Script para el año actual en el footer ---
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+        
+        // --- Script para animación de aparición de secciones al hacer scroll ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
     </script>
 
 </body>
