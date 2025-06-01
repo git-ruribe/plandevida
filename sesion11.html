@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construyendo Relaciones Positivas: Clave para tu Proyecto de Vida</title>
+    <title>Sesión 11: Construyendo Relaciones Positivas - Plan de Vida</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            @apply bg-purple-50 text-gray-800; /* Fondo base Púrpura claro */
         }
-        .hero-bg {
-            background-image: linear-gradient(to right bottom, rgba(128, 90, 213, 0.8), rgba(167, 139, 250, 0.8)), url('https://placehold.co/1200x800/667eea/ffffff?text=Conexiones+Humanas');
+        .hero-bg-sesion11 {
+            background-image: linear-gradient(to right bottom, rgba(167, 139, 250, 0.8), rgba(128, 90, 213, 0.7)), url('https://placehold.co/1200x800/A78BFA/FFFFFF?text=Conexiones+Humanas'); /* Púrpura Suave theme */
             background-size: cover;
             background-position: center;
         }
-        .section-title {
-            @apply text-3xl font-bold text-purple-700 mb-6 text-center;
+        .page-section-title {
+            @apply text-3xl font-bold text-center mb-10 text-purple-700; /* Púrpura Suave theme */
+        }
+        .subsection-title {
+            @apply text-2xl font-semibold mb-4 text-purple-600; /* Púrpura Suave theme */
         }
         .card {
-            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+            @apply bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border-t-4 border-purple-500; /* Púrpura Suave theme */
         }
-        .list-item::before {
+        .list-item::before { /* Viñeta personalizada del original */
             content: "✓";
             color: #8B5CF6; /* purple-500 */
             font-weight: bold;
@@ -30,84 +34,126 @@
             width: 1em;
             margin-left: -1em;
         }
-        .nav-link {
-            @apply px-3 py-2 rounded-md text-sm font-medium text-purple-100 hover:bg-purple-700 hover:text-white transition-colors;
+        .nav-link-desktop, .nav-link-mobile {
+             @apply px-3 py-2 rounded-md text-sm font-medium transition-colors;
         }
-        /* Estilo para la ilustración del video */
+        .nav-link-desktop { /* Púrpura Suave theme */
+            @apply text-purple-100 hover:bg-purple-700 hover:text-white;
+        }
+        .nav-link-mobile { /* Púrpura Suave theme */
+            @apply block text-purple-100 hover:bg-purple-700 hover:text-white text-base;
+        }
+        .footer-bg {
+            @apply bg-slate-900 text-slate-300;
+        }
+        /* Estilos para la ilustración del video (adaptados del original) */
         .video-illustration-bg {
-            background-color: #f3e8ff; /* purple-100 */
+            @apply bg-purple-100 p-6 rounded-lg shadow-inner border border-purple-200;
         }
+        /* Estilos para la analogía del huevo (adaptados del original) */
         .egg-analogy-container {
             display: flex;
             justify-content: space-around;
-            align-items: flex-start;
+            align-items: flex-start; /* Cambiado para mejor alineación de tarjetas de diferente altura */
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1rem; /* Reducido para mejor ajuste en pantallas medianas */
         }
         .egg-diagram {
-            @apply p-4 border-2 rounded-lg text-center;
-            min-width: 200px;
+            @apply p-4 border-2 rounded-lg text-center bg-white shadow-md flex-1; /* Añadido flex-1 para que ocupen espacio disponible */
+            min-width: 220px; /* Ancho mínimo para evitar que se aprieten demasiado */
+            max-width: 300px; /* Ancho máximo */
         }
+        .egg-diagram h4 { @apply text-lg font-semibold mt-2 mb-1; }
         .egg-yolk { @apply bg-yellow-400 text-yellow-800 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2 font-semibold; }
         .egg-white-risk { @apply bg-orange-200 text-orange-700 p-3 rounded-lg mb-2; }
         .egg-white-outer { @apply bg-gray-100 text-gray-700 p-3 rounded-lg; }
 
         .agreement-egg-diagram {
-            @apply p-6 border-2 rounded-lg text-center shadow-md;
-            width: 100%;
-            max-width: 400px; /* Ajustar según sea necesario */
+            @apply p-6 border-2 rounded-lg text-center shadow-md bg-white flex-1;  /* Añadido flex-1 */
+            min-width: 280px; /* Ancho mínimo */
+            max-width: 400px;
             margin: 1rem auto;
         }
+        .agreement-egg-diagram h3 { @apply text-xl font-semibold text-purple-700 mb-3; }
         .agreement-zone {
             @apply p-3 my-2 rounded-md font-medium text-white;
         }
-        .agreement-green { @apply bg-green-500; } /* Acuerdos sólidos */
-        .agreement-yellow { @apply bg-yellow-500; } /* Acuerdos con matices */
-        .agreement-orange { @apply bg-orange-500; } /* Desacuerdos */
-        .agreement-red { @apply bg-red-500; } /* Desacuerdos profundos */
+        .agreement-green { @apply bg-green-500; }
+        .agreement-yellow { @apply bg-yellow-500; }
+        .agreement-orange { @apply bg-orange-500; }
+        .agreement-red { @apply bg-red-500; }
 
+        /* Animación suave para la aparición de secciones */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body class="bg-purple-50 text-gray-800">
+<body>
 
-    <nav class="bg-purple-600 p-4 sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-white text-xl font-bold">Relaciones Positivas</div>
-            <div>
-                <a href="#proyecto-vida" class="nav-link">Proyecto de Vida</a>
-                <a href="#desafios" class="nav-link">Desafíos</a>
-                <a href="#construccion" class="nav-link">Construcción</a>
-                <a href="#tarea" class="nav-link">Tarea</a>
+    <nav class="bg-purple-600 shadow-md fixed w-full z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 text-white font-bold text-xl hover:opacity-80 transition-opacity">
+                        Plan de Vida
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div id="desktop-menu-links" class="ml-10 flex items-baseline space-x-4">
+                        </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-purple-600 inline-flex items-center justify-center p-2 rounded-md text-purple-200 hover:text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div id="mobile-menu-links" class="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                </div>
         </div>
     </nav>
 
-    <header class="hero-bg text-white py-20 md:py-32">
+    <header id="inicio" class="hero-bg-sesion11 text-white pt-32 pb-20 md:pt-40 md:pb-28 fade-in-section">
         <div class="container mx-auto text-center px-4">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Construyendo Relaciones Positivas</h1>
-            <p class="text-xl md:text-2xl mb-8">La "R" del Bienestar en tu Proyecto de Vida (Modelo PERMA)</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Sesión 11: Construyendo Relaciones Positivas</h1>
+            <p class="text-xl md:text-2xl mb-8 text-purple-100">La "R" del Bienestar en tu Proyecto de Vida (Modelo PERMA)</p>
             <a href="#proyecto-vida" class="bg-white text-purple-700 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-purple-100 transition-colors text-lg">Descubre Más</a>
         </div>
     </header>
 
-    <main class="container mx-auto p-4 md:p-8">
-        <section id="proyecto-vida" class="my-12 md:my-16">
-            <h2 class="section-title">1. ¿Dónde Estamos en Nuestro Proyecto de Vida?</h2>
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+
+        <section id="proyecto-vida" class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">1. ¿Dónde Estamos en Nuestro Proyecto de Vida?</h2>
             <div class="card">
-                <p class="text-lg leading-relaxed">
-                    Hemos establecido nuestro propósito, identificado nuestras fortalezas y virtudes, y definido nuestra misión. Ahora nos encontramos en la etapa fundamental de construir nuestro proyecto de vida, simbolizado como los "cimientos" de una casa. Estos cimientos se basan en el modelo PERMA de bienestar, donde la "R" representa las Relaciones Positivas.
+                <p class="text-lg leading-relaxed text-slate-700">
+                    Hemos establecido nuestro propósito, identificado nuestras fortalezas y virtudes, y definido nuestra misión. Ahora nos encontramos en la etapa fundamental de construir nuestro proyecto de vida, simbolizado como los "cimientos" de una casa. Estos cimientos se basan en el modelo PERMA de bienestar, donde la "R" representa las <strong class="text-purple-600">Relaciones Positivas</strong>.
                 </p>
             </div>
         </section>
 
-        <section class="my-12 md:my-16">
-            <h2 class="section-title">2. ¿Por Qué Son Difíciles las Relaciones Interpersonales?</h2>
+        <section class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">2. ¿Por Qué Son Difíciles las Relaciones Interpersonales?</h2>
             <div class="card">
-                <p class="text-lg leading-relaxed mb-4">
+                <p class="text-lg leading-relaxed mb-4 text-slate-700">
                     Aunque históricamente la distancia dificultaba las relaciones, la tecnología moderna, como los smartphones, a menudo crea más barreras.
                 </p>
-                <div class="video-illustration-bg p-6 rounded-lg shadow-inner">
-                    <h3 class="text-xl font-semibold text-purple-700 mb-3">Ilustración: El Poder de Compartir</h3>
+                <div class="video-illustration-bg">
+                    <h3 class="subsection-title !text-purple-700">Ilustración: El Poder de Compartir</h3>
                     <p class="text-gray-700 leading-relaxed mb-3">
                         Un video del gobierno canadiense muestra a personas absortas en sus teléfonos en espacios públicos. Una mujer, al ver un apartamento vacío, decide poner una mesa para cenar en el pasillo del edificio. Al principio, los vecinos pasan de largo, inmersos en sus dispositivos. Sin embargo, uno por uno, notan la mesa, se unen, traen comida y finalmente entablan conversaciones animadas, risas y comparten momentos.
                     </p>
@@ -121,64 +167,64 @@
             </div>
         </section>
 
-        <section class="my-12 md:my-16">
-            <h2 class="section-title">3. Somos Gregarios por Naturaleza</h2>
+        <section class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">3. Somos Gregarios por Naturaleza</h2>
             <div class="card">
-                <p class="text-lg leading-relaxed">
+                <p class="text-lg leading-relaxed text-slate-700">
                     Los humanos somos seres inherentemente sociales. Desde el nacimiento, buscamos la compañía de otros. Nos agrupamos naturalmente para la defensa, el apoyo, el aprendizaje y el crecimiento. A pesar de este impulso innato, la vida moderna, a menudo influenciada por las redes sociales y los dispositivos individuales, puede llevar a una sensación de aislamiento y desconexión dentro de nuestras propias comunidades, incluso entre vecinos o familiares.
                 </p>
             </div>
         </section>
 
-        <section id="desafios" class="my-12 md:my-16">
-            <h2 class="section-title">4. Los Desafíos de las Relaciones</h2>
+        <section id="desafios" class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">4. Los Desafíos de las Relaciones</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-purple-700 mb-3">Dificultad Inherente</h3>
-                    <p class="leading-relaxed">
+                    <h3 class="subsection-title">Dificultad Inherente</h3>
+                    <p class="leading-relaxed text-slate-700">
                         Las relaciones suelen ser difíciles porque las personas tienen diferentes puntos de vista, creencias y costumbres. Sorprendentemente, a veces puede ser más complicado relacionarse con familiares cercanos debido a "historias previas" compartidas (experiencias pasadas y cargas emocionales).
                     </p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-purple-700 mb-3">Redes Sociales</h3>
-                    <p class="leading-relaxed">
+                    <h3 class="subsection-title">Redes Sociales</h3>
+                    <p class="leading-relaxed text-slate-700">
                         Las redes sociales se identifican como un obstáculo, llevando a menudo a interacciones superficiales donde los individuos expresan cosas que no sienten realmente (por ejemplo, usando emojis que no coinciden con sus emociones reales).
                     </p>
                 </div>
             </div>
         </section>
 
-        <section class="my-12 md:my-16">
-            <h2 class="section-title">5. ¿Qué Son las Relaciones Interpersonales?</h2>
+        <section class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">5. ¿Qué Son las Relaciones Interpersonales?</h2>
             <div class="card">
-                <p class="text-lg leading-relaxed">
+                <p class="text-lg leading-relaxed text-slate-700">
                     Una relación interpersonal es un encuentro entre dos o más personas. Durante este encuentro, los individuos comunican conscientemente sus emociones, intereses y dudas. El objetivo es mantener esta conexión a lo largo del tiempo, el espacio y a través de diversas formas de interacción.
                 </p>
             </div>
         </section>
 
-        <section class="my-12 md:my-16">
-            <h2 class="section-title">6. Dos Niveles de Relaciones</h2>
+        <section class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">6. Dos Niveles de Relaciones</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-purple-700 mb-3">Relaciones Primarias</h3>
-                    <p class="leading-relaxed">
+                    <h3 class="subsection-title">Relaciones Primarias</h3>
+                    <p class="leading-relaxed text-slate-700">
                         Se caracterizan por un afecto e interés profundos y duraderos. Suelen basarse en el amor, un fuerte afecto o necesidades previas. La unidad familiar es el ejemplo clásico, donde los lazos pueden permanecer fuertes incluso a través de distancias o períodos de contacto infrecuente.
                     </p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-purple-700 mb-3">Relaciones Secundarias</h3>
-                    <p class="leading-relaxed">
+                    <h3 class="subsection-title">Relaciones Secundarias</h3>
+                    <p class="leading-relaxed text-slate-700">
                         Implican una convivencia frecuente pero con menos lazos profundos. Estas relaciones se basan a menudo más en el afecto que en el amor profundo. Ejemplos incluyen colegas, compañeros de clase o conocidos. Ambos tipos de relaciones son valiosos y necesarios.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section class="my-12 md:my-16">
-            <h2 class="section-title">7. Identificando una Relación Positiva</h2>
+        <section class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">7. Identificando una Relación Positiva</h2>
             <div class="card">
-                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed pl-5">
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed pl-5 text-slate-700">
                     <li class="list-item">Nos ayuda a sentirnos seguros y cuidados.</li>
                     <li class="list-item">Sentimos la necesidad de cuidar a la otra persona.</li>
                     <li class="list-item">Es recíproca: nos enorgullecemos de los logros del otro y ellos de los nuestros. El apoyo fluye en ambas direcciones.</li>
@@ -188,37 +234,41 @@
             </div>
         </section>
 
-        <section class="my-12 md:my-16">
-            <h2 class="section-title">8. Factores que Fomentan las Relaciones</h2>
+        <section class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">8. Factores que Fomentan las Relaciones</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="card">
                     <h3 class="text-xl font-semibold text-purple-700 mb-2">Proximidad</h3>
-                    <p>Estar físicamente cerca facilita iniciar contacto e interacción.</p>
+                    <p class="text-slate-700">Estar físicamente cerca facilita iniciar contacto e interacción.</p>
                 </div>
                 <div class="card">
                     <h3 class="text-xl font-semibold text-purple-700 mb-2">Semejanza</h3>
-                    <p>Descubrir afinidades en pensamientos, creencias o intereses ayuda a construir conexiones.</p>
+                    <p class="text-slate-700">Descubrir afinidades en pensamientos, creencias o intereses ayuda a construir conexiones.</p>
                 </div>
                 <div class="card">
                     <h3 class="text-xl font-semibold text-purple-700 mb-2">Complementariedad</h3>
-                    <p>Reconocer que otros tienen habilidades que complementan las nuestras fortalece los lazos.</p>
+                    <p class="text-slate-700">Reconocer que otros tienen habilidades que complementan las nuestras fortalece los lazos.</p>
                 </div>
                 <div class="card">
                     <h3 class="text-xl font-semibold text-purple-700 mb-2">Recompensa</h3>
-                    <p>Sentirse reforzado positivamente por la relación (aprecio genuino, apoyo).</p>
+                    <p class="text-slate-700">Sentirse reforzado positivamente por la relación (aprecio genuino, apoyo).</p>
                 </div>
                 <div class="card col-span-1 md:col-span-2 lg:col-span-1">
                     <h3 class="text-xl font-semibold text-purple-700 mb-2">Reciprocidad (¡Crítico!)</h3>
-                    <p>Un dar y recibir equilibrado, donde ambas partes contribuyen y se apoyan mutuamente.</p>
+                    <p class="text-slate-700">Un dar y recibir equilibrado, donde ambas partes contribuyen y se apoyan mutuamente.</p>
+                </div>
+                 <div class="card md:col-span-2 lg:col-span-2"> {/* Para balancear si queda uno solo */}
+                    <h3 class="text-xl font-semibold text-purple-700 mb-2">Construcción Activa</h3>
+                    <p class="text-slate-700">Las relaciones positivas no solo suceden, se construyen con esfuerzo, comunicación y empatía.</p>
                 </div>
             </div>
         </section>
 
-        <section id="construccion" class="my-12 md:my-16">
-            <h2 class="section-title">9. ¿Cómo se Construyen las Relaciones Positivas?</h2>
+        <section id="construccion" class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">9. ¿Cómo se Construyen las Relaciones Positivas?</h2>
             <div class="card">
-                <h3 class="text-xl font-semibold text-purple-700 mb-4">Elementos Necesarios:</h3>
-                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed pl-5">
+                <h3 class="subsection-title">Elementos Necesarios:</h3>
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed pl-5 text-slate-700">
                     <li class="list-item">Confianza en uno mismo: Cree en tu propio valor.</li>
                     <li class="list-item">Iniciar un diálogo: Sé proactivo en iniciar conversaciones.</li>
                     <li class="list-item">Buscar puntos en común: Enfócate en intereses compartidos y aspectos positivos.</li>
@@ -230,11 +280,11 @@
             </div>
         </section>
 
-        <section class="my-12 md:my-16">
-            <h2 class="section-title">10. Habilidades de Comunicación: El Proceso</h2>
+        <section class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">10. Habilidades de Comunicación: El Proceso</h2>
             <div class="card">
-                <p class="text-lg leading-relaxed mb-4">La comunicación es un proceso complejo que involucra:</p>
-                <ul class="space-y-3 text-lg">
+                <p class="text-lg leading-relaxed mb-4 text-slate-700">La comunicación es un proceso complejo que involucra:</p>
+                <ul class="space-y-3 text-lg text-slate-700">
                     <li><strong class="text-purple-600">Emisor:</strong> Tiene una intención (acción o resultado deseado).</li>
                     <li><strong class="text-purple-600">Codificación:</strong> Traduce la intención en un símbolo, imagen o acción.</li>
                     <li><strong class="text-purple-600">Mensaje:</strong> La información codificada (elementos, estructura, tratamiento).</li>
@@ -243,78 +293,78 @@
                     <li><strong class="text-purple-600">Percibe:</strong> Interpreta la acción o el resultado deseado.</li>
                     <li><strong class="text-purple-600">Retroalimentación:</strong> La respuesta del receptor, que vuelve al emisor.</li>
                 </ul>
-                <p class="text-lg leading-relaxed mt-4">Este proceso puede ser influenciado por muchos factores.</p>
+                <p class="text-lg leading-relaxed mt-4 text-slate-700">Este proceso puede ser influenciado por muchos factores.</p>
             </div>
         </section>
 
-        <section class="my-12 md:my-16">
-            <h2 class="section-title">11. Emoción y Cognición: ¿Por Qué se Agravan los Conflictos?</h2>
+        <section class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">11. Emoción y Cognición: ¿Por Qué se Agravan los Conflictos?</h2>
             <div class="card">
-                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed pl-5 mb-4">
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed pl-5 mb-4 text-slate-700">
                     <li class="list-item"><strong class="text-purple-600">Estado Emocional:</strong> Nuestro humor influye en cómo percibimos estímulos ambiguos. Si estamos enojados, es más probable que interpretemos acciones neutrales negativamente.</li>
                     <li class="list-item"><strong class="text-purple-600">Interferencia de la Memoria:</strong> Los sentimientos positivos o negativos pueden interferir con la memoria, haciendo que recordemos solo experiencias buenas o malas.</li>
                     <li class="list-item"><strong class="text-purple-600">Toma de Decisiones:</strong> Nuestro estado afectivo influye directamente en nuestras decisiones. Enojados, las decisiones tienden a ser defensivas o agresivas, dañando las relaciones.</li>
                 </ul>
-                <p class="text-center font-semibold text-xl p-4 bg-red-100 text-red-700 rounded-lg">
+                <p class="text-center font-semibold text-xl p-4 bg-red-100 text-red-700 rounded-lg border border-red-300">
                     Regla de Oro: No hables ni tomes decisiones cuando estés enojado.
                 </p>
             </div>
         </section>
 
-        <section class="my-12 md:my-16">
-            <h2 class="section-title">12. Acuerdos: Lo Ideal vs. La Realidad Emocional</h2>
+        <section class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">12. Acuerdos: Lo Ideal vs. La Realidad Emocional</h2>
             <div class="card">
-                 <p class="text-lg leading-relaxed mb-4">Visualiza los acuerdos en una relación como un "huevo" con diferentes zonas:</p>
-                <div class="egg-analogy-container">
-                    <div class="agreement-egg-diagram">
-                        <h3 class="text-xl font-semibold text-purple-700 mb-3">Idealmente (Lo que debería ser):</h3>
+                 <p class="text-lg leading-relaxed mb-4 text-slate-700">Visualiza los acuerdos en una relación como un "huevo" con diferentes zonas:</p>
+                <div class="egg-analogy-container my-6">
+                    <div class="agreement-egg-diagram border-purple-300">
+                        <h3>Idealmente (Lo que debería ser):</h3>
                         <div class="agreement-zone agreement-green">Gran área de "acuerdos sólidos"</div>
                         <div class="agreement-zone agreement-yellow">Área menor de "acuerdos con matices"</div>
                         <div class="agreement-zone agreement-orange">Pequeña área de "desacuerdos"</div>
                         <div class="agreement-zone agreement-red">Mínima área de "desacuerdos profundos"</div>
-                        <p class="mt-3 text-gray-600">Implica un equilibrio saludable donde se prioriza la comprensión y el compromiso.</p>
+                        <p class="mt-3 text-gray-600 text-sm">Implica un equilibrio saludable donde se prioriza la comprensión y el compromiso.</p>
                     </div>
-                    <div class="agreement-egg-diagram">
-                        <h3 class="text-xl font-semibold text-purple-700 mb-3">Realidad (Cuando la emoción domina):</h3>
+                    <div class="agreement-egg-diagram border-purple-300">
+                        <h3>Realidad (Cuando la emoción domina):</h3>
                          <div class="agreement-zone agreement-red" style="height: 60%;">Casi todo parece "rojo": desacuerdos profundos, ira, amenazas percibidas.</div>
                          <div class="agreement-zone agreement-orange" style="height: 20%;">Algo de "naranja"</div>
                          <div class="agreement-zone agreement-yellow" style="height: 10%;">Poco "amarillo"</div>
                          <div class="agreement-zone agreement-green" style="height: 10%;">Casi nada "verde"</div>
-                        <p class="mt-3 text-gray-600">Esta percepción distorsionada imposibilita una interacción saludable.</p>
+                        <p class="mt-3 text-gray-600 text-sm">Esta percepción distorsionada imposibilita una interacción saludable.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="my-12 md:my-16">
-            <h2 class="section-title">13. Límites Personales: La Analogía del Huevo Frito</h2>
+        <section class="my-12 md:my-16 scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title">13. Límites Personales: La Analogía del Huevo Frito</h2>
             <div class="card">
-                <p class="text-lg leading-relaxed mb-6">Imagina tus límites personales como un huevo frito:</p>
+                <p class="text-lg leading-relaxed mb-6 text-slate-700">Imagina tus límites personales como un huevo frito:</p>
                 <div class="egg-analogy-container">
                     <div class="egg-diagram border-red-400">
                         <div class="egg-yolk">Yema</div>
-                        <h4 class="font-semibold text-red-600 mt-2">Intocable</h4>
+                        <h4 class="text-red-600">Intocable</h4>
                         <p class="text-sm text-gray-600">Áreas extremadamente sensibles. Si alguien las "toca", provocará enojo y problemas inmediatamente. La "yema" de cada persona es diferente.</p>
                     </div>
                     <div class="egg-diagram border-orange-400">
                          <div class="egg-white-risk">Clara (cercana a la yema)</div>
-                        <h4 class="font-semibold text-orange-600 mt-2">Zona de Riesgo</h4>
+                        <h4 class="text-orange-600">Zona de Riesgo</h4>
                         <p class="text-sm text-gray-600">Dependiendo de nuestro estado de ánimo (cansancio, estrés), tocar estas áreas podría o no generar enojo.</p>
                     </div>
                     <div class="egg-diagram border-gray-300">
                         <div class="egg-white-outer">Clara Exterior</div>
-                        <h4 class="font-semibold text-gray-700 mt-2">"No Cae / Resbala"</h4>
+                        <h4 class="text-gray-700">"No Cae / Resbala"</h4>
                         <p class="text-sm text-gray-600">Áreas donde la mayoría de las cosas "resbalan" sin causar problemas. Aquí ocurren la mayoría de las interacciones saludables.</p>
                     </div>
                 </div>
-                <p class="text-lg leading-relaxed mt-6">
+                <p class="text-lg leading-relaxed mt-6 text-slate-700">
                     La clave es entender tu propio "huevo" (tus áreas sensibles) y respetar los "huevos" de los demás. No toques las áreas "intocables" de otra persona.
                 </p>
             </div>
         </section>
 
-        <section id="tarea" class="my-12 md:my-16 bg-purple-100 p-8 rounded-xl shadow-xl">
-            <h2 class="section-title !text-purple-800">14. Tarea para la Semana: ¡A la Acción!</h2>
+        <section id="tarea" class="my-12 md:my-16 bg-purple-100 p-8 rounded-xl shadow-xl scroll-mt-24 fade-in-section">
+            <h2 class="page-section-title !text-purple-800">14. Tarea para la Semana: ¡A la Acción!</h2>
             <div class="text-center">
                 <p class="text-lg text-purple-700 leading-relaxed mb-6">Es momento de aplicar estos principios:</p>
                 <ol class="list-decimal list-inside space-y-4 text-left inline-block text-lg text-purple-700">
@@ -327,10 +377,136 @@
         </section>
     </main>
 
-    <footer class="bg-purple-800 text-purple-100 text-center p-8">
-        <p>&copy; 2024 Construyendo Bienestar. Inspirado en las enseñanzas sobre Relaciones Positivas.</p>
-        <p class="text-sm mt-2">Recuerda: las conexiones auténticas enriquecen tu proyecto de vida.</p>
+    <footer class="footer-bg py-12 text-center fade-in-section">
+        <div class="container mx-auto px-6">
+            <p class="text-lg mb-2">Plan de Vida: Un Viaje de Transformación</p>
+            <p>&copy; <span id="currentYear"></span> Plan de Vida. Todos los derechos reservados.</p>
+            <p class="mt-2 text-sm opacity-70">Este sitio es una interpretación y resumen con fines educativos.</p>
+        </div>
     </footer>
+
+    <script>
+        // --- Navbar Script ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const desktopMenuLinksContainer = document.getElementById('desktop-menu-links');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
+
+        const pageLinksConfig = {
+            'index.html': [ /* ... */ ],
+            'sesion01.html': [ /* ... */ ],
+            'sesion02.html': [ /* ... */ ],
+            'sesion03.html': [ /* ... */ ],
+            'sesion04.html': [ /* ... */ ],
+            'sesion05.html': [ /* ... */ ],
+            'sesion06.html': [ /* ... */ ],
+            'sesion07.html': [ /* ... */ ],
+            'sesion08.html': [ /* ... */ ],
+            'sesion09.html': [ /* ... */ ],
+            'sesion10.html': [ /* ... */ ],
+            'sesion11.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#proyecto-vida', text: 'Proyecto de Vida' },
+                { href: '#desafios', text: 'Desafíos' },
+                { href: '#construccion', text: 'Construcción' },
+                { href: '#tarea', text: 'Tarea' }
+            ],
+            'sesion12.html': [ /* ... */ ],
+            'sesion14.html': [ /* ... */ ],
+            'sesion15.html': [ /* ... */ ],
+            'sesion16.html': [ /* ... */ ]
+        };
+
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            return path.split("/").pop();
+        }
+
+        function populateNavLinks() {
+            const currentPage = getCurrentPageName();
+            const links = pageLinksConfig[currentPage] || [];
+
+            if (desktopMenuLinksContainer) desktopMenuLinksContainer.innerHTML = '';
+            if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                if (desktopMenuLinksContainer) {
+                    const aDesktop = document.createElement('a');
+                    aDesktop.href = link.href;
+                    aDesktop.textContent = link.text;
+                    aDesktop.className = 'nav-link-desktop text-purple-100 hover:bg-purple-700 hover:text-white'; // Púrpura theme
+                    desktopMenuLinksContainer.appendChild(aDesktop);
+                }
+                if (mobileMenuLinksContainer) {
+                    const aMobile = document.createElement('a');
+                    aMobile.href = link.href;
+                    aMobile.textContent = link.text;
+                    aMobile.className = 'nav-link-mobile text-purple-100 hover:bg-purple-700 hover:text-white'; // Púrpura theme
+                    mobileMenuLinksContainer.appendChild(aMobile);
+                }
+            });
+
+            const allNavLinks = document.querySelectorAll('.nav-link-desktop, .nav-link-mobile');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('nav').offsetHeight;
+                        const scrollMarginTop = parseFloat(getComputedStyle(targetElement).scrollMarginTop) || 0; 
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - scrollMarginTop;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                    if (mobileMenu && link.classList.contains('nav-link-mobile') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if(mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        if(mobileMenuButton) mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                    }
+                });
+            });
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu) {
+                    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', populateNavLinks);
+
+        // --- Script para el año actual en el footer ---
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+        
+        // --- Script para animación de aparición de secciones al hacer scroll ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.05 
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 
 </body>
 </html>
