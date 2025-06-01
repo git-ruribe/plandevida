@@ -3,222 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Definiendo Horizontes: Propósito y Logro</title>
+    <title>Sesión 12: Propósito y Logro - Definiendo Horizontes - Plan de Vida</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            @apply bg-blue-50 text-gray-700; /* Fondo base Azul claro */
         }
-        .hero-bg {
-            background-color: #4A90E2; /* Un azul inspirador */
+        .hero-bg-sesion12 {
+            background-color: #3B82F6; /* Azul Cobalto theme (blue-500) */
+            /* Si quieres un gradiente:
+            background-image: linear-gradient(to right, rgba(59, 130, 246, 0.85), rgba(37, 99, 235, 0.8)), url('https://placehold.co/1200x600/3B82F6/FFFFFF?text=Propósito+y+Logro');
+            background-size: cover;
+            background-position: center;
+            */
         }
-        .section-title {
-            @apply text-3xl font-bold text-gray-800 mb-6 text-center;
+        .page-section-title {
+            @apply text-3xl font-bold text-center mb-10 text-blue-700; /* Azul Cobalto theme */
         }
         .subsection-title {
-            @apply text-2xl font-semibold text-gray-700 mb-4 mt-6;
+            @apply text-2xl font-semibold text-blue-600 mb-4 mt-6; /* Azul Cobalto theme */
         }
         .card {
-            @apply bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300;
+            @apply bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border-t-4 border-blue-500; /* Azul Cobalto theme */
         }
         .list-disc li {
             @apply mb-2;
         }
         .highlight {
-            @apply text-blue-600 font-semibold;
+            @apply text-blue-600 font-semibold; /* Azul Cobalto theme */
         }
-        .nav-link {
-            @apply px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-blue-700 transition-colors;
+        .nav-link-desktop, .nav-link-mobile {
+             @apply px-3 py-2 rounded-md text-sm font-medium transition-colors;
         }
-        /* Animación sutil para las tarjetas */
-        .card-enter {
+        .nav-link-desktop { /* Azul Cobalto theme */
+            @apply text-blue-100 hover:bg-blue-700 hover:text-white;
+        }
+        .nav-link-mobile { /* Azul Cobalto theme */
+            @apply block text-blue-100 hover:bg-blue-700 hover:text-white text-base;
+        }
+        .footer-bg { /* Usaremos el mismo azul del hero para el footer */
+            @apply bg-blue-600 text-blue-100;
+        }
+
+        /* Animación sutil para las tarjetas (adaptada del original) */
+        .card-animation-container .card { /* Aplicar animación a las cards dentro de estos contenedores */
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
-        .card-enter-active {
+        .card-animation-container.is-visible .card {
             opacity: 1;
             transform: translateY(0);
         }
+        /* Tags para motivadores (adaptados del original) */
+        .motivator-tag {
+            @apply px-4 py-2 rounded-full text-lg shadow;
+        }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-700">
+<body>
 
-    <nav class="hero-bg p-4 sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold text-white">Definiendo Horizontes</h1>
-            <div class="space-x-4">
-                <a href="#introduccion" class="nav-link">Inicio</a>
-                <a href="#perma" class="nav-link">PERMA</a>
-                <a href="#proposito" class="nav-link">Propósito</a>
-                <a href="#logro" class="nav-link">Logro</a>
-                <a href="#motivacion" class="nav-link">Motivación</a>
-                <a href="#metas" class="nav-link">Metas</a>
-                <a href="#reflexion" class="nav-link">Reflexión</a>
+    <nav class="bg-blue-600 shadow-md fixed w-full z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 text-white font-bold text-xl hover:opacity-80 transition-opacity">
+                        Plan de Vida
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div id="desktop-menu-links" class="ml-10 flex items-baseline space-x-4">
+                        </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-blue-600 inline-flex items-center justify-center p-2 rounded-md text-blue-200 hover:text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div id="mobile-menu-links" class="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                </div>
         </div>
     </nav>
 
-    <header id="introduccion" class="hero-bg text-white py-20 px-6 text-center">
-        <div class="container mx-auto">
-            <h2 class="text-5xl font-bold mb-4">Propósito y Logro</h2>
-            <p class="text-xl mb-8">Descubriendo las claves para articular y alcanzar tus objetivos de vida, culminando el modelo PERMA.</p>
-            <a href="#perma" class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors text-lg">Comenzar Viaje</a>
+    <header id="inicio" class="hero-bg-sesion12 text-white pt-32 pb-20 md:pt-40 md:pb-28">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Sesión 12: Propósito y Logro</h1>
+            <p class="text-xl md:text-2xl mb-8 text-blue-100">Descubriendo las claves para articular y alcanzar tus objetivos de vida, culminando el modelo PERMA.</p>
+            <a href="#perma" class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg hover:bg-blue-100 transition-colors text-lg">Comenzar Viaje</a>
         </div>
     </header>
 
-    <main class="container mx-auto p-6">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 
         <section class="my-12 card-animation-container">
-            <h3 class="section-title">El Proyecto de Vida: Estructurando Objetivos</h3>
+            <h2 class="page-section-title">El Proyecto de Vida: Estructurando Objetivos</h2>
             <div class="card">
-                <p class="text-lg leading-relaxed">
+                <p class="text-lg leading-relaxed text-slate-700">
                     Este camino es una invitación a un "proyecto de vida", una iniciativa continua para estructurar objetivos personales. La sesión sobre <span class="highlight">"Propósito y Logro"</span> es fundamental, ya que concluye la serie "Definiendo Horizontes 5", construyendo sobre el modelo PERMA. El objetivo general es transformar hábitos, pensamientos y comportamientos, generando impactos positivos en los entornos familiar, social y parroquial, fomentando así el crecimiento personal y la claridad de dirección.
                 </p>
             </div>
         </section>
 
-        <section id="perma" class="my-12 card-animation-container">
-            <h3 class="section-title">El Modelo PERMA para el Bienestar</h3>
+        <section id="perma" class="my-12 card-animation-container scroll-mt-24">
+            <h2 class="page-section-title">El Modelo PERMA para el Bienestar</h2>
             <div class="card">
-                <p class="mb-4 text-lg">El modelo PERMA sirve como un marco para el bienestar, y sus componentes son:</p>
-                <ul class="list-disc pl-5 space-y-2 text-lg">
+                <p class="mb-4 text-lg text-slate-700">El modelo PERMA sirve como un marco para el bienestar, y sus componentes son:</p>
+                <ul class="list-disc pl-5 space-y-2 text-lg text-slate-700">
                     <li><span class="font-semibold">P</span>ositive Emotions (Emociones Positivas)</li>
                     <li><span class="font-semibold">E</span>ngagement (Compromiso e Involucramiento)</li>
                     <li><span class="font-semibold">R</span>elationships (Relaciones Positivas)</li>
                     <li><span class="font-semibold">M</span>eaning (Significado o Propósito Superior)</li>
                     <li><span class="font-semibold">A</span>ccomplishment (Logro)</li>
                 </ul>
-                <p class="mt-4 text-lg">Habiendo explorado los tres primeros elementos en sesiones anteriores, ahora el enfoque se centra en los dos componentes finales: <span class="highlight">Significado (Propósito)</span> y <span class="highlight">Logro</span>.</p>
+                <p class="mt-4 text-lg text-slate-700">Habiendo explorado los tres primeros elementos en sesiones anteriores, ahora el enfoque se centra en los dos componentes finales: <span class="highlight">Significado (Propósito)</span> y <span class="highlight">Logro</span>.</p>
             </div>
         </section>
 
-        <section id="proposito" class="my-12 card-animation-container">
-            <h3 class="section-title">Significado: Mi Propósito Superior</h3>
+        <section id="proposito" class="my-12 card-animation-container scroll-mt-24">
+            <h2 class="page-section-title">Significado: Mi Propósito Superior</h2>
             <div class="card">
-                <p class="mb-4 text-lg">"Mi Propósito Superior" es un tema recurrente y fundamental. Se define como:</p>
-                <ul class="list-disc pl-5 space-y-3 text-lg">
+                <p class="mb-4 text-lg text-slate-700">"Mi Propósito Superior" es un tema recurrente y fundamental. Se define como:</p>
+                <ul class="list-disc pl-5 space-y-3 text-lg text-slate-700">
                     <li>Una frase que <span class="highlight">inspira</span> e <span class="highlight">impulsa</span> al individuo.</li>
                     <li>Una frase que <span class="highlight">rige las decisiones</span>.</li>
                     <li>Una frase que <span class="highlight">motiva las acciones</span>.</li>
                 </ul>
-                <p class="mt-4 text-lg">El Propósito es una declaración sobre la propia vida, representando una dirección consciente que guiará las decisiones en los próximos años. No se trata de que esté "bellamente redactado", sino de que sea personalmente significativo y proporcione un sentido de dirección.</p>
+                <p class="mt-4 text-lg text-slate-700">El Propósito es una declaración sobre la propia vida, representando una dirección consciente que guiará las decisiones en los próximos años. No se trata de que esté "bellamente redactado", sino de que sea personalmente significativo y proporcione un sentido de dirección.</p>
             </div>
         </section>
 
-        <section id="logro" class="my-12 card-animation-container">
-            <h3 class="section-title">Logro: Alcanzando Metas</h3>
+        <section id="logro" class="my-12 card-animation-container scroll-mt-24">
+            <h2 class="page-section-title">Logro: Alcanzando Metas</h2>
             <div class="card">
-                <p class="mb-4 text-lg">"Logro" es el elemento final del modelo PERMA. Implica establecer <span class="highlight">metas</span>.</p>
-                <p class="text-lg">Alcanzar estas metas contribuye a sentimientos de <span class="highlight">competencia</span> y fomenta la <span class="highlight">autonomía</span> personal. Se trata de fijar objetivos orientados a mejorar las propias habilidades. Un elemento fundamental del Logro es la <span class="highlight">MOTIVACIÓN</span>.</p>
+                <p class="mb-4 text-lg text-slate-700">"Logro" es el elemento final del modelo PERMA. Implica establecer <span class="highlight">metas</span>.</p>
+                <p class="text-lg text-slate-700">Alcanzar estas metas contribuye a sentimientos de <span class="highlight">competencia</span> y fomenta la <span class="highlight">autonomía</span> personal. Se trata de fijar objetivos orientados a mejorar las propias habilidades. Un elemento fundamental del Logro es la <span class="highlight">MOTIVACIÓN</span>.</p>
             </div>
         </section>
 
-        <section id="motivacion" class="my-12 card-animation-container">
-            <h3 class="section-title">Entendiendo la Motivación</h3>
+        <section id="motivacion" class="my-12 card-animation-container scroll-mt-24">
+            <h2 class="page-section-title">Entendiendo la Motivación</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="card">
-                    <h4 class="subsection-title">¿Cómo sé si alguien está motivado?</h4>
-                    <p class="mb-3 text-lg">A menudo se confunde la motivación con imágenes de euforia o celebración. Sin embargo, existe una comprensión más profunda.</p>
-                    <h5 class="text-xl font-semibold text-gray-700 mb-2 mt-4">Distinción entre "Animar" y "Motivar":</h5>
-                    <ul class="list-disc pl-5 space-y-2 text-lg">
+                    <h3 class="subsection-title">¿Cómo sé si alguien está motivado?</h3>
+                    <p class="mb-3 text-lg text-slate-700">A menudo se confunde la motivación con imágenes de euforia o celebración. Sin embargo, existe una comprensión más profunda.</p>
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2 mt-4">Distinción entre "Animar" y "Motivar":</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-lg text-slate-700">
                         <li><span class="font-semibold">Animar:</span> Deriva del latín "anima" (alma), significa infundir espíritu o energía. Suele ser un impulso externo y temporal.</li>
                         <li><span class="font-semibold">Motivar:</span> Deriva del latín "movere" (mover), significa proporcionar una razón o causa para la acción, o crear un interés que lleve a satisfacer una necesidad. Es un proceso más profundo e interno.</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <h4 class="subsection-title">Tipos de Motivación</h4>
-                    <ul class="list-disc pl-5 space-y-3 text-lg">
+                    <h3 class="subsection-title">Tipos de Motivación</h3>
+                    <ul class="list-disc pl-5 space-y-3 text-lg text-slate-700">
                         <li>
                             <span class="font-semibold">Motivación Extrínseca:</span>
-                            <p>Surge de factores o recompensas externas (por ejemplo, un bono, miedo al castigo, una señal de alarma que impulsa la acción).</p>
+                            <p class="text-slate-700">Surge de factores o recompensas externas (por ejemplo, un bono, miedo al castigo, una señal de alarma que impulsa la acción).</p>
                         </li>
                         <li>
                             <span class="font-semibold">Motivación Intrínseca:</span>
-                            <p>Proviene del interior del individuo, impulsada por la satisfacción personal, el disfrute o el interés inherente en la actividad misma.</p>
+                            <p class="text-slate-700">Proviene del interior del individuo, impulsada por la satisfacción personal, el disfrute o el interés inherente en la actividad misma.</p>
                         </li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section class="my-12 card-animation-container">
-            <h3 class="section-title">Teorías de la Motivación</h3>
-            <div class="space-y-8">
-                <div class="card">
-                    <h4 class="subsection-title">Jerarquía de Necesidades de Maslow</h4>
-                    <p class="mb-3 text-lg">Presentada como una pirámide con diferentes niveles de necesidades que deben satisfacerse progresivamente:</p>
-                    <ul class="list-disc pl-5 space-y-2 text-lg">
-                        <li><span class="font-semibold">Necesidades Básicas (Fisiológicas):</span> Comida, agua, sueño, refugio.</li>
-                        <li><span class="font-semibold">Necesidades de Seguridad:</span> Seguridad personal, seguridad financiera, salud.</li>
-                        <li><span class="font-semibold">Necesidades Sociales:</span> Pertenencia, amor, afecto, relaciones.</li>
-                        <li><span class="font-semibold">Necesidades de Estima:</span> Respeto por uno mismo, logro, reconocimiento, estatus.</li>
-                        <li><span class="font-semibold">Autorrealización:</span> Realizar el máximo potencial, crecimiento personal.</li>
-                    </ul>
-                    <p class="mt-3 text-lg">La teoría sugiere que las necesidades de nivel inferior deben satisfacerse antes de que se puedan perseguir las necesidades de nivel superior. Las necesidades fundamentales impulsan la acción.</p>
-                </div>
-                <div class="card">
-                    <h4 class="subsection-title">Teoría de las Necesidades de McClelland</h4>
-                    <p class="mb-3 text-lg">Identifica tres motivadores principales que los individuos poseen en diversos grados:</p>
-                    <ul class="list-disc pl-5 space-y-2 text-lg">
-                        <li><span class="font-semibold">Necesidad de Logro:</span> Impulsada por el éxito, el dominio de habilidades y la búsqueda de la excelencia, a menudo por satisfacción interna más que por elogios externos.</li>
-                        <li><span class="font-semibold">Necesidad de Afiliación:</span> Deseo de relaciones fuertes y de apoyo, pertenencia y conexión social.</li>
-                        <li><span class="font-semibold">Necesidad de Poder:</span> Deseo de influir, controlar o dirigir a otros, a menudo asociado con roles de liderazgo.</li>
-                    </ul>
+        <section class="my-12 bg-blue-100 rounded-xl shadow-inner card-animation-container py-10">
+            <div class="container mx-auto px-6">
+                <h2 class="page-section-title">Teorías de la Motivación</h2>
+                <div class="space-y-8">
+                    <div class="card">
+                        <h3 class="subsection-title">Jerarquía de Necesidades de Maslow</h3>
+                        <p class="mb-3 text-lg text-slate-700">Presentada como una pirámide con diferentes niveles de necesidades que deben satisfacerse progresivamente:</p>
+                        <ul class="list-disc pl-5 space-y-2 text-lg text-slate-700">
+                            <li><span class="font-semibold">Necesidades Básicas (Fisiológicas):</span> Comida, agua, sueño, refugio.</li>
+                            <li><span class="font-semibold">Necesidades de Seguridad:</span> Seguridad personal, seguridad financiera, salud.</li>
+                            <li><span class="font-semibold">Necesidades Sociales:</span> Pertenencia, amor, afecto, relaciones.</li>
+                            <li><span class="font-semibold">Necesidades de Estima:</span> Respeto por uno mismo, logro, reconocimiento, estatus.</li>
+                            <li><span class="font-semibold">Autorrealización:</span> Realizar el máximo potencial, crecimiento personal.</li>
+                        </ul>
+                        <p class="mt-3 text-lg text-slate-700">La teoría sugiere que las necesidades de nivel inferior deben satisfacerse antes de que se puedan perseguir las necesidades de nivel superior. Las necesidades fundamentales impulsan la acción.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="subsection-title">Teoría de las Necesidades de McClelland</h3>
+                        <p class="mb-3 text-lg text-slate-700">Identifica tres motivadores principales que los individuos poseen en diversos grados:</p>
+                        <ul class="list-disc pl-5 space-y-2 text-lg text-slate-700">
+                            <li><span class="font-semibold">Necesidad de Logro:</span> Impulsada por el éxito, el dominio de habilidades y la búsqueda de la excelencia, a menudo por satisfacción interna más que por elogios externos.</li>
+                            <li><span class="font-semibold">Necesidad de Afiliación:</span> Deseo de relaciones fuertes y de apoyo, pertenencia y conexión social.</li>
+                            <li><span class="font-semibold">Necesidad de Poder:</span> Deseo de influir, controlar o dirigir a otros, a menudo asociado con roles de liderazgo.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="metas" class="my-12 card-animation-container">
-            <h3 class="section-title">Claves para Metas Efectivas</h3>
+        <section id="metas" class="my-12 card-animation-container scroll-mt-24">
+            <h2 class="page-section-title">Claves para Metas Efectivas</h2>
             <div class="card">
-                <p class="mb-4 text-lg">Para que las metas sean verdaderamente motivadoras y efectivas, deben poseer ciertas características:</p>
+                <p class="mb-4 text-lg text-slate-700">Para que las metas sean verdaderamente motivadoras y efectivas, deben poseer ciertas características:</p>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <h5 class="text-xl font-semibold text-blue-600 mb-2">Autogeneradas</h5>
-                        <p class="text-lg">La meta debe originarse del deseo y la convicción del propio individuo, no de una imposición externa.</p>
+                        <h4 class="text-xl font-semibold text-blue-600 mb-2">Autogeneradas</h4>
+                        <p class="text-lg text-slate-700">La meta debe originarse del deseo y la convicción del propio individuo, no de una imposición externa.</p>
                     </div>
                     <div>
-                        <h5 class="text-xl font-semibold text-blue-600 mb-2">Específicas</h5>
-                        <p class="text-lg">La meta debe estar claramente definida y ser medible (por ejemplo, "perder 10 kg" en lugar de "perder peso").</p>
+                        <h4 class="text-xl font-semibold text-blue-600 mb-2">Específicas</h4>
+                        <p class="text-lg text-slate-700">La meta debe estar claramente definida y ser medible (por ejemplo, "perder 10 kg" en lugar de "perder peso").</p>
                     </div>
                     <div>
-                        <h5 class="text-xl font-semibold text-blue-600 mb-2">Desafiantes (Nivel Reto)</h5>
-                        <p class="text-lg">La meta debe ser lo suficientemente difícil como para ser atractiva e inspiradora, pero no tanto como para que parezca inalcanzable. Un equilibrio es clave.</p>
+                        <h4 class="text-xl font-semibold text-blue-600 mb-2">Desafiantes (Nivel Reto)</h4>
+                        <p class="text-lg text-slate-700">La meta debe ser lo suficientemente difícil como para ser atractiva e inspiradora, pero no tanto como para que parezca inalcanzable. Un equilibrio es clave.</p>
                     </div>
                     <div>
-                        <h5 class="text-xl font-semibold text-blue-600 mb-2">Monitoreadas/Feedback (Retroalimentación)</h5>
-                        <p class="text-lg">Debe haber una forma de seguir el progreso y recibir retroalimentación, permitiendo ajustes y manteniendo el enfoque.</p>
+                        <h4 class="text-xl font-semibold text-blue-600 mb-2">Monitoreadas/Feedback (Retroalimentación)</h4>
+                        <p class="text-lg text-slate-700">Debe haber una forma de seguir el progreso y recibir retroalimentación, permitiendo ajustes y manteniendo el enfoque.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="reflexion" class="my-12 card-animation-container">
-            <h3 class="section-title">Reflexión Personal: ¿Qué te Motiva?</h3>
+        <section id="reflexion" class="my-12 card-animation-container scroll-mt-24">
+            <h2 class="page-section-title">Reflexión Personal: ¿Qué te Motiva?</h2>
             <div class="card">
-                <p class="mb-4 text-lg">Se fomenta una introspección profunda sobre lo que realmente motiva a cada individuo. Algunos motivadores comunes incluyen:</p>
+                <p class="mb-4 text-lg text-slate-700">Se fomenta una introspección profunda sobre lo que realmente motiva a cada individuo. Algunos motivadores comunes incluyen:</p>
                 <div class="flex flex-wrap justify-center gap-3 my-4">
-                    <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-lg">Familia</span>
-                    <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-lg">Trabajo</span>
-                    <span class="bg-yellow-100 text-yellow-700 px-4 py-2 rounded-full text-lg">Dinero</span>
-                    <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-lg">Tranquilidad</span>
-                    <span class="bg-pink-100 text-pink-700 px-4 py-2 rounded-full text-lg">Reconocimiento</span>
-                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-lg">Aprendizaje</span>
-                    <span class="bg-red-100 text-red-700 px-4 py-2 rounded-full text-lg">Amistades</span>
-                    <span class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-lg">Comunidad</span>
+                    <span class="motivator-tag bg-blue-100 text-blue-700">Familia</span>
+                    <span class="motivator-tag bg-green-100 text-green-700">Trabajo</span>
+                    <span class="motivator-tag bg-yellow-100 text-yellow-700">Dinero</span>
+                    <span class="motivator-tag bg-purple-100 text-purple-700">Tranquilidad</span>
+                    <span class="motivator-tag bg-pink-100 text-pink-700">Reconocimiento</span>
+                    <span class="motivator-tag bg-indigo-100 text-indigo-700">Aprendizaje</span>
+                    <span class="motivator-tag bg-red-100 text-red-700">Amistades</span>
+                    <span class="motivator-tag bg-gray-200 text-gray-700">Comunidad</span>
                 </div>
-                <p class="text-lg">Comprender los motivadores centrales es fundamental para el establecimiento exitoso de metas.</p>
+                <p class="text-lg text-slate-700">Comprender los motivadores centrales es fundamental para el establecimiento exitoso de metas.</p>
             </div>
         </section>
         
         <section class="my-12 card-animation-container">
-            <h3 class="section-title">Tarea de Reflexión Semanal</h3>
-            <div class="card">
-                <p class="mb-4 text-lg">Reflexiona sobre tu propia motivación interna para ser una institución ministerial (o adapta esta pregunta a tu contexto personal o profesional). Considera las siguientes preguntas:</p>
-                <ol class="list-decimal pl-5 space-y-3 text-lg">
+            <h2 class="page-section-title">Tarea de Reflexión Semanal</h2>
+            <div class="card bg-blue-100 border-blue-300">
+                <p class="mb-4 text-lg text-slate-700">Reflexiona sobre tu propia motivación interna para ser una institución ministerial (o adapta esta pregunta a tu contexto personal o profesional). Considera las siguientes preguntas:</p>
+                <ol class="list-decimal list-inside pl-5 space-y-3 text-lg text-slate-700">
                     <li>¿Qué es lo que más disfrutas haciendo?</li>
                     <li>¿A qué estás dispuesto/a a renunciar (dejar atrás) para alcanzar tu propósito?</li>
                     <li>¿Qué <span class="font-semibold">no</span> estás dispuesto/a a cambiar?</li>
@@ -231,60 +268,148 @@
 
         <section class="my-12 text-center card-animation-container">
              <div class="card">
-                <h3 class="section-title">Hacia un Logro Auténtico</h3>
-                <p class="text-xl leading-relaxed mb-4">
+                <h2 class="page-section-title">Hacia un Logro Auténtico</h2>
+                <p class="text-xl leading-relaxed mb-4 text-slate-700">
                     Reconocer la profundidad de estos temas y la naturaleza desafiante de la autorreflexión es el primer paso. Cuando se identifican los <span class="highlight">verdaderos motivos</span>, alcanzar las metas se vuelve significativamente más fácil.
                 </p>
-                <p class="text-xl leading-relaxed">
+                <p class="text-xl leading-relaxed text-slate-700">
                     Por el contrario, perseguir metas basadas únicamente en la motivación extrínseca o en un entusiasmo fugaz hará que el viaje sea arduo. La <span class="highlight">motivación genuina</span> surge desde adentro —del corazón, con certeza y alegría— y debe estar alineada con el propósito de vida de cada uno.
                 </p>
-                <p class="mt-6 text-lg font-semibold">Continúa esta reflexión para construir objetivos formalmente basados en esta comprensión.</p>
+                <p class="mt-6 text-lg font-semibold text-slate-700">Continúa esta reflexión para construir objetivos formalmente basados en esta comprensión.</p>
             </div>
         </section>
     </main>
 
-    <footer class="hero-bg text-white text-center p-10 mt-12">
-        <p>&copy; <span id="currentYear"></span> Definiendo Horizontes. Inspirado en los principios del modelo PERMA.</p>
-        <p class="text-sm mt-2">Este es un material adaptado con fines ilustrativos.</p>
+    <footer class="footer-bg py-12 text-center"> <div class="container mx-auto px-6">
+            <p class="text-lg mb-2">Plan de Vida: Un Viaje de Transformación</p>
+            <p>&copy; <span id="currentYear"></span> Definiendo Horizontes. Inspirado en los principios del modelo PERMA.</p>
+            <p class="text-sm mt-2 opacity-70">Este es un material adaptado con fines ilustrativos.</p>
+        </div>
     </footer>
 
     <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // --- Navbar Script ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const desktopMenuLinksContainer = document.getElementById('desktop-menu-links');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
 
-        // Animación de tarjetas al hacer scroll
-        const cards = document.querySelectorAll('.card-animation-container');
-        const observerOptions = {
+        const pageLinksConfig = {
+            'index.html': [ /* ... */ ],
+            'sesion01.html': [ /* ... */ ],
+            // ... (todas las sesiones anteriores)
+            'sesion12.html': [
+                { href: '#inicio', text: 'Inicio' }, // Apunta al header/hero de la sesión
+                { href: '#perma', text: 'PERMA' },
+                { href: '#proposito', text: 'Propósito' },
+                { href: '#logro', text: 'Logro' },
+                { href: '#motivacion', text: 'Motivación' },
+                { href: '#metas', text: 'Metas' },
+                { href: '#reflexion', text: 'Reflexión' }
+            ],
+            // ... (sesiones futuras)
+        };
+
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            return path.split("/").pop();
+        }
+
+        function populateNavLinks() {
+            const currentPage = getCurrentPageName();
+            const links = pageLinksConfig[currentPage] || [];
+
+            if (desktopMenuLinksContainer) desktopMenuLinksContainer.innerHTML = '';
+            if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                if (desktopMenuLinksContainer) {
+                    const aDesktop = document.createElement('a');
+                    aDesktop.href = link.href;
+                    aDesktop.textContent = link.text;
+                    aDesktop.className = 'nav-link-desktop text-blue-100 hover:bg-blue-700 hover:text-white'; // Azul Cobalto theme
+                    desktopMenuLinksContainer.appendChild(aDesktop);
+                }
+                if (mobileMenuLinksContainer) {
+                    const aMobile = document.createElement('a');
+                    aMobile.href = link.href;
+                    aMobile.textContent = link.text;
+                    aMobile.className = 'nav-link-mobile text-blue-100 hover:bg-blue-700 hover:text-white'; // Azul Cobalto theme
+                    mobileMenuLinksContainer.appendChild(aMobile);
+                }
+            });
+
+            const allNavLinks = document.querySelectorAll('.nav-link-desktop, .nav-link-mobile');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('nav').offsetHeight;
+                        const scrollMarginTop = parseFloat(getComputedStyle(targetElement).scrollMarginTop) || 0; 
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - scrollMarginTop;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                    if (mobileMenu && link.classList.contains('nav-link-mobile') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if(mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        if(mobileMenuButton) mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                    }
+                });
+            });
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu) {
+                    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', populateNavLinks);
+
+        // --- Script para el año actual en el footer ---
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+        
+        // --- Animación de tarjetas al hacer scroll (adaptada del original) ---
+        const animatedCardContainers = document.querySelectorAll('.card-animation-container');
+        const cardObserverOptions = {
             root: null,
             rootMargin: '0px',
             threshold: 0.1 
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const cardObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Busca la tarjeta dentro del contenedor y aplica la clase
+                    // entry.target es el .card-animation-container
                     const cardElement = entry.target.querySelector('.card');
-                    if (cardElement) {
-                        cardElement.classList.add('card-enter-active');
-                        cardElement.classList.add('card-enter'); // Asegura que la opacidad inicial esté en 0
-                        // Fuerza reflow para reiniciar animación si es necesario (opcional)
+                    if (cardElement) { // Asegurarse de que la card exista dentro del contenedor
+                         // Forzar reflow para reiniciar animación si es necesario (opcional)
                         void cardElement.offsetWidth; 
                         cardElement.style.opacity = 1;
                         cardElement.style.transform = 'translateY(0)';
                     }
-                    // Deja de observar este elemento una vez animado
                     observer.unobserve(entry.target); 
                 }
             });
-        }, observerOptions);
+        }, cardObserverOptions);
 
-        cards.forEach(cardContainer => {
-            const cardElement = cardContainer.querySelector('.card');
-            if (cardElement) {
-                 cardElement.style.opacity = 0; // Inicia invisible
-                 cardElement.style.transform = 'translateY(20px)'; // Inicia desplazado
+        animatedCardContainers.forEach(container => {
+            const cardElement = container.querySelector('.card');
+            if (cardElement) { // Iniciar invisible solo si hay una card
+                 cardElement.style.opacity = 0; 
+                 cardElement.style.transform = 'translateY(20px)';
             }
-            observer.observe(cardContainer);
+            cardObserver.observe(container);
         });
     </script>
 
