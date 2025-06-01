@@ -3,324 +3,499 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan de Vida: Creando Nuestros Objetivos</title>
+    <title>Sesión 14: Discernimiento - Creando Nuestros Objetivos - Plan de Vida</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/heroicons@1.0.6/dist/outline.min.css" rel="stylesheet">
-    <style>
+    <link href="https://unpkg.com/heroicons@1.0.6/dist/outline.min.css" rel="stylesheet"> <style>
         body {
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth; /* Para desplazamiento suave */
+            scroll-behavior: smooth;
+            @apply bg-sky-50 text-slate-800; /* Fondo base Celeste Claro */
         }
-        .section-title {
-            @apply text-3xl font-bold text-sky-700 mb-6 tracking-tight;
+        .hero-bg-sesion14 {
+            background-image: linear-gradient(to right, rgba(14, 165, 233, 0.8), rgba(6, 182, 212, 0.7)), url('https://placehold.co/1200x600/06B6D4/FFFFFF?text=Creando+Objetivos'); /* Celeste Intenso theme */
+            background-size: cover;
+            background-position: center;
         }
-        .subsection-title {
-            @apply text-xl font-semibold text-sky-600 mb-3;
+        .page-section-title { /* Título de sección principal global */
+            @apply text-3xl font-bold text-center mb-10 text-sky-700; /* Celeste Intenso theme */
         }
-        .card {
-            @apply bg-white p-6 sm:p-8 rounded-xl shadow-xl mb-8 transition-shadow duration-300 hover:shadow-2xl;
+        /* Títulos de sección dentro de las cards (adaptados del .section-title original de esta página) */
+        .card-section-title {
+            @apply text-3xl font-bold text-sky-700 mb-6 tracking-tight flex items-center; /* Celeste Intenso theme */
+        }
+        .subsection-title { /* Para subtítulos más pequeños dentro de las cards */
+            @apply text-xl font-semibold text-sky-600 mb-3; /* Celeste Intenso theme */
+        }
+        .card { /* Estilo de card base */
+            @apply bg-white p-6 sm:p-8 rounded-xl shadow-xl mb-8 transition-shadow duration-300 hover:shadow-2xl border-t-4 border-sky-500; /* Celeste Intenso theme */
         }
         .highlight {
-            @apply text-sky-600 font-semibold;
+            @apply text-sky-600 font-semibold; /* Celeste Intenso theme */
         }
-        .principle-card {
-            @apply bg-sky-50 p-5 rounded-lg mb-4 border border-sky-200 flex flex-col h-full; /* Asegura misma altura en grid */
+        .principle-card { /* Adaptado del original */
+            @apply bg-sky-100 p-5 rounded-lg mb-4 border border-sky-300 flex flex-col h-full shadow-md;
         }
         .principle-card h4 {
             @apply text-lg font-semibold text-sky-700 mb-2 flex items-center;
         }
         .principle-card h4 svg {
-            @apply w-5 h-5 mr-2 text-sky-500; /* REDUCIDO de w-6 h-6 */
+            @apply w-5 h-5 mr-2 text-sky-500;
         }
         .example-evaluation {
-            @apply ml-auto px-2.5 py-1 text-xs font-semibold rounded-full; /* Alineado a la derecha */
+            @apply ml-auto px-2.5 py-1 text-xs font-semibold rounded-full;
         }
-        .evaluation-good {
-            @apply bg-green-100 text-green-700;
+        .evaluation-good { @apply bg-green-100 text-green-700; }
+        .evaluation-bad { @apply bg-red-100 text-red-700; }
+        .evaluation-pending { @apply bg-yellow-100 text-yellow-700; }
+        
+        .task-card { /* Adaptado del original */
+            @apply bg-amber-50 p-6 rounded-lg border border-amber-300 shadow-xl border-t-4 border-amber-500; /* Añadido borde superior temático ámbar */
         }
-        .evaluation-bad {
-            @apply bg-red-100 text-red-700;
+        .task-card .card-section-title { /* Título dentro de task-card */
+             @apply !text-amber-700;
         }
-        .evaluation-pending {
-            @apply bg-yellow-100 text-yellow-700;
-        }
-        .task-card {
-            @apply bg-amber-50 p-6 rounded-lg border border-amber-300;
-        }
-        #scrollToTopBtn {
+        #scrollToTopBtn { /* Adaptado del original */
             @apply fixed bottom-8 right-8 bg-sky-600 text-white p-3 rounded-full shadow-lg hover:bg-sky-700 transition-colors duration-300 z-50;
-            display: none; /* Oculto por defecto */
+            display: none; 
         }
-        .hero-icon {
-             @apply w-5 h-5 inline-block mr-1; /* Iconos en títulos de sección principal */
+        .hero-icon { /* Iconos en títulos de sección (adaptado del original) */
+             @apply w-6 h-6 inline-block mr-2 text-sky-700; /* Aumentado tamaño ligeramente y color temático */
+        }
+        .nav-link-desktop, .nav-link-mobile {
+             @apply px-3 py-2 rounded-md text-sm font-medium transition-colors;
+        }
+        .nav-link-desktop { /* Celeste Intenso theme */
+            @apply text-sky-100 hover:bg-sky-700 hover:text-white;
+        }
+        .nav-link-mobile { /* Celeste Intenso theme */
+            @apply block text-sky-100 hover:bg-sky-700 hover:text-white text-base;
+        }
+        .footer-bg {
+            @apply bg-slate-900 text-slate-300;
+        }
+        /* Animación suave para la aparición de secciones */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800">
+<body>
     <button id="scrollToTopBtn" title="Volver arriba">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
     </button>
 
-    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+    <nav class="bg-sky-600 shadow-md fixed w-full z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 text-white font-bold text-xl hover:opacity-80 transition-opacity">
+                        Plan de Vida
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div id="desktop-menu-links" class="ml-10 flex items-baseline space-x-4">
+                        </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-sky-600 inline-flex items-center justify-center p-2 rounded-md text-sky-200 hover:text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div id="mobile-menu-links" class="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                </div>
+        </div>
+    </nav>
 
-        <header class="text-center my-12">
-            <h1 class="text-5xl font-bold text-sky-800 mb-4">Sesión 14: Discernimiento</h1>
-            <h2 class="text-3xl font-semibold text-sky-700 mb-6">Creando Nuestros Objetivos</h2>
-            <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+    <header id="inicio" class="hero-bg-sesion14 text-white pt-32 pb-20 md:pt-40 md:pb-28 fade-in-section">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Sesión 14: Discernimiento</h1>
+            <h2 class="text-3xl md:text-4xl font-semibold text-sky-100 mb-6">Creando Nuestros Objetivos</h2>
+            <p class="text-lg text-sky-200 max-w-3xl mx-auto">
                 Esta sesión se enfoca en la etapa central de un proyecto de "plan de vida, desarrollo y discernimiento", subrayando la importancia de definir objetivos claros para la toma de decisiones efectiva y el crecimiento personal.
             </p>
-        </header>
+        </div>
+    </header>
 
-        <section id="donde-estamos" class="card">
-            <h2 class="section-title">
-                <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-                I. ¿Dónde Estamos en Nuestro Plan de Vida?
-            </h2>
-            <p class="text-slate-700 mb-1"><em>(Metáfora de Construir una Casa)</em></p>
-            <p class="mb-4 text-slate-700">En sesiones anteriores se establecieron los <span class="highlight">"cimientos"</span> de nuestro plan de vida:</p>
-            <ul class="list-disc list-inside mb-4 pl-4 space-y-2 text-slate-700">
-                <li><span class="font-medium">Propósito:</span> El porqué fundamental de nuestra existencia.</li>
-                <li><span class="font-medium">Misión:</span> Cómo vivimos nuestro propósito en el día a día.</li>
-                <li><span class="font-medium">Fortalezas y Virtudes del Carácter:</span> Nuestras cualidades innatas.</li>
-                <li><span class="font-medium">Modelo PERMA:</span> Bienestar integral (Emoción Positiva, Engagement, Relaciones, Significado, Logro).</li>
-            </ul>
-            <p class="text-slate-700">La sesión actual se centra en <span class="highlight">"construir la casa"</span>, lo que representa establecer objetivos basados en estos sólidos cimientos.</p>
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 max-w-5xl">
+
+        <section id="donde-estamos" class="scroll-mt-24 fade-in-section">
+            <div class="card">
+                <h2 class="card-section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                    I. ¿Dónde Estamos en Nuestro Plan de Vida?
+                </h2>
+                <p class="text-slate-700 mb-1"><em>(Metáfora de Construir una Casa)</em></p>
+                <p class="mb-4 text-slate-700">En sesiones anteriores se establecieron los <span class="highlight">"cimientos"</span> de nuestro plan de vida:</p>
+                <ul class="list-disc list-inside mb-4 pl-4 space-y-2 text-slate-700">
+                    <li><span class="font-medium">Propósito:</span> El porqué fundamental de nuestra existencia.</li>
+                    <li><span class="font-medium">Misión:</span> Cómo vivimos nuestro propósito en el día a día.</li>
+                    <li><span class="font-medium">Fortalezas y Virtudes del Carácter:</span> Nuestras cualidades innatas.</li>
+                    <li><span class="font-medium">Modelo PERMA:</span> Bienestar integral (Emoción Positiva, Engagement, Relaciones, Significado, Logro).</li>
+                </ul>
+                <p class="text-slate-700">La sesión actual se centra en <span class="highlight">"construir la casa"</span>, lo que representa establecer objetivos basados en estos sólidos cimientos.</p>
+            </div>
         </section>
 
-        <section id="importancia-objetivos" class="card">
-            <h2 class="section-title">
-                <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L20 12 4.447 19.106A1 1 0 003 19.618V19a1 1 0 001 1h5z" /></svg>
-                II. La Importancia de Objetivos Claros
-            </h2>
-            <blockquote class="border-l-4 border-sky-500 pl-4 italic text-slate-600 my-4">
-                "Cuando no hay un puerto al que llegar, cualquier viento es favorable." - Blaise Pascal
-            </blockquote>
-            <p class="mb-4 text-slate-700">Esta cita ilustra un punto crucial. A menudo, especialmente en la cultura mexicana, puede existir una falta de objetivos concretos, lo que nos lleva a tener metas difusas y poco definidas.</p>
-            <p class="mb-3 text-slate-700"><strong>Analogía del Viaje:</strong> Imagina que emprendes un viaje en coche sin un destino claro (tu meta u objetivo). Cualquier carretera podría parecer adecuada, pero es muy probable que te pierdas, gastes recursos innecesariamente o, simplemente, no llegues a donde realmente anhelas ir. Los <span class="highlight">objetivos claros</span> actúan como tu mapa y brújula, permitiendo una toma de decisiones deliberada y efectiva.</p>
+        <section id="importancia-objetivos" class="scroll-mt-24 fade-in-section">
+            <div class="card">
+                <h2 class="card-section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L20 12 4.447 19.106A1 1 0 003 19.618V19a1 1 0 001 1h5z" /></svg>
+                    II. La Importancia de Objetivos Claros
+                </h2>
+                <blockquote class="border-l-4 border-sky-500 pl-4 italic text-slate-600 my-4 bg-sky-50 p-3 rounded">
+                    "Cuando no hay un puerto al que llegar, cualquier viento es favorable." - Blaise Pascal
+                </blockquote>
+                <p class="mb-4 text-slate-700">Esta cita ilustra un punto crucial. A menudo, especialmente en la cultura mexicana, puede existir una falta de objetivos concretos, lo que nos lleva a tener metas difusas y poco definidas.</p>
+                <p class="mb-3 text-slate-700"><strong>Analogía del Viaje:</strong> Imagina que emprendes un viaje en coche sin un destino claro (tu meta u objetivo). Cualquier carretera podría parecer adecuada, pero es muy probable que te pierdas, gastes recursos innecesariamente o, simplemente, no llegues a donde realmente anhelas ir. Los <span class="highlight">objetivos claros</span> actúan como tu mapa y brújula, permitiendo una toma de decisiones deliberada y efectiva.</p>
+            </div>
         </section>
 
-        <section id="construccion-objetivos" class="card">
-            <h2 class="section-title">
-                <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.539 1.118l-3.975-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.539-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
-                III. Construcción de Nuestros Objetivos (Fundamentos Clave)
-            </h2>
-            <p class="mb-6 text-slate-700">Antes de comenzar a redactar nuestros objetivos, es esencial revisar ciertos fundamentos que les darán solidez y coherencia:</p>
-            <div class="space-y-6">
-                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
-                    <h3 class="subsection-title">1. Claridad en el "Qué"</h3>
-                    <p class="text-slate-700">Los objetivos son la herramienta primordial para clarificar <span class="highlight">qué</span> es exactamente lo que queremos lograr. Cuando el "qué" es nítido y bien definido, la tarea de dedicar recursos (tiempo, energía, dinero) y esfuerzo se vuelve mucho más sencilla y enfocada. <br/><em>Analogía: Conocer con precisión tu destino de viaje te permite elegir la ruta óptima y el medio de transporte más adecuado.</em></p>
-                </div>
-                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
-                    <h3 class="subsection-title">2. Descripción Correcta</h3>
-                    <p class="text-slate-700">Una descripción adecuada y precisa de nuestros objetivos es fundamental. Esto no solo nos ayuda a nosotros mismos a entenderlos mejor, sino que también facilita la toma de decisiones más acertadas y alineadas con lo que buscamos.</p>
-                </div>
-                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
-                    <h3 class="subsection-title">3. Fundamento en el Ser</h3>
-                    <p class="text-slate-700">Este es un pilar crítico: todos nuestros objetivos y las decisiones que tomemos para alcanzarlos deben estar firmemente <span class="highlight">basados en nuestro propósito de vida, nuestra misión personal y nuestras fortalezas de carácter</span>. Si establecemos objetivos que contradicen nuestros valores fundamentales, inevitablemente experimentaremos duda, ansiedad, frustración y una sensación de vacío.</p>
+        <section id="construccion-objetivos" class="scroll-mt-24 fade-in-section">
+            <div class="card">
+                <h2 class="card-section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.539 1.118l-3.975-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.539-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+                    III. Construcción de Nuestros Objetivos (Fundamentos Clave)
+                </h2>
+                <p class="mb-6 text-slate-700">Antes de comenzar a redactar nuestros objetivos, es esencial revisar ciertos fundamentos que les darán solidez y coherencia:</p>
+                <div class="space-y-6">
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <h3 class="subsection-title">1. Claridad en el "Qué"</h3>
+                        <p class="text-slate-700">Los objetivos son la herramienta primordial para clarificar <span class="highlight">qué</span> es exactamente lo que queremos lograr. Cuando el "qué" es nítido y bien definido, la tarea de dedicar recursos (tiempo, energía, dinero) y esfuerzo se vuelve mucho más sencilla y enfocada. <br/><em>Analogía: Conocer con precisión tu destino de viaje te permite elegir la ruta óptima y el medio de transporte más adecuado.</em></p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <h3 class="subsection-title">2. Descripción Correcta</h3>
+                        <p class="text-slate-700">Una descripción adecuada y precisa de nuestros objetivos es fundamental. Esto no solo nos ayuda a nosotros mismos a entenderlos mejor, sino que también facilita la toma de decisiones más acertadas y alineadas con lo que buscamos.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <h3 class="subsection-title">3. Fundamento en el Ser</h3>
+                        <p class="text-slate-700">Este es un pilar crítico: todos nuestros objetivos y las decisiones que tomemos para alcanzarlos deben estar firmemente <span class="highlight">basados en nuestro propósito de vida, nuestra misión personal y nuestras fortalezas de carácter</span>. Si establecemos objetivos que contradicen nuestros valores fundamentales, inevitablemente experimentaremos duda, ansiedad, frustración y una sensación de vacío.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="rueda-vida" class="card">
-            <h2 class="section-title">
-                <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.014A8.003 8.003 0 0112 2a8.003 8.003 0 016.014 2.986C20.5 5 21 8 21 10c2 1 2.657 2.657 2.657 2.657a8 8 0 01-11.314 6z" /></svg>
-                IV. La Rueda de la Vida (Dimensiones Vitales)
-            </h2>
-            <p class="mb-4 text-slate-700">Nuestras vidas son multifacéticas y se componen de diversas dimensiones importantes. Algunas de ellas incluyen:</p>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-4 text-center">
-                <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Familia</span>
-                <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Amigos</span>
-                <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Espiritual</span>
-                <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Sociedad</span>
-                <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Economía</span>
-                <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Salud</span>
-                <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Pareja</span>
-                <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Servicio</span>
+        <section id="rueda-vida" class="scroll-mt-24 fade-in-section">
+            <div class="card">
+                <h2 class="card-section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.014A8.003 8.003 0 0112 2a8.003 8.003 0 016.014 2.986C20.5 5 21 8 21 10c2 1 2.657 2.657 2.657 2.657a8 8 0 01-11.314 6z" /></svg>
+                    IV. La Rueda de la Vida (Dimensiones Vitales)
+                </h2>
+                <p class="mb-4 text-slate-700">Nuestras vidas son multifacéticas y se componen de diversas dimensiones importantes. Algunas de ellas incluyen:</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-4 text-center">
+                    <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Familia</span>
+                    <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Amigos</span>
+                    <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Espiritual</span>
+                    <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Sociedad</span>
+                    <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Economía</span>
+                    <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Salud</span>
+                    <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Pareja</span>
+                    <span class="bg-sky-100 text-sky-700 p-2 rounded-md shadow-sm">Servicio</span>
+                </div>
+                <p class="mb-3 text-slate-700">Idealmente, cada una de estas dimensiones debería estar en armonía y equilibrio (<span class="highlight">"para que la rueda gire"</span> de manera fluida), lo que nos permite alcanzar un mayor sentido de plenitud y satisfacción general en la vida.</p>
+                <p class="text-slate-700">Es natural y común que, en diferentes etapas de nuestra existencia, ciertas áreas demanden una mayor inversión de tiempo y energía. Por ejemplo, la llegada de niños pequeños requiere una dedicación familiar intensiva, o el inicio de un matrimonio puede implicar un mayor enfoque en la estabilidad económica. Sin embargo, un <span class="highlight">desequilibrio prolongado y significativo</span> en cualquiera de estas áreas vitales puede conducir a la insatisfacción y al malestar.</p>
             </div>
-            <p class="mb-3 text-slate-700">Idealmente, cada una de estas dimensiones debería estar en armonía y equilibrio (<span class="highlight">"para que la rueda gire"</span> de manera fluida), lo que nos permite alcanzar un mayor sentido de plenitud y satisfacción general en la vida.</p>
-            <p class="text-slate-700">Es natural y común que, en diferentes etapas de nuestra existencia, ciertas áreas demanden una mayor inversión de tiempo y energía. Por ejemplo, la llegada de niños pequeños requiere una dedicación familiar intensiva, o el inicio de un matrimonio puede implicar un mayor enfoque en la estabilidad económica. Sin embargo, un <span class="highlight">desequilibrio prolongado y significativo</span> en cualquiera de estas áreas vitales puede conducir a la insatisfacción y al malestar.</p>
         </section>
 
-        <section id="filtros-objetivos" class="card">
-            <h2 class="section-title">
-                <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
-                V. Definiendo Objetivos con 7 "Filtros"
-            </h2>
-            <p class="text-slate-700 mb-1"><em>(Analogía de una Cafetera: el buen café pasa por un filtro)</em></p>
-            <p class="mb-8 text-slate-700">Para asegurar que un objetivo esté bien definido, sea robusto y verdaderamente accionable, debe pasar exitosamente a través de siete principios o "filtros":</p>
+        <section id="filtros-objetivos" class="scroll-mt-24 fade-in-section">
+            <div class="card">
+                <h2 class="card-section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
+                    V. Definiendo Objetivos con 7 "Filtros"
+                </h2>
+                <p class="text-slate-700 mb-1"><em>(Analogía de una Cafetera: el buen café pasa por un filtro)</em></p>
+                <p class="mb-8 text-slate-700">Para asegurar que un objetivo esté bien definido, sea robusto y verdaderamente accionable, debe pasar exitosamente a través de siete principios o "filtros":</p>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="principle-card">
-                    <h4>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                        1: En Positivo
-                    </h4>
-                    <p class="text-sm text-slate-600 mb-3">Di lo que quieres lograr, no lo que quieres evitar.</p>
-                    <ul class="text-sm space-y-1 mt-auto"> {/* mt-auto para empujar al fondo */}
-                        <li class="flex items-center"><em>Académico:</em> "Aprender más sobre el Concilio Vaticano II este semestre" <span class="example-evaluation evaluation-good">✓ Sí</span></li>
-                        <li class="flex items-center"><em>Social:</em> "Ser muy apreciado en mi comunidad" <span class="example-evaluation evaluation-good">✓ Sí</span></li>
-                        <li class="flex items-center"><em>Familiar:</em> "Tener ≥4 reuniones familiares al mes" <span class="example-evaluation evaluation-good">✓ Sí</span></li>
-                    </ul>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="principle-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-sky-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                            1: En Positivo
+                        </h4>
+                        <p class="text-sm text-slate-600 mb-3">Di lo que quieres lograr, no lo que quieres evitar.</p>
+                        <ul class="text-sm space-y-1 mt-auto">
+                            <li class="flex items-center justify-between"><em>Académico:</em> "Aprender más sobre el Concilio Vaticano II este semestre" <span class="example-evaluation evaluation-good">✓ Sí</span></li>
+                            <li class="flex items-center justify-between"><em>Social:</em> "Ser muy apreciado en mi comunidad" <span class="example-evaluation evaluation-good">✓ Sí</span></li>
+                            <li class="flex items-center justify-between"><em>Familiar:</em> "Tener ≥4 reuniones familiares al mes" <span class="example-evaluation evaluation-good">✓ Sí</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-sky-500" viewBox="0 0 20 20" fill="currentColor"><path d="M3 3a1 1 0 000 2v11a1 1 0 100 2h14a1 1 0 100-2V5a1 1 0 000-2H3zm2 4a1 1 0 011-1h2a1 1 0 110 2H6a1 1 0 01-1-1zm0 4a1 1 0 011-1h5a1 1 0 110 2H6a1 1 0 01-1-1z" /></svg>
+                            2: Desafiante y Realista
+                        </h4>
+                        <p class="text-sm text-slate-600 mb-3">Ni demasiado fácil, ni imposible de alcanzar.</p>
+                         <ul class="text-sm space-y-1 mt-auto">
+                            <li class="flex items-center justify-between"><em>Académico:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Aprender es desafiante pero realista).</li>
+                            <li class="flex items-center justify-between"><em>Social:</em> <span class="example-evaluation evaluation-bad">X No</span> ("Muy apreciado" es vago, poco realista).</li>
+                            <li class="flex items-center justify-between"><em>Familiar:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (4 reuniones es desafiante pero factible).</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h4>
+                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-sky-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+                            3: Influencia Directa
+                        </h4>
+                        <p class="text-sm text-slate-600 mb-3">El resultado debe depender principalmente de tus acciones.</p>
+                        <ul class="text-sm space-y-1 mt-auto">
+                            <li class="flex items-center justify-between"><em>Académico:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Depende del esfuerzo personal).</li>
+                            <li class="flex items-center justify-between"><em>Social:</em> <span class="example-evaluation evaluation-bad">X No</span> (Ser apreciado depende de otros).</li>
+                            <li class="flex items-center justify-between"><em>Familiar:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Organizar reuniones depende de tu iniciativa).</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-sky-500" viewBox="0 0 20 20" fill="currentColor"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" /></svg>
+                            4: Medible
+                        </h4>
+                        <p class="text-sm text-slate-600 mb-3">Debe haber una forma clara de rastrear el progreso y el logro.</p>
+                        <ul class="text-sm space-y-1 mt-auto">
+                            <li class="flex items-center justify-between"><em>Académico:</em> <span class="example-evaluation evaluation-bad">X No</span> ("Aprender más" es vago).</li>
+                            <li class="flex items-center justify-between"><em>Social:</em> <span class="example-evaluation evaluation-bad">X No</span> (Apreciación intangible).</li>
+                            <li class="flex items-center justify-between"><em>Familiar:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Contar reuniones).</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-sky-500" viewBox="0 0 20 20" fill="currentColor"><path d="M8.433 7.418c.158-.103.335-.166.533-.18.197-.014.402.008.6.075l.01.004.01.004.002.001.002.001L15.48 11.14a.5.5 0 01-.33.872l-3.032-.76a.5.5 0 00-.475.106l-2.523 2.224a.5.5 0 01-.612.045L4.33 10.01a.5.5 0 01.22-.869l3.032.76a.5.5 0 00.475-.106l2.523-2.224a.5.5 0 01.153-.242zM13.847 4.487a.5.5 0 00-.707 0L10.433 7.19a.5.5 0 01-.848-.353V3.5a.5.5 0 00-.5-.5H7.5a.5.5 0 000 1h2v3.34a.5.5 0 01-.848.353l-2.707-2.707a.5.5 0 00-.707 0L2.153 7.793a.5.5 0 000 .707L4.86 11.207a.5.5 0 01.353.848H8.5a.5.5 0 00.5-.5v-2.5a.5.5 0 00-.5-.5h-2V7.84a.5.5 0 01.353-.848l2.707 2.707a.5.5 0 00.707 0L15.847 6.293a.5.5 0 000-.707L13.847 4.487z" /></svg>
+                            5: Recursos Disponibles
+                        </h4>
+                        <p class="text-sm text-slate-600 mb-3">Considera tiempo, energía, apoyo, habilidades, etc., no solo dinero.</p>
+                        <ul class="text-sm space-y-1 mt-auto">
+                            <li class="flex items-center justify-between"><em>Académico:</em> <span class="example-evaluation evaluation-bad">X No</span> (Recursos no analizados).</li>
+                            <li class="flex items-center justify-between"><em>Social:</em> <span class="example-evaluation evaluation-bad">X No</span> (Recursos no claros).</li>
+                            <li class="flex items-center justify-between"><em>Familiar:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Recursos de comunicación).</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-sky-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" /></svg>
+                            6: Precio Cuantificable
+                        </h4>
+                        <p class="text-sm text-slate-600 mb-3">¿Cuál es el costo en tiempo, dinero, esfuerzo, sacrificio?</p>
+                         <ul class="text-sm space-y-1 mt-auto">
+                            <li class="flex items-center justify-between"><em>Académico:</em> <span class="example-evaluation evaluation-bad">X No</span> (Esfuerzo no cuantificado).</li>
+                            <li class="flex items-center justify-between"><em>Social:</em> <span class="example-evaluation evaluation-pending">? No claro</span> (Costo incierto).</li>
+                            <li class="flex items-center justify-between"><em>Familiar:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Costo en tiempo manejable).</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-card md:col-span-2 lg:col-span-3">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-sky-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm2 1h10v2H5V6zm0 4h10v2H5v-2zm0 4h6v2H5v-2z" clip-rule="evenodd" /></svg>
+                            7: Plan de Acción Diseñable
+                        </h4>
+                        <p class="text-sm text-slate-600 mb-3">Debe haber pasos claros y concretos a seguir para su consecución.</p>
+                        <ul class="text-sm space-y-1 mt-auto">
+                            <li class="flex items-center justify-between"><em>Académico:</em> <span class="example-evaluation evaluation-pending">PENDIENTE</span> (Plan inviable).</li>
+                            <li class="flex items-center justify-between"><em>Social:</em> <span class="example-evaluation evaluation-pending">PENDIENTE</span> (Vaguedad impide plan).</li>
+                            <li class="flex items-center justify-between"><em>Familiar:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Plan claro: agendar, etc.).</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="principle-card">
-                    <h4>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M3 3a1 1 0 000 2v11a1 1 0 100 2h14a1 1 0 100-2V5a1 1 0 000-2H3zm2 4a1 1 0 011-1h2a1 1 0 110 2H6a1 1 0 01-1-1zm0 4a1 1 0 011-1h5a1 1 0 110 2H6a1 1 0 01-1-1z" /></svg>
-                        2: Desafiante y Realista
-                    </h4>
-                    <p class="text-sm text-slate-600 mb-3">Ni demasiado fácil, ni imposible de alcanzar.</p>
-                     <ul class="text-sm space-y-1 mt-auto">
-                        <li class="flex items-center"><em>Académico:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Aprender es desafiante pero realista).</li>
-                        <li class="flex items-center"><em>Social:</em> <span class="example-evaluation evaluation-bad">X No</span> ("Muy apreciado" es vago, poco realista).</li>
-                        <li class="flex items-center"><em>Familiar:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (4 reuniones es desafiante pero factible).</li>
-                    </ul>
-                </div>
-
-                <div class="principle-card">
-                    <h4>
-                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
-                        3: Influencia Directa
-                    </h4>
-                    <p class="text-sm text-slate-600 mb-3">El resultado debe depender principalmente de tus acciones.</p>
-                    <ul class="text-sm space-y-1 mt-auto">
-                        <li class="flex items-center"><em>Académico:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Depende del esfuerzo personal).</li>
-                        <li class="flex items-center"><em>Social:</em> <span class="example-evaluation evaluation-bad">X No</span> (Ser apreciado depende de otros).</li>
-                        <li class="flex items-center"><em>Familiar:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Organizar reuniones depende de tu iniciativa).</li>
-                    </ul>
-                </div>
-
-                <div class="principle-card">
-                    <h4>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" /></svg>
-                        4: Medible
-                    </h4>
-                    <p class="text-sm text-slate-600 mb-3">Debe haber una forma clara de rastrear el progreso y el logro.</p>
-                    <ul class="text-sm space-y-1 mt-auto">
-                        <li class="flex items-center"><em>Académico:</em> <span class="example-evaluation evaluation-bad">X No</span> ("Aprender más" es vago, ¿cómo se mide "más"?).</li>
-                        <li class="flex items-center"><em>Social:</em> <span class="example-evaluation evaluation-bad">X No</span> (La apreciación es intangible, difícil de medir).</li>
-                        <li class="flex items-center"><em>Familiar:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Se pueden contar las reuniones).</li>
-                    </ul>
-                </div>
-
-                <div class="principle-card">
-                    <h4>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M8.433 7.418c.158-.103.335-.166.533-.18.197-.014.402.008.6.075l.01.004.01.004.002.001.002.001L15.48 11.14a.5.5 0 01-.33.872l-3.032-.76a.5.5 0 00-.475.106l-2.523 2.224a.5.5 0 01-.612.045L4.33 10.01a.5.5 0 01.22-.869l3.032.76a.5.5 0 00.475-.106l2.523-2.224a.5.5 0 01.153-.242zM13.847 4.487a.5.5 0 00-.707 0L10.433 7.19a.5.5 0 01-.848-.353V3.5a.5.5 0 00-.5-.5H7.5a.5.5 0 000 1h2v3.34a.5.5 0 01-.848.353l-2.707-2.707a.5.5 0 00-.707 0L2.153 7.793a.5.5 0 000 .707L4.86 11.207a.5.5 0 01.353.848H8.5a.5.5 0 00.5-.5v-2.5a.5.5 0 00-.5-.5h-2V7.84a.5.5 0 01.353-.848l2.707 2.707a.5.5 0 00.707 0L15.847 6.293a.5.5 0 000-.707L13.847 4.487z" /></svg>
-                        5: Recursos Disponibles
-                    </h4>
-                    <p class="text-sm text-slate-600 mb-3">Considera tiempo, energía, apoyo, habilidades, etc., no solo dinero.</p>
-                    <ul class="text-sm space-y-1 mt-auto">
-                        <li class="flex items-center"><em>Académico:</em> <span class="example-evaluation evaluation-bad">X No</span> (Recursos no analizados: tiempo, materiales, etc.).</li>
-                        <li class="flex items-center"><em>Social:</em> <span class="example-evaluation evaluation-bad">X No</span> (¿Qué recursos se necesitan para "ser apreciado"?).</li>
-                        <li class="flex items-center"><em>Familiar:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Herramientas de comunicación, invitaciones, etc.).</li>
-                    </ul>
-                </div>
-
-                <div class="principle-card">
-                    <h4>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" /></svg>
-                        6: Precio Cuantificable
-                    </h4>
-                    <p class="text-sm text-slate-600 mb-3">¿Cuál es el costo en tiempo, dinero, esfuerzo, sacrificio?</p>
-                     <ul class="text-sm space-y-1 mt-auto">
-                        <li class="flex items-center"><em>Académico:</em> <span class="example-evaluation evaluation-bad">X No</span> (Esfuerzo de lectura, estudio, no cuantificado).</li>
-                        <li class="flex items-center"><em>Social:</em> <span class="example-evaluation evaluation-pending">? No claro</span> (Objetivo vago, costo incierto).</li>
-                        <li class="flex items-center"><em>Familiar:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Costo en tiempo y organización manejable).</li>
-                    </ul>
-                </div>
-
-                <div class="principle-card md:col-span-2 lg:col-span-3"> {/* Ocupa más espacio */}
-                    <h4>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm2 1h10v2H5V6zm0 4h10v2H5v-2zm0 4h6v2H5v-2z" clip-rule="evenodd" /></svg>
-                        7: Plan de Acción Diseñable
-                    </h4>
-                    <p class="text-sm text-slate-600 mb-3">Debe haber pasos claros y concretos a seguir para su consecución.</p>
-                    <ul class="text-sm space-y-1 mt-auto">
-                        <li class="flex items-center"><em>Académico:</em> <span class="example-evaluation evaluation-pending">PENDIENTE</span> (Filtros previos no cumplidos, plan inviable).</li>
-                        <li class="flex items-center"><em>Social:</em> <span class="example-evaluation evaluation-pending">PENDIENTE</span> (Vaguedad y falta de control impiden plan).</li>
-                        <li class="flex items-center"><em>Familiar:</em> <span class="example-evaluation evaluation-good">✓ Sí</span> (Plan claro: agendar, planificar actividades, etc.).</li>
+                <div class="mt-10 p-6 bg-sky-100 rounded-lg border border-sky-300 shadow-inner">
+                    <h3 class="subsection-title text-sky-700 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Conclusión del Análisis de Objetivos:
+                    </h3>
+                    <ul class="list-disc list-inside pl-4 space-y-2 text-slate-700">
+                        <li>Los dos primeros ejemplos ("Aprender más sobre el Concilio Vaticano II" y "Ser muy apreciado") son <span class="font-semibold text-red-600">objetivos mal definidos</span>. Fallan múltiples filtros cruciales, especialmente en cuanto a mensurabilidad e influencia directa. Aunque son ideas loables, no constituyen metas accionables y concretas.</li>
+                        <li>El tercer ejemplo ("Tener al menos 4 encuentros y reuniones con mi familia cada mes para pasar tiempo juntos") es un <span class="font-semibold text-green-600">objetivo bien definido</span>. Supera satisfactoriamente los 7 filtros, lo que lo convierte en una meta concreta, medible y, por lo tanto, alcanzable.</li>
                     </ul>
                 </div>
             </div>
+        </section>
 
-            <div class="mt-10 p-6 bg-sky-100 rounded-lg border border-sky-300 shadow-inner">
-                <h3 class="subsection-title text-sky-700 mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    Conclusión del Análisis de Objetivos:
-                </h3>
-                <ul class="list-disc list-inside pl-4 space-y-2 text-slate-700">
-                    <li>Los dos primeros ejemplos ("Aprender más sobre el Concilio Vaticano II" y "Ser muy apreciado") son <span class="font-semibold text-red-600">objetivos mal definidos</span>. Fallan múltiples filtros cruciales, especialmente en cuanto a mensurabilidad e influencia directa. Aunque son ideas loables, no constituyen metas accionables y concretas.</li>
-                    <li>El tercer ejemplo ("Tener al menos 4 encuentros y reuniones con mi familia cada mes para pasar tiempo juntos") es un <span class="font-semibold text-green-600">objetivo bien definido</span>. Supera satisfactoriamente los 7 filtros, lo que lo convierte en una meta concreta, medible y, por lo tanto, alcanzable.</li>
+        <section id="proximo-material" class="scroll-mt-24 fade-in-section">
+            <div class="card">
+                <h2 class="card-section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
+                    VI. Próximo Material: Estrategia GROW
+                </h2>
+                <p class="text-slate-700">La próxima sesión explorará en profundidad la <span class="highlight">Estrategia GROW</span>. Este es un modelo robusto y probado que proporciona un marco estructurado para convertir ideas y aspiraciones en pasos concretos y accionables. Las siglas GROW representan:</p>
+                <ul class="list-none mt-4 space-y-2 pl-4 text-slate-700">
+                    <li><strong class="text-sky-700">G</strong>oal (Meta): ¿Qué quieres lograr?</li>
+                    <li><strong class="text-sky-700">R</strong>eality (Realidad): ¿Cuál es tu situación actual?</li>
+                    <li><strong class="text-sky-700">O</strong>ptions (Opciones): ¿Qué podrías hacer?</li>
+                    <li><strong class="text-sky-700">W</strong>ill (Voluntad y Compromiso): ¿Qué harás?</li>
                 </ul>
             </div>
         </section>
 
-        <section id="proximo-material" class="card">
-            <h2 class="section-title">
-                <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
-                VI. Próximo Material: Estrategia GROW
-            </h2>
-            <p class="text-slate-700">La próxima sesión explorará en profundidad la <span class="highlight">Estrategia GROW</span>. Este es un modelo robusto y probado que proporciona un marco estructurado para convertir ideas y aspiraciones en pasos concretos y accionables. Las siglas GROW representan:</p>
-            <ul class="list-none mt-4 space-y-2 pl-4">
-                <li><strong class="text-sky-700">G</strong>oal (Meta): ¿Qué quieres lograr?</li>
-                <li><strong class="text-sky-700">R</strong>eality (Realidad): ¿Cuál es tu situación actual?</li>
-                <li><strong class="text-sky-700">O</strong>ptions (Opciones): ¿Qué podrías hacer?</li>
-                <li><strong class="text-sky-700">W</strong>ill (Voluntad y Compromiso): ¿Qué harás?</li>
-            </ul>
+        <section id="tarea-semana" class="scroll-mt-24 fade-in-section">
+            <div class="task-card">
+                <h2 class="card-section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon !text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                    VII. Tarea de la Semana
+                </h2>
+                <p class="mb-4 text-amber-800">Dedica tiempo a reflexionar y responder las siguientes preguntas. Estas te ayudarán a proyectar tu futuro y a comenzar a definir objetivos significativos:</p>
+                <ul class="list-disc list-inside mb-5 pl-4 space-y-3 text-amber-900">
+                    <li>¿Qué metas u objetivos te gustaría alcanzar <span class="font-semibold">durante</span> tu actual proceso de formación como ministro instituido? (Considera aspectos académicos, espirituales, pastorales, personales).</li>
+                    <li>¿Qué metas u objetivos te gustaría alcanzar <span class="font-semibold">después</span> de concluir tu formación como Ministro Instituido? (Piensa a mediano y largo plazo).</li>
+                </ul>
+                <p class="mb-4 text-amber-800">Es de suma importancia comenzar a <span class="font-semibold">visualizar e imaginar</span> qué te gustaría hacer, ser y lograr en los próximos 5 años. Este ejercicio de proyección es fundamental.</p>
+                <p class="text-sm text-amber-700">(<span class="font-semibold">Opcional, pero altamente recomendado</span>): Discute el objetivo que has estado trabajando o redactando en esta sesión (por ejemplo, el académico sobre el Concilio Vaticano II) con un compañero, tutor o guía espiritual. El objetivo de esta conversación es obtener retroalimentación constructiva para refinarlo, hacerlo más breve, conciso y poderoso.</p>
+            </div>
         </section>
+    </main>
 
-        <section id="tarea-semana" class="task-card">
-            <h2 class="section-title text-amber-700">
-                <svg xmlns="http://www.w3.org/2000/svg" class="hero-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
-                VII. Tarea de la Semana
-            </h2>
-            <p class="mb-4 text-amber-800">Dedica tiempo a reflexionar y responder las siguientes preguntas. Estas te ayudarán a proyectar tu futuro y a comenzar a definir objetivos significativos:</p>
-            <ul class="list-disc list-inside mb-5 pl-4 space-y-3 text-amber-900">
-                <li>¿Qué metas u objetivos te gustaría alcanzar <span class="highlight">durante</span> tu actual proceso de formación como ministro instituido? (Considera aspectos académicos, espirituales, pastorales, personales).</li>
-                <li>¿Qué metas u objetivos te gustaría alcanzar <span class="highlight">después</span> de concluir tu formación como Ministro Instituido? (Piensa a mediano y largo plazo).</li>
-            </ul>
-            <p class="mb-4 text-amber-800">Es de suma importancia comenzar a <span class="highlight">visualizar e imaginar</span> qué te gustaría hacer, ser y lograr en los próximos 5 años. Este ejercicio de proyección es fundamental.</p>
-            <p class="text-sm text-amber-700">(<span class="font-semibold">Opcional, pero altamente recomendado</span>): Discute el objetivo que has estado trabajando o redactando en esta sesión (por ejemplo, el académico sobre el Concilio Vaticano II) con un compañero, tutor o guía espiritual. El objetivo de esta conversación es obtener retroalimentación constructiva para refinarlo, hacerlo más breve, conciso y poderoso.</p>
-        </section>
-
-        <footer class="text-center mt-16 py-8 border-t border-slate-300">
-            <p class="text-slate-600 text-lg">¡Sigue adelante con entusiasmo en tu valioso proceso de formación!</p>
-            <p class="text-sm text-slate-500 mt-2">Plan de Vida y Discernimiento © 2024</p>
-        </footer>
-
-    </div>
+    <footer class="footer-bg py-12 text-center fade-in-section">
+        <div class="container mx-auto px-6">
+            <p class="text-lg mb-2">Plan de Vida: Un Viaje de Transformación</p>
+            <p>&copy; <span id="currentYear"></span> Plan de Vida. Todos los derechos reservados.</p>
+            <p class="mt-2 text-sm opacity-70">Este sitio es una interpretación y resumen con fines educativos.</p>
+        </div>
+    </footer>
 
     <script>
-        // Script para el botón de "Volver Arriba"
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        // --- Navbar Script ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const desktopMenuLinksContainer = document.getElementById('desktop-menu-links');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
 
-        window.onscroll = function() {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                scrollToTopBtn.style.display = "block";
-            } else {
-                scrollToTopBtn.style.display = "none";
-            }
+        const pageLinksConfig = {
+            'index.html': [ /* ... */ ],
+            'sesion01.html': [ /* ... */ ],
+            // ... (todas las sesiones anteriores)
+            'sesion14.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#donde-estamos', text: 'Avance'},
+                { href: '#importancia-objetivos', text: 'Importancia'},
+                { href: '#filtros-objetivos', text: 'Filtros'},
+                { href: '#proximo-material', text: 'Próximo'},
+                { href: '#tarea-semana', text: 'Tarea'}
+            ],
+            // ... (sesiones futuras)
         };
 
-        scrollToTopBtn.onclick = function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        };
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            return path.split("/").pop();
+        }
 
-        // Pequeña animación para las tarjetas al cargar la página (opcional)
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.card, .task-card');
-            cards.forEach((card, index) => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    card.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
-                    card.style.opacity = 1;
-                    card.style.transform = 'translateY(0)';
-                }, index * 100); // Efecto escalonado
+        function populateNavLinks() {
+            const currentPage = getCurrentPageName();
+            const links = pageLinksConfig[currentPage] || [];
+
+            if (desktopMenuLinksContainer) desktopMenuLinksContainer.innerHTML = '';
+            if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                if (desktopMenuLinksContainer) {
+                    const aDesktop = document.createElement('a');
+                    aDesktop.href = link.href;
+                    aDesktop.textContent = link.text;
+                    aDesktop.className = 'nav-link-desktop text-sky-100 hover:bg-sky-700 hover:text-white'; // Celeste theme
+                    desktopMenuLinksContainer.appendChild(aDesktop);
+                }
+                if (mobileMenuLinksContainer) {
+                    const aMobile = document.createElement('a');
+                    aMobile.href = link.href;
+                    aMobile.textContent = link.text;
+                    aMobile.className = 'nav-link-mobile text-sky-100 hover:bg-sky-700 hover:text-white'; // Celeste theme
+                    mobileMenuLinksContainer.appendChild(aMobile);
+                }
             });
+
+            const allNavLinks = document.querySelectorAll('.nav-link-desktop, .nav-link-mobile');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('nav').offsetHeight;
+                        const scrollMarginTop = parseFloat(getComputedStyle(targetElement).scrollMarginTop) || 0; 
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - scrollMarginTop;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                    if (mobileMenu && link.classList.contains('nav-link-mobile') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if(mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        if(mobileMenuButton) mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                    }
+                });
+            });
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu) {
+                    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', populateNavLinks);
+
+        // --- Script para el año actual en el footer ---
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+        
+        // --- Script para el botón de "Volver Arriba" (adaptado del original) ---
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        if (scrollToTopBtn) {
+            window.onscroll = function() {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollToTopBtn.style.display = "block";
+                } else {
+                    scrollToTopBtn.style.display = "none";
+                }
+            };
+            scrollToTopBtn.onclick = function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+        }
+        
+        // --- Script para animación de aparición de secciones al hacer scroll (adaptado del original) ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.05 
+        };
+
+        const observer = new IntersectionObserver((entries, obs) => { // Renombrado observer a obs para evitar conflicto
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    obs.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
         });
     </script>
+
 </body>
 </html>
