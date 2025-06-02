@@ -16,19 +16,21 @@
             background-size: cover;
             background-position: center;
         }
-        .section-title {
+        .page-section-title { /* Cambiado de .section-title para evitar colisión con el de la sesión 14 y darle un estilo global */
             @apply text-3xl font-bold text-center mb-8 text-emerald-700;
         }
         .card {
-            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-emerald-500; /* Añadido borde temático */
         }
-        .nav-link {
+        /* Clases para enlaces de Navbar de index.html (Tema Esmeralda) */
+        .nav-link-desktop-index {
             @apply px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-100 hover:text-emerald-700 transition-colors;
         }
-        .nav-link-mobile {
+        .nav-link-mobile-index {
             @apply block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-emerald-100 hover:text-emerald-700 transition-colors;
         }
-        .fade-in {
+
+        .fade-in { /* Mantenemos tu animación original para el index */
             animation: fadeInAnimation ease 2s;
             animation-iteration-count: 1;
             animation-fill-mode: forwards;
@@ -43,27 +45,28 @@
                 transform: translateY(0);
             }
         }
+        .fade-in.visible { /* Para compatibilidad con el script de observer si se usa */
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Estilo para los enlaces de las sesiones */
+        .session-link {
+            @apply block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md text-center transition-transform transform hover:scale-105;
+        }
     </style>
 </head>
 <body class="bg-emerald-50">
 
-    <nav class="bg-white shadow-md fixed w-full z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="bg-white shadow-md fixed w-full z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
-                    <a href="#" class="flex-shrink-0 text-emerald-600 font-bold text-xl">
+                    <a href="index.html" class="flex-shrink-0 text-emerald-600 font-bold text-xl">
                         Plan de Vida
                     </a>
                 </div>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#inicio" class="nav-link">Inicio</a>
-                        <a href="#proposito" class="nav-link">Propósito</a>
-                        <a href="#herramientas" class="nav-link">Herramientas</a>
-                        <a href="#objetivos" class="nav-link">Objetivos</a>
-                        <a href="#declaracion" class="nav-link">Declaración</a>
-                        <a href="#nosotros" class="nav-link">Nosotros</a>
-                    </div>
+                    <div id="desktop-menu-links" class="ml-10 flex items-baseline space-x-4">
+                        </div>
                 </div>
                 <div class="-mr-2 flex md:hidden">
                     <button type="button" id="mobile-menu-button" class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-emerald-500 hover:bg-emerald-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500" aria-controls="mobile-menu" aria-expanded="false">
@@ -80,19 +83,12 @@
         </div>
 
         <div class="md:hidden hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#inicio" class="nav-link-mobile">Inicio</a>
-                <a href="#proposito" class="nav-link-mobile">Propósito</a>
-                <a href="#herramientas" class="nav-link-mobile">Herramientas</a>
-                <a href="#objetivos" class="nav-link-mobile">Objetivos</a>
-                <a href="#declaracion" class="nav-link-mobile">Declaración</a>
-                <a href="#nosotros" class="nav-link-mobile">Nosotros</a>
-            </div>
+            <div id="mobile-menu-links" class="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                </div>
         </div>
     </nav>
 
-    <header id="inicio" class="hero-bg text-white pt-32 pb-20 fade-in">
-        <div class="max-w-4xl mx-auto text-center px-4">
+    <header id="inicio" class="hero-bg text-white pt-32 pb-20 fade-in"> <div class="max-w-4xl mx-auto text-center px-4">
             <h1 class="text-4xl md:text-5xl font-bold mb-6">Construye Tu Plan de Vida</h1>
             <p class="text-xl md:text-2xl mb-8">Un viaje de autoconocimiento y discernimiento para una vida con propósito.</p>
             <blockquote class="text-lg italic border-l-4 border-emerald-300 pl-4">
@@ -105,29 +101,33 @@
     <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 
         <section class="py-12 fade-in" style="animation-delay: 0.2s;">
-            <h2 class="section-title">La Clave: Plasmar Tu Viaje</h2>
-            <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
-                A lo largo de más de 16 sesiones, hemos definido los cimientos de tu vida. Hoy, todo eso se une en un documento que será tu guía, tu mapa, tu plan. La documentación es esencial para dar forma y dirección a tu introspección.
-            </p>
-            <div class="text-center">
-                 <img src="https://placehold.co/600x400/d4e09b/4a5759?text=Documentando+Tu+Camino" alt="Persona escribiendo en un cuaderno" class="mx-auto rounded-lg shadow-lg" onerror="this.src='https://placehold.co/600x400/cccccc/333333?text=Error+al+cargar+imagen'">
+            <h2 class="page-section-title">La Clave: Plasmar Tu Viaje</h2>
+            <div class="card max-w-3xl mx-auto">
+                <p class="text-center text-lg text-gray-700 mb-8 ">
+                    A lo largo de más de 16 sesiones, hemos definido los cimientos de tu vida. Hoy, todo eso se une en un documento que será tu guía, tu mapa, tu plan. La documentación es esencial para dar forma y dirección a tu introspección.
+                </p>
+                <div class="text-center">
+                     <img src="https://placehold.co/600x400/d4e09b/4a5759?text=Documentando+Tu+Camino" alt="Persona escribiendo en un cuaderno" class="mx-auto rounded-lg shadow-lg" onerror="this.src='https://placehold.co/600x400/cccccc/333333?text=Error+al+cargar+imagen'">
+                </div>
             </div>
         </section>
 
-        <section class="py-12 bg-white rounded-xl shadow-lg fade-in" style="animation-delay: 0.4s;">
+        <section class="py-12 bg-emerald-100 rounded-xl shadow-lg fade-in" style="animation-delay: 0.4s;">
             <div class="max-w-3xl mx-auto px-4">
-                <h2 class="section-title">Comprendiendo Tus Raíces: Antecedentes de Vida</h2>
-                <p class="text-lg text-gray-700 mb-4">
-                    Empezamos analizando nuestros Antecedentes de Vida, desde la infancia hasta la adultez. No para quedarnos en el pasado, sino para entender cómo las decisiones (nuestras y de otros) nos trajeron hasta aquí.
-                </p>
-                <p class="text-lg text-gray-700">
-                    Es un ejercicio de <strong>aceptación y aprendizaje</strong>, no de victimización. Reconocer nuestro punto de partida nos da la perspectiva necesaria para avanzar.
-                </p>
+                <h2 class="page-section-title">Comprendiendo Tus Raíces: Antecedentes de Vida</h2>
+                <div class="card">
+                    <p class="text-lg text-gray-700 mb-4">
+                        Empezamos analizando nuestros Antecedentes de Vida, desde la infancia hasta la adultez. No para quedarnos en el pasado, sino para entender cómo las decisiones (nuestras y de otros) nos trajeron hasta aquí.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        Es un ejercicio de <strong>aceptación y aprendizaje</strong>, no de victimización. Reconocer nuestro punto de partida nos da la perspectiva necesaria para avanzar.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section id="proposito" class="py-12 fade-in" style="animation-delay: 0.6s;">
-            <h2 class="section-title">Descubriendo Tu Esencia</h2>
+        <section id="proposito" class="py-12 fade-in scroll-mt-20" style="animation-delay: 0.6s;">
+            <h2 class="page-section-title">Descubriendo Tu Esencia</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="card">
                     <h3 class="text-xl font-semibold text-emerald-600 mb-3">Propósito de Vida</h3>
@@ -144,11 +144,11 @@
             </div>
         </section>
 
-        <section id="herramientas" class="py-12 bg-emerald-100 rounded-xl shadow-lg fade-in" style="animation-delay: 0.8s;">
+        <section id="herramientas" class="py-12 bg-emerald-100 rounded-xl shadow-lg fade-in scroll-mt-20" style="animation-delay: 0.8s;">
             <div class="max-w-4xl mx-auto px-4">
-                <h2 class="section-title">Herramientas para el Bienestar y el Logro</h2>
+                <h2 class="page-section-title">Herramientas para el Bienestar y el Logro</h2>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div>
+                    <div class="card">
                         <h3 class="text-2xl font-semibold text-emerald-700 mb-4">Modelo PERMA: Tu Brújula para el Bienestar</h3>
                         <ul class="list-disc list-inside text-gray-700 space-y-2">
                             <li><strong>P</strong>ensamientos positivos: Detonan alegría.</li>
@@ -158,7 +158,7 @@
                             <li><strong>A</strong>l Logro (Accomplishment): La satisfacción de alcanzar metas.</li>
                         </ul>
                     </div>
-                    <div>
+                    <div class="card">
                         <h3 class="text-2xl font-semibold text-emerald-700 mb-4">Estrategia GROW: Para Objetivos Claros</h3>
                          <img src="https://placehold.co/500x300/83c5be/006d77?text=Estrategia+GROW" alt="Diagrama de la estrategia GROW" class="mx-auto rounded-lg shadow-md mb-4" onerror="this.src='https://placehold.co/500x300/cccccc/333333?text=Error+al+cargar+imagen'">
                         <p class="text-gray-700">Una guía para que tus objetivos no queden en el aire. Considera sus siete filtros, desde definir lo que quieres hasta diseñar un plan de acción.</p>
@@ -167,9 +167,9 @@
             </div>
         </section>
         
-        <section id="objetivos" class="py-12 fade-in" style="animation-delay: 1s;">
-            <h2 class="section-title">Definiendo Tus Metas</h2>
-            <div class="max-w-3xl mx-auto text-center">
+        <section id="objetivos" class="py-12 fade-in scroll-mt-20" style="animation-delay: 1s;">
+            <h2 class="page-section-title">Definiendo Tus Metas</h2>
+            <div class="card max-w-3xl mx-auto text-center">
                 <p class="text-lg text-gray-700 mb-6">
                     Usando la Estrategia GROW, filtramos nuestros objetivos:
                 </p>
@@ -188,22 +188,24 @@
             </div>
         </section>
 
-        <section id="declaracion" class="py-12 bg-white rounded-xl shadow-lg fade-in" style="animation-delay: 1.2s;">
+        <section id="declaracion" class="py-12 bg-emerald-100 rounded-xl shadow-lg fade-in scroll-mt-20" style="animation-delay: 1.2s;">
             <div class="max-w-3xl mx-auto px-4 text-center">
-                <h2 class="section-title">Tu Declaración de Vida</h2>
-                 <img src="https://placehold.co/600x350/edf6f9/006d77?text=Tu+Legado+Personal" alt="Manos sosteniendo un documento importante" class="mx-auto rounded-lg shadow-lg mb-6" onerror="this.src='https://placehold.co/600x350/cccccc/333333?text=Error+al+cargar+imagen'">
-                <p class="text-lg text-gray-700 mb-4">
-                    En los grandes momentos de la historia, se hacen declaratorias. Hoy, tú harás tu propia declaración: ese documento en el que expresas quién eres y hasta dónde quieres llegar.
-                </p>
-                <p class="text-lg text-gray-700">
-                    Es tu legado, tu compromiso contigo mismo y con tu camino.
-                </p>
+                <h2 class="page-section-title">Tu Declaración de Vida</h2>
+                <div class="card">
+                     <img src="https://placehold.co/600x350/edf6f9/006d77?text=Tu+Legado+Personal" alt="Manos sosteniendo un documento importante" class="mx-auto rounded-lg shadow-lg mb-6" onerror="this.src='https://placehold.co/600x350/cccccc/333333?text=Error+al+cargar+imagen'">
+                    <p class="text-lg text-gray-700 mb-4">
+                        En los grandes momentos de la historia, se hacen declaratorias. Hoy, tú harás tu propia declaración: ese documento en el que expresas quién eres y hasta dónde quieres llegar.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        Es tu legado, tu compromiso contigo mismo y con tu camino.
+                    </p>
+                </div>
             </div>
         </section>
 
         <section class="py-12 text-center fade-in" style="animation-delay: 1.4s;">
-            <h2 class="section-title">Construyendo con Alegría y Esperanza</h2>
-            <div class="max-w-3xl mx-auto">
+            <h2 class="page-section-title">Construyendo con Alegría y Esperanza</h2>
+            <div class="card max-w-3xl mx-auto">
                 <blockquote class="text-xl italic text-emerald-800 border-l-4 border-emerald-500 pl-6 mb-6">
                     "Un cristiano triste es un triste cristiano." - San Agustín
                 </blockquote>
@@ -216,9 +218,9 @@
             </div>
         </section>
 
-<section id="sesiones" class="py-12 bg-emerald-100 rounded-xl shadow-lg fade-in" style="animation-delay: 1.5s;">
+        <section id="sesiones" class="py-12 bg-emerald-100 rounded-xl shadow-lg fade-in scroll-mt-20" style="animation-delay: 1.5s;">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="section-title">Material de Sesiones</h2>
+                <h2 class="page-section-title">Material de Sesiones</h2>
                 <p class="text-center text-gray-700 mb-10 max-w-2xl mx-auto">
                     Accede al contenido y recursos de cada encuentro de nuestro viaje de transformación.
                 </p>
@@ -235,18 +237,17 @@
                     <a href="sesion10.html" class="session-link">Sesión 10</a>
                     <a href="sesion11.html" class="session-link">Sesión 11</a>
                     <a href="sesion12.html" class="session-link">Sesión 12</a>
-                    <a href="" class="session-link">Sesión 13 - RETIRO</a>
+                    <a href="#" class="session-link opacity-50 cursor-not-allowed" title="Sesión 13 - Retiro (Sin página individual)">Sesión 13 - RETIRO</a>
                     <a href="sesion14.html" class="session-link">Sesión 14</a>
                     <a href="sesion15.html" class="session-link">Sesión 15</a>
                     <a href="sesion16.html" class="session-link">Sesión 16</a>
-                    <!-- Puedes agregar más sesiones aquí si es necesario -->
                 </div>
             </div>
         </section>
         
     </main>
 
-    <footer id="nosotros" class="bg-emerald-700 text-white py-12 fade-in" style="animation-delay: 1.6s;">
+    <footer id="nosotros" class="bg-emerald-700 text-white py-12 fade-in scroll-mt-20" style="animation-delay: 1.6s;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold mb-6">Un Placer Acompañarte</h2>
             <p class="text-lg font-semibold">¡Muchas gracias de todo corazón!</p>
@@ -258,57 +259,260 @@
     </footer>
 
     <script>
-        // Script para el menú móvil
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.querySelectorAll('#mobile-menu a');
+        const desktopMenuLinksContainer = document.getElementById('desktop-menu-links');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
 
-        mobileMenuButton.addEventListener('click', () => {
-            const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
-            mobileMenuButton.setAttribute('aria-expanded', !expanded);
-            mobileMenu.classList.toggle('hidden');
-            // Cambiar icono del botón
-            mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
-        });
-
-        // Cerrar menú móvil al hacer clic en un enlace
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenuButton.setAttribute('aria-expanded', 'false');
-                mobileMenuButton.querySelectorAll('svg').forEach(icon => {
-                    if (icon.classList.contains('block')) { // El icono de hamburguesa
-                        icon.classList.remove('hidden');
-                    } else { // El icono de X
-                        icon.classList.add('hidden');
-                    }
-                });
-                 mobileMenuButton.querySelector('svg:first-child').classList.remove('hidden'); // Asegurar que el icono de hamburguesa se muestre
-                 mobileMenuButton.querySelector('svg:last-child').classList.add('hidden'); // Asegurar que el icono de X se oculte
-            });
-        });
-
-        // Año actual en el footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Animaciones al hacer scroll (opcional, para mejorar la experiencia)
-        const fadeInElements = document.querySelectorAll('.fade-in');
-        const observerOptions = {
-            root: null, // viewport
-            rootMargin: '0px',
-            threshold: 0.1 // 10% del elemento visible
+        const pageLinksConfig = {
+            'index.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#proposito', text: 'Propósito' },
+                { href: '#herramientas', text: 'Herramientas' },
+                { href: '#objetivos', text: 'Objetivos' },
+                { href: '#declaracion', text: 'Declaración' },
+                { href: '#sesiones', text: 'Sesiones'},
+                { href: '#nosotros', text: 'Nosotros' }
+            ],
+            'sesion01.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#ponente', text: 'Ponente' },
+                { href: '#taller', text: 'El Taller' },
+                { href: '#etapas', text: 'Etapas' },
+                { href: '#reflexion', text: 'Reflexión' }
+            ],
+            'sesion02.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#temas', text: 'Temas Centrales' },
+                { href: '#ejercicio', text: 'Ventana de la Vida' },
+                { href: '#conclusion', text: 'Conclusión' }
+            ],
+            'sesion03.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#sesion-previa', text: 'Sesión Previa' },
+                { href: '#concepto-proposito', text: 'Concepto' },
+                { href: '#descubrir-llamado', text: 'Descubrir' },
+                { href: '#que-es-proposito', text: 'Definición' },
+                { href: '#accion', text: 'Llamada a la Acción'}
+            ],
+            'sesion04.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#introduccion', text: 'Introducción'},
+                { href: '#entendiendo-proposito', text: 'Entendiendo Propósito'},
+                { href: '#modelo-proposito', text: 'Modelo'},
+                { href: '#construyendo-proposito', text: 'Construcción'},
+                { href: '#tarea-final', text: 'Tarea'}
+            ],
+            'sesion05.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#contexto-complejo', text: 'Contexto'},
+                { href: '#discernimiento', text: 'Discernimiento'},
+                { href: '#proxima-sesion', text: 'Próxima Sesión'}
+            ],
+            'sesion06.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#introduccion', text: 'Introducción' },
+                { href: '#claves', text: 'Claves' },
+                { href: '#virtudes', text: 'Virtudes' },
+                { href: '#fortalezas', text: 'Fortalezas' }
+            ],
+            'sesion07.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#donde-estamos', text: 'Avance'},
+                { href: '#proposito-vida', text: 'Propósito'},
+                { href: '#entendiendo-mision', text: 'Misión'},
+                { href: '#ejercicio-practico', text: 'Ejercicio'},
+                { href: '#pensamientos-finales', text: 'Final'}
+            ],
+            'sesion08.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#definiendo-horizontes', text: 'Horizontes'},
+                { href: '#cimientos', text: 'Cimientos'},
+                { href: '#disenar-objetivos', text: 'Diseño'},
+                { href: '#rueda-vida', text: 'Rueda de Vida'},
+                { href: '#tarea', text: 'Tarea'}
+            ],
+            'sesion09.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#introduccion', text: 'Introducción'},
+                { href: '#carta-pastoral', text: 'Carta Pastoral'},
+                { href: '#perma', text: 'PERMA'},
+                { href: '#emociones', text: 'Emociones'},
+                { href: '#conclusion-tarea', text: 'Tarea'}
+            ],
+            'sesion10.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#reflexion', text: 'Reflexión' },
+                { href: '#que-es', text: '¿Qué es?' },
+                { href: '#elementos', text: 'Elementos' },
+                { href: '#caracteristicas', text: 'Características' },
+                { href: '#tarea', text: 'Tarea' }
+            ],
+            'sesion11.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#proyecto-vida', text: 'Proyecto de Vida' },
+                { href: '#desafios', text: 'Desafíos' },
+                { href: '#construccion', text: 'Construcción' },
+                { href: '#tarea', text: 'Tarea' }
+            ],
+            'sesion12.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#perma', text: 'PERMA' },
+                { href: '#proposito', text: 'Propósito' },
+                { href: '#logro', text: 'Logro' },
+                { href: '#motivacion', text: 'Motivación' },
+                { href: '#metas', text: 'Metas' },
+                { href: '#reflexion', text: 'Reflexión' }
+            ],
+            'sesion14.html': [
+                { href: '#inicio', text: 'Inicio'},
+                { href: '#donde-estamos', text: 'Avance'},
+                { href: '#importancia-objetivos', text: 'Importancia'},
+                { href: '#filtros-objetivos', text: 'Filtros'},
+                { href: '#proximo-material', text: 'Próximo'},
+                { href: '#tarea-semana', text: 'Tarea'}
+            ],
+            'sesion15.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#introduccion-contenido', text: 'Introducción' },
+                { href: '#proceso', text: 'Proceso' },
+                { href: '#grow', text: 'Modelo GROW' },
+                { href: '#dimensiones', text: 'Dimensiones' },
+                { href: '#ejemplos', text: 'Ejemplos' },
+                { href: '#tarea', text: 'Tarea' }
+            ],
+            'sesion16.html': [
+                { href: '#inicio', text: 'Inicio' },
+                { href: '#introduccion', text: 'Introducción' },
+                { href: '#dimensiones', text: 'Dimensiones' },
+                { href: '#conclusion', text: 'Conclusión' }
+            ]
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        function getCurrentPageName() {
+            const path = window.location.pathname;
+            const pageName = path.split("/").pop();
+            return pageName === "" ? "index.html" : pageName;
+        }
+
+        function populateNavLinks() {
+            const currentPage = getCurrentPageName();
+            const links = pageLinksConfig[currentPage] || [];
+
+            let navLinkDesktopClasses = 'nav-link-desktop-index'; // Clases por defecto para index.html
+            let navLinkMobileClasses = 'nav-link-mobile-index';   // Clases por defecto para index.html
+
+            // Determinar el tema de color de la navbar basado en la página actual
+            // Esto es un ejemplo, necesitarías mapear cada sesión a sus clases de color de navbar
+            if (currentPage.startsWith('sesion01')) { // Índigo
+                navLinkDesktopClasses = 'text-indigo-100 hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors';
+                navLinkMobileClasses = 'text-indigo-100 hover:bg-indigo-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors';
+            } else if (currentPage.startsWith('sesion02')) { // Azul Primario
+                navLinkDesktopClasses = 'text-blue-100 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors';
+                navLinkMobileClasses = 'text-blue-100 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors';
+            } else if (currentPage.startsWith('sesion03') || currentPage.startsWith('sesion04') || currentPage.startsWith('sesion09') || currentPage.startsWith('sesion14')) { // Celeste/Sky
+                navLinkDesktopClasses = 'text-sky-100 hover:bg-sky-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors';
+                navLinkMobileClasses = 'text-sky-100 hover:bg-sky-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors';
+            } else if (currentPage.startsWith('sesion05') || currentPage.startsWith('sesion06') || currentPage.startsWith('sesion11')) { // Púrpura
+                navLinkDesktopClasses = 'text-purple-100 hover:bg-purple-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors';
+                navLinkMobileClasses = 'text-purple-100 hover:bg-purple-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors';
+            } else if (currentPage.startsWith('sesion07')) { // Ámbar
+                navLinkDesktopClasses = 'text-amber-100 hover:bg-amber-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors';
+                navLinkMobileClasses = 'text-amber-100 hover:bg-amber-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors';
+            } else if (currentPage.startsWith('sesion08')) { // Cian
+                navLinkDesktopClasses = 'text-cyan-100 hover:bg-cyan-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors';
+                navLinkMobileClasses = 'text-cyan-100 hover:bg-cyan-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors';
+            } else if (currentPage.startsWith('sesion10')) { // Índigo Intenso
+                 navLinkDesktopClasses = 'text-indigo-100 hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors';
+                navLinkMobileClasses = 'text-indigo-100 hover:bg-indigo-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors';
+            } else if (currentPage.startsWith('sesion12') || currentPage.startsWith('sesion16')) { // Azul Eléctrico/Cobalto
+                navLinkDesktopClasses = 'text-blue-100 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors';
+                navLinkMobileClasses = 'text-blue-100 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors';
+            } else if (currentPage.startsWith('sesion15')) { // Verde Esmeralda
+                navLinkDesktopClasses = 'text-green-100 hover:bg-green-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors';
+                navLinkMobileClasses = 'text-green-100 hover:bg-green-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors';
+            }
+
+
+            if (desktopMenuLinksContainer) desktopMenuLinksContainer.innerHTML = '';
+            if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                if (desktopMenuLinksContainer) {
+                    const aDesktop = document.createElement('a');
+                    aDesktop.href = link.href;
+                    aDesktop.textContent = link.text;
+                    aDesktop.className = navLinkDesktopClasses; // Aplicar clases dinámicas
+                    desktopMenuLinksContainer.appendChild(aDesktop);
+                }
+                if (mobileMenuLinksContainer) {
+                    const aMobile = document.createElement('a');
+                    aMobile.href = link.href;
+                    aMobile.textContent = link.text;
+                    aMobile.className = navLinkMobileClasses; // Aplicar clases dinámicas
+                    mobileMenuLinksContainer.appendChild(aMobile);
+                }
+            });
+
+            const allNavLinks = document.querySelectorAll('.nav-link-desktop-index, .nav-link-mobile-index, .text-indigo-100, .text-blue-100, .text-sky-100, .text-purple-100, .text-amber-100, .text-cyan-100, .text-green-100'); // Selector más genérico para todos los enlaces de nav
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('nav').offsetHeight;
+                        const scrollMarginTop = parseFloat(getComputedStyle(targetElement).scrollMarginTop) || 0;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - scrollMarginTop;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                    // Lógica para cerrar el menú móvil
+                    if (mobileMenu && this.closest('#mobile-menu') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if(mobileMenuButton) {
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                            mobileMenuButton.querySelector('svg.block').classList.remove('hidden'); // Muestra hamburguesa
+                            mobileMenuButton.querySelector('svg.hidden:not(.block)').classList.add('hidden'); // Oculta X
+                        }
+                    }
+                });
+            });
+        }
+
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu) {
+                    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', populateNavLinks);
+
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = entry.target.style.animationDelay || '0s'; // Asegurar que haya un delay
-                    entry.target.classList.add('visible'); // Podrías usar esta clase para activar la animación si no la pones inline
-                    // observer.unobserve(entry.target); // Descomentar si solo quieres que la animación ocurra una vez
+                    entry.target.style.animationDelay = entry.target.style.animationDelay || '0s';
+                    entry.target.classList.add('visible');
+                    obs.unobserve(entry.target);
                 }
             });
         }, observerOptions);
-
         fadeInElements.forEach(el => {
             observer.observe(el);
         });
