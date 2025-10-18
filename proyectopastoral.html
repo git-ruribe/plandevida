@@ -1,504 +1,539 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoja de Ruta: Proyecto Parroquial (Ver, Juzgar, Actuar)</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 20px;
-            background-color: #f4f7f6;
-            color: #333;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            color: #1a5a9a;
-            border-bottom: 2px solid #1a5a9a;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        h3 {
-            color: #38761d;
-            margin-top: 20px;
-        }
-        .step {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            background-color: #fafafa;
-        }
-        .step h4 {
-            margin-top: 0;
-            color: #000;
-        }
-        .description {
-            font-size: 0.9em;
-            color: #555;
-            margin-bottom: 10px;
-            font-style: italic;
-        }
-        .notes-section {
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 1px dashed #ccc;
-        }
-        .notes-section textarea {
-            width: 98%;
-            min-height: 80px;
-            padding: 5px;
-            border: 1px solid #aaa;
-            border-radius: 4px;
-            resize: vertical;
-        }
-        .checklist-box {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .checklist-box input[type="checkbox"] {
-            margin-right: 10px;
-            width: 20px;
-            height: 20px;
-        }
-        .phase-title {
-            background-color: #e5f0ff;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            font-weight: bold;
-        }
-        .save-message {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background-color: #38761d;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            display: none;
-            z-index: 1000;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Ruta: Proyecto Parroquial (Ver, Juzgar, Actuar)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #1a5a9a;
+            border-bottom: 2px solid #1a5a9a;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #38761d;
+            margin-top: 20px;
+        }
+        .step {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .step h4 {
+            margin-top: 0;
+            color: #000;
+        }
+        .description {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        .notes-section {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+        }
+        .notes-section textarea {
+            width: 98%;
+            min-height: 80px;
+            padding: 5px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        .checklist-box {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .checklist-box input[type="checkbox"] {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+        .phase-title {
+            background-color: #e5f0ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .save-message {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #38761d;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body onload="loadProgress()">
 
 <div class="container">
-    <h1>Hoja de Ruta para el Proyecto Parroquial</h1>
-    <p>Utilice esta lista de verificación para la planeación, siguiendo la metodología eclesial **Ver, Juzgar y Actuar**. Sus notas se guardarán automáticamente en su navegador (Almacenamiento Local).</p>
+    <h1>Hoja de Ruta para el Proyecto Parroquial</h1>
+    <p>Utilice esta lista de verificación para la planeación, siguiendo la metodología eclesial **Ver, Juzgar y Actuar**. Sus notas se guardarán automáticamente en su navegador (Almacenamiento Local).</p>
 
-        <h2>I. FASE INICIAL: FUNDAMENTACIÓN Y DEFINICIÓN (Módulo 1)</h2>
-    <div class="phase-title">El Proyecto como Acto de Fe Encarnada</div>
+    <!-- FASE I: FUNDAMENTACIÓN -->
+    <h2>I. FASE INICIAL: FUNDAMENTACIÓN Y DEFINICIÓN (Módulo 1)</h2>
+    <div class="phase-title">El Proyecto como Acto de Fe Encarnada</div>
 
-    <div class="step" id="step-1">
-        <h4>1. Fundamento: Justificación del Proyecto</h4>
-        <div class="description">**Un proyecto pastoral es un acto de fe encarnada que convoca a la comunidad a caminar juntos en respuesta al Espíritu. La planeación es una actitud evangélica y responsable ante la misión confiada por Cristo.**</div>
-        <div class="notes-section">
-            Notas sobre el fundamento teológico del proyecto:
-            <textarea id="note-step-1" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-1" onchange="saveProgress()">
-                <label for="check-step-1">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-1">
+        <h4>1. Fundamento: Justificación del Proyecto</h4>
+        <div class="description">**Un proyecto pastoral es un acto de fe encarnada que convoca a la comunidad a caminar juntos en respuesta al Espíritu. La planeación es una actitud evangélica y responsable ante la misión confiada por Cristo.**</div>
+        <div class="notes-section">
+            Notas sobre el fundamento teológico del proyecto:
+            <textarea id="note-step-1" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-1" onchange="saveProgress()">
+                <label for="check-step-1">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-2">
-        <h4>2. Conversación / Diagnóstico Inicial</h4>
-        <div class="description">**El diagnóstico inicial implica observar y conversar con miembros de la comunidad, como agentes de pastoral, catequistas, jóvenes o familias, para comprender la realidad local.**</div>
-        <div class="notes-section">
-            Notas sobre las personas consultadas y primeras impresiones:
-            <textarea id="note-step-2" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-2" onchange="saveProgress()">
-                <label for="check-step-2">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
-    
-    <div class="step" id="step-3">
-        <h4>3. Identificación y Descripción de la Necesidad</h4>
-        <div class="description">**Se debe nombrar la realidad e identificar una necesidad concreta actual (ej. baja participación, falta de formación o necesidad de apoyo a vulnerables) y describirla brevemente.**</div>
-        <div class="notes-section">
-            Problemática elegida para el proyecto (Nombrar la realidad):
-            <textarea id="note-step-3" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-3" onchange="saveProgress()">
-                <label for="check-step-3">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
-    
-    <div class="step" id="step-4">
-        <h4>4. Enfoque Pastoral (Proactivo vs. Reactivo)</h4>
-        <div class="description">**La planeación es el camino para pasar de una pastoral reactiva a una pastoral proactiva, evitando la dispersión y la superficialidad, con sentido y objetivos claros.**</div>
-        <div class="notes-section">
-            Notas sobre la actitud de conversión pastoral necesaria:
-            <textarea id="note-step-4" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-4" onchange="saveProgress()">
-                <label for="check-step-4">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-2">
+        <h4>2. Conversación / Diagnóstico Inicial</h4>
+        <div class="description">**El diagnóstico inicial implica observar y conversar con miembros de la comunidad, como agentes de pastoral, catequistas, jóvenes o familias, para comprender la realidad local.**</div>
+        <div class="notes-section">
+            Notas sobre las personas consultadas y primeras impresiones:
+            <textarea id="note-step-2" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-2" onchange="saveProgress()">
+                <label for="check-step-2">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-        <h2>II. ANÁLISIS PROFUNDO Y DISCERNIMIENTO (VER - JUZGAR)</h2>
+    <div class="step" id="step-3">
+        <h4>3. Identificación y Descripción de la Necesidad</h4>
+        <div class="description">**Se debe nombrar la realidad e identificar una necesidad concreta actual (ej. baja participación, falta de formación o necesidad de apoyo a vulnerables) y describirla brevemente.**</div>
+        <div class="notes-section">
+            Problemática elegida para el proyecto (Nombrar la realidad):
+            <textarea id="note-step-3" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-3" onchange="saveProgress()">
+                <label for="check-step-3">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-nbsp;   <h3>A. Fase VER: Análisis de la Realidad y Metodología</h3>
-    
-    <div class="step" id="step-5">
-        <h4>5. Zoom de Cerca (Micro)</h4>
-        <div class="description">**"Ver de cerca" (detalle) implica observar y analizar situaciones inmediatas y concretas. Requiere escuchar testimonios directos y actuar desde una compasión realista, como lo hizo Jesús (Mc 6,34).**</div>
-        <div class="notes-section">
-            Detalles y testimonios concretos recogidos sobre la problemática:
-            <textarea id="note-step-5" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-5" onchange="saveProgress()">
-                <label for="check-step-5">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-4">
+        <h4>4. Enfoque Pastoral (Proactivo vs. Reactivo)</h4>
+        <div class="description">**La planeación es el camino para pasar de una pastoral reactiva a una pastoral proactiva, evitando la dispersión y la superficialidad, con sentido y objetivos claros.**</div>
+        <div class="notes-section">
+            Notas sobre la actitud de conversión pastoral necesaria:
+            <textarea id="note-step-4" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-4" onchange="saveProgress()">
+                <label for="check-step-4">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-6">
-        <h4>6. Zoom de Lejos (Macro)</h4>
-        <div class="description">**"Ver de lejos" (visión global) supone ampliar la mirada al contexto nacional, social y cultural, integrando grandes tendencias y las raíces estructurales de los problemas. Esto ayuda a discernir si se vive un "cambio de época".**</div>
-        <div class="notes-section">
-            Contexto global o nacional que influye en mi parroquia (ej. Crisis cultural, pandemia, etc.):
-            <textarea id="note-step-6" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-6" onchange="saveProgress()">
-                <label for="check-step-6">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <!-- FASE II: VER Y JUZGAR -->
+    <h2>II. ANÁLISIS PROFUNDO Y DISCERNIMIENTO (VER - JUZGAR)</h2>
 
-    <div class="step" id="step-7">
-        <h4>7. Focus Pastoral (Lo Esencial)</h4>
-        <div class="description">**El *Focus* busca centrar la atención en el núcleo del Evangelio y en lo esencial de cada situación pastoral. Mirar lo esencial es poner la mirada donde Jesús la pone: en quien más necesita su amor misericordioso (Mc 9, 36-37).**</div>
-        <div class="notes-section">
-            ¿Quién es el más frágil o débil que debe ser el centro de nuestro proyecto?:
-            <textarea id="note-step-7" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-7" onchange="saveProgress()">
-                <label for="check-step-7">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
-    
-    <div class="step" id="step-8bis">
-        <h4>8. Bis. Análisis FODA (Viabilidad)</h4>
-        <div class="description">**El FODA permite evaluar si el proyecto es realista. Identifica los recursos internos (*Fortalezas, Debilidades*) y los factores externos (*Oportunidades, Amenazas*) que afectarán la ejecución del proyecto.**</div>
-        <div class="notes-section">
-            Fortalezas y Oportunidades / Debilidades y Amenazas identificadas para la problemática:
-            <textarea id="note-step-8bis" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-8bis" onchange="saveProgress()">
-                <label for="check-step-8bis">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
-    
-    <div class="step" id="step-8">
-        <h4>8. Claves de la Iglesia (Inspiración)</h4>
-        <div class="description">**La realidad debe ser iluminada por estas claves para asegurar que el proyecto resuene con la misión universal.**</div>
-        <div class="notes-section">
-            <p>a) Evangelio: Buscar un pasaje del Evangelio que interpele y abra caminos. **[1, 2]**</p>
-            <textarea id="note-step-8a" oninput="saveProgress()" placeholder="Ejemplo: Mt 25, 35 ante la exclusión"></textarea>
-            <p>b) Dignidad Humana: Preguntar qué aspectos de la dignidad están siendo negados/amenazados (GS 27). **[1, 2]**</p>
-            <textarea id="note-step-8b" oninput="saveProgress()"></textarea>
-            <p>c) Comunión Eclesial: Asegurar que el proyecto no divida, sino que una, interpelando a toda la comunidad (EG 31). **[1, 3]**</p>
-            <textarea id="note-step-8c" oninput="saveProgress()"></textarea>
-            <p>d) Opción por los Pobres: Priorizar dónde están los más frágiles y cómo se les escucha (DA 392). **[1, 3]**</p>
-            <textarea id="note-step-8d" oninput="saveProgress()"></textarea>
-            <p>e) Misión: ¿Llevará el Evangelio más allá de las fronteras actuales de la comunidad (ChV 239)? **[1, 4]**</p>
-            <textarea id="note-step-8e" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-8" onchange="saveProgress()">
-                <label for="check-step-8">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <h3>A. Fase VER: Análisis de la Realidad y Metodología</h3>
 
-    <h3>B. Fase JUZGAR: Marco Doctrinal</h3>
-    <div class="phase-title">El Marco Doctrinal no es un adorno: es el corazón que da sentido evangélico al proyecto. **[5, 6]**</div>
+    <div class="step" id="step-5">
+        <h4>5. Zoom de Cerca (Micro)</h4>
+        <div class="description">**"Ver de cerca" (detalle) implica observar y analizar situaciones inmediatas y concretas. Requiere escuchar testimonios directos y actuar desde una compasión realista, como lo hizo Jesús (Mc 6,34).**</div>
+        <div class="notes-section">
+            Detalles y testimonios concretos recogidos sobre la problemática:
+            <textarea id="note-step-5" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-5" onchange="saveProgress()">
+                <label for="check-step-5">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-9">
-        <h4>9. Paso 1: Nombrar la Realidad</h4>
-        <div class="description">**Escribir la problemática que ya fue identificada para tenerla como referencia.** **[7-9]**</div>
-        <div class="notes-section">
-            Problemática (reafirmación):
-            <textarea id="note-step-9" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-9" onchange="saveProgress()">
-                <label for="check-step-9">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-6">
+        <h4>6. Zoom de Lejos (Macro)</h4>
+        <div class="description">**"Ver de lejos" (visión global) supone ampliar la mirada al contexto nacional, social y cultural, integrando grandes tendencias y las raíces estructurales de los problemas. Esto ayuda a discernir si se vive un "cambio de época".**</div>
+        <div class="notes-section">
+            Contexto global o nacional que influye en mi parroquia (ej. Crisis cultural, pandemia, etc.):
+            <textarea id="note-step-6" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-6" onchange="saveProgress()">
+                <label for="check-step-6">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-10">
-section{        <h4>10. Paso 2: Iluminar con la Palabra de Dios</h4>
-        <div class="description">**Buscar al menos un pasaje bíblico que ilumine esa problemática. La Sagrada Escritura es la fuente primera y fundamental.** **[6, 7, 10, 11]**</div>
-        <div class="notes-section">
-            Pasaje Bíblico clave (y breve reflexión):
-            <textarea id="note-step-10" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-10" onchange="saveProgress()">
-                <label for="check-step-10">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-7">
+        <h4>7. Focus Pastoral (Lo Esencial)</h4>
+        <div class="description">**El *Focus* busca centrar la atención en el núcleo del Evangelio y en lo esencial de cada situación pastoral. Mirar lo esencial es poner la mirada donde Jesús la pone: en quien más necesita su amor misericordioso (Mc 9, 36-37).**</div>
+        <div class="notes-section">
+            ¿Quién es el más frágil o débil que debe ser el centro de nuestro proyecto?:
+            <textarea id="note-step-7" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-7" onchange="saveProgress()">
+                <label for="check-step-7">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-11">
-        <h4>11. Paso 3: Escuchar al Magisterio Universal</h4>
-        <div class="description">**Anotar al menos una cita breve de un documento del Magisterio universal (ej. CVII: *Gaudium et Spes*; Papa Francisco: *Evangelii Gaudium, Fratelli Tutti*).** **[6, 7, 10, 11]**</div>
-        <div class="notes-section">
-            Cita del Magisterio Universal:
-            <textarea id="note-step-11" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-11" onchange="saveProgress()">
-                <label for="check-step-11">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-8bis">
+        <h4>8. Bis. Análisis FODA (Viabilidad)</h4>
+        <div class="description">**El FODA permite evaluar si el proyecto es realista. Identifica los recursos internos (*Fortalezas, Debilidades*) y los factores externos (*Oportunidades, Amenazas*) que afectarán la ejecución del proyecto.**</div>
+        <div class="notes-section">
+            Fortalezas y Oportunidades / Debilidades y Amenazas identificadas para la problemática:
+            <textarea id="note-step-8bis" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-8bis" onchange="saveProgress()">
+                <label for="check-step-8bis">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-12">
-        <h4>12. Paso 4: Escuchar al Magisterio Latinoamericano</h4>
-        <div class="description">**Anotar al menos una cita breve del Documento de Aparecida u otro documento latinoamericano (ej. Medellín, Puebla). Aparecida es la referencia principal del Magisterio latinoamericano.** **[6, 7, 10-12]**</div>
-        <div class="notes-section">
-            Cita del Magisterio Latinoamericano:
-            <textarea id="note-step-12" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-12" onchange="saveProgress()">
-                <label for="check-step-12">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-8">
+        <h4>8. Claves de la Iglesia (Inspiración)</h4>
+        <div class="description">**La realidad debe ser iluminada por estas claves para asegurar que el proyecto resuene con la misión universal.**</div>
+        <div class="notes-section">
+            <p>a) Evangelio: Buscar un pasaje del Evangelio que interpele y abra caminos. **[1, 2]**</p>
+            <textarea id="note-step-8a" oninput="saveProgress()" placeholder="Ejemplo: Mt 25, 35 ante la exclusión"></textarea>
+            <p>b) Dignidad Humana: Preguntar qué aspectos de la dignidad están siendo negados/amenazados (GS 27). **[1, 2]**</p>
+            <textarea id="note-step-8b" oninput="saveProgress()"></textarea>
+            <p>c) Comunión Eclesial: Asegurar que el proyecto no divida, sino que una, interpelando a toda la comunidad (EG 31). **[1, 3]**</p>
+            <textarea id="note-step-8c" oninput="saveProgress()"></textarea>
+            <p>d) Opción por los Pobres: Priorizar dónde están los más frágiles y cómo se les escucha (DA 392). **[1, 3]**</p>
+            <textarea id="note-step-8d" oninput="saveProgress()"></textarea>
+            <p>e) Misión: ¿Llevará el Evangelio más allá de las fronteras actuales de la comunidad (ChV 239)? **[1, 4]**</p>
+            <textarea id="note-step-8e" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-8" onchange="saveProgress()">
+                <label for="check-step-8">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-13">
-        <h4>13. Paso 5: Escuchar al Magisterio Nacional (PGP)</h4>
-        <div class="description">**Revisar si alguna de las 6 opciones pastorales o los compromisos del Proyecto Global Pastoral (PGP 2031+2033) ofrece luz a la problemática. El PGP es dinámico y orientador, no un plan estricto.** **[6, 10, 13, 14]**</div>
-        <div class="notes-section">
-            Opción Pastoral del PGP que se relaciona (ej. A: Dignidad Humana, D: Misionera):
-            <textarea id="note-step-13" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-13" onchange="saveProgress()">
-                <label for="check-step-13">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <h3>B. Fase JUZGAR: Marco Doctrinal</h3>
+    <div class="phase-title">El Marco Doctrinal no es un adorno: es el corazón que da sentido evangélico al proyecto. **[5, 6]**</div>
 
-    <div class="step" id="step-14">
-        <h4>14. Paso 6: Tomar como Referencia el Plan de Pastoral de Monterrey</h4>
-        <div class="description">**Asegurar la comunión con el Plan de Pastoral de la Arquidiócesis de Monterrey 2023-2026, cuyo objetivo es la decidida conversión y ser una “Casita Sagrada” que reciba a todos. **Preguntarse: ¿A qué llamado estoy respondiendo?**** **[6, 15-17]**</div>
-        <div class="notes-section">
-            Llamado o compromiso eclesial del Plan de Monterrey al que se responde:
-            <textarea id="note-step-14" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-14" onchange="saveProgress()">
-section{                <label for="check-step-14">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-9">
+        <h4>9. Paso 1: Nombrar la Realidad</h4>
+        <div class="description">**Escribir la problemática que ya fue identificada para tenerla como referencia.** **[7-9]**</div>
+        <div class="notes-section">
+            Problemática (reafirmación):
+            <textarea id="note-step-9" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-9" onchange="saveProgress()">
+                <label for="check-step-9">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-        <h2>III. FASE DE IMPLEMENTACIÓN (ACTUAR)</h2>
+    <div class="step" id="step-10">
+        <h4>10. Paso 2: Iluminar con la Palabra de Dios</h4>
+        <div class="description">**Buscar al menos un pasaje bíblico que ilumine esa problemática. La Sagrada Escritura es la fuente primera y fundamental.** **[6, 7, 10, 11]**</div>
+        <div class="notes-section">
+            Pasaje Bíblico clave (y breve reflexión):
+            <textarea id="note-step-10" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-10" onchange="saveProgress()">
+                <label for="check-step-10">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <h3>C. Diseño Operativo: Objetivos y Metas (Módulo 4)</h3>
+    <div class="step" id="step-11">
+        <h4>11. Paso 3: Escuchar al Magisterio Universal</h4>
+        <div class="description">**Anotar al menos una cita breve de un documento del Magisterio universal (ej. CVII: *Gaudium et Spes*; Papa Francisco: *Evangelii Gaudium, Fratelli Tutti*).** **[6, 7, 10, 11]**</div>
+        <div class="notes-section">
+            Cita del Magisterio Universal:
+            <textarea id="note-step-11" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-11" onchange="saveProgress()">
+                <label for="check-step-11">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-15">
-        <h4>15. Redacción del Objetivo Pastoral</h4>
-        <div class="description">**El objetivo es la brújula y debe ser claro. Debe responder al: ¿Qué quiero lograr? (verbo de acción), ¿Con quién? (destinatarios) y ¿Para qué? (sentido evangelizador). La misión “no se improvisa” (DA 365).** **[18-20]**</div>
-        <div class="notes-section">
-            Objetivo Pastoral redactado:
-            <textarea id="note-step-15" oninput="saveProgress()"></textarea>
-nbsp;         <div class="checklist-box">
-                <input type="checkbox" id="check-step-15" onchange="saveProgress()">
-                <label for="check-step-15">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-12">
+        <h4>12. Paso 4: Escuchar al Magisterio Latinoamericano</h4>
+        <div class="description">**Anotar al menos una cita breve del Documento de Aparecida u otro documento latinoamericano (ej. Medellín, Puebla). Aparecida es la referencia principal del Magisterio latinoamericano.** **[6, 7, 10-12]**</div>
+        <div class="notes-section">
+            Cita del Magisterio Latinoamericano:
+            <textarea id="note-step-12" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-12" onchange="saveProgress()">
+                <label for="check-step-12">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-16">
-        <h4>16. Validación del Objetivo</h4>
-        <div class="description">**Validar el objetivo con 5 criterios: 1. Claridad; 2. Destinatarios; 3. Evangelizador (encuentro con Cristo); 4. Realista; y 5. En comunión (con el plan diocesano).** **[21]**</div>
-        <div class="notes-section">
-            Resultado de la validación (¿Cumple los 5 criterios?):
-  t         <textarea id="note-step-16" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-16" onchange="saveProgress()">
-                <label for="check-step-16">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-13">
+        <h4>13. Paso 5: Escuchar al Magisterio Nacional (PGP)</h4>
+        <div class="description">**Revisar si alguna de las 6 opciones pastorales o los compromisos del Proyecto Global Pastoral (PGP 2031+2033) ofrece luz a la problemática. El PGP es dinámico y orientador, no un plan estricto.** **[6, 10, 13, 14]**</div>
+        <div class="notes-section">
+            Opción Pastoral del PGP que se relaciona (ej. A: Dignidad Humana, D: Misionera):
+            <textarea id="note-step-13" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-13" onchange="saveProgress()">
+                <label for="check-step-13">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-17">
-        <h4>17. Definición de Metas (Regla SIMPLE)</h4>
-        <div class="description">**Las metas son los pasos concretos con cantidad y tiempo, los "campamentos". Deben ser escritas usando la regla **SIMPLE** (Sencilla, Importante, Medible, Posible, Limitada en el tiempo, En foco). Las metas NO son actividades.** **[22, 23]**</div>
-        <div class="notes-section">
-            Meta 1 (Cuantitativa) y Meta 2 (Cualitativa):
-            <textarea id="note-step-17" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-17" onchange="saveProgress()">
-                <label for="check-step-17">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-14">
+        <h4>14. Paso 6: Tomar como Referencia el Plan de Pastoral de Monterrey</h4>
+        <div class="description">**Asegurar la comunión con el Plan de Pastoral de la Arquidiócesis de Monterrey 2023-2026, cuyo objetivo es la decidida conversión y ser una “Casita Sagrada” que reciba a todos. **Preguntarse: ¿A qué llamado estoy respondiendo?**** **[6, 15-17]**</div>
+        <div class="notes-section">
+            Llamado o compromiso eclesial del Plan de Monterrey al que se responde:
+            <textarea id="note-step-14" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-14" onchange="saveProgress()">
+                <label for="check-step-14">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-18">
-section{        <h4>18. Aplicación de Criterios Pastorales (La Brújula)</h4>
-        <div class="description">**Los criterios pastorales son la "brújula" que asegura el sentido evangélico. Incluyen: Evangelizador, Comunitario, Misionero, Pobres primero, y Comunión eclesial/Viabilidad.** **[22, 24]**</div>
-        <div class="notes-section">
-            Criterios Pastorales aplicados a mis metas (uso del Semáforo Pastoral):
-            <textarea id="note-step-18" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-18" onchange="saveProgress()">
-                <label for="check-step-18">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <!-- FASE III: ACTUAR -->
+    <h2>III. FASE DE IMPLEMENTACIÓN (ACTUAR)</h2>
 
-    <h3>D. Programación y Ejecución Práctica</h3>
+    <h3>C. Diseño Operativo: Objetivos y Metas (Módulo 4)</h3>
 
-    <div class="step" id="step-22">
-        <h4>22. Programación de Actividades Concretas</h4>
-        <div class="description">**Programar es "ordenar las actividades". Se debe definir el "cómo" (metodología) y el "qué" (actividad concreta), transformando las metas en acciones específicas. Un sueño sin fechas, sin responsables y sin revisión, se queda en sueño.**</div>
-        <div class="notes-section">
-            Listado de actividades concretas (el "cómo"):
-            <textarea id="note-step-22" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-22" onchange="saveProgress()">
-                <label for="check-step-22">Tarea Completada</label>
-            </div>
-  t </div>
-    </div>
+    <div class="step" id="step-15">
+        <h4>15. Redacción del Objetivo Pastoral</h4>
+        <div class="description">**El objetivo es la brújula y debe ser claro. Debe responder al: ¿Qué quiero lograr? (verbo de acción), ¿Con quién? (destinatarios) y ¿Para qué? (sentido evangelizador). La misión “no se improvisa” (DA 365).** **[18-20]**</div>
+        <div class="notes-section">
+            Objetivo Pastoral redactado:
+            <textarea id="note-step-15" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-15" onchange="saveProgress()">
+                <label for="check-step-15">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-23">
-        <h4>23. Asignación de Responsabilidades</h4>
-        <div class="description">**Se deben definir los responsables ("Quién?") para cada actividad, promoviendo la corresponsabilidad. Un plan debe responder claramente quién es el responsable o equipo.**</div>
-        <div class="notes-section">
-            Equipo principal y roles/responsables definidos para las actividades clave:
-            <textarea id="note-step-23" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-23" onchange="saveProgress()">
-                <label for="check-step-23">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-16">
+        <h4>16. Validación del Objetivo</h4>
+        <div class="description">**Validar el objetivo con 5 criterios: 1. Claridad; 2. Destinatarios; 3. Evangelizador (encuentro con Cristo); 4. Realista; y 5. En comunión (con el plan diocesano).** **[21]**</div>
+        <div class="notes-section">
+            Resultado de la validación (¿Cumple los 5 criterios?):
+            <textarea id="note-step-16" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-16" onchange="saveProgress()">
+                <label for="check-step-16">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-24">
-source:       <h4>24. Cronograma y Recursos (Viabilidad)</h4>
-        <div class="description">**Jesús mismo habla de planear (Lc 14, 28). Se debe establecer un **cronograma** ("Cuándo?") e identificar los **recursos** ("Con qué?" - humanos, materiales, espirituales) y el **presupuesto** ("Cuánto?") para asegurar la viabilidad.**</div>
-        <div class="notes-section">
-            Recursos y tiempos necesarios (Cronograma básico):
-            <textarea id="note-step-24" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-24" onchange="saveProgress()">
-                <label for="check-step-24">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-17">
+        <h4>17. Definición de Metas (Regla SIMPLE)</h4>
+        <div class="description">**Las metas son los pasos concretos con cantidad y tiempo, los "campamentos". Deben ser escritas usando la regla **SIMPLE** (Sencilla, Importante, Medible, Posible, Limitada en el tiempo, En foco). Las metas NO son actividades.** **[22, 23]**</div>
+        <div class="notes-section">
+            Meta 1 (Cuantitativa) y Meta 2 (Cualitativa):
+            <textarea id="note-step-17" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-17" onchange="saveProgress()">
+                <label for="check-step-17">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-24-bis">
-section{        <h4>24. Bis. Ejecución (Pasar a la Vida)</h4>
-        <div class="description">**La ejecución es "pasar del papel a la vida". Requiere **compromiso** para cumplir lo programado, **comunicación clara** y un constante **espíritu de oración**. Las actitudes clave son la **alegría** que motiva, la **flexibilidad** para ajustar sin perder el rumbo y la **participación** de todos.**</div>
-        <div class="notes-section">
-            Notas sobre la puesta en marcha, comunicación y actitudes del equipo:
-    t       <textarea id="note-step-24-bis" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-24-bis" onchange="saveProgress()">
-                <label for="check-step-24-bis">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <div class="step" id="step-18">
+        <h4>18. Aplicación de Criterios Pastorales (La Brújula)</h4>
+        <div class="description">**Los criterios pastorales son la "brújula" que asegura el sentido evangélico. Incluyen: Evangelizador, Comunitario, Misionero, Pobres primero, y Comunión eclesial/Viabilidad.** **[22, 24]**</div>
+        <div class="notes-section">
+            Criterios Pastorales aplicados a mis metas (uso del Semáforo Pastoral):
+            <textarea id="note-step-18" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-18" onchange="saveProgress()">
+                <label for="check-step-18">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
 
-    <div class="step" id="step-25">
-source:       <h4>25. Prototipado y Validación</h4>
-        <div class="description">**Antes de la ejecución final, se valida el diseño del proyecto mediante una prueba o prototipo para "detectar errores antes de invertir demasiado" y "fallar temprano y barato".** **[29, 30]**</div>
-        <div class="notes-section">
-            Plan para prototipar/validar y obtener retroalimentación de usuarios potenciales:
-            <textarea id="note-step-25" oninput="saveProgress()"></textarea>
-source:         <div class="checklist-box">
-                <input type="checkbox" id="check-step-25" onchange="saveProgress()">
-s="note-step-20" oninput="saveProgress()"></textarea>
-            <div class="checklist-box">
-                <input type="checkbox" id="check-step-20" onchange="saveProgress()">
-                <label for="check-step-20">Tarea Completada</label>
-            </div>
-        </div>
-    </div>
+    <h3>D. Programación y Ejecución Práctica</h3>
 
-    <div class="step" id="step-21">
-section{        <h4>21. Reflexión Final: Evaluación y Fidelidad</h4>
-        <div class="description">**La evaluación se hace con humildad y gratitud, usando preguntas sencillas: **¿Qué salió bien?** (agradecer), **¿Qué no funcionó?** (aprender), y **¿Qué mejorar?** (corregir). Un proyecto serio se programa con orden, se ejecuta con alegría y se evalúa con gratitud, asegurando que demos frutos que permanezcan (Jn 15,16).**</div>
-        <div class="notes-section">
-            Plan de seguimiento, corrección y evaluación continua:
-            <textarea id="note-step-21" oninput="saveProgress()"></textarea>
-section{            <div class="checklist-box">
-                <input type="checkbox" id="check-step-21" onchange="saveProgress()">
-s="saveMessage">Progreso guardado automáticamente.</div>
+    <div class="step" id="step-22">
+        <h4>22. Programación de Actividades Concretas</h4>
+        <div class="description">**Programar es "ordenar las actividades". Se debe definir el "cómo" (metodología) y el "qué" (actividad concreta), transformando las metas en acciones específicas. Un sueño sin fechas, sin responsables y sin revisión, se queda en sueño.**</div>
+        <div class="notes-section">
+            Listado de actividades concretas (el "cómo"):
+            <textarea id="note-step-22" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-22" onchange="saveProgress()">
+                <label for="check-step-22">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="step" id="step-23">
+        <h4>23. Asignación de Responsabilidades</h4>
+        <div class="description">**Se deben definir los responsables ("Quién?") para cada actividad, promoviendo la corresponsabilidad. Un plan debe responder claramente quién es el responsable o equipo.**</div>
+        <div class="notes-section">
+            Equipo principal y roles/responsables definidos para las actividades clave:
+            <textarea id="note-step-23" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-23" onchange="saveProgress()">
+                <label for="check-step-23">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="step" id="step-24">
+        <h4>24. Cronograma y Recursos (Viabilidad)</h4>
+        <div class="description">**Jesús mismo habla de planear (Lc 14, 28). Se debe establecer un **cronograma** ("Cuándo?") e identificar los **recursos** ("Con qué?" - humanos, materiales, espirituales) y el **presupuesto** ("Cuánto?") para asegurar la viabilidad.**</div>
+        <div class="notes-section">
+            Recursos y tiempos necesarios (Cronograma básico):
+            <textarea id="note-step-24" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-24" onchange="saveProgress()">
+                <label for="check-step-24">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="step" id="step-24-bis">
+        <h4>24. Bis. Ejecución (Pasar a la Vida)</h4>
+        <div class="description">**La ejecución es "pasar del papel a la vida". Requiere **compromiso** para cumplir lo programado, **comunicación clara** y un constante **espíritu de oración**. Las actitudes clave son la **alegría** que motiva, la **flexibilidad** para ajustar sin perder el rumbo y la **participación** de todos.**</div>
+        <div class="notes-section">
+            Notas sobre la puesta en marcha, comunicación y actitudes del equipo:
+            <textarea id="note-step-24-bis" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-24-bis" onchange="saveProgress()">
+                <label for="check-step-24-bis">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="step" id="step-25">
+        <h4>25. Prototipado y Validación</h4>
+        <div class="description">**Antes de la ejecución final, se valida el diseño del proyecto mediante una prueba o prototipo para "detectar errores antes de invertir demasiado" y "fallar temprano y barato".** **[29, 30]**</div>
+        <div class="notes-section">
+            Plan para prototipar/validar y obtener retroalimentación de usuarios potenciales:
+            <textarea id="note-step-25" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-25" onchange="saveProgress()">
+                <label for="check-step-25">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
+
+    <h3>E. Indicadores y Evaluación</h3>
+
+    <div class="step" id="step-19">
+        <h4>19. Indicador de Proceso</h4>
+        <div class="description">**Establecer indicadores que muestren si las **actividades previstas** se realizaron (ej. asistencia, frecuencia de reuniones, participación del equipo). Muestran si hicimos lo previsto.** **[31]**</div>
+        <div class="notes-section">
+            Indicadores de Proceso para cada meta:
+            <textarea id="note-step-19" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-19" onchange="saveProgress()">
+                <label for="check-step-19">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="step" id="step-20">
+        <h4>20. Indicador de Fruto</h4>
+        <div class="description">**Establecer indicadores que muestren si **algo cambió para bien** (Por sus frutos los conocerán, Mt 7, 16). Pueden ser cuantitativos (cuántos se integraron) o cualitativos (testimonios, mini-encuestas).** **[20, 32]**</div>
+        <div class="notes-section">
+            Indicadores de Fruto para cada meta:
+            <textarea id="note-step-20" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-20" onchange="saveProgress()">
+                <label for="check-step-20">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="step" id="step-21">
+        <h4>21. Reflexión Final: Evaluación y Fidelidad</h4>
+        <div class="description">**La evaluación se hace con humildad y gratitud, usando preguntas sencillas: **¿Qué salió bien?** (agradecer), **¿Qué no funcionó?** (aprender), y **¿Qué mejorar?** (corregir). Un proyecto serio se programa con orden, se ejecuta con alegría y se evalúa con gratitud, asegurando que demos frutos que permanezcan (Jn 15,16).**</div>
+        <div class="notes-section">
+            Plan de seguimiento, corrección y evaluación continua:
+            <textarea id="note-step-21" oninput="saveProgress()"></textarea>
+            <div class="checklist-box">
+                <input type="checkbox" id="check-step-21" onchange="saveProgress()">
+                <label for="check-step-21">Tarea Completada</label>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="save-message" id="saveMessage">Progreso guardado automáticamente.</div>
 
 <script>
-section{    // Función para obtener todos los IDs de los campos de notas y checkboxes
-    function getAllFields() {
-        const textAreas = Array.from(document.querySelectorAll('.notes-section textarea'));
-        const checkBoxes = Array.from(document.querySelectorAll('.checklist-box input[type="checkbox"]'));
-        return { textAreas, checkBoxes };
-    }
+    // Función para obtener todos los IDs de los campos de notas y checkboxes
+    function getAllFields() {
+        const textAreas = Array.from(document.querySelectorAll('.notes-section textarea'));
+        const checkBoxes = Array.from(document.querySelectorAll('.checklist-box input[type="checkbox"]'));
+        return { textAreas, checkBoxes };
+    }
 
-    // Función para guardar el progreso
-    function saveProgress() {
-        const { textAreas, checkBoxes } = getAllFields();
+    // Función para guardar el progreso
+    function saveProgress() {
+        const { textAreas, checkBoxes } = getAllFields();
 
-        // Guardar TextAreas
-        textAreas.forEach(textarea => {
-            localStorage.setItem(textarea.id, textarea.value);
-A-Z     });
+        // Guardar TextAreas
+        textAreas.forEach(textarea => {
+            localStorage.setItem(textarea.id, textarea.value);
+        });
 
-        // Guardar Checkboxes
-        checkBoxes.forEach(checkbox => {
-            localStorage.setItem(checkbox.id, checkbox.checked);
-        });
-        
-        // Mostrar mensaje de guardado
-        const message = document.getElementById('saveMessage');
-section{        message.style.display = 'block';
-        setTimeout(() => {
-            message.style.display = 'none';
-        }, 1500);
-    }
+        // Guardar Checkboxes
+        checkBoxes.forEach(checkbox => {
+            localStorage.setItem(checkbox.id, checkbox.checked);
+        });
 
-    // Función para cargar el progreso al iniciar la página
-    function loadProgress() {
-        const { textAreas, checkBoxes } = getAllFields();
+        // Mostrar mensaje de guardado
+        const message = document.getElementById('saveMessage');
+        message.style.display = 'block';
+        setTimeout(() => {
+            message.style.display = 'none';
+        }, 1500);
+    }
 
-        // Cargar TextAreas
-        textAreas.forEach(textarea => {
-            const savedValue = localStorage.getItem(textarea.id);
-            if (savedValue !== null) {
-                textarea.value = savedValue;
-  section{       }
-        });
+    // Función para cargar el progreso al iniciar la página
+    function loadProgress() {
+        const { textAreas, checkBoxes } = getAllFields();
 
-        // Cargar Checkboxes
-        checkBoxes.forEach(checkbox => {
-            const savedValue = localStorage.getItem(checkbox.id);
-            if (savedValue !== null) {
-  S             // localStorage guarda 'true'/'false' como strings, necesitamos convertirlo a booleano
-                checkbox.checked = (savedValue === 'true');
-            }
-        });
-    }
+        // Cargar TextAreas
+        textAreas.forEach(textarea => {
+            const savedValue = localStorage.getItem(textarea.id);
+            if (savedValue !== null) {
+                textarea.value = savedValue;
+            }
+        });
 
-    // Opcional: Agregar un listener para guardar el progreso al descargar la página (además del oninput)
-source:     window.addEventListener('beforeunload', saveProgress);
+        // Cargar Checkboxes
+        checkBoxes.forEach(checkbox => {
+            const savedValue = localStorage.getItem(checkbox.id);
+            if (savedValue !== null) {
+                // localStorage guarda 'true'/'false' como strings, necesitamos convertirlo a booleano
+                checkbox.checked = (savedValue === 'true');
+            }
+        });
+    }
+
+    // Opcional: Agregar un listener para guardar el progreso al descargar la página (además del oninput)
+    window.addEventListener('beforeunload', saveProgress);
 
 </script>
 </body>
